@@ -3,7 +3,7 @@ export default defineNuxtConfig({
   modules: [
     "@nuxt/image-edge",
     "@vueuse/nuxt",
-    '@nuxt/ui'
+    '@nuxt/ui',
   ],
 
   css: ['~/assets/scss/main.scss'],

@@ -28,13 +28,13 @@ $breakpoint-xs: 36em !default;
 /** 400px oder schmaler */
 $breakpoint-xxs: 25em !default;
 
-@media (max-width: $breakpoint-lg) {
+@media (min-width: $breakpoint-lg) {
 }
-@media (max-width: $breakpoint-md) {
+@media (min-width: $breakpoint-md) {
 }
-@media (max-width: $breakpoint-sm) {
+@media (min-width: $breakpoint-sm) {
 }
-@media (max-width: $breakpoint-xs) {
+@media (min-width: $breakpoint-xs) {
 }
-@media (max-width: $breakpoint-xxs) {
+@media (min-width: $breakpoint-xxs) {
 }

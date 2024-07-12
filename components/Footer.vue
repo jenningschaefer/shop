@@ -35,9 +35,11 @@
             </div>
             <div class="footer_newsletter_input">
                 <input class="input-dark input-newsletter" type="text" placeholder="E-Mail Address">
-                <svg class="footer_links_link_icon">
-                    <use href="~/assets/svg/icons.svg#link"/>
-                </svg>
+                <a click="">
+                    <svg class="footer_links_link_icon">
+                        <use href="~/assets/svg/icons.svg#link"/>
+                    </svg>
+                </a>
             </div>
             <div class="footer_newsletter_disclaimer">
                 <small>

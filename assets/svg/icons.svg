@@ -43,4 +43,14 @@
         <path fill-rule="evenodd" clip-rule="evenodd" d="M22.4872 9.62965C18.7384 5.247 12.487 4.06808 7.79005 8.08128C3.09308 12.0945 2.43181 18.8043 6.12037 23.5508C9.18716 27.4971 18.4683 35.8202 21.5102 38.5141C21.8505 38.8154 22.0207 38.9661 22.2191 39.0254C22.3924 39.077 22.5819 39.077 22.7552 39.0254C22.9537 38.9661 23.1238 38.8154 23.4641 38.5141C26.506 35.8202 35.7872 27.4971 38.8539 23.5508C42.5425 18.8043 41.962 12.0523 37.1843 8.08128C32.4066 4.1103 26.2359 5.247 22.4872 9.62965Z" stroke="inherit" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
     </symbol>
 
+    <!-- link -->
+    <symbol id="link" viewBox="0 0 29 29" fill="transparent" xmlns="http://www.w3.org/2000/svg">
+        <g clip-path="url(#clip0_83_2670)">
+            <line x1="0.93934" y1="27.9393" x2="25.9393" y2="2.93934" stroke="inherit" stroke-width="3"/>
+            <line x1="7" y1="1.5" x2="27" y2="1.5" stroke="inherit" stroke-width="3"/>
+            <line x1="27.5" y1="22" x2="27.5" y2="-1.70743e-08" stroke="inherit" stroke-width="3"/>
+        </g>
+    </symbol>
+
+
 </svg>

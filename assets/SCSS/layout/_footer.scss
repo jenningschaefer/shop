@@ -1,0 +1,45 @@
+@import "../abstracts/variables";
+
+.footer {
+    background-color: $bg-footer;
+    height: 80vh;
+    color: $color-secondary;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    align-items: center;
+    &_links {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 3rem;
+        gap: 1rem;
+        width: 70vw;
+        &_link {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            &_icon {
+                stroke: $color-secondary;
+                width: 1.875em;
+                height: 1.875em;
+            }
+        }
+    }
+    &_newsletter {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        margin-top: 3rem;
+        
+        &_input {
+            display: flex;
+            align-items: center;
+        }
+
+        &_disclaimer {
+            padding-top: 1rem;
+        }
+    }
+}

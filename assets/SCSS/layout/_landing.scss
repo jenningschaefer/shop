@@ -1,0 +1,10 @@
+@import "../abstracts/variables";
+
+.landing-layout {
+    background-color: $bg-landing;
+    color: $color-primary;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}

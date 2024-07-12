@@ -1,11 +1,11 @@
+<script setup>
+  useHead({
+    title: 'Shop',
+  })
+</script>
+
 <template>
-  <Tutorial/>
+  test
 </template>
 
-<script lang="ts">
-import Vue from 'vue'
-
-export default Vue.extend({
-  name: 'IndexPage'
-})
-</script>
+ 

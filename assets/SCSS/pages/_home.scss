@@ -1,0 +1,29 @@
+@import "../abstracts/variables";
+
+.home {
+    &_slogan {
+        display: flex;
+        justify-content: center;
+        padding: 3rem 0;
+    }
+    &_categories {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        border-top: .5px solid $color-primary;
+        border-bottom: .5px solid $color-primary;
+        &_link {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            border: 1px solid $color-primary;
+            padding: .3rem 1rem;
+            &_icon {
+                stroke: $color-primary;
+                width: 1.875em;
+                height: 1.875em;
+            }
+        }
+    }
+}

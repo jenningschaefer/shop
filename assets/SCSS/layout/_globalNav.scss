@@ -3,18 +3,18 @@
 .navBar {
     display: flex;
     justify-content: space-between;
-    border-bottom: 1px solid;
-    height: 6rem;
+    border-bottom: 2px solid;
+    height: 8rem;
     &_home {
-        height: 6rem;
+        height: 8rem;
         cursor: pointer;
         @media (min-width: $breakpoint-sm) {
-            border-right: 1px solid;
+            border-right: 2px solid;
         }
     }
     &_logo {
-        height: 3.5rem;
-        width: 7rem;
+        height: 5.5rem;
+        width: 8rem;
         fill: $color-primary;
         margin-left: 1rem;
         margin-right: 1rem;
@@ -39,9 +39,9 @@
         transform: rotate(-90deg);
         text-transform: uppercase;
         font-weight: 800;
-        font-size: 1.5rem;
-        border-top: 1px solid;
-        padding: .5rem .7rem;
+        font-size: 2rem;
+        border-top: 2px solid;
+        padding: 2rem .9rem;
         a {
             cursor: pointer;
         }
@@ -52,9 +52,10 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-left: 1rem;
+/*     padding-left: 1rem;
     padding-right: 3.3rem;
-    padding-top: 1rem;
+    padding-top: 1.8rem; */
+    padding: 1.8rem 3.3rem 1rem 1rem;
     gap: 3rem;
     @media (min-width: $breakpoint-sm) {
         display: none;
@@ -62,8 +63,8 @@
     &_icon {
         fill: $color-primary;
         stroke: $color-primary;
-        height: 1.875em;
-        width:  1.875em;
+        height: 2em;
+        width:  2em;
         cursor: pointer;
     }
 }

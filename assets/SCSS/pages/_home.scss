@@ -1,28 +1,82 @@
 @import "../abstracts/variables";
 
 .home {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-template-areas: 
+    "slogan"
+    "categories"
+    "hero";
+    @media (min-width: $breakpoint-md) {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+        grid-template-areas: 
+        "slogan hero"
+        "categories hero";
+    }
     &_slogan {
+        position: relative;
         display: flex;
         justify-content: center;
+        align-items: center;
         padding: 3rem 0;
+        grid-area: slogan;
+        @media (min-width: $breakpoint-sm) {
+            height: 30vh;
+        }
+        @media (min-width: $breakpoint-lg) {
+            height: 40vh;
+        }
+        &_text {
+            z-index: 1;
+        }
+        &_bg {
+            display: none;
+            position: absolute;
+            stroke: $color-secondary;
+
+            @media (min-width: $breakpoint-sm) {
+                display: inherit;
+                width: 48vw;
+                height: 20rem;
+            }
+        }
     }
     &_categories {
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 1fr 1fr;
-        border-top: .5px solid $color-primary;
-        border-bottom: .5px solid $color-primary;
+        border-top: 0.5px solid $color-primary;
+        border-bottom: 0.5px solid $color-primary;
+        grid-area: categories;
         &_link {
             display: flex;
             justify-content: space-between;
             align-items: center;
             width: 100%;
             border: 1px solid $color-primary;
-            padding: .3rem 1rem;
+            padding: 0.3rem 1rem;
             &_icon {
                 stroke: $color-primary;
                 width: 1.875em;
                 height: 1.875em;
+            }
+        }
+    }
+    &_hero {
+        grid-area: hero;
+        @media (min-width: $breakpoint-sm) {
+            img {
+                height: 35vh;
+                object-fit: cover;
+                object-position: bottom;
+                width: 100%;
+            }
+        }
+        @media (min-width: $breakpoint-md) {
+            img {
+                height: 100%;
             }
         }
     }

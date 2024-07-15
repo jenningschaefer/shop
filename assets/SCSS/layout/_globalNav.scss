@@ -21,10 +21,15 @@
     } 
     &_icons {
         display: none;
+        width: 100%;
         align-items: center;
+        justify-content: center;
         gap: 3rem;
         @media (min-width: $breakpoint-sm) {
             display: flex;
+        }
+        @media (min-width: $breakpoint-md) {
+            justify-content: space-around;
         }
         &_icon {
             fill: $color-primary;

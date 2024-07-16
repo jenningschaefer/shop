@@ -8,6 +8,7 @@
     "slogan"
     "categories"
     "hero";
+    min-height: calc(100vh - 4rem - 15rem);
     @media (min-width: $breakpoint-md) {
         grid-template-columns: 1fr 1fr;
         grid-template-rows: auto;
@@ -75,6 +76,11 @@
             }
         }
         @media (min-width: $breakpoint-md) {
+            img {
+                height: 37rem;
+            }
+        }
+        @media (min-width: $breakpoint-lg) {
             img {
                 height: 100%;
             }

@@ -17,25 +17,25 @@ useHead({
 
     <!-- categories -->
     <div class="home_categories">
-      <NuxtLink to="/products/chairs" class="home_categories_link">
+      <NuxtLink to="/products/list/chairs" class="home_categories_link">
         <p class="links">Chairs</p>
         <svg class="home_categories_link_icon">
           <use href="~/assets/svg/icons.svg#link" />
         </svg>
       </NuxtLink>
-      <NuxtLink to="/products/ligting" class="home_categories_link">
+      <NuxtLink to="/products/list(ligting" class="home_categories_link">
         <p class="links">Lighting</p>
         <svg class="home_categories_link_icon">
           <use href="~/assets/svg/icons.svg#link" />
         </svg>
       </NuxtLink>
-      <NuxtLink to="/products/tables" class="home_categories_link">
+      <NuxtLink to="/products/list/tables" class="home_categories_link">
         <p class="links">Tables</p>
         <svg class="home_categories_link_icon">
           <use href="~/assets/svg/icons.svg#link" />
         </svg>
       </NuxtLink>
-      <NuxtLink to="/products/decoration" class="home_categories_link">
+      <NuxtLink to="/products/list/decoration" class="home_categories_link">
         <p class="links">Decoration</p>
         <svg class="home_categories_link_icon">
           <use href="~/assets/svg/icons.svg#link" />

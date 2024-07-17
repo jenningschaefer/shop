@@ -16,6 +16,9 @@
         "slogan hero"
         "categories hero";
     }
+    @media (min-width: $breakpoint-lg) {
+        min-height: calc(100vh - 6rem - 15rem);
+    }
     &_slogan {
         position: relative;
         display: flex;

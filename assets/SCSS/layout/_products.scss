@@ -1,0 +1,10 @@
+@import "../abstracts/variables";
+
+.product-layout {
+    background-color: $bg-products;
+    color: $color-primary;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}

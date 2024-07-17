@@ -12,15 +12,15 @@ html {
     font-family: 'opensans', normal;
     color: $color-primary;
 
-    @media (min-width: 100em) {
+/*     @media (min-width: 100em) {
         font-size: 133%;        
-    }
-    @media (min-width: 150em) {
+    } */
+/*     @media (min-width: 150em) {
         font-size: 166%;        
-    }
-    @media (min-width: 200em) {
+    } */
+/*     @media (min-width: 200em) {
         font-size: 200%;        
-    }
+    } */
     @media (max-width: $breakpoint-xxs) {
         font-size: 75%;
     }

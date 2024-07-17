@@ -5,11 +5,18 @@
     justify-content: space-between;
     border-bottom: 2px solid;
     height: 8rem;
+    @media (min-width: $breakpoint-lg) {
+        height: 6rem;
+    }
+
     &_home {
         height: 8rem;
         cursor: pointer;
         @media (min-width: $breakpoint-sm) {
             border-right: 2px solid;
+        }
+        @media (min-width: $breakpoint-lg) {
+            height: 6rem;
         }
     }
     &_logo {
@@ -49,6 +56,9 @@
         padding: 2rem .9rem;
         a {
             cursor: pointer;
+        }
+        @media (min-width: $breakpoint-lg) {
+            font-size: 1.4rem;
         }
     }
 }

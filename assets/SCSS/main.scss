@@ -1,6 +1,23 @@
-@use "abstracts";
-@use "base";
-@use "layout";
-@use "components";
-@use "pages";
-@use "vendors";
+// abstracts
+@import "abstracts/mixins";
+@import "abstracts/variables";
+
+// base
+@import "base/base";
+@import "base/fonts";
+@import "base/typography";
+
+// components
+@import "components/input";
+
+// layout
+@import "layout/footer";
+@import "layout/globalNav";
+@import "layout/landing";
+@import "layout/products";
+
+// pages
+@import "pages/home";
+@import "pages/list";
+
+// vendors

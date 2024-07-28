@@ -3,8 +3,44 @@
         text-align: center;
         display: flex;
         flex-direction: column;
+
         &_heading {
             color: red;
+        }
+    }
+
+    &-content {
+        &_settings {
+            padding: 0 1rem;
+            display: flex;
+            height: 2rem;
+            //justify-content: space-evenly;
+
+            background: linear-gradient(to right,
+                    transparent 0%,
+                    transparent calc(50% - 1px),
+                    black calc(50% - 1px),
+                    black calc(50% + 1px),
+                    transparent calc(50% + 1px),
+                    transparent 100%);
+
+            &_item {
+                padding-left: 2rem;
+                display: flex;
+                justify-content: start;
+                width: 100%;
+            }
+            &_icon {
+                height: 2rem;
+                width: 2rem;
+                svg {
+                    fill: $color-primary;
+                }
+            }
+        }
+
+        &_grid {
+            height: 100%;
         }
     }
 }

@@ -23,7 +23,7 @@ useHead({
           <use href="~/assets/svg/icons.svg#link" />
         </svg>
       </NuxtLink>
-      <NuxtLink to="/products/list(ligting" class="home_categories_link">
+      <NuxtLink to="/products/list/ligting" class="home_categories_link">
         <p class="links">Lighting</p>
         <svg class="home_categories_link_icon">
           <use href="~/assets/svg/icons.svg#link" />

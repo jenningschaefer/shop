@@ -2,7 +2,7 @@
     {
         "id" : 1,
         "name" : "Chair 1 - wood - bg",
-        "designer" : "",
+        "designer" : "John Smith",
         "price_eur" : "599.99",
         "price_us" : "599.99",
         "img" : "",
@@ -14,7 +14,7 @@
     {
         "id" : 2,
         "name" : "Chair 2 - wood - bg",
-        "designer" : "",
+        "designer" : "John Smith",
         "price_eur" : "599.99",
         "price_us" : "599.99",
         "img" : "",
@@ -26,7 +26,7 @@
     {
         "id" : 3,
         "name" : "Chair 3 - wood - bg",
-        "designer" : "",
+        "designer" : "John Smith",
         "price_eur" : "599.99",
         "price_us" : "599.99",
         "img" : "",
@@ -38,7 +38,7 @@
     {
         "id" : 4,
         "name" : "Chair 4 - wood - bg",
-        "designer" : "",
+        "designer" : "John Smith",
         "price_eur" : "599.99",
         "price_us" : "599.99",
         "img" : "",
@@ -50,7 +50,7 @@
     {
         "id" : 5,
         "name" : "Table 1 - wood - bg",
-        "designer" : "",
+        "designer" : "John Smith",
         "price_eur" : "599.99",
         "price_us" : "599.99",
         "img" : "",
@@ -62,7 +62,7 @@
     {
         "id" : 6,
         "name" : "Table 2 - wood - bg",
-        "designer" : "",
+        "designer" : "John Smith",
         "price_eur" : "599.99",
         "price_us" : "599.99",
         "img" : "",
@@ -74,7 +74,7 @@
     {
         "id" : 7,
         "name" : "Table 3 - wood - bg",
-        "designer" : "",
+        "designer" : "John Smith",
         "price_eur" : "599.99",
         "price_us" : "599.99",
         "img" : "",
@@ -86,7 +86,7 @@
     {
         "id" : 8,
         "name" : "Table 4 - wood - bg",
-        "designer" : "",
+        "designer" : "John Smith",
         "price_eur" : "599.99",
         "price_us" : "599.99",
         "img" : "",
@@ -98,7 +98,7 @@
     {
         "id" : 9,
         "name" : "Lighting 1 - wood - bg",
-        "designer" : "",
+        "designer" : "John Smith",
         "price_eur" : "599.99",
         "price_us" : "599.99",
         "img" : "",
@@ -110,7 +110,7 @@
     {
         "id" : 10,
         "name" : "Lighting 2 - wood - bg",
-        "designer" : "",
+        "designer" : "John Smith",
         "price_eur" : "599.99",
         "price_us" : "599.99",
         "img" : "",
@@ -122,7 +122,7 @@
     {
         "id" : 11,
         "name" : "Lighting 3 - wood - bg",
-        "designer" : "",
+        "designer" : "John Smith",
         "price_eur" : "599.99",
         "price_us" : "599.99",
         "img" : "",
@@ -134,7 +134,7 @@
     {
         "id" : 12,
         "name" : "Lighting 4 - wood - bg",
-        "designer" : "",
+        "designer" : "John Smith",
         "price_eur" : "599.99",
         "price_us" : "599.99",
         "img" : "",
@@ -146,7 +146,7 @@
     {
         "id" : 13,
         "name" : "Decoration 1 - wood - bg",
-        "designer" : "",
+        "designer" : "John Smith",
         "price_eur" : "599.99",
         "price_us" : "599.99",
         "img" : "",
@@ -158,7 +158,7 @@
     {
         "id" : 14,
         "name" : "Decoration 2 - wood - bg",
-        "designer" : "",
+        "designer" : "John Smith",
         "price_eur" : "599.99",
         "price_us" : "599.99",
         "img" : "",
@@ -170,7 +170,7 @@
     {
         "id" : 15,
         "name" : "Decoration 3 - wood - bg",
-        "designer" : "",
+        "designer" : "John Smith",
         "price_eur" : "599.99",
         "price_us" : "599.99",
         "img" : "",
@@ -182,7 +182,7 @@
     {
         "id" : 16,
         "name" : "Decoration 4 - wood - bg",
-        "designer" : "",
+        "designer" : "John Smith",
         "price_eur" : "599.99",
         "price_us" : "599.99",
         "img" : "",

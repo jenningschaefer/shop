@@ -7,7 +7,7 @@ useHead({
 <template>
   <div class="home">
     <!-- slogan -->
-    <div class="home_slogan">
+    <div class="home_slogan" @click="navigateTo('/products/list')">
       <svg class="home_slogan_bg">
         <use href="~/assets/svg/logos.svg#logo-bg" />
       </svg>
@@ -46,7 +46,7 @@ useHead({
 
     <!-- hero -->
     <div class="home_hero">
-      <NuxtImg class="" @click="" src="/img/pexels-heyho-6077368.jpg" />
+      <NuxtImg class="" @click="" src="pexels-heyho-6077368.jpg" />
     </div>
     <!-- hero end -->
   </div>

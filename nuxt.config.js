@@ -8,6 +8,10 @@ export default defineNuxtConfig({
 
   css: ['~/assets/scss/main.scss'],
 
+  image: {
+    dir: 'assets/images',
+  },
+
   devtools: { enabled: true },
   compatibilityDate: "2024-07-11"
 })

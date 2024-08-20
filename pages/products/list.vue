@@ -10,7 +10,7 @@ definePageMeta({
 <template>
     <div class="list">
         <NuxtErrorBoundary>
-            <CarSideBar />
+            <ProductSideBar />
             <NuxtPage />
             <template #error="{ error }">
                 <div class="list_error">

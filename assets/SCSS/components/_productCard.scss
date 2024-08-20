@@ -1,0 +1,22 @@
+.product-card {
+    width: 100%;
+    cursor: pointer;
+    &_img {
+        position: relative;
+        &_icon {
+            position: absolute;
+            height: 2rem;
+            width: 2rem;
+            stroke: $color-primary;
+            stroke-width: 3px;
+            top: .3rem;
+            right: .3rem;
+            fill: transparent;
+            &.active {
+                fill: $color-grey-dark;
+            }
+        }
+    }
+    &_name {}
+    &_price {}
+}

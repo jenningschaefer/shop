@@ -74,8 +74,9 @@
         display: none;
     }
     &_icon {
-        fill: $color-primary;
+        fill: transparent;
         stroke: $color-primary;
+        //stroke-width: 3px;
         height: 2em;
         width:  2em;
         cursor: pointer;

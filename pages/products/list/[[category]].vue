@@ -1,6 +1,6 @@
 <script setup>
 /* const route = useRoute(); */
-const { products } = useProducts(); 
+const { products } = useProducts();
 
 definePageMeta({
     layout: 'products',
@@ -25,20 +25,24 @@ const handleFavorite = (id) => {
         <div class="list-content_settings">
             <div class="list-content_settings_item">
                 <svg class="list-content_settings_icon">
-                    <use href="~/assets/svg/icons.svg#sort"/>
+                    <use href="~/assets/svg/icons.svg#sort" />
                 </svg>
                 <span>Sort</span>
             </div>
             <div class="list-content_settings_item">
                 <svg class="list-content_settings_icon">
-                    <use href="~/assets/svg/icons.svg#filter"/>
+                    <use href="~/assets/svg/icons.svg#filter" />
                 </svg>
                 <span>Filter</span>
             </div>
         </div>
+        <div class="list-content_sort-filter">
+            <ProductSortFilter />
+        </div>
         <div class="list-content_grid">
             <ClientOnly>
-                <ProductCard v-for="product in products" :key="product.id" :product="product" @favor="handleFavorite" :favored="product.id in favorite"/>
+                <ProductCard v-for="product in products" :key="product.id" :product="product" @favor="handleFavorite"
+                    :favored="product.id in favorite" />
             </ClientOnly>
         </div>
     </div>

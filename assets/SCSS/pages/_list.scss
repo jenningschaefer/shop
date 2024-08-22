@@ -10,21 +10,28 @@
     }
 
     &-content {
+        @media (min-width: $breakpoint-md) {
+            display: flex;
+            padding: 0 1rem;
+        }
         &_settings {
             margin: 2rem 0;
             padding: 0 1rem;
             display: flex;
             height: 2rem;
-            //justify-content: space-evenly;
-
+            
+            // line seperator
             background: linear-gradient(to right,
-                    transparent 0%,
-                    transparent calc(50% - 1px),
-                    black calc(50% - 1px),
-                    black calc(50% + 1px),
-                    transparent calc(50% + 1px),
-                    transparent 100%);
-
+            transparent 0%,
+            transparent calc(50% - 1px),
+            black calc(50% - 1px),
+            black calc(50% + 1px),
+            transparent calc(50% + 1px),
+            transparent 100%);
+            
+            @media (min-width: $breakpoint-md) {
+                display: none;
+            }
             &_item {
                 padding-left: 2rem;
                 display: flex;
@@ -32,6 +39,7 @@
                 width: 100%;
                 cursor: pointer;
             }
+
             &_icon {
                 height: 1.75rem;
                 width: 1.75rem;
@@ -41,13 +49,40 @@
             }
         }
 
+        &_sort-filter {
+            padding: 1rem;
+        }
+
         &_grid {
             height: 100%;
             padding: 1rem 1rem;
             display: grid;
-            gap: 1rem;
+            row-gap: 2rem;
             grid-template-columns: 1fr 1fr;
             grid-template-rows: auto;
+
+            @media (min-width: $breakpoint-sm) {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+        }
+    }
+
+    .product-card {
+        border-right: 2px solid black;
+        padding: 0 1rem;
+
+        &:nth-child(even) {
+            border-right: none;
+        }
+
+        @media (min-width: $breakpoint-sm) {
+            &:nth-child(even) {
+                border-right: 2px solid black;
+            }
+
+            &:nth-child(3n) {
+                border-right: none;
+            }
         }
     }
 }

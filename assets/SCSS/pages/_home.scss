@@ -24,6 +24,7 @@
         align-items: center;
         padding: 3rem 0;
         grid-area: slogan;
+        cursor: pointer;
         @media (min-width: $breakpoint-sm) {
             height: 30vh;
         }

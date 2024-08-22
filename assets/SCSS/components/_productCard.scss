@@ -2,7 +2,7 @@
     width: 100%;
     cursor: pointer;
     &_img {
-        position: relative;
+        position: relative;        
         &_icon {
             position: absolute;
             height: 2rem;
@@ -16,7 +16,17 @@
                 fill: $color-grey-dark;
             }
         }
+        &_image {
+            img {
+                object-fit: 100%;
+                width: 100%;
+            }
+        }
     }
-    &_name {}
-    &_price {}
+    &_name {
+        //white-space: nowrap;
+    }
+    &_price {
+        font-weight: 700;
+    }
 }

@@ -1,0 +1,16 @@
+.accordion__item {
+    cursor: pointer;
+    position: relative;
+}
+
+.accordion__trigger {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &_icon {
+        stroke: black;
+        width: 1.75em;
+        height: 1.75em;
+    }
+}

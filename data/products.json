@@ -1,7 +1,7 @@
 [
     {
         "id" : 1,
-        "type" : "chair",
+        "type" : "chairs",
         "name" : "Voxel",
         "name_url" : "voxel",
         "designer" : "Karim Rashid",
@@ -16,7 +16,7 @@
     },
     {
         "id" : 2,
-        "type" : "chair",
+        "type" : "chairs",
         "name" : "Sign Matt Stuhl",
         "name_url" : "sign-matt",
         "designer" : "Piergiorgio Cazzaniga ",
@@ -31,7 +31,7 @@
     },
     {
         "id" : 3,
-        "type" : "chair",
+        "type" : "chairs",
         "name" : "Panton Chair",
         "name_url" : "panton",
         "designer" : "Verner Panton",
@@ -46,7 +46,7 @@
     },
     {
         "id" : 4,
-        "type" : "chair",
+        "type" : "chairs",
         "name" : "Viktoria Ghost",
         "name_url" : "viktoria-ghost",
         "designer" : "Philippe Starck",

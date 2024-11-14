@@ -1,0 +1,25 @@
+.sort-filter {
+    //min-width: 10rem;
+    &_heading {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-transform: uppercase;
+        width: 100%;
+        &_icon {
+            stroke: $color-primary;
+            width: 1.75em;
+            height: 1.75em;
+        }
+    }
+    &_list {
+        li {
+            margin-left: 1rem !important;
+        } 
+            
+    }
+    &_btn {
+        margin-top: 3rem;
+        width: 100%;
+    }
+}

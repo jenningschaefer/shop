@@ -1,5 +1,5 @@
 <script setup>
-/* const route = useRoute(); */
+const route = useRoute();
 const { products } = useProducts();
 
 definePageMeta({
@@ -7,6 +7,10 @@ definePageMeta({
 })
 
 const favorite = useLocalStorage("favorite", {});
+
+/* watch(() => products, (newValue, oldValue) => {
+    if(newValue.lenght > 0) console.log('Test')
+}); */
 
 const handleFavorite = (id) => {
     if (id in favorite.value) {
@@ -36,14 +40,16 @@ const handleFavorite = (id) => {
                 <span>Filter</span>
             </div>
         </div>
-        <div class="list-content_sort-filter">
-            <ProductSortFilter />
-        </div>
-        <div class="list-content_grid">
-            <ClientOnly>
-                <ProductCard v-for="product in products" :key="product.id" :product="product" @favor="handleFavorite"
-                    :favored="product.id in favorite" />
-            </ClientOnly>
+        <div class="list-content_container">
+            <div class="list-content_sort-filter">
+                <ProductSortFilter />
+            </div>
+            <div class="list-content_grid">
+                <ClientOnly>
+                    <ProductCard v-for="product in products" :key="product.id" :product="product"
+                        @favor="handleFavorite" :favored="product.id in favorite" />
+                </ClientOnly>
+            </div>
         </div>
     </div>
 </template>

@@ -5,3 +5,9 @@ export const useProducts = () => {
         products,
     }
 }
+
+export const useProduct = (id) => {
+    return products.find((product) => {
+        return product.id === id;
+    });
+}

@@ -4,6 +4,12 @@
 
             <!-- This slot will handle the title/header of the accordion and is the part you click on -->
             <slot name="accordion-trigger"></slot>
+            <svg class="accordion__trigger_icon" v-if="!visible">
+                <use href="~/assets/svg/icons.svg#plus" />
+            </svg>
+            <svg class="accordion__trigger_icon" v-else>
+                <use href="~/assets/svg/icons.svg#minus" />
+            </svg>
         </div>
 
         <transition name="accordion" @enter="start" @after-enter="end" @before-leave="start" @after-leave="end">
@@ -47,18 +53,6 @@ const end = (el) => {
 </script>
 
 <style lang="scss" scoped>
-.accordion__item {
-    cursor: pointer;
-    padding: 10px 20px 10px 40px;
-    border-bottom: 1px solid #ebebeb;
-    position: relative;
-}
-
-.accordion__trigger {
-    display: flex;
-    justify-content: space-between;
-}
-
 .accordion-enter-active,
 .accordion-leave-active {
     will-change: height, opacity;
@@ -69,6 +63,7 @@ const end = (el) => {
 .accordion-enter,
 .accordion-leave-to {
     height: 0 !important;
+    transition: height 0.3s ease, opacity 0.3s ease;
     opacity: 0;
 }
 </style>

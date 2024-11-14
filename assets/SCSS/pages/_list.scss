@@ -1,4 +1,5 @@
 .list {
+
     &_error {
         text-align: center;
         display: flex;
@@ -8,11 +9,19 @@
             color: red;
         }
     }
-
+    &-content_container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
     &-content {
         @media (min-width: $breakpoint-md) {
             display: flex;
-            padding: 0 1rem;
+            padding: 2rem 1rem;
+        }
+        @media (min-width: $breakpoint-lg) {
+            display: flex;
+            padding: 2rem 8rem;
         }
         &_settings {
             margin: 2rem 0;
@@ -50,7 +59,12 @@
         }
 
         &_sort-filter {
+            display: none;
             padding: 1rem;
+            @media (min-width: $breakpoint-md) {
+                display: block;
+                min-width: 15rem;
+            }
         }
 
         &_grid {

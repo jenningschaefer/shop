@@ -37,7 +37,7 @@
             justify-content: space-around;
         }
         &_icon {
-            fill: $color-primary;
+            fill: transparent;
             stroke: $color-primary;
             height: 1.875em;
             width:  1.875em;
@@ -74,7 +74,7 @@
         display: none;
     }
     &_icon {
-        fill: transparent;
+        fill: transparent !important;
         stroke: $color-primary;
         //stroke-width: 3px;
         height: 2em;

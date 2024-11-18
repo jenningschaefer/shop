@@ -10,24 +10,24 @@
         "img" : "products/chairs/voxel.jpg",
         "webp" : "",
         "features" : ["", ""],
-        "description" : "",
-        "spec_title": "",
-        "spec_text": ""
+        "description" : "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+        "spec_title": "Lorem Ipsum",
+        "spec_text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
     },
     {
         "id" : 2,
         "type" : "chairs",
         "name" : "Sign Matt Stuhl",
-        "name_url" : "sign-matt",
+        "name_url" : "sign_matt",
         "designer" : "Piergiorgio Cazzaniga ",
         "price_eur" : "399.99",
         "price_us" : "399.99",
         "img" : "products/chairs/sign_matt.jpg",
         "webp" : "",
         "features" : ["", ""],
-        "description" : "",
-        "spec_title": "",
-        "spec_text": ""
+        "description" : "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+        "spec_title": "Lorem Ipsum",
+        "spec_text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
     },
     {
         "id" : 3,
@@ -40,24 +40,24 @@
         "img" : "products/chairs/panton.jpg",
         "webp" : "",
         "features" : ["Polypropylen", "matte Oberfläche"],
-        "description" : "",
-        "spec_title": "",
-        "spec_text": ""
+        "description" : "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+        "spec_title": "Lorem Ipsum",
+        "spec_text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
     },
     {
         "id" : 4,
         "type" : "chairs",
         "name" : "Viktoria Ghost",
-        "name_url" : "viktoria-ghost",
+        "name_url" : "viktoria_ghost",
         "designer" : "Philippe Starck",
         "price_eur" : "499.99",
         "price_us" : "499.99",
         "img" : "products/chairs/ghost.jpg",
         "webp" : "",
         "features" : ["Polykarbonat", "Pflegeleicht"],
-        "description" : "",
-        "spec_title": "",
-        "spec_text": ""
+        "description" : "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+        "spec_title": "Lorem Ipsum",
+        "spec_text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
     },
     {
         "id" : 5,
@@ -70,24 +70,24 @@
         "img" : "products/tables/oak-smoked.jpg",
         "webp" : "",
         "features" : ["Laminat", "Aluminium Fux", "Zeitlos", "Pflegeleicht"],
-        "description" : "",
-        "spec_title": "",
-        "spec_text": ""
+        "description" : "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+        "spec_title": "Lorem Ipsum",
+        "spec_text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
     },
     {
         "id" : 6,
         "type" : "table",
         "name" : "Eileen Grey Höhenverstellbarer Tisch",
-        "name_url" : "eileen-grey",
+        "name_url" : "eileen_grey",
         "designer" : "Eileen Grey",
         "price_eur" : "599.99",
         "price_us" : "599.99",
         "img" : "products/tables/eileen_gray_tisch.jpg",
         "webp" : "",
         "features" : ["", ""],
-        "description" : "",
-        "spec_title": "",
-        "spec_text": ""
+        "description" : "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+        "spec_title": "Lorem Ipsum",
+        "spec_text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
     },
     {
         "id" : 7,
@@ -100,9 +100,9 @@
         "img" : "products/tables/boa.jpg",
         "webp" : "",
         "features" : ["Glas", "Alimunium", "Von Bambus inspiriert"],
-        "description" : "",
-        "spec_title": "",
-        "spec_text": ""
+        "description" : "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+        "spec_title": "Lorem Ipsum",
+        "spec_text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
     },
     {
         "id" : 8,
@@ -115,9 +115,9 @@
         "img" : "products/tables/baguette.jpg",
         "webp" : "",
         "features" : ["", ""],
-        "description" : "",
-        "spec_title": "",
-        "spec_text": ""
+        "description" : "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+        "spec_title": "Lorem Ipsum",
+        "spec_text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
     },
     {
         "id" : 9,
@@ -130,9 +130,9 @@
         "img" : "products/lighting/wagenfeld.jpg",
         "webp" : "",
         "features" : ["Zeitlos", "Langlebig", "Pflegeleicht"],
-        "description" : "",
-        "spec_title": "",
-        "spec_text": ""
+        "description" : "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+        "spec_title": "Lorem Ipsum",
+        "spec_text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
     },
     {
         "id" : 10,
@@ -145,9 +145,9 @@
         "img" : "products/lighting/vertigo.jpg",
         "webp" : "",
         "features" : ["", ""],
-        "description" : "",
-        "spec_title": "",
-        "spec_text": ""
+        "description" : "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+        "spec_title": "Lorem Ipsum",
+        "spec_text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
     },
     {
         "id" : 11,
@@ -160,24 +160,24 @@
         "img" : "products/lighting/diccoco.jpg",
         "webp" : "",
         "features" : ["", ""],
-        "description" : "",
-        "spec_title": "",
-        "spec_text": ""
+        "description" : "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+        "spec_title": "Lorem Ipsum",
+        "spec_text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
     },
     {
         "id" : 12,
         "type" : "lighting",
         "name" : "Akari 1N",
-        "name_url" : "Isamu Noguchi",
+        "name_url" : "isamu_noguchi",
         "designer" : "John Smith",
         "price_eur" : "399.99",
         "price_us" : "399.99",
         "img" : "products/lighting/akari.jpg",
         "webp" : "",
         "features" : ["Papier", "In Japan hergestellt"],
-        "description" : "",
-        "spec_title": "",
-        "spec_text": ""
+        "description" : "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+        "spec_title": "Lorem Ipsum",
+        "spec_text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
     },
     {
         "id" : 13,
@@ -190,9 +190,9 @@
         "img" : "products/accessories/bird.jpg",
         "webp" : "",
         "features" : ["Holz", "Wiedererkennungswert"],
-        "description" : "",
-        "spec_title": "",
-        "spec_text": ""
+        "description" : "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+        "spec_title": "Lorem Ipsum",
+        "spec_text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
     },
     {
         "id" : 14,
@@ -205,24 +205,24 @@
         "img" : "products/accessories/elephnt.jpg",
         "webp" : "",
         "features" : ["Holz", "Wiedererkennungswert"],
-        "description" : "",
-        "spec_title": "",
-        "spec_text": ""
+        "description" : "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+        "spec_title": "Lorem Ipsum",
+        "spec_text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
     },
     {
         "id" : 15,
         "type" : "accessory",
         "name" : "Coat Tree",
-        "name_url" : "coat-tree",
+        "name_url" : "coat_tree",
         "designer" : "Sidse Werner",
         "price_eur" : "599.99",
         "price_us" : "599.99",
         "img" : "products/accessories/wall-tree.jpg",
         "webp" : "",
         "features" : ["", ""],
-        "description" : "",
-        "spec_title": "",
-        "spec_text": ""
+        "description" : "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+        "spec_title": "Lorem Ipsum",
+        "spec_text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
     },
     {
         "id" : 16,
@@ -235,8 +235,8 @@
         "img" : "products/accessories/basket.jpg",
         "webp" : "",
         "features" : ["", ""],
-        "description" : "",
-        "spec_title": "",
-        "spec_text": ""
+        "description" : "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+        "spec_title": "Lorem Ipsum",
+        "spec_text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
     }
 ]

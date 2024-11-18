@@ -7,7 +7,8 @@ export const useProducts = () => {
 }
 
 export const useProduct = (id) => {
+    console.log('userproduct')
     return products.find((product) => {
-        return product.id === id;
+        return product.id == id;
     });
 }

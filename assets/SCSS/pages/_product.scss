@@ -1,0 +1,44 @@
+.product {
+    font-size: 16px;
+
+    &_details-mobile {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1.8rem 3.3rem 1rem 1rem;
+    }
+
+    &_description {
+        &-title {}
+
+        &-img {
+            img {
+                object-fit: 100%;
+                width: 100%;
+            }
+        }
+
+        &-accordion {
+            padding: 1rem;
+            .accordion__item {
+                border-bottom: 1px solid black;
+                padding: 1rem;
+                &:first-child {
+                    border-top: 1px solid black;
+                }
+            }
+            .accordion__content {
+                padding-left: .5rem;
+            }
+        }
+
+        &-add {
+            padding: 1rem;
+            button {
+                width: 100%;
+                padding: 1.5rem 1rem !important;
+            }
+        }
+    }
+}

@@ -4,7 +4,7 @@ const {cars} = useCars(); */
 
 definePageMeta({
     layout: 'products',
-})
+});
 </script>
 
 <template>

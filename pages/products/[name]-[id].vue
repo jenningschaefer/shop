@@ -6,7 +6,7 @@ definePageMeta({
     layout: 'products',
 });
 
-onMounted(async () =>  {
+onMounted(async () => {
     product.value = await useProduct(route.params.id);
     console.log(route.params.id)
 });
@@ -19,7 +19,7 @@ onMounted(async () =>  {
             <div>{{ product.price_us }}$</div>
         </div>
         <div class="product_description">
-            <div class="product_description-title"></div>
+            <h1 class="product_description-title">{{ product.name }}</h1>
             <NuxtPicture format="avif, webp" :src="product.img" class="product_description-img" />
             <div class="product_description-accordion">
                 <UIAccordion>
@@ -47,6 +47,8 @@ onMounted(async () =>  {
                 </UIAccordion>
             </div>
             <div class="product_description-add">
+                <div class="product_description-add-desc">by {{ product.designer }}</div>
+                <div class="product_description-add-desc">{{ product.price_us }}$</div>
                 <button class="vesta-btn" type="button">Apply</button>
             </div>
         </div>

@@ -22,7 +22,7 @@
             padding: 1rem 4rem;
         }
 
-        @media (min-width: $breakpoint-sm) {
+        @media (min-width: $breakpoint-md) {
             display: grid;
             gap: 1rem;
             grid-template-columns: 1fr 1fr;
@@ -31,6 +31,9 @@
                 "img accordion"
                 "img add";
             padding: 0;
+        }
+        @media (min-width: $breakpoint-lg) {
+            padding: 1rem 8rem;
         }
 
         &-title {

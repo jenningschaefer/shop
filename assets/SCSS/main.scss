@@ -14,6 +14,7 @@
 @import "components/productSortFilter";
 @import "components/button";
 @import "components/accordion";
+@import "components/tabs";
 
 // layout
 @import "layout/footer";
@@ -23,6 +24,7 @@
 
 // pages
 @import "pages/home";
+@import "pages/login";
 @import "pages/list";
 @import "pages/product";
 

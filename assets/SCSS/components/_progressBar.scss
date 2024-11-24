@@ -1,0 +1,17 @@
+.progress-bar {
+    padding-top: 1rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+
+    &_step {
+        width: 4rem;
+        height: .5rem;
+        border: 1px solid $color-primary;
+    }
+
+    .active {
+        background-color: $color-primary;
+    }
+}

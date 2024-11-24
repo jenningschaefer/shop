@@ -1,0 +1,33 @@
+.checkout-layout {
+    background-color: $bg-checkout;
+    color: $color-primary;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    &_back {
+        height: 1.85em;
+        width: 1.85em;
+        stroke: $color-primary;
+        cursor: pointer;
+    }
+    &_menu {
+        height: 1.85em;
+        width: 1.85em;
+        cursor: pointer;
+    }
+}
+
+.navigation {
+    width: 100%;
+    padding: 1rem;
+    button {
+        width: 100%;
+    }
+}

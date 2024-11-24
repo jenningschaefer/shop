@@ -16,17 +16,20 @@
 @import "components/button";
 @import "components/accordion";
 @import "components/tabs";
+@import "components/progressBar";
 
 // layout
 @import "layout/footer";
 @import "layout/globalNav";
 @import "layout/landing";
 @import "layout/products";
+@import "layout/checkout";
 
 // pages
 @import "pages/home";
 @import "pages/login";
 @import "pages/list";
 @import "pages/product";
+@import "pages/address";
 
 // vendors

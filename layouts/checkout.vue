@@ -7,6 +7,6 @@ const route = useRoute();
       <CheckoutHeader />
       <slot />
       <CheckoutNavigation v-if="route.name != 'checkout-confirmation'"/>
-      <div v-else></div>
+      <Footer v-else />
   </div>
 </template>

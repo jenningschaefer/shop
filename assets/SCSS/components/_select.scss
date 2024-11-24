@@ -1,0 +1,20 @@
+select::-ms-expand {
+    display: none;
+}
+
+select {
+    //display: inline-block;
+    //box-sizing: border-box;
+    width: 100%;
+    border-bottom: 1px solid $color-primary;
+    font: inherit;
+    background-color: transparent;
+    line-height: inherit;
+    background-repeat: no-repeat;
+    background-size: 5px 5px, 5px 5px;
+
+    option:first {
+        opacity: 60%;
+        color: $color-primary;
+    }
+}

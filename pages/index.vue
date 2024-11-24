@@ -1,7 +1,7 @@
 <script setup>
 useHead({
   title: 'Shop',
-})
+});
 </script>
 
 <template>
@@ -11,7 +11,7 @@ useHead({
       <svg class="home_slogan_bg">
         <use href="~/assets/svg/logos.svg#logo-bg" />
       </svg>
-      <div class="home_slogan_text hero-font">make it simple<br>bit significant</div>
+      <div class="home_slogan_text hero-font">make it simple<br>but significant</div>
     </div>
     <!-- slogan end -->
 

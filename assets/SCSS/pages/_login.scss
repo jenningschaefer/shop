@@ -1,17 +1,74 @@
 .login {
+    @media (min-width: $breakpoint-xs) {
+        padding: 1rem 4rem;
+    }
+    @media (min-width: $breakpoint-sm) {
+        padding: 2rem 6rem;
+    }
+    @media (min-width: $breakpoint-md) {
+        padding: 2rem 4rem;
+    }
+    @media (min-width: $breakpoint-lg) {
+        padding: 2rem 8rem;
+    }
     &_title {
         font-size: 2rem;
         font-weight: 500;
         text-transform: uppercase;
         padding: 0 1rem;
     }
+    &_forms {
+        @media (min-width: $breakpoint-md) {
+            display: flex;
+            flex-direction: row;
+            gap: 1rem;
+        }
+        @media (min-width: $breakpoint-lg) {
+            gap: 4rem;
+        }
+        &-group {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            padding: 1rem 0;
+            &-link {
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+            }
+            &-icon {
+                stroke: $color-primary;
+                width: 1em;
+                height: 1em;
+            }
+            button {
+                width: 100%;
+            }
+        }
+    }
     &_account {
         padding: 1rem;
+        width: 100%;
+        @media (min-width: $breakpoint-md) {
+            padding: 0;
+        }
     }
     &_seperator {
         border-top: 2px solid $color-primary;
+        @media (min-width: $breakpoint-md) {
+            display: none;
+        }
     }
     &_order {
         padding: 1rem;
+        width: 100%;
+        @media (min-width: $breakpoint-md) {
+            padding: 0;
+            padding-top: 4rem;
+        }
+    }
+
+    input {
+        //font-size: 1rem;
     }
 }

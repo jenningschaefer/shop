@@ -57,7 +57,7 @@ const subnavIcons = ref([
                         <use href="~/assets/svg/icons.svg#heart" />
                     </svg>
                 </a>
-                <NuxtLink to="/account/login">
+                <NuxtLink to="/login">
                     <svg class="navBar_icons_icon">
                         <use href="~/assets/svg/icons.svg#user" />
                     </svg>
@@ -92,7 +92,7 @@ const subnavIcons = ref([
                     <use href="~/assets/svg/icons.svg#heart" />
                 </svg>
             </a>
-            <NuxtLink to="/account/login">
+            <NuxtLink to="/login">
                 <svg class="subNav_icon">
                     <use href="~/assets/svg/icons.svg#user" />
                 </svg>

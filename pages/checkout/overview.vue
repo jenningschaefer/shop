@@ -6,6 +6,6 @@ definePageMeta({
 
 <template>
     <div class="overview">
-        overview
+        <h1 class="checkout_title">Overview</h1>
     </div>
 </template>

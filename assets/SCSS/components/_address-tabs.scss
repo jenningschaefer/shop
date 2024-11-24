@@ -1,0 +1,43 @@
+.address-tabs {
+    &_headers {
+        //width: 100%;
+        ul {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: .5rem;
+            //border-bottom: 2px solid $color-primary;
+
+            li {
+                list-style: none;
+                //padding: 1rem 0;
+                position: relative;
+                cursor: pointer;
+                width: 100%;
+                text-transform: uppercase;
+                border: 2px solid $color-primary;
+                text-align: center;
+                cursor: pointer;
+                &.active {
+                    background-color: $color-primary;
+                    color: $color-secondary;
+                }
+                &:hover {
+                    background-color: $color-primary;
+                    color: $color-secondary;
+                }
+            }
+        }
+    }
+    &_active {
+        width: 100%;
+    }
+}
+
+.address-tab {
+    display: none;
+
+    &.active {
+        display: block;
+    }
+}

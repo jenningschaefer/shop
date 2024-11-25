@@ -1,5 +1,9 @@
 .confirmation {
     min-height: calc(100vh - 4rem);
+    @media (min-width: $breakpoint-sm) {
+        padding: 1rem 4rem;
+        min-height: calc(100vh - 23rem);
+    }
     &_logo {
         padding-left: 1em;
         svg {
@@ -11,6 +15,9 @@
         display: flex;
         justify-content: center;
         padding-top: 15vh;
+        @media (min-width: $breakpoint-md) {
+            padding-top: 10vh;
+        }
         &_panel {
             display: flex;
             flex-direction: column;

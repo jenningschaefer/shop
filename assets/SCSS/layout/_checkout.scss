@@ -18,6 +18,9 @@
     display: flex;
     justify-content: space-between;
     padding: 1rem;
+    @media (min-width: $breakpoint-xs) {
+        padding: 1rem 4rem;
+    }
     &_back {
         height: 1.85em;
         width: 1.85em;
@@ -34,7 +37,17 @@
 .navigation {
     width: 100%;
     padding: 1rem;
+    @media (min-width: $breakpoint-xs) {
+        padding-bottom: 3rem;
+    }
+    a {        
+        display: flex;
+        justify-content: center;
+    }
     button {
         width: 100%;
+        @media (min-width: $breakpoint-xs) {
+            width: 15rem;
+        }
     }
 }

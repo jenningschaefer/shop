@@ -8,7 +8,7 @@ definePageMeta({
     <div class="address">
         <h1 class="checkout_title">Address</h1>
         <UIAddress-tabs>
-            <UIAddress-item active="true" title="Billing">
+            <UIAddress-item active="true" title="Billing"> 
                 <form action="">
                     <div class="login_forms-group">
                         <input class="" type="text" placeholder="First Name">

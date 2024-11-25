@@ -4,6 +4,9 @@
     display: flex;
     justify-content: center;
     gap: 1rem;
+    @media (min-width: $breakpoint-xs) {
+        padding-top: 2rem;
+    }
 
     &_step {
         width: 4rem;

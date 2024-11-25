@@ -7,6 +7,9 @@
             display: flex;
             gap: .5rem;
             //border-bottom: 2px solid $color-primary;
+            @media (min-width: $breakpoint-xs) {
+                justify-content: center;
+            }
 
             li {
                 list-style: none;
@@ -18,6 +21,10 @@
                 border: 2px solid $color-primary;
                 text-align: center;
                 cursor: pointer;
+                @media (min-width: $breakpoint-xs) {
+                    width: initial;
+                    padding: 0 2em;
+                }
                 &.active {
                     background-color: $color-primary;
                     color: $color-secondary;

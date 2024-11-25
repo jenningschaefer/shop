@@ -1,3 +1,73 @@
 .overview {
     padding: 1rem;
+    min-height: calc(100vh - 10rem);
+    &_accordion {
+        &-address {
+            border-top: 2px solid $color-primary;
+            padding-left: 1rem;
+            &-title {
+                //padding-top: 1rem;
+                font-size: 1rem;
+                font-weight: 700;
+            }
+            address {
+                font-style: normal;
+            }
+        }
+        &-products {
+            display: flex;
+            justify-content: space-between;
+            border-top: 2px solid $color-primary;
+            &-price {
+                display: flex;
+                gap: 1rem;
+            }
+        }
+        &-payment {
+            display: flex;
+            justify-content: space-between;
+            border-top: 2px solid $color-primary;
+        }
+    }
+    &_shipping {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 3rem;
+    }
+    &_total {
+        display: flex;
+        justify-content: space-between;
+        border-top: 2px solid $color-primary;
+        padding-top: .5rem;
+        font-size: 1.25em;
+        &-desc {
+            font-weight: 600;
+        }
+    }
+    &_legal {
+        padding-top: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        &-tt {
+            display: flex;
+            align-items: center;
+            &_icon {
+                position: relative;
+                left: -3px;
+                height: 2em;
+                width: 2em;
+                stroke: $color-primary;
+            }
+            &-text {
+                font-weight: 600;
+            }
+        }
+        &-accept{
+            padding-left: 6px;
+            .space {
+                padding-left: 15px;
+            }
+        }
+    }
 }

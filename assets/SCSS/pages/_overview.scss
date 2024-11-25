@@ -1,10 +1,30 @@
 .overview {
     padding: 1rem;
-    min-height: calc(100vh - 10rem);
+    min-height: calc(100vh - 10rem); 
+    @media (min-width: $breakpoint-xs) {
+        padding: 1rem 4rem;
+        min-height: calc(100vh - 13rem);
+    }
+    &_container {
+        @media (min-width: $breakpoint-sm) {
+            padding: 1rem 4rem;
+        }
+    }
     &_accordion {
+        @media (min-width: $breakpoint-sm) {
+            display: none;
+        }
         &-address {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
             border-top: 2px solid $color-primary;
-            padding-left: 1rem;
+            @media (min-width: $breakpoint-sm) {
+                flex-direction: row;
+            }
+            &-container {
+                width: 100%;
+            }
             &-title {
                 //padding-top: 1rem;
                 font-size: 1rem;
@@ -29,10 +49,33 @@
             border-top: 2px solid $color-primary;
         }
     }
+    &_address {
+        display: none;
+        @media (min-width: $breakpoint-sm) {
+            display: block;
+        }
+    }
+    &_product {
+        display: none;
+        @media (min-width: $breakpoint-sm) {
+            display: block;
+            padding-top: 2rem;
+        }
+    }
+    &_payment {
+        display: none;
+        @media (min-width: $breakpoint-sm) {
+            display: flex;
+            justify-content: space-between;
+        }
+    }
     &_shipping {
         display: flex;
         justify-content: space-between;
         margin-top: 3rem;
+        @media (min-width: $breakpoint-sm) {
+            margin-top: 0;
+        }
     }
     &_total {
         display: flex;
@@ -49,6 +92,10 @@
         display: flex;
         flex-direction: column;
         gap: 1rem;
+        @media (min-width: $breakpoint-sm) {
+            flex-direction: row;
+            align-items: center;
+        }
         &-tt {
             display: flex;
             align-items: center;

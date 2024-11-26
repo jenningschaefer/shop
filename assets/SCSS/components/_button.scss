@@ -9,6 +9,17 @@
         color: $color-primary;
     }
 }
+.vesta-btn-secondary {
+    @include button;
+    color: $color-primary;
+    background-color: transparent;
+    border: 1px solid $color-primary;
+
+    &:hover {
+        background-color: $color-primary;
+        color: $color-secondary;
+    }
+}
 
 .dark-btn {
     @include button;

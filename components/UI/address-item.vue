@@ -4,6 +4,11 @@
 
 <template>
   <div class="address-tab" :class="(active == 'true') ? 'active' : ''" ref="address-tabs">
-    <slot></slot>
+    <div class="address-tab_heading">
+      <slot name="heading"></slot>
+    </div>
+    <div>
+      <slot name="content"></slot>
+    </div>
   </div>
 </template>

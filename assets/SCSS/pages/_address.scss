@@ -1,13 +1,25 @@
 .address {
     padding: 1rem; 
-    min-height: calc(100vh - 10rem);
+    min-height: calc(100vh - 9.5rem);
     @media (min-width: $breakpoint-xs) {
         padding: 1rem 4rem;
-        min-height: calc(100vh - 14rem);
+        min-height: calc(100vh - 13rem);
+    }
+    @media (min-width: $breakpoint-md) {
+        padding: 1rem 4rem;
+        min-height: auto;
+    }
+    &-container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
     }
     .address-tabs {
         @media (min-width: $breakpoint-xs) {
             padding-top: 10vh;
+        }
+        @media (min-width: $breakpoint-md) {
+            padding-top: 0;
         }
     }
 }

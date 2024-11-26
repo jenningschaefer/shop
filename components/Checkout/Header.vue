@@ -16,14 +16,14 @@ const prev = () => {
 </script>
 
 <template>
-    <div class="header">
+    <div class="checkout-header">
         <NuxtLink :to="prev()" v-if="route.name != 'checkout-confirmation'">
-            <svg class="header_back">
+            <svg class="checkout-header_back">
                 <use href="~/assets/svg/icons.svg#arrow-left" />
             </svg>
         </NuxtLink>
         <div v-else></div>
-        <svg class="header_menu">
+        <svg class="checkout-header_menu">
             <use href="~/assets/svg/icons.svg#menu" />
         </svg>
     </div>

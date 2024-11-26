@@ -4,6 +4,9 @@
         padding: 1rem 4rem;
         min-height: calc(100vh - 23rem);
     }
+    @media (min-width: $breakpoint-md) {
+        min-height: calc(100vh - 19rem);
+    }
     &_logo {
         padding-left: 1em;
         svg {

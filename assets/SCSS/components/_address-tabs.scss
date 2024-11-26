@@ -1,6 +1,15 @@
 .address-tabs {
+    width: 100%;
+    /* @media (min-width: $breakpoint-md) {
+        width: 100%;
+    } */
+    @media (min-width: $breakpoint-lg) {
+        max-width: 85rem;
+    }
     &_headers {
-        //width: 100%;
+        @media (min-width: $breakpoint-md) {
+            display: none;
+        }
         ul {
             margin: 0;
             padding: 0;
@@ -38,13 +47,33 @@
     }
     &_active {
         width: 100%;
+        @media (min-width: $breakpoint-md) {
+            display: flex;
+            //align-items: end;
+            gap: 2rem;
+            height: 100%;
+        }
+        @media (min-width: $breakpoint-lg) {
+            gap: 4rem;
+        }
     }
 }
 
 .address-tab {
     display: none;
-
+    @media (min-width: $breakpoint-md) {
+        display: flex !important;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 100%;
+        height: 100%;
+    }
     &.active {
         display: block;
+    }
+    &_heading {
+        font-size: 2rem;
+        font-weight: 600;
+        text-transform: uppercase;
     }
 }

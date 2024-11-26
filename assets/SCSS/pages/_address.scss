@@ -1,6 +1,7 @@
 .address {
     padding: 1rem; 
     min-height: calc(100vh - 9.5rem);
+    width: 100%;
     @media (min-width: $breakpoint-xs) {
         padding: 1rem 4rem;
         min-height: calc(100vh - 13rem);

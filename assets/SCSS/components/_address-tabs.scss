@@ -75,5 +75,9 @@
         font-size: 2rem;
         font-weight: 600;
         text-transform: uppercase;
+        display: none;
+        @media (min-width: $breakpoint-md) {
+            display: block;
+        }
     }
 }

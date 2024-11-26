@@ -1,9 +1,17 @@
 .overview {
     padding: 1rem;
     min-height: calc(100vh - 9.5rem); 
+    width: 100%;
     @media (min-width: $breakpoint-xs) {
         padding: 1rem 4rem;
         min-height: calc(100vh - 12rem);
+    }
+    @media (min-width: $breakpoint-md) {
+        padding: 1rem 8rem;
+        min-height: auto;
+    }
+    @media (min-width: $breakpoint-lg) {
+        max-width: 85rem;
     }
     &_container {
         @media (min-width: $breakpoint-sm) {

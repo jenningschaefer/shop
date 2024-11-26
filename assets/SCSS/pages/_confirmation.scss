@@ -1,5 +1,6 @@
 .confirmation {
     min-height: calc(100vh - 4rem);
+    width: 100%;
     @media (min-width: $breakpoint-sm) {
         padding: 1rem 4rem;
         min-height: calc(100vh - 23rem);
@@ -20,6 +21,9 @@
         padding-top: 15vh;
         @media (min-width: $breakpoint-md) {
             padding-top: 10vh;
+        }
+        @media (min-width: $breakpoint-lg) {
+            padding-top: 15vh;
         }
         &_panel {
             display: flex;

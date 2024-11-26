@@ -32,8 +32,8 @@ const paymentIndex = ref(0);
                 <div class="payment_methods-method" :class="paymentIndex == index ? 'active' : ''"
                     @click="paymentIndex = index">{{ payment.name }}</div>
             </template>
-            <div class="payment_methods-fees">Fees: {{ paymentMethods[paymentIndex].fees }}</div>
         </div>
+        <div class="payment_fees">Fees: {{ paymentMethods[paymentIndex].fees }}</div>
         <div class="payment_description">
             {{ paymentMethods[paymentIndex].desciption }}
         </div>

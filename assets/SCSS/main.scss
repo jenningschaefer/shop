@@ -32,10 +32,11 @@
 @import "pages/login";
 @import "pages/list";
 @import "pages/product";
-@import "pages/address";
-@import "pages/payment";
-@import "pages/overview";
-@import "pages/confirmation";
+@import "pages/checkout/address";
+@import "pages/checkout/payment";
+@import "pages/checkout/overview";
+@import "pages/checkout/confirmation";
 @import "pages/account/overview";
+@import "pages/account/user";
 
 // vendors

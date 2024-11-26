@@ -5,7 +5,7 @@ definePageMeta({
 </script>
 
 <template>
-        <div class="account-address">
+    <div class="account-address">
         <div>
             <NuxtLink to="/account" class="">
                 <div class="account-link">
@@ -34,7 +34,6 @@ definePageMeta({
                         <option value="3">Korea</option>
                         <option value="4">Japan</option>
                     </select>
-                    <!-- TODO Vorwahl + Phone -->
                 </div>
                 <div class="account-address_form-buttons">
                     <NuxtLink to="/account" class="">

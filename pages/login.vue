@@ -25,7 +25,7 @@
                     <UITab-item title="Register">
                         <form action="">
                             <div class="login_forms-group">
-                                <select placeholder="test">
+                                <select>
                                     <option value="" disabled selected>Title</option>
                                     <option value="1">Mr</option>
                                     <option value="2">Mrs</option>

@@ -1,0 +1,25 @@
+.account-layout {
+    background-color: $bg-account;
+    color: $color-primary;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.account-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &_icon {
+        height: 2rem;
+        width: 2rem;
+        fill: transparent;
+            stroke: $color-primary;
+    }
+    &_name {
+        font-size: 2rem;
+        text-transform: uppercase;
+        font-weight: 600;
+    }
+}

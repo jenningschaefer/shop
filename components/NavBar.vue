@@ -67,7 +67,7 @@ const subnavIcons = ref([
                 <a>menu</a>
             </div>
         </div>
-        <div class="subNav">
+        <div class="subNav" v-if="!route.name.includes('account')">
             <template v-if="route.name === 'products-name-id'">
                 <a @click="router.back()">
                     <svg class="subNav_icon">

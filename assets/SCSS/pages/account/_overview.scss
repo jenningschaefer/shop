@@ -1,0 +1,17 @@
+.account-overview {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+
+    .account-border {
+        border-bottom: 2px solid $color-primary;
+    }
+
+    &_container {
+        padding: 1rem;
+    }
+
+    address {
+        font-style: normal;
+    }
+}

@@ -6,7 +6,7 @@ definePageMeta({
 
 <template>
     <div class="account-password">
-        <div>
+        <div class="account-user_link">
             <NuxtLink to="/account" class="">
                 <div class="account-link">
                     <svg class="account-link_icon">

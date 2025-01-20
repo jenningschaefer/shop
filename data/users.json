@@ -1,0 +1,12 @@
+[
+    {
+        "user_id" : 1,
+        "title" : "Jenning",
+        "firstname" : "Jenning",
+        "lastname" : "Schaefer",
+        "mail" : "mail@mail.de",
+        "birthday" : "19871208",
+        "language" : "DE",
+        "address_id_default" : 0
+    }
+]

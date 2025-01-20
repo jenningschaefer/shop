@@ -18,6 +18,7 @@
 @import "components/tabs";
 @import "components/address-tabs";
 @import "components/progressBar";
+@import "components/order";
 
 // layout
 @import "layout/footer";
@@ -40,5 +41,6 @@
 @import "pages/account/user";
 @import "pages/account/address";
 @import "pages/account/password";
+@import "pages/account/history";
 
 // vendors

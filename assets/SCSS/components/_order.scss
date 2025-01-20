@@ -1,0 +1,24 @@
+.order-card {
+    &_heading {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        h3 {
+            font-size: 1.5rem !important;
+        }
+        svg {
+            height: 1.5rem;
+        }
+    }
+    &_status {}
+    &_info {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+        padding-top: 1rem;
+        &-heading {
+            opacity: 60%;
+        }
+    }
+}

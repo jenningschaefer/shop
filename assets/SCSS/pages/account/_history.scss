@@ -1,0 +1,35 @@
+.account-history {
+    padding: 1rem;
+    min-height: calc(100vh - 8rem);
+    @media (min-width: $breakpoint-xs) {
+        padding: 1.5rem 4rem;
+    }
+
+    @media (min-width: $breakpoint-sm) {
+        padding: 2rem 6rem;
+    }
+
+    @media (min-width: $breakpoint-md) {
+        padding: 2.5rem 8rem;
+        min-height: auto;
+    }
+    @media (min-width: $breakpoint-lg) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    &_orders {
+        &-order {
+            border-bottom: 1px solid $color-primary;
+            padding-bottom: 1.5rem;
+            padding-top: 1rem;
+/*             &:first-child {
+                padding-top: 0;
+            } */
+            &:last-child {
+                border-bottom: none;
+            }
+        }
+    }
+}

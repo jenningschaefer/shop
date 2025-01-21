@@ -11,14 +11,21 @@
             height: 1.5rem;
         }
     }
-    &_status {}
+    //&_status {}
     &_info {
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-template-rows: auto;
         padding-top: 1rem;
+        column-gap: 2rem;
+        @media (min-width: $breakpoint-sm) {
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+        }
         &-heading {
             opacity: 60%;
+        }
+        &-value {
+            text-align: end;
         }
     }
 }

@@ -8,7 +8,7 @@ const props = defineProps({
 <template>
     <div class="order-card">
         <NuxtLink :to="'/account/order-' + order.order_id" class="order-card_heading">
-            <h3>Order No. {{ order.order_id }}</h3>
+            <h3>Order No. #{{ order.order_id }}</h3>
             <svg class="account-link_icon">
                 <use href="~/assets/svg/icons.svg#chevron-right" />
             </svg>
@@ -16,11 +16,13 @@ const props = defineProps({
         <div class="order-card_status">{{ order.status }}</div>
         <div class="order-card_info">
             <span class="order-card_info-heading">Order date</span>
-            <span>{{ order.order_date }}</span>
+            <span class="order-card_info-value">{{ order.order_date }}</span>
+            <span></span>
+            <span></span>
             <span class="order-card_info-heading">Shipped</span>
-            <span>{{ order.shipping_date }}</span>
+            <span class="order-card_info-value">{{ order.shipping_date }}</span>
             <span class="order-card_info-heading">Total</span>
-            <span>{{ order.sum }} $</span>
+            <span class="order-card_info-value">{{ order.sum }} $</span>
         </div>
     </div>
 </template>

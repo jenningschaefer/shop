@@ -8,5 +8,15 @@
         "zip_code": "12345",
         "city": "Mainheim",
         "country": "DE"
+    },
+    {
+        "id": 1,
+        "user_id": 1,
+        "type": "billing",
+        "street": "Street",
+        "house_no": "5",
+        "zip_code": "12345",
+        "city": "Mainheim",
+        "country": "DE"
     }
 ]

@@ -13,8 +13,9 @@
             {"id": 1, "price": "75.00", "amount": 1},
             {"id": 1, "price": "75.00", "amount": 1}
         ],
-        "sum": "150.00",
-        "shipping": "4.00",
+        "payment_type": "Credit Card",
+        "sum": "150.11",
+        "shipping": "4.21",
         "currency": "dollar",
         "invoice_pdf": ""
     },
@@ -32,6 +33,7 @@
             {"id": 1, "price": "75.00", "amount": 1},
             {"id": 1, "price": "75.00", "amount": 1}
         ],
+        "payment_type": "Apple Pay",
         "sum": "150.00",
         "shipping": "4.00",
         "currency": "dollar",

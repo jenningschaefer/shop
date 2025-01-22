@@ -1,1 +1,0 @@
-import{_ as n}from"./y95XVnUN.js";import{_ as r}from"./fG9xHwcu.js";import{_ as s,c as _,b as o,r as a,o as m}from"./DfeYCMvE.js";import"./BOGR0JwX.js";import"./C2lOhsCK.js";import"./C_1RFqKw.js";const p={},i={class:"account-layout"};function f(t,l){const c=n,e=r;return m(),_("div",i,[o(c),a(t.$slots,"default"),o(e)])}const v=s(p,[["render",f]]);export{v as default};

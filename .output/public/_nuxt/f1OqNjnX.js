@@ -1,1 +1,0 @@
-import{_ as c}from"./y95XVnUN.js";import{_ as s}from"./fG9xHwcu.js";import{_ as n,c as _,b as o,r as a,o as m}from"./DfeYCMvE.js";import"./BOGR0JwX.js";import"./C2lOhsCK.js";import"./C_1RFqKw.js";const p={},i={class:"product-layout"};function d(t,f){const r=c,e=s;return m(),_("div",i,[o(r),a(t.$slots,"default"),o(e)])}const v=n(p,[["render",d]]);export{v as default};

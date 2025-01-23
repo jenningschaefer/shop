@@ -1,7 +1,19 @@
 [
     {
+        "user_id" : 0,
+        "role": "admin",
+        "title" : "Mr",
+        "firstname" : "Jenning",
+        "lastname" : "Schaefer",
+        "mail" : "mail@mail.de",
+        "birthday" : "19871208",
+        "language" : "DE",
+        "address_id_default" : 0
+    },
+    {
         "user_id" : 1,
-        "title" : "Jenning",
+        "role": "user",
+        "title" : "Mr",
         "firstname" : "Jenning",
         "lastname" : "Schaefer",
         "mail" : "mail@mail.de",

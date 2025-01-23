@@ -1,4 +1,4 @@
-import products from '@/data/addresses.json';
+import addresses from '@/data/addresses.json';
 
 export const useAddress = (id) => {
     console.log('useAddress')

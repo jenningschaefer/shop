@@ -41,6 +41,14 @@
             opacity: 60%;
         }
     }
+    &_products {
+        &-item {
+            border-bottom: 2px solid $color-primary;
+            &:last-child {
+                border-bottom: none;
+            }
+        }
+    }
     &_send {
         display: flex;
         flex-direction: column;

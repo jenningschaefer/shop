@@ -1,6 +1,10 @@
 <script setup>
 const route = useRoute();
+/* TODO: load user from local storage, but from encrypted key, not id */
+//const user = useUser(1);
+/* TODO: allow to load only orders from current user */
 const order = useOrderByOrderID(route.params.id);
+/* TODO: load address from user and set billing addres if exists, else shipping address */
 const shipping_address = useAddress(0);
 const billing_address = useAddress(1);
 const {formatDate} = useUtilities();
@@ -43,10 +47,10 @@ const getTotal = (str1, str2) => {
             <div>
                 <h4 class="account-order_send_heading">Delivered To</h4>
                 <address class="account-order_send_address">
-                    Mr John Doe<br>
-                    Street 45<br>
-                    12345 City<br>
-                    Germany
+                    {{ shipping_address.firstname }} {{ shipping_address.name }}<br>
+                    {{ shipping_address.street }} {{ shipping_address.house_no }}<br>
+                    {{ shipping_address.zip_code }} {{ shipping_address.city }}<br>
+                    {{ shipping_address.country }}
                 </address>
             </div>
             <div>
@@ -61,16 +65,20 @@ const getTotal = (str1, str2) => {
             <button class="vesta-btn account-order_btn" type="button">Track order</button>
         </a>
         <hr class="account-order_seperator">
-        <div class="account-order_products">test</div>
+        <div class="account-order_products">
+            <ClientOnly>
+                <productItem v-for="item in order.products" :key="item.id" :item="item" :ordered="true" class="account-order_products-item"/>
+            </ClientOnly>
+        </div>
         <hr class="account-order_seperator">
         <div class="account-order_send">
             <div>
                 <h4 class="account-order_send_heading">Billing Address</h4>
                 <address class="account-order_send_address">
-                    Mr John Doe<br>
-                    Street 45<br>
-                    12345 City<br>
-                    Germany
+                    {{ billing_address.firstname }} {{ billing_address.name }}<br>
+                    {{ billing_address.street }} {{ billing_address.house_no }}<br>
+                    {{ billing_address.zip_code }} {{ billing_address.city }}<br>
+                    {{ billing_address.country }}
                 </address>
             </div>
             <div>
@@ -98,6 +106,6 @@ const getTotal = (str1, str2) => {
                 <button class="vesta-btn account-order_btn" type="button">Return Shiment</button>
             </a>
         </div>
+        {{ order }}
     </div>
-    {{ order }}
 </template>

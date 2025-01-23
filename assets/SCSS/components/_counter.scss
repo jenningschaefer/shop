@@ -1,0 +1,10 @@
+.counter {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    font-size: larger;
+    &_btn {
+        font-size: larger;
+    }
+}

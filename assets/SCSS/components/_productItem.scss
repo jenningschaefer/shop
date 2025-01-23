@@ -1,0 +1,24 @@
+.product-item {
+    display: flex;
+    padding: 1rem;
+    &_img {
+        width: 40%;
+        &_image {
+            //display: block;
+            img {
+                outline: 2px solid $color-primary;
+
+            }
+        }
+        &_counter {
+            padding-top: .5rem;
+        }
+    }
+    &_info {
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: end;
+    }
+}

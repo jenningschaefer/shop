@@ -3,7 +3,6 @@ const model = defineModel()
 /* TODO: max min value */
 
 function plus() {
-    console.log('plus')
     model.value++
 }
 function minus() {

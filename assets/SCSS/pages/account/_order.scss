@@ -42,6 +42,8 @@
         }
     }
     &_products {
+        display: grid;
+        grid-template-columns: 1fr;
         &-item {
             border-bottom: 2px solid $color-primary;
             &:last-child {

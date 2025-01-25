@@ -1,0 +1,1 @@
+import{_ as r}from"./pQ0wTO4j.js";import{_}from"./4Q_IkpNl.js";import{_ as s,c as a,b as o,l as c,o as m}from"./CpuYT-gV.js";import"./DFA_R2Tv.js";import"./CWPxbyn7.js";import"./BvDPXIPW.js";const i={},l={class:"landing-layout"};function p(t,f){const e=r,n=_;return m(),a("div",l,[o(e),c(t.$slots,"default"),o(n)])}const v=s(i,[["render",p]]);export{v as default};

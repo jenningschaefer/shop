@@ -6,20 +6,22 @@ definePageMeta({
     layout: 'products',
 })
 
-const favorite = useLocalStorage("favorite", {});
+const favorite = useLocalStorage("favorite", []);
+//const favorite = ref([])
 
 /* watch(() => products, (newValue, oldValue) => {
     if(newValue.lenght > 0) console.log('Test')
 }); */
 
 const handleFavorite = (id) => {
-    if (id in favorite.value) {
-        delete favorite.value[id];
+    if (favorite.value.some((obj) => obj.id === id)) {
+        favorite.value = favorite.value.filter((el) => el.id != id);
     } else {
-        favorite.value = {
-            ...favorite.value,
-            [id]: true,
-        }
+        favorite.value.push({
+            "id": id,
+            "amount": 1,
+            "price": 0,
+        });
     }
 }
 </script>
@@ -47,7 +49,7 @@ const handleFavorite = (id) => {
             <div class="list-content_grid">
                 <ClientOnly>
                     <ProductCard v-for="product in products" :key="product.id" :product="product"
-                        @favor="handleFavorite" :favored="product.id in favorite" />
+                        @favor="handleFavorite" :favored="favorite.some((obj) => obj.id === product.id)" />
                 </ClientOnly>
             </div>
         </div>

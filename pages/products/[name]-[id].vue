@@ -49,7 +49,7 @@ onMounted(async () => {
             <div class="product_description-add">
                 <div class="product_description-add-desc">by {{ product.designer }}</div>
                 <div class="product_description-add-desc">{{ product.price_us }}$</div>
-                <button class="vesta-btn" type="button">Apply</button>
+                <button class="vesta-btn" type="button">Add to Cart</button>
             </div>
         </div>
     </div>

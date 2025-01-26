@@ -23,7 +23,7 @@ definePageMeta({
         </div>
         <div class="account-favorites_products">
             <ClientOnly>
-                <productItem v-for="item in favorite" :key="item.id" :item="item" :cartBtn="true"
+                <productItem v-for="item in favorite" :key="item.id" :item="item" :isFavorite="true"
                     class="account-favorites_products_product" />
             </ClientOnly>
         </div>

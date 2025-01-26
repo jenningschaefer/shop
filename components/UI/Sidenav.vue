@@ -1,15 +1,22 @@
-<script setup></script>
+<script setup>
+
+const active = defineModel();
+
+</script>
 
 <template>
-    <div id="mySidenav" class="sidenav">
-        <a class="closebtn" onclick="closeNav()">
+    <div v-if="active" class="overlay"></div>
+    <div id="mySidenav" class="sidenav" :class="active ? 'open' : ''">
+        <div class="sidenav_title">
+            <slot name="title"></slot>
+        </div>
+        <a class="closebtn" @click="active = false">
             <svg>
                 <use href="~/assets/svg/icons.svg#close" />
             </svg>
         </a>
-        <a href="#">About</a>
-        <a href="#">Services</a>
-        <a href="#">Clients</a>
-        <a href="#">Contact</a>
+        <div class="sidenav_content">
+            <slot name="content"></slot>
+        </div>
     </div>
 </template>

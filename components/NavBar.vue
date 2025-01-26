@@ -2,24 +2,9 @@
 const router = useRouter();
 const route = useRoute();
 
-const subnavIcons = ref([
-    {
-        svg: "~/assets/svg/icons.svg#lang-de",
-        click: "",
-    },
-    {
-        svg: "~/assets/svg/icons.svg#cart",
-        click: "",
-    },
-    {
-        svg: "~/assets/svg/icons.svg#heart",
-        click: "",
-    },
-    {
-        svg: "assets/svg/icons.svg#user",
-        click: "",
-    },
-]);
+const openMenu = ref();
+const openCart = ref();
+const openFavorites = ref();
 
 
 </script>
@@ -47,12 +32,12 @@ const subnavIcons = ref([
                         </svg>
                     </a>
                 </template>
-                <a @click="">
+                <a @click="openCart = true">
                     <svg class="navBar_icons_icon">
                         <use href="~/assets/svg/icons.svg#cart" />
                     </svg>
                 </a>
-                <a @click="">
+                <a @click="openFavorites = true">
                     <svg class="navBar_icons_icon">
                         <use href="~/assets/svg/icons.svg#heart" />
                     </svg>
@@ -64,7 +49,7 @@ const subnavIcons = ref([
                 </NuxtLink>
             </div>
             <div class="navBar_menu">
-                <a>menu</a>
+                <a @click="openMenu = true">menu</a>
             </div>
         </div>
         <div class="subNav" v-if="!route.name.includes('account')">
@@ -82,12 +67,12 @@ const subnavIcons = ref([
                     </svg>
                 </a>
             </template>
-            <a @click="">
+            <a @click="openCart = true">
                 <svg class="subNav_icon">
                     <use href="~/assets/svg/icons.svg#cart" />
                 </svg>
             </a>
-            <a @click="">
+            <a @click="openFavorites = true">
                 <svg class="subNav_icon">
                     <use href="~/assets/svg/icons.svg#heart" />
                 </svg>
@@ -99,4 +84,31 @@ const subnavIcons = ref([
             </NuxtLink>
         </div>
     </div>
+    <UISidenav v-model="openMenu">
+        <template #title>Menu</template>
+        <template #content>
+            <a href="#">About</a>
+            <a href="#">Services</a>
+            <a href="#">Clients</a>
+            <a href="#">Contact</a>
+        </template>
+    </UISidenav>
+    <UISidenav v-model="openCart">
+        <template #title>Cart</template>
+        <template #content>
+            <a href="#">About</a>
+            <a href="#">Services</a>
+            <a href="#">Clients</a>
+            <a href="#">Contact</a>
+        </template>
+    </UISidenav>
+    <UISidenav v-model="openFavorites">
+        <template #title>Favorites</template>
+        <template #content>
+            <a href="#">About</a>
+            <a href="#">Services</a>
+            <a href="#">Clients</a>
+            <a href="#">Contact</a>
+        </template>
+    </UISidenav>
 </template>

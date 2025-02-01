@@ -9,7 +9,7 @@
 </script>
 
 <template>
-    <button @click="handleError">
+    <button type="button" @click="handleError">
         Go Back
     </button>
 </template>

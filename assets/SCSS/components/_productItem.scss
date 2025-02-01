@@ -2,6 +2,7 @@
     display: flex;
     padding: 1rem;
     width: 100%;
+    padding: .5rem;
     &_img {
         width: 40%;
         &_image {
@@ -21,6 +22,9 @@
         flex-direction: column;
         justify-content: space-between;
         align-items: end;
+        &_name {
+            text-align: end;
+        }
     }
 
     &_button {

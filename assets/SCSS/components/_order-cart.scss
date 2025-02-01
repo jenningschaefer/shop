@@ -1,0 +1,24 @@
+.order-cart {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    &_products {
+        &_product {
+            border-top: 2px solid $color-primary;
+        }
+    }
+    &_checkout {
+        &_total {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            border-top: 2px solid $color-primary;
+            padding-bottom: 1rem;
+            font-size: 1.25em;
+        }
+        &_button {
+            width: 100%;
+        }
+    }
+}

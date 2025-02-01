@@ -63,7 +63,7 @@ const addToCart = (id) => {
                 <div class="product-item_info_price">{{ ordered ? item.price : product.price_us }} $</div>
             </div>
         </div>
-        <Button v-if="isFavorite" class="product-item_button vesta-btn" @click="addToCart(props.item?.id)">Add To
-            Cart</Button>
+        <button type="button" v-if="isFavorite" class="product-item_button vesta-btn" @click="addToCart(props.item?.id)">Add To
+            Cart</button>
     </div>
 </template>

@@ -1,6 +1,9 @@
 <script setup>
 const route = useRoute();
+const cart = useLocalStorage("cart", []);
+
 const product = ref();
+const openCart = ref();
 
 definePageMeta({
     layout: 'products',
@@ -8,8 +11,18 @@ definePageMeta({
 
 onMounted(async () => {
     product.value = await useProduct(route.params.id);
-    console.log(route.params.id)
 });
+
+const addToCart = () => {
+    if (!(cart.value.some((obj) => obj.id === product.value.id))) {
+        cart.value.push({
+            "id": product.value.id,
+            "amount": 1,
+            "price": product.value.price_us,
+        });
+    }
+    openCart.value = true
+};
 </script>
 
 <template>
@@ -49,8 +62,14 @@ onMounted(async () => {
             <div class="product_description-add">
                 <div class="product_description-add-desc">by {{ product.designer }}</div>
                 <div class="product_description-add-desc">{{ product.price_us }}$</div>
-                <button class="vesta-btn" type="button">Add to Cart</button>
+                <button class="vesta-btn" type="button" @click="addToCart">Add to Cart</button>
             </div>
         </div>
     </div>
+    <UISidenav v-model="openCart">
+        <template #title>Cart</template>
+        <template #content>
+            <OrderCart />
+        </template>
+    </UISidenav>
 </template>

@@ -39,7 +39,7 @@ definePageMeta({
                     <NuxtLink to="/account" class="">
                         <button class="vesta-btn" type="button">Save</button>
                     </NuxtLink>
-                    <button class="vesta-btn" type="button">Discard Changes</button>
+                    <button class="vesta-btn" type="button" >Discard Changes</button>
                 </div>
             </form>
         </div>

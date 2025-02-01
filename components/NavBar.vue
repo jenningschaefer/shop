@@ -87,10 +87,7 @@ const openFavorites = ref();
     <UISidenav v-model="openMenu">
         <template #title>Menu</template>
         <template #content>
-            <a href="#">About</a>
-            <a href="#">Services</a>
-            <a href="#">Clients</a>
-            <a href="#">Contact</a>
+            <Menu />
         </template>
     </UISidenav>
     <UISidenav v-model="openCart">
@@ -102,10 +99,7 @@ const openFavorites = ref();
     <UISidenav v-model="openFavorites">
         <template #title>Favorites</template>
         <template #content>
-            <a href="#">About</a>
-            <a href="#">Services</a>
-            <a href="#">Clients</a>
-            <a href="#">Contact</a>
+            <OrderFavorites />
         </template>
     </UISidenav>
 </template>

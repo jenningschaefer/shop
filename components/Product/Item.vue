@@ -28,27 +28,6 @@ onMounted(() => {
     amount.value = props.item.amount;
 });
 
-const deleteFromList = (id) => {
-    console.log('delete: ', id)
-/*     if (isFavorite) {
-        favorite.value = favorite.value.filter((el) => el.id != id);
-        console.log('delete: ', favorite)
-    }
-    if (isInCart) {
-        cart.value = cart.value.filter((el) => el.id != id);
-        console.log('delete: ', cart)
-    } */
-};
-
-const addToCart = (id) => {
-    if (cart.value.some((obj) => obj.id !== id)) {
-        cart.value.push({
-            "id": id,
-            "amount": 1,
-        });
-    }
-}
-
 </script>
 
 <template>
@@ -63,7 +42,8 @@ const addToCart = (id) => {
                 <div class="product-item_info_price">{{ ordered ? item.price : product.price_us }} $</div>
             </div>
         </div>
-        <button type="button" v-if="isFavorite" class="product-item_button vesta-btn" @click="addToCart(props.item?.id)">Add To
-            Cart</button>
+        <div class="product-item_buttons">
+            <slot name="buttons"></slot>    
+        </div>
     </div>
 </template>

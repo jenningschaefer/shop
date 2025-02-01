@@ -27,6 +27,16 @@
         }
     }
 
+    &_buttons {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: .5rem;
+        padding-bottom: .5rem;
+        button {
+            width: 100%;
+        }
+    }
+
     &_button {
         width: 100%;
     }

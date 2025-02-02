@@ -47,3 +47,16 @@ input[type="number"] {
 ::selection {
     @include -generate-selection();
 }
+
+.overlay {
+    //display: none;
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background: rgba($color-primary, 0.07);
+    backdrop-filter: blur(5.5px);
+    -webkit-backdrop-filter: blur(5.5px);
+  }

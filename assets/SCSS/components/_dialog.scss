@@ -1,0 +1,80 @@
+/* Modal Content */
+.dialog {
+    position: fixed;
+    z-index: 3;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: $color-secondary;
+    margin: auto;
+    padding: 0;
+    border: 1px solid $color-grey-dark;
+    width: 80%;
+    box-shadow: 0 4px 8px 0 rgba($color-primary, 0.2), 0 6px 20px 0 rgba($color-primary, 0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s;
+
+    & .closebtn {
+        position: absolute;
+        top: 1rem;
+        right: 1.5rem;
+        //font-size: 2rem;
+        margin-left: 50px;
+        transition: .1s ease-in-out;
+    
+        svg {
+          height: 2rem;
+          width: 2rem;
+          stroke: $color-primary;
+          &:hover {
+            stroke: $color-grey-dark; 
+          }
+        }
+      }
+
+    &_header {
+        position: relative;
+        padding: 1rem;
+        font-size: 2rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        line-height: 1.9rem;
+    }
+
+    &_content {
+        padding: 0 1rem;
+        text-align: justify
+    }
+
+    &_footer {
+        padding: 1rem;
+    }
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+    from {
+        top: -300px;
+        opacity: 0
+    }
+
+    to {
+        top: 0;
+        opacity: 1
+    }
+}
+
+@keyframes animatetop {
+    from {
+        top: -300px;
+        opacity: 0
+    }
+
+    to {
+        top: 0;
+        opacity: 1
+    }
+}
+

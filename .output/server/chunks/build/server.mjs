@@ -1,11 +1,11 @@
-import { hasInjectionContext, inject, version, ref, watchEffect, watch, getCurrentInstance, defineAsyncComponent, toRef, isRef, defineComponent, h, computed, unref, provide, shallowReactive, Suspense, nextTick, Fragment, Transition, mergeProps, useSSRContext, createApp, effectScope, reactive, getCurrentScope, onErrorCaptured, onServerPrefetch, createVNode, resolveDynamicComponent, shallowRef, isReadonly, withCtx, isShallow, isReactive, toRaw } from 'vue';
+import { hasInjectionContext, inject, version, ref, watchEffect, watch, getCurrentInstance, defineAsyncComponent, toRef, isRef, defineComponent, h, computed, unref, provide, shallowReactive, Suspense, nextTick, Fragment, Transition, mergeProps, createApp, effectScope, reactive, getCurrentScope, onErrorCaptured, onServerPrefetch, createVNode, resolveDynamicComponent, useSSRContext, withCtx, createTextVNode, shallowRef, isReadonly, isShallow, isReactive, toRaw, useModel } from 'vue';
 import { $ as $fetch, l as hasProtocol, m as isScriptProtocol, n as joinURL, w as withQuery, o as klona, p as defu, q as sanitizeStatusCode, r as defuFn, t as createHooks, h as createError$1, v as toRouteMatcher, x as createRouter$1 } from '../runtime.mjs';
 import { b as baseURL } from '../routes/renderer.mjs';
 import { CapoPlugin, getActiveHead } from 'unhead';
 import { defineHeadPlugin, composableNames } from '@unhead/shared';
 import { useRoute as useRoute$1, RouterView, createMemoryHistory, createRouter, START_LOCATION } from 'vue-router';
 import { extendTailwindMerge } from 'tailwind-merge';
-import { ssrRenderSuspense, ssrRenderComponent, ssrRenderVNode, ssrRenderAttrs } from 'vue/server-renderer';
+import { ssrRenderSuspense, ssrRenderComponent, ssrRenderVNode, ssrRenderAttrs, ssrRenderSlot, ssrRenderAttr } from 'vue/server-renderer';
 import 'node:http';
 import 'node:https';
 import 'fs';
@@ -742,43 +742,43 @@ const _routes = [
     name: "account-edit-address",
     path: "/account/edit-address",
     meta: __nuxt_page_meta$d || {},
-    component: () => import('./edit-address-DeL_is6g.mjs').then((m) => m.default || m)
+    component: () => import('./edit-address-gVHzY-3U.mjs').then((m) => m.default || m)
   },
   {
     name: "account-edit-password",
     path: "/account/edit-password",
     meta: __nuxt_page_meta$c || {},
-    component: () => import('./edit-password-CWWi9YvG.mjs').then((m) => m.default || m)
+    component: () => import('./edit-password-CLe4cf3e.mjs').then((m) => m.default || m)
   },
   {
     name: "account-edit-user",
     path: "/account/edit-user",
     meta: __nuxt_page_meta$b || {},
-    component: () => import('./edit-user-si-zIYV7.mjs').then((m) => m.default || m)
+    component: () => import('./edit-user-DCtJHSkj.mjs').then((m) => m.default || m)
   },
   {
     name: "account-favorites",
     path: "/account/favorites",
     meta: __nuxt_page_meta$a || {},
-    component: () => import('./favorites-DPLghSVc.mjs').then((m) => m.default || m)
+    component: () => import('./favorites-C8a7C9re.mjs').then((m) => m.default || m)
   },
   {
     name: "account",
     path: "/account",
     meta: __nuxt_page_meta$9 || {},
-    component: () => import('./index-C642qlIz.mjs').then((m) => m.default || m)
+    component: () => import('./index-PYd5VU_B.mjs').then((m) => m.default || m)
   },
   {
     name: "account-order-id",
     path: "/account/order-:id()",
     meta: __nuxt_page_meta$8 || {},
-    component: () => import('./order-_id_-BV4ufLX_.mjs').then((m) => m.default || m)
+    component: () => import('./order-_id_-Q44JMHDd.mjs').then((m) => m.default || m)
   },
   {
     name: "account-order-history",
     path: "/account/order-history",
     meta: __nuxt_page_meta$7 || {},
-    component: () => import('./order-history-DJ07KMui.mjs').then((m) => m.default || m)
+    component: () => import('./order-history-C52xJpHq.mjs').then((m) => m.default || m)
   },
   {
     name: "checkout-address",
@@ -790,13 +790,13 @@ const _routes = [
     name: "checkout-confirmation",
     path: "/checkout/confirmation",
     meta: __nuxt_page_meta$5 || {},
-    component: () => import('./confirmation-DgtBYdJe.mjs').then((m) => m.default || m)
+    component: () => import('./confirmation-D9ubngkn.mjs').then((m) => m.default || m)
   },
   {
     name: "checkout-overview",
     path: "/checkout/overview",
     meta: __nuxt_page_meta$4 || {},
-    component: () => import('./overview-r_ZlRocl.mjs').then((m) => m.default || m)
+    component: () => import('./overview-wvRu26L8.mjs').then((m) => m.default || m)
   },
   {
     name: "checkout-payment",
@@ -807,30 +807,30 @@ const _routes = [
   {
     name: "index",
     path: "/",
-    component: () => import('./index-CQGGEifd.mjs').then((m) => m.default || m)
+    component: () => import('./index-BO2FEpEq.mjs').then((m) => m.default || m)
   },
   {
     name: "login",
     path: "/login",
-    component: () => import('./login-Bv1n4PWK.mjs').then((m) => m.default || m)
+    component: () => import('./login-C1JA8ExF.mjs').then((m) => m.default || m)
   },
   {
     name: "products-name-id",
     path: "/products/:name()-:id()",
     meta: __nuxt_page_meta$2 || {},
-    component: () => import('./_name_-_id_-D3o1-GqT.mjs').then((m) => m.default || m)
+    component: () => import('./_name_-_id_-Y4dqaY0W.mjs').then((m) => m.default || m)
   },
   {
     name: "products-list",
     path: "/products/list",
     meta: __nuxt_page_meta || {},
-    component: () => import('./list-BzE2vbpW.mjs').then((m) => m.default || m),
+    component: () => import('./list-BeXtUiiL.mjs').then((m) => m.default || m),
     children: [
       {
         name: "products-list-category",
         path: ":category?",
         meta: __nuxt_page_meta$1 || {},
-        component: () => import('./_category_-DthXni8a.mjs').then((m) => m.default || m)
+        component: () => import('./_category_-CryE_r3G.mjs').then((m) => m.default || m)
       }
     ]
   }
@@ -1149,8 +1149,8 @@ const revive_payload_server_eJ33V7gbc6 = /* @__PURE__ */ defineNuxtPlugin({
     }
   }
 });
-const LazyIcon = defineAsyncComponent(() => import('./Icon-lzuhioE3.mjs').then((r) => r["default"] || r.default || r));
-const LazyIconCSS = defineAsyncComponent(() => import('./IconCSS-DUPhCd9e.mjs').then((r) => r["default"] || r.default || r));
+const LazyIcon = defineAsyncComponent(() => import('./Icon-BJCFLVF_.mjs').then((r) => r["default"] || r.default || r));
+const LazyIconCSS = defineAsyncComponent(() => import('./IconCSS-2VfI00BJ.mjs').then((r) => r["default"] || r.default || r));
 const lazyGlobalComponents = [
   ["Icon", LazyIcon],
   ["IconCSS", LazyIconCSS]
@@ -1355,10 +1355,10 @@ const plugins = [
   plugin_server_ano7jnMEqi
 ];
 const layouts = {
-  account: () => import('./account-zUCxK5ZP.mjs').then((m) => m.default || m),
-  checkout: () => import('./checkout-I54aV-3h.mjs').then((m) => m.default || m),
-  default: () => import('./default-bh0EoIiO.mjs').then((m) => m.default || m),
-  products: () => import('./products-iyiA7bgC.mjs').then((m) => m.default || m)
+  account: () => import('./account-DuKuMPYj.mjs').then((m) => m.default || m),
+  checkout: () => import('./checkout-CA0NWFbC.mjs').then((m) => m.default || m),
+  default: () => import('./default-BElydDDh.mjs').then((m) => m.default || m),
+  products: () => import('./products-CYmQgWz7.mjs').then((m) => m.default || m)
 };
 const LayoutLoader = defineComponent({
   name: "LayoutLoader",
@@ -1600,46 +1600,110 @@ function hasChildrenRoutes(fork, newRoute, Component) {
   });
   return index < newRoute.matched.length - 1;
 }
-const _export_sfc = (sfc, props) => {
-  const target = sfc.__vccOpts || sfc;
-  for (const [key, val] of props) {
-    target[key] = val;
-  }
-  return target;
-};
-const _sfc_main$2 = {};
-function _sfc_ssrRender(_ctx, _push, _parent, _attrs) {
-  const _component_NuxtLayout = __nuxt_component_0;
-  const _component_NuxtPage = __nuxt_component_2;
-  _push(`<div${ssrRenderAttrs(_attrs)}>`);
-  _push(ssrRenderComponent(_component_NuxtLayout, null, {
-    default: withCtx((_, _push2, _parent2, _scopeId) => {
-      if (_push2) {
-        _push2(ssrRenderComponent(_component_NuxtPage, null, null, _parent2, _scopeId));
+const _imports_0 = "" + __buildAssetsURL("icons.BhXJQXy6.svg");
+const _sfc_main$3 = {
+  __name: "dialog",
+  __ssrInlineRender: true,
+  props: {
+    "modelValue": {},
+    "modelModifiers": {}
+  },
+  emits: ["update:modelValue"],
+  setup(__props) {
+    const active = useModel(__props, "modelValue");
+    return (_ctx, _push, _parent, _attrs) => {
+      _push(`<!--[-->`);
+      if (active.value) {
+        _push(`<div class="overlay"></div>`);
       } else {
-        return [
-          createVNode(_component_NuxtPage)
-        ];
+        _push(`<!---->`);
       }
-    }),
-    _: 1
-  }, _parent));
-  _push(`</div>`);
-}
+      if (active.value) {
+        _push(`<div class="dialog"><div class="dialog_header">`);
+        ssrRenderSlot(_ctx.$slots, "title", {}, null, _push, _parent);
+        _push(`<a class="closebtn"><svg><use${ssrRenderAttr("href", _imports_0 + "#close")}></use></svg></a></div><div class="dialog_content">`);
+        ssrRenderSlot(_ctx.$slots, "content", {}, null, _push, _parent);
+        _push(`</div><div class="dialog_footer">`);
+        ssrRenderSlot(_ctx.$slots, "footer", {}, null, _push, _parent);
+        _push(`</div></div>`);
+      } else {
+        _push(`<!---->`);
+      }
+      _push(`<!--]-->`);
+    };
+  }
+};
+const _sfc_setup$3 = _sfc_main$3.setup;
+_sfc_main$3.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("components/UI/dialog.vue");
+  return _sfc_setup$3 ? _sfc_setup$3(props, ctx) : void 0;
+};
+const _sfc_main$2 = {
+  __name: "app",
+  __ssrInlineRender: true,
+  setup(__props) {
+    const openDisclaimer = ref(true);
+    return (_ctx, _push, _parent, _attrs) => {
+      const _component_NuxtLayout = __nuxt_component_0;
+      const _component_NuxtPage = __nuxt_component_2;
+      const _component_UIDialog = _sfc_main$3;
+      _push(`<!--[--><div>`);
+      _push(ssrRenderComponent(_component_NuxtLayout, null, {
+        default: withCtx((_, _push2, _parent2, _scopeId) => {
+          if (_push2) {
+            _push2(ssrRenderComponent(_component_NuxtPage, null, null, _parent2, _scopeId));
+          } else {
+            return [
+              createVNode(_component_NuxtPage)
+            ];
+          }
+        }),
+        _: 1
+      }, _parent));
+      _push(`</div>`);
+      _push(ssrRenderComponent(_component_UIDialog, {
+        modelValue: unref(openDisclaimer),
+        "onUpdate:modelValue": ($event) => isRef(openDisclaimer) ? openDisclaimer.value = $event : null
+      }, {
+        title: withCtx((_, _push2, _parent2, _scopeId) => {
+          if (_push2) {
+            _push2(`Disclaimer`);
+          } else {
+            return [
+              createTextVNode("Disclaimer")
+            ];
+          }
+        }),
+        content: withCtx((_, _push2, _parent2, _scopeId) => {
+          if (_push2) {
+            _push2(`<p${_scopeId}> This website is a portfolio project and not a real online store. All products, prices, and transactions displayed are fictional and exist solely to showcase my front-end development skills. No actual purchases can be made through this site. </p><p${_scopeId}> If you&#39;re interested in my work, feel free to reach out! </p>`);
+          } else {
+            return [
+              createVNode("p", null, " This website is a portfolio project and not a real online store. All products, prices, and transactions displayed are fictional and exist solely to showcase my front-end development skills. No actual purchases can be made through this site. "),
+              createVNode("p", null, " If you're interested in my work, feel free to reach out! ")
+            ];
+          }
+        }),
+        _: 1
+      }, _parent));
+      _push(`<!--]-->`);
+    };
+  }
+};
 const _sfc_setup$2 = _sfc_main$2.setup;
 _sfc_main$2.setup = (props, ctx) => {
   const ssrContext = useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("app.vue");
   return _sfc_setup$2 ? _sfc_setup$2(props, ctx) : void 0;
 };
-const AppComponent = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["ssrRender", _sfc_ssrRender]]);
 const _sfc_main$1 = {
   __name: "error",
   __ssrInlineRender: true,
   setup(__props) {
     useError();
     return (_ctx, _push, _parent, _attrs) => {
-      _push(`<button${ssrRenderAttrs(_attrs)}> Go Back </button>`);
+      _push(`<button${ssrRenderAttrs(mergeProps({ type: "button" }, _attrs))}> Go Back </button>`);
     };
   }
 };
@@ -1683,7 +1747,7 @@ const _sfc_main = {
           } else if (unref(SingleRenderer)) {
             ssrRenderVNode(_push, createVNode(resolveDynamicComponent(unref(SingleRenderer)), null, null), _parent);
           } else {
-            _push(ssrRenderComponent(unref(AppComponent), null, null, _parent));
+            _push(ssrRenderComponent(unref(_sfc_main$2), null, null, _parent));
           }
         },
         _: 1
@@ -1717,5 +1781,5 @@ let entry;
 }
 const entry$1 = (ssrContext) => entry(ssrContext);
 
-export { _export_sfc as _, useHead as a, useNuxtApp as b, useRuntimeConfig as c, __nuxt_component_2 as d, entry$1 as default, useAppConfig as e, useState as f, useRouter as g, navigateTo as h, nuxtLinkDefaults as n, resolveRouteObject as r, useRoute as u };
+export { _imports_0 as _, useHead as a, useNuxtApp as b, useRuntimeConfig as c, __nuxt_component_2 as d, entry$1 as default, useAppConfig as e, useState as f, useRouter as g, navigateTo as h, nuxtLinkDefaults as n, resolveRouteObject as r, useRoute as u };
 //# sourceMappingURL=server.mjs.map

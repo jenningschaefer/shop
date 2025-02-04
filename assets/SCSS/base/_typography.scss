@@ -1,3 +1,5 @@
+@use "../abstracts" as *;
+
 h2 {
     font-family: 'opensans', normal;
     font-size: 3rem;
@@ -66,7 +68,7 @@ small {
     font-weight: 400;
 }
 
-.button-font {
+.button-font { 
     font-family: 'opensans', normal;
     font-size: 1rem;
     font-weight: 500;

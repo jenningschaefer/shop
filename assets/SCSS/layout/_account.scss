@@ -1,3 +1,5 @@
+@use "../abstracts" as *;
+
 .account-layout {
     background-color: $bg-account;
     color: $color-primary;

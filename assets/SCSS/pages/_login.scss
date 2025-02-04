@@ -1,3 +1,5 @@
+@use "../abstracts" as *;
+
 .login {
     @media (min-width: $breakpoint-xs) {
         padding: 1rem 4rem;

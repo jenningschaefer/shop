@@ -9,7 +9,10 @@ export default defineNuxtConfig({
   css: ['~/assets/SCSS/main.scss'],
 
   image: {
-    dir: 'public/img',
+    provider: 'netlify',
+    netlify: {
+      baseURl: process.env.IMAGES_URL
+    }
   },
 
   devtools: { enabled: true },

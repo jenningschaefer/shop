@@ -1,3 +1,5 @@
+@use "../../abstracts/" as *;
+
 .account-user {
     padding: 1rem;
     min-height: calc(100vh - 8rem);

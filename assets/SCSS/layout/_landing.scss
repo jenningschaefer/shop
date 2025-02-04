@@ -1,3 +1,5 @@
+@use "../abstracts" as *;
+
 .landing-layout {
     background-color: $bg-landing;
     color: $color-primary;

@@ -1,3 +1,5 @@
+@use "../abstracts" as *;
+
 .product-layout {
     background-color: $bg-products;
     color: $color-primary;

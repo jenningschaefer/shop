@@ -10,6 +10,10 @@ export default defineNuxtConfig({
 
   image: {
     dir: 'public/img',
+    provider: 'netlify',
+    netlify: {
+      baseURl: 'https://amazing-kringle-c4b6cd.netlify.app'
+    }
   },
 
   devtools: { enabled: true },

@@ -10,7 +10,6 @@ export default defineNuxtConfig({
   css: ['~/assets/SCSS/main.scss'],
 
   image: {
-    dir: 'public/img',
     provider: 'netlify',
     netlify: {
       baseURl: 'https://amazing-kringle-c4b6cd.netlify.app/img/'

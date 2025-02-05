@@ -46,7 +46,7 @@ useHead({
 
     <!-- hero -->
     <div class="home_hero">
-      <NuxtImg class="" @click="" src="pexels-heyho-6077368.jpg" />
+      <NuxtImg class="" @click="" src="img/pexels-heyho-6077368.jpg" />
     </div>
     <!-- hero end -->
   </div>

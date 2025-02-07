@@ -1,5 +1,7 @@
 # shop
 
+Demo at [shop.jenningschaefer.com](http://shop.jenningschaefer.com/)
+
 ## Build Setup
 
 ```bash

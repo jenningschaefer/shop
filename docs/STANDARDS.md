@@ -1,0 +1,607 @@
+# 📏 Code Standards
+
+> Coding conventions, file structure, and style guide for the Shop project.
+
+## Table of Contents
+
+1. [File Headers](#file-headers)
+2. [Vue Component Structure](#vue-component-structure)
+3. [TypeScript Conventions](#typescript-conventions)
+4. [Naming Conventions](#naming-conventions)
+5. [SCSS/Styling](#scssstyling)
+6. [File Organization](#file-organization)
+7. [Git Conventions](#git-conventions)
+
+---
+
+## File Headers
+
+All source files should include a header comment with metadata.
+
+### TypeScript / JavaScript Files
+
+```typescript
+/**
+ * @file product.service.ts
+ * @description Business logic for product-related operations including
+ *              fetching, filtering, and searching products.
+ * 
+ * @author Jenning Schaefer
+ * @license MIT
+ * @copyright 2024-2026 Jenning Schaefer
+ * 
+ * @example
+ * const productService = new ProductService(repository)
+ * const chairs = await productService.getByCategory('chairs')
+ */
+```
+
+### Vue Components
+
+```vue
+<!--
+  @file ProductCard.vue
+  @description Displays a product card with image, name, price, and favorite toggle.
+               Used in product listings and search results.
+  
+  @author Jenning Schaefer
+  @license MIT
+  
+  @props
+    - product: Product - The product to display
+    - favored: boolean - Whether the product is in favorites
+  
+  @emits
+    - favor: (productId: number) => void - Emitted when favorite is toggled
+-->
+```
+
+### SCSS Files
+
+```scss
+/**
+ * @file _button.scss
+ * @description Button component styles including primary, secondary, 
+ *              and dark variants with hover states.
+ * 
+ * @author Jenning Schaefer
+ * @license MIT
+ * 
+ * @dependencies
+ *   - abstracts/_variables.scss
+ *   - abstracts/_mixins.scss
+ */
+```
+
+---
+
+## Vue Component Structure
+
+Components follow a strict ordering for consistency and readability.
+
+### Script Section Order
+
+```vue
+<script setup lang="ts">
+// ============================================
+// 1. IMPORTS
+// ============================================
+import type { Product } from '~/types'
+import { useProductService } from '~/composables/useProductService'
+
+// ============================================
+// 2. TYPES (component-specific)
+// ============================================
+interface Props {
+  product: Product
+  favored?: boolean
+}
+
+interface Emits {
+  (e: 'favor', productId: number): void
+  (e: 'addToCart', product: Product): void
+}
+
+// ============================================
+// 3. PROPS & EMITS
+// ============================================
+const props = withDefaults(defineProps<Props>(), {
+  favored: false
+})
+
+const emit = defineEmits<Emits>()
+
+// ============================================
+// 4. COMPOSABLES & SERVICES
+// ============================================
+const router = useRouter()
+const route = useRoute()
+const { t } = useI18n()
+const productService = useProductService()
+
+// ============================================
+// 5. REACTIVE STATE (refs, reactive)
+// ============================================
+const isLoading = ref(false)
+const quantity = ref(1)
+
+// ============================================
+// 6. COMPUTED PROPERTIES
+// ============================================
+const formattedPrice = computed(() => 
+  new Intl.NumberFormat('de-DE', { 
+    style: 'currency', 
+    currency: 'EUR' 
+  }).format(Number(props.product.price_eur))
+)
+
+const isInStock = computed(() => props.product.stock > 0)
+
+// ============================================
+// 7. WATCHERS
+// ============================================
+watch(() => props.product.id, (newId) => {
+  quantity.value = 1
+})
+
+// ============================================
+// 8. METHODS / FUNCTIONS
+// ============================================
+function handleFavorite(): void {
+  emit('favor', props.product.id)
+}
+
+async function handleAddToCart(): Promise<void> {
+  isLoading.value = true
+  try {
+    await cartStore.addItem(props.product, quantity.value)
+  } finally {
+    isLoading.value = false
+  }
+}
+
+// ============================================
+// 9. LIFECYCLE HOOKS
+// ============================================
+onMounted(() => {
+  // initialization logic
+})
+
+onUnmounted(() => {
+  // cleanup logic
+})
+
+// ============================================
+// 10. EXPOSE (if needed)
+// ============================================
+defineExpose({
+  resetQuantity: () => { quantity.value = 1 }
+})
+</script>
+```
+
+### Template Guidelines
+
+```vue
+<template>
+  <!-- Single root element with semantic class name -->
+  <article class="product-card">
+    
+    <!-- Use semantic HTML elements -->
+    <figure class="product-card__image">
+      <NuxtPicture 
+        :src="product.img" 
+        :alt="product.name"
+        format="avif,webp"
+      />
+    </figure>
+    
+    <!-- BEM class naming -->
+    <div class="product-card__content">
+      <h3 class="product-card__title">{{ product.name }}</h3>
+      <p class="product-card__price">{{ formattedPrice }}</p>
+    </div>
+    
+    <!-- Event handlers: use @click not v-on:click -->
+    <button 
+      class="product-card__button"
+      :disabled="!isInStock"
+      @click="handleAddToCart"
+    >
+      {{ $t('cart.addToCart') }}
+    </button>
+    
+  </article>
+</template>
+```
+
+### Style Section (Scoped)
+
+```vue
+<style lang="scss" scoped>
+@use '~/assets/SCSS/abstracts' as *;
+
+.product-card {
+  // Component styles go here (if not in global SCSS)
+}
+</style>
+```
+
+---
+
+## TypeScript Conventions
+
+### General Rules
+
+```typescript
+// ✅ Use strict equality
+if (product.id === selectedId) { }
+
+// ❌ Avoid loose equality
+if (product.id == selectedId) { }
+
+// ✅ Use const for values that don't change
+const MAX_ITEMS = 10
+
+// ✅ Use explicit return types for functions
+function calculateTotal(items: CartItem[]): number {
+  return items.reduce((sum, item) => sum + item.price, 0)
+}
+
+// ✅ Use nullish coalescing
+const name = user.nickname ?? user.firstName
+
+// ✅ Use optional chaining
+const city = user.address?.city
+
+// ❌ Avoid any - use unknown or proper types
+function processData(data: any) { }  // Bad
+function processData(data: unknown) { }  // Better
+function processData(data: ApiResponse) { }  // Best
+```
+
+### Type Definitions
+
+```typescript
+// ✅ Use interfaces for objects
+interface Product {
+  id: number
+  name: string
+  price: number
+}
+
+// ✅ Use type for unions and aliases
+type ProductCategory = 'chairs' | 'tables' | 'lighting' | 'accessory'
+type ProductId = number
+
+// ✅ Use readonly for immutable properties
+interface Config {
+  readonly apiUrl: string
+  readonly timeout: number
+}
+
+// ✅ Use generics for reusable types
+interface ApiResponse<T> {
+  data: T
+  status: number
+  message: string
+}
+```
+
+### Async/Await
+
+```typescript
+// ✅ Always use try/catch with async
+async function fetchProducts(): Promise<Product[]> {
+  try {
+    const response = await productService.getAll()
+    return response.data
+  } catch (error) {
+    console.error('Failed to fetch products:', error)
+    throw error
+  }
+}
+
+// ✅ Use Promise.all for parallel requests
+const [products, categories] = await Promise.all([
+  productService.getAll(),
+  categoryService.getAll()
+])
+```
+
+---
+
+## Naming Conventions
+
+### Files & Directories
+
+| Type | Convention | Example |
+| ------ | ------------ | --------- |
+| Vue Components | PascalCase | `ProductCard.vue` |
+| Composables | camelCase with `use` prefix | `useProducts.ts` |
+| Services | camelCase with `.service` suffix | `product.service.ts` |
+| Types | camelCase with `.types` suffix | `product.types.ts` |
+| Stores | camelCase with `.store` suffix | `cart.store.ts` |
+| SCSS partials | _kebab-case | `_product-card.scss` |
+| Test files | Same name with `.spec` suffix | `ProductCard.spec.ts` |
+
+### Variables & Functions
+
+```typescript
+// Variables: camelCase
+const productList = ref<Product[]>([])
+const isLoading = ref(false)
+const currentUser = useCurrentUser()
+
+// Constants: SCREAMING_SNAKE_CASE
+const MAX_CART_ITEMS = 99
+const API_BASE_URL = '/api/v1'
+
+// Functions: camelCase, verb prefix
+function fetchProducts() { }
+function handleClick() { }
+function validateForm() { }
+function formatPrice() { }
+
+// Boolean variables: is/has/can prefix
+const isVisible = ref(false)
+const hasError = ref(false)
+const canSubmit = computed(() => form.valid)
+
+// Event handlers: handle prefix
+function handleSubmit() { }
+function handleProductClick() { }
+```
+
+### Vue Specific
+
+```typescript
+// Props: camelCase in script, kebab-case in template
+defineProps<{ productId: number }>()
+// <MyComponent :product-id="123" />
+
+// Emits: camelCase
+const emit = defineEmits<{
+  (e: 'updateCart', item: CartItem): void
+  (e: 'removeItem', id: number): void
+}>()
+
+// Refs to DOM elements: suffix with Ref or El
+const inputRef = ref<HTMLInputElement | null>(null)
+const modalEl = ref<HTMLDivElement | null>(null)
+```
+
+### CSS/SCSS Classes
+
+```scss
+// BEM Convention: Block__Element--Modifier
+.product-card { }                    // Block
+.product-card__title { }             // Element
+.product-card__title--highlighted { } // Modifier
+.product-card--featured { }          // Block modifier
+
+// State classes: is- or has- prefix
+.product-card.is-loading { }
+.product-card.is-active { }
+.product-card.has-error { }
+
+// Utility classes: descriptive
+.visually-hidden { }
+.text-center { }
+```
+
+---
+
+## SCSS/Styling
+
+### Architecture (7-1 Pattern)
+
+```text
+assets/SCSS/
+├── abstracts/         # Variables, mixins, functions
+│   ├── _index.scss
+│   ├── _variables.scss
+│   └── _mixins.scss
+├── base/              # Reset, typography, base styles
+│   ├── _index.scss
+│   ├── _base.scss
+│   ├── _fonts.scss
+│   └── _typography.scss
+├── components/        # Component-specific styles
+│   ├── _index.scss
+│   ├── _button.scss
+│   └── _productCard.scss
+├── layout/            # Layout components
+│   ├── _index.scss
+│   ├── _header.scss
+│   └── _footer.scss
+├── pages/             # Page-specific styles
+│   ├── _index.scss
+│   └── _home.scss
+├── vendors/           # Third-party styles
+│   └── _index.scss
+└── main.scss          # Main entry point
+```
+
+### Variables
+
+```scss
+// Colors: semantic naming
+$color-primary: #141414;
+$color-secondary: #f5f5f5;
+$color-accent: #87a3d2;
+$color-error: #dc3545;
+$color-success: #28a745;
+
+// Spacing: t-shirt sizes
+$spacing-xs: 0.25rem;   // 4px
+$spacing-sm: 0.5rem;    // 8px
+$spacing-md: 1rem;      // 16px
+$spacing-lg: 1.5rem;    // 24px
+$spacing-xl: 2rem;      // 32px
+$spacing-xxl: 3rem;     // 48px
+
+// Breakpoints
+$breakpoint-sm: 36em;   // 576px
+$breakpoint-md: 48em;   // 768px
+$breakpoint-lg: 62em;   // 992px
+$breakpoint-xl: 75em;   // 1200px
+```
+
+### Mixins
+
+```scss
+// Responsive breakpoint mixin
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == 'sm' {
+    @media (min-width: $breakpoint-sm) { @content; }
+  } @else if $breakpoint == 'md' {
+    @media (min-width: $breakpoint-md) { @content; }
+  } @else if $breakpoint == 'lg' {
+    @media (min-width: $breakpoint-lg) { @content; }
+  } @else if $breakpoint == 'xl' {
+    @media (min-width: $breakpoint-xl) { @content; }
+  }
+}
+
+// Usage
+.product-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  
+  @include respond-to('md') {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  @include respond-to('lg') {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+```
+
+---
+
+## File Organization
+
+### Project Structure
+
+```text
+/
+├── assets/
+│   ├── SCSS/              # Styles (7-1 pattern)
+│   ├── fonts/             # Custom fonts
+│   ├── images/            # Source images (processed)
+│   └── svg/               # SVG sprites
+├── components/
+│   ├── UI/                # Generic, reusable components
+│   ├── Product/           # Product domain components
+│   ├── Order/             # Order domain components
+│   └── Checkout/          # Checkout domain components
+├── composables/           # Vue composables
+├── data/                  # Mock JSON data
+├── docs/                  # Documentation
+├── layouts/               # Page layouts
+├── locales/               # i18n translation files
+├── pages/                 # Route pages
+├── public/                # Static assets
+├── services/              # Business logic layer
+├── stores/                # Pinia stores
+├── tests/                 # Test files
+├── types/                 # TypeScript type definitions
+└── utils/                 # Utility functions
+```
+
+### Import Order
+
+```typescript
+// 1. Node built-ins (if applicable)
+import { readFile } from 'fs'
+
+// 2. External packages
+import { ref, computed } from 'vue'
+
+// 3. Nuxt auto-imports (optional, as they're auto-imported)
+// import { useRoute, useRouter } from '#app'
+
+// 4. Internal types
+import type { Product, CartItem } from '~/types'
+
+// 5. Internal modules (services, stores, composables)
+import { useProductService } from '~/services'
+import { useCartStore } from '~/stores'
+
+// 6. Components (if needed)
+import ProductCard from '~/components/Product/Card.vue'
+
+// 7. Assets
+import logoSvg from '~/assets/svg/logos.svg'
+```
+
+---
+
+## Git Conventions
+
+### Commit Messages
+
+Follow [Conventional Commits](https://www.conventionalcommits.org/):
+
+```text
+<type>(<scope>): <subject>
+
+<body>
+
+<footer>
+```
+
+**Types:**
+
+- `feat`: New feature
+- `fix`: Bug fix
+- `docs`: Documentation changes
+- `style`: Code style (formatting, no logic change)
+- `refactor`: Code refactoring
+- `test`: Adding or updating tests
+- `chore`: Maintenance tasks
+
+**Examples:**
+
+```text
+feat(cart): add quantity selector to cart items
+
+fix(checkout): correct tax calculation for EU orders
+
+docs(readme): update installation instructions
+
+refactor(products): migrate useProducts to TypeScript
+
+test(cart): add unit tests for CartService
+
+chore(deps): update dependencies to latest versions
+```
+
+### Branch Naming
+
+```text
+feature/add-cart-functionality
+bugfix/fix-checkout-redirect
+refactor/typescript-migration
+docs/update-readme
+chore/update-dependencies
+```
+
+---
+
+## Code Quality Checklist
+
+Before committing, ensure:
+
+- [ ] No `console.log` statements (use proper logging)
+- [ ] No `any` types (use proper TypeScript types)
+- [ ] No `==` comparisons (use `===`)
+- [ ] All functions have return types
+- [ ] All async functions have error handling
+- [ ] Components follow the structure order
+- [ ] File has appropriate header comment
+- [ ] No unused imports or variables
+- [ ] Tests pass
+- [ ] Linting passes

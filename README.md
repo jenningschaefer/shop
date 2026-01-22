@@ -1,71 +1,123 @@
-# shop
+# 🛋️ Shop
 
-Demo at [shop.jenningschaefer.com](http://shop.jenningschaefer.com/)
+> Modern e-commerce portfolio project built with Nuxt 3 and TypeScript
 
-## Build Setup
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Nuxt](https://img.shields.io/badge/Nuxt-3.14-00DC82?logo=nuxt.js)](https://nuxt.com/)
+[![Vue](https://img.shields.io/badge/Vue-3.5-4FC08D?logo=vue.js)](https://vuejs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.6-3178C6?logo=typescript)](https://www.typescriptlang.org/)
+
+## 🌐 Demo
+
+**Live Demo**: [shop.jenningschaefer.com](https://shop.jenningschaefer.com/)
+
+> ⚠️ **Disclaimer**: This is a portfolio project. All products, prices, and transactions are fictional. No actual purchases can be made.
+
+## ✨ Features
+
+- 🛒 Product catalog with categories (Chairs, Tables, Lighting, Accessories)
+- ❤️ Favorites / Wishlist functionality
+- 🛍️ Shopping cart with quantity management
+- 📱 Responsive design for all devices
+- 🎨 Custom SCSS styling with 7-1 architecture
+- 🖼️ Optimized images with `@nuxt/image`
+
+## 🛠️ Tech Stack
+
+| Category | Technology |
+| -------- | ---------- |
+| Framework | [Nuxt 3](https://nuxt.com/) |
+| Language | [TypeScript](https://www.typescriptlang.org/) |
+| Styling | SCSS with 7-1 Architecture |
+| State | [VueUse](https://vueuse.org/) + LocalStorage |
+| Images | [@nuxt/image](https://image.nuxt.com/) |
+| Linting | ESLint + Prettier |
+
+## 🚀 Quick Start
+
+### Prerequisites
+
+- Node.js 18+
+- npm or pnpm
+
+### Installation
 
 ```bash
-# install dependencies
-$ npm install
+# Clone the repository
+git clone https://github.com/jenningschaefer/shop.git
+cd shop
 
-# serve with hot reload at localhost:3000
-$ npm run dev
+# Install dependencies
+npm install
 
-# build for production and launch server
-$ npm run build
-$ npm run start
-
-# generate static project
-$ npm run generate
+# Start development server
+npm run dev
 ```
 
-For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-## Special Directories
+### Build for Production
 
-You can create the following extra directories, some of which have special behaviors. Only `pages` is required; you can delete them if you don't want to use their functionality.
+```bash
+# Build the application
+npm run build
 
-### `assets`
+# Preview production build
+npm run preview
 
-The assets directory contains your uncompiled assets such as Stylus or Sass files, images, or fonts.
+# Generate static site
+npm run generate
+```
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/assets).
+## 📁 Project Structure
 
-### `components`
+```text
+shop/
+├── assets/
+│   ├── SCSS/              # Styles (7-1 pattern)
+│   ├── fonts/             # Custom fonts (Open Sans)
+│   └── svg/               # SVG sprites (icons, logos)
+├── components/
+│   ├── UI/                # Generic UI components
+│   ├── Product/           # Product-related components
+│   ├── Order/             # Cart, favorites
+│   └── Checkout/          # Checkout flow
+├── composables/           # Vue composables
+├── data/                  # Mock JSON data
+├── docs/                  # Documentation
+├── layouts/               # Page layouts
+├── pages/                 # Route pages
+├── public/                # Static assets
+└── types/                 # TypeScript definitions
+```
 
-The components directory contains your Vue.js components. Components make up the different parts of your page and can be reused and imported into your pages, layouts and even other components.
+## 📖 Documentation
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/components).
+Detailed documentation is available in the [`docs/`](./docs/) folder:
 
-### `layouts`
+- [Modernization Plan](./docs/MODERNIZATION_PLAN.md) - Roadmap for improvements
+- [Code Standards](./docs/STANDARDS.md) - Coding conventions and style guide
+- [Architecture](./docs/ARCHITECTURE.md) - System design and patterns
 
-Layouts are a great help when you want to change the look and feel of your Nuxt app, whether you want to include a sidebar or have distinct layouts for mobile and desktop.
+## 🧪 Scripts
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/layouts).
+| Command | Description |
+| ------- | ----------- |
+| `npm run dev` | Start development server |
+| `npm run build` | Build for production |
+| `npm run preview` | Preview production build |
+| `npm run generate` | Generate static site |
+| `npm run lint` | Run ESLint |
+| `npm run lint:fix` | Fix ESLint errors |
+| `npm run typecheck` | Run TypeScript type checking |
 
+## 📄 License
 
-### `pages`
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-This directory contains your application views and routes. Nuxt will read all the `*.vue` files inside this directory and setup Vue Router automatically.
+## 👤 Author
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/get-started/routing).
+**Jenning Schaefer**
 
-### `plugins`
-
-The plugins directory contains JavaScript plugins that you want to run before instantiating the root Vue.js Application. This is the place to add Vue plugins and to inject functions or constants. Every time you need to use `Vue.use()`, you should create a file in `plugins/` and add its path to plugins in `nuxt.config.js`.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/plugins).
-
-### `static`
-
-This directory contains your static files. Each file inside this directory is mapped to `/`.
-
-Example: `/static/robots.txt` is mapped as `/robots.txt`.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/static).
-
-### `store`
-
-This directory contains your Vuex store files. Creating a file in this directory automatically activates Vuex.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/store).
+- Website: [jenningschaefer.com](https://jenningschaefer.com/)
+- GitHub: [@jenningschaefer](https://github.com/jenningschaefer)

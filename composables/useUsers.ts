@@ -19,7 +19,7 @@ const userRepo = UserRepository.getInstance()
  * @returns User or undefined if not found
  */
 export function useUser(id: number): User | undefined {
-  return userRepo.getData().find((user) => user.id === id)
+  return userRepo.getData().find((user) => user.user_id === id)
 }
 
 /**

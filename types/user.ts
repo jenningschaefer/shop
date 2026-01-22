@@ -24,6 +24,8 @@ export type Language = 'DE' | 'EN'
  * User entity
  */
 export interface User {
+  /** Unique user identifier (alias for user_id for repository compatibility) */
+  id: number
   /** Unique user identifier */
   user_id: number
   /** User role */

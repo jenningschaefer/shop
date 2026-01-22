@@ -11,12 +11,12 @@
 | Phase 1: Cleanup & Foundation | ✅ Complete | 2026-01-22 |
 | Phase 2: TypeScript Migration | ✅ Complete | 2026-01-22 |
 | Phase 3: Service Layer | ✅ Complete | 2026-01-22 |
-| Phase 4: Pinia State Management | ⏳ Pending | - |
+| Phase 4: Pinia State Management | ✅ Complete | 2026-01-22 |
 | Phase 5: i18n | ⏳ Pending | - |
 | Phase 6: Testing | ⏳ Pending | - |
 | Phase 7: Polish & CI/CD | ⏳ Pending | - |
 
-**Current Phase**: 3 → 4  
+**Current Phase**: 4 → 5  
 **Started**: 2026-01-22  
 **Estimated Completion**: ~25-35 hours total
 
@@ -198,46 +198,54 @@ Updated all composables to use services:
 
 ---
 
-## Phase 4: State Management - Pinia
+## Phase 4: State Management - Pinia ✅
 
 **Goal**: Centralized, typed state management.
 
+**Completed**: 2026-01-22
+
 ### 4.1 Setup
 
-- [ ] Install Pinia (included in Nuxt 3)
-- [ ] Configure in `nuxt.config.ts`
+- [x] Install `@pinia/nuxt` and `pinia`
+- [x] Configure in `nuxt.config.ts`
 
 ### 4.2 Stores
 
-```text
-/stores/
-  index.ts
-  cart.store.ts       # Shopping cart state
-  user.store.ts       # Current user, auth state
-  favorites.store.ts  # Wishlist
-  ui.store.ts         # UI state (modals, sidebars)
-```
+Created `/stores/` directory:
+
+- [x] `stores/index.ts` - Barrel export
+- [x] `stores/cart.ts` - Shopping cart with localStorage persistence
+- [x] `stores/user.ts` - Current user, mock auth
+- [x] `stores/favorites.ts` - Wishlist/favorites
+- [x] `stores/ui.ts` - UI state (modals, sidebars, disclaimer)
 
 ### 4.3 Store Pattern
 
+Using Composition API style (Setup Stores):
+
 ```typescript
-// Typed store with actions and getters
 export const useCartStore = defineStore('cart', () => {
   // State
   const items = ref<CartItem[]>([])
   
   // Getters
   const total = computed(() => 
-    items.value.reduce((sum, item) => sum + item.price * item.quantity, 0)
+    items.value.reduce((sum, item) => sum + item.price * item.amount, 0)
   )
   
   // Actions
   function addItem(product: Product, quantity: number = 1) { }
   function removeItem(productId: number) { }
+  function init() { /* load from localStorage */ }
   
-  return { items, total, addItem, removeItem }
+  return { items, total, addItem, removeItem, init }
 })
 ```
+
+### 4.4 Components Migration
+
+- [x] `app.vue` - Uses uiStore for disclaimer
+- [x] `pages/products/list/[[category]].vue` - Uses favoritesStore
 
 ---
 
@@ -424,11 +432,12 @@ Add to all source files (see STANDARDS.md):
 - [x] 3.3 Service layer
 - [x] 3.4 Composables integration
 
-### Phase 4
+### Phase 4 ✅
 
-- [ ] 4.1 Pinia setup
-- [ ] 4.2 Create stores
-- [ ] 4.3 Migrate state
+- [x] 4.1 Pinia setup
+- [x] 4.2 Create stores
+- [x] 4.3 Migrate state
+- [x] 4.4 Components migration
 
 ### Phase 5
 

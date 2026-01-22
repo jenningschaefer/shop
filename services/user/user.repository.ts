@@ -26,7 +26,12 @@ export class UserRepository
   private static instance: UserRepository | null = null
 
   private constructor() {
-    super(usersData as User[])
+    // Map user_id to id for repository compatibility
+    const mappedData = (usersData as Array<Omit<User, 'id'> & { user_id: number }>).map((user) => ({
+      ...user,
+      id: user.user_id,
+    }))
+    super(mappedData as User[])
   }
 
   /**
@@ -43,8 +48,16 @@ export class UserRepository
     await this.simulateDelay()
     return (
       this.data.find(
-        (user) => user.email.toLowerCase() === email.toLowerCase()
+        (user) => user.mail.toLowerCase() === email.toLowerCase()
       ) ?? null
     )
+  }
+
+  /**
+   * Override findById to use user_id field
+   */
+  async findById(id: number): Promise<User | null> {
+    await this.simulateDelay()
+    return this.data.find((user) => user.user_id === id) ?? null
   }
 }

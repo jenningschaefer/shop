@@ -25,6 +25,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Singleton pattern for service instances
   - Simulated async API calls with configurable delay
   - Clean separation of concerns (Repository → Service → Composable)
+- **Pinia State Management** (`/stores/` directory):
+  - CartStore with localStorage persistence
+  - UserStore with mock authentication
+  - FavoritesStore for wishlist management
+  - UiStore for modals, sidebars, disclaimer state
 
 ### Fixed
 

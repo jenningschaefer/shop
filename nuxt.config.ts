@@ -11,6 +11,7 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@vueuse/nuxt',
     '@nuxt/eslint',
+    '@pinia/nuxt',
   ],
 
   css: ['~/assets/SCSS/main.scss'],

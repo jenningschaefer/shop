@@ -11,6 +11,10 @@ const { t } = useI18n()
 const favorites = useLocalStorage<CartItem[]>('favorite', [])
 const cart = useLocalStorage<CartItem[]>('cart', [])
 
+type AddFeedback = 'added' | 'already'
+const addFeedbackById = reactive<Record<number, AddFeedback | undefined>>({})
+const addFeedbackTimers = new Map<number, ReturnType<typeof setTimeout>>()
+
 function deleteFromFavorites(id: number): void {
   favorites.value = favorites.value.filter((el) => el.id !== id)
 }
@@ -28,7 +32,22 @@ function addToCart(id: number): void {
       price: item.price,
       amount: 1,
     })
+
+    addFeedbackById[id] = 'added'
+  } else {
+    addFeedbackById[id] = 'already'
   }
+
+  const prevTimer = addFeedbackTimers.get(id)
+  if (prevTimer) clearTimeout(prevTimer)
+  addFeedbackTimers.set(
+    id,
+    setTimeout(() => {
+      // Avoid dynamic delete (eslint) — clear feedback by setting to undefined.
+      addFeedbackById[id] = undefined
+      addFeedbackTimers.delete(id)
+    }, 1500)
+  )
 }
 </script>
 
@@ -48,7 +67,15 @@ function addToCart(id: number): void {
         >
           <template #buttons>
             <button type="button" class="vesta-btn" @click="addToCart(item.id)">
-              {{ t('product.addToCart') }}
+              <template v-if="addFeedbackById[item.id] === 'added'">
+                {{ t('cart.added') }}
+              </template>
+              <template v-else-if="addFeedbackById[item.id] === 'already'">
+                {{ t('cart.alreadyInCart') }}
+              </template>
+              <template v-else>
+                {{ t('product.addToCart') }}
+              </template>
             </button>
             <button type="button" class="vesta-btn" @click="deleteFromFavorites(item.id)">
               {{ t('product.removeFromFavorites') }}

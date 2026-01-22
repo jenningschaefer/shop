@@ -63,6 +63,47 @@
   }
 }
 
+.navIconButton {
+  position: relative;
+}
+
+.navBadge {
+  position: absolute;
+  // Plain number (no circle), offset so it doesn't overlap the icon
+  right: -0.6rem;
+  bottom: -0.3rem;
+  padding: 0;
+  background: transparent;
+  color: $color-primary;
+  font-size: 0.9rem;
+  font-weight: 700;
+  line-height: 1;
+  pointer-events: none;
+  transform-origin: 70% 70%;
+}
+
+.navBadge--pulse {
+  animation: navBadgePulse 320ms ease-out;
+}
+
+@keyframes navBadgePulse {
+  0% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.35);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .navBadge--pulse {
+    animation: none;
+  }
+}
+
 .subNav {
   display: flex;
   align-items: center;

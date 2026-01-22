@@ -13,6 +13,36 @@ const openMenu = ref(false)
 const openCart = ref(false)
 const openFavorites = ref(false)
 
+type StoredCartItem = { amount: number }
+const cart = useLocalStorage<StoredCartItem[]>('cart', [])
+const favorites = useLocalStorage<unknown[]>('favorite', [])
+
+const cartCount = computed(() =>
+  cart.value.reduce((sum, item) => sum + (Number(item.amount) || 0), 0)
+)
+const favoritesCount = computed(() => favorites.value.length)
+
+const cartPulse = ref(false)
+const favoritesPulse = ref(false)
+
+function triggerPulse(pulse: Ref<boolean>): void {
+  pulse.value = false
+  requestAnimationFrame(() => {
+    pulse.value = true
+    window.setTimeout(() => {
+      pulse.value = false
+    }, 350)
+  })
+}
+
+watch(cartCount, (next, prev) => {
+  if (next !== prev) triggerPulse(cartPulse)
+})
+
+watch(favoritesCount, (next, prev) => {
+  if (next !== prev) triggerPulse(favoritesPulse)
+})
+
 const isProductPage = computed(() => route.name === 'products-name-id')
 const isAccountPage = computed(() => String(route.name ?? '').includes('account'))
 
@@ -52,15 +82,41 @@ function toggleLocale(): void {
             </svg>
           </button>
         </template>
-        <button type="button" :aria-label="t('nav.cart')" @click="openCart = true">
+        <button
+          type="button"
+          class="navIconButton"
+          :aria-label="t('nav.cart')"
+          @click="openCart = true"
+        >
           <svg class="navBar_icons_icon" aria-hidden="true">
             <use href="~/assets/svg/icons.svg#cart" />
           </svg>
+          <span
+            v-if="cartCount > 0"
+            class="navBadge"
+            :class="{ 'navBadge--pulse': cartPulse }"
+            aria-hidden="true"
+          >
+            {{ cartCount }}
+          </span>
         </button>
-        <button type="button" :aria-label="t('nav.favorites')" @click="openFavorites = true">
+        <button
+          type="button"
+          class="navIconButton"
+          :aria-label="t('nav.favorites')"
+          @click="openFavorites = true"
+        >
           <svg class="navBar_icons_icon" aria-hidden="true">
             <use href="~/assets/svg/icons.svg#heart" />
           </svg>
+          <span
+            v-if="favoritesCount > 0"
+            class="navBadge"
+            :class="{ 'navBadge--pulse': favoritesPulse }"
+            aria-hidden="true"
+          >
+            {{ favoritesCount }}
+          </span>
         </button>
         <NuxtLink to="/login" :aria-label="t('nav.login')">
           <svg class="navBar_icons_icon" aria-hidden="true">
@@ -95,15 +151,41 @@ function toggleLocale(): void {
           </svg>
         </button>
       </template>
-      <button type="button" :aria-label="t('nav.cart')" @click="openCart = true">
+      <button
+        type="button"
+        class="navIconButton"
+        :aria-label="t('nav.cart')"
+        @click="openCart = true"
+      >
         <svg class="subNav_icon" aria-hidden="true">
           <use href="~/assets/svg/icons.svg#cart" />
         </svg>
+        <span
+          v-if="cartCount > 0"
+          class="navBadge"
+          :class="{ 'navBadge--pulse': cartPulse }"
+          aria-hidden="true"
+        >
+          {{ cartCount }}
+        </span>
       </button>
-      <button type="button" :aria-label="t('nav.favorites')" @click="openFavorites = true">
+      <button
+        type="button"
+        class="navIconButton"
+        :aria-label="t('nav.favorites')"
+        @click="openFavorites = true"
+      >
         <svg class="subNav_icon" aria-hidden="true">
           <use href="~/assets/svg/icons.svg#heart" />
         </svg>
+        <span
+          v-if="favoritesCount > 0"
+          class="navBadge"
+          :class="{ 'navBadge--pulse': favoritesPulse }"
+          aria-hidden="true"
+        >
+          {{ favoritesCount }}
+        </span>
       </button>
       <NuxtLink to="/login" :aria-label="t('nav.login')">
         <svg class="subNav_icon" aria-hidden="true">

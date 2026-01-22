@@ -64,6 +64,8 @@
     "checkout": "Zur Kasse",
     "continueShopping": "Weiter einkaufen",
     "remove": "Entfernen",
+    "added": "Hinzugefügt",
+    "alreadyInCart": "Schon im Warenkorb",
     "freeShippingMessage": "Kostenloser Versand ab {amount} €",
     "amountUntilFreeShipping": "Noch {amount} € bis zum kostenlosen Versand"
   },

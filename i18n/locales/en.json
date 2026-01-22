@@ -64,6 +64,8 @@
     "checkout": "Checkout",
     "continueShopping": "Continue Shopping",
     "remove": "Remove",
+    "added": "Added",
+    "alreadyInCart": "Already in cart",
     "freeShippingMessage": "Free shipping on orders over ${amount}",
     "amountUntilFreeShipping": "${amount} until free shipping"
   },

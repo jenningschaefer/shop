@@ -7,6 +7,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useLocalStorage } from '@vueuse/core'
+import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
 const disclaimerAccepted = useLocalStorage('shop-disclaimer', false)

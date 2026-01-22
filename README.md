@@ -117,7 +117,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 👤 Author
 
-**Jenning Schaefer**
+Jenning Schaefer
 
 - Website: [jenningschaefer.com](https://jenningschaefer.com/)
 - GitHub: [@jenningschaefer](https://github.com/jenningschaefer)

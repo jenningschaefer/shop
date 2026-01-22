@@ -30,6 +30,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - UserStore with mock authentication
   - FavoritesStore for wishlist management
   - UiStore for modals, sidebars, disclaimer state
+- **Internationalization (i18n)**:
+  - `@nuxtjs/i18n` module configured with DE (default) and EN locales
+  - Full UI translations in `/locales/de.json` and `/locales/en.json`
+  - Product data with localized fields (name, description, features, specs)
+  - Localized pricing (EUR/USD)
+  - `useLocale` composables for product localization
+  - Language switcher in NavBar
 
 ### Fixed
 

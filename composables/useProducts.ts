@@ -1,84 +1,113 @@
 /**
  * @file composables/useProducts.ts
- * @description Vue composables for product data access
+ * @description Vue composables for product data access with i18n support
  * @author Jenning Schaefer
  * @license MIT
  */
 
 import { ref, computed } from 'vue'
-import type { Product, ProductCategory, ProductFilter } from '~/types'
+import type { Product, ProductRaw, ProductCategory, ProductFilter, Locale } from '~/types'
+import { localizeProduct, localizeProducts } from './useLocale'
 import productsData from '~/data/products.json'
 
-// Direct JSON import for SSR compatibility
-const products = productsData as Product[]
+// Raw product data from JSON
+const rawProducts = productsData as ProductRaw[]
 
 /**
- * Get a single product by ID
+ * Get a single raw product by ID
+ */
+export function useProductRaw(id: number): ProductRaw | undefined {
+  return rawProducts.find((product) => product.id === id)
+}
+
+/**
+ * Get all raw products
+ */
+export function useProductsRaw(): ProductRaw[] {
+  return rawProducts
+}
+
+/**
+ * Get a single product by ID (localized) - use in component setup
  * @param id - Product ID
- * @returns Product or undefined if not found
+ * @returns Localized Product or undefined if not found
  */
 export function useProduct(id: number): Product | undefined {
-  return products.find((product) => product.id === id)
+  const { locale } = useI18n()
+  const raw = rawProducts.find((product) => product.id === id)
+  if (!raw) return undefined
+  return localizeProduct(raw, locale.value as Locale)
 }
 
 /**
- * Get product by URL-friendly name
+ * Get product by URL-friendly name (localized) - use in component setup
  * @param name - Product name from URL
- * @returns Product or undefined
+ * @returns Localized Product or undefined
  */
 export function useProductByName(name: string): Product | undefined {
-  const normalizedName = name.toLowerCase().replace(/-/g, ' ')
-  return products.find((product) => product.name.toLowerCase() === normalizedName)
+  const { locale } = useI18n()
+  const raw = rawProducts.find((product) => product.name_url === name)
+  if (!raw) return undefined
+  return localizeProduct(raw, locale.value as Locale)
 }
 
 /**
- * Get all products
- * @returns All products
+ * Get all products (localized) - use in component setup
+ * @returns All localized products
  */
 export function useProducts(): Product[] {
-  return products
+  const { locale } = useI18n()
+  return localizeProducts(rawProducts, locale.value as Locale)
 }
 
 /**
- * Get products filtered by category
+ * Get products filtered by category (localized) - use in component setup
  * @param category - Product category
- * @returns Filtered products
+ * @returns Filtered and localized products
  */
 export function useProductsByCategory(category: ProductCategory): Product[] {
-  return products.filter((product) => product.type === category)
+  const { locale } = useI18n()
+  const filtered = rawProducts.filter((product) => product.type === category)
+  return localizeProducts(filtered, locale.value as Locale)
 }
 
 /**
- * Reactive products composable with filtering and sorting
+ * Reactive products composable with filtering and sorting - use in component setup
  */
 export function useProductsFiltered() {
-  const filteredProducts = ref<Product[]>([...products])
+  const { locale } = useI18n()
+  const currentLocale = computed(() => locale.value as Locale)
+  
+  const filteredProducts = ref<Product[]>(localizeProducts(rawProducts, currentLocale.value))
   const loading = ref(false)
   const error = ref<Error | null>(null)
   const filter = ref<ProductFilter>({})
 
   function applyFilter(): void {
-    let result = [...products]
+    let result = [...rawProducts]
 
-    // Filter by category (using 'type' field from JSON)
+    // Filter by category
     if (filter.value.category) {
       result = result.filter((p) => p.type === filter.value.category)
     }
 
-    // Filter by price range
+    // Filter by price range (use EUR for filtering)
     if (filter.value.minPrice !== undefined) {
-      result = result.filter((p) => parseFloat(p.price_us) >= filter.value.minPrice!)
+      result = result.filter((p) => parseFloat(p.price_eur) >= filter.value.minPrice!)
     }
     if (filter.value.maxPrice !== undefined) {
-      result = result.filter((p) => parseFloat(p.price_us) <= filter.value.maxPrice!)
+      result = result.filter((p) => parseFloat(p.price_eur) <= filter.value.maxPrice!)
     }
+
+    // Localize and sort
+    let localized = localizeProducts(result, currentLocale.value)
 
     // Sort products
     if (filter.value.sortBy) {
-      result = sortProducts(result, filter.value.sortBy, filter.value.sortOrder)
+      localized = sortProducts(localized, filter.value.sortBy, filter.value.sortOrder)
     }
 
-    filteredProducts.value = result
+    filteredProducts.value = localized
   }
 
   function setFilter(newFilter: ProductFilter): void {
@@ -88,7 +117,7 @@ export function useProductsFiltered() {
 
   function resetFilter(): void {
     filter.value = {}
-    filteredProducts.value = [...products]
+    filteredProducts.value = localizeProducts(rawProducts, currentLocale.value)
   }
 
   const isEmpty = computed(() => filteredProducts.value.length === 0)
@@ -122,10 +151,10 @@ function sortProducts(
         comparison = a.name.localeCompare(b.name)
         break
       case 'price':
-        comparison = parseFloat(a.price_us) - parseFloat(b.price_us)
+        comparison = parseFloat(a.price) - parseFloat(b.price)
         break
       case 'category':
-        comparison = a.category.localeCompare(b.category)
+        comparison = a.type.localeCompare(b.type)
         break
     }
     return order === 'desc' ? -comparison : comparison
@@ -133,16 +162,18 @@ function sortProducts(
 }
 
 /**
- * Get featured products
+ * Get featured products (localized) - use in component setup
  */
 export function useFeaturedProducts(limit: number = 4): Product[] {
-  return products.slice(0, limit)
+  const { locale } = useI18n()
+  const featured = rawProducts.slice(0, limit)
+  return localizeProducts(featured, locale.value as Locale)
 }
 
 /**
  * Get available categories
  */
 export function useCategories(): ProductCategory[] {
-  const categories = new Set(products.map((p) => p.type))
+  const categories = new Set(rawProducts.map((p) => p.type))
   return Array.from(categories) as ProductCategory[]
 }

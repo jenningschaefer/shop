@@ -1,7 +1,15 @@
-<script setup>
+<!--
+  @file pages/account/index.vue
+  @description Account overview page
+  @author Jenning Schaefer
+  @license MIT
+-->
+<script setup lang="ts">
+const { t } = useI18n()
+
 definePageMeta({
     layout: 'account',
-});
+})
 </script>
 
 <template>
@@ -14,7 +22,7 @@ definePageMeta({
                         <svg class="account-link_icon">
                             <use href="~/assets/svg/icons.svg#user" />
                         </svg>
-                        <div class="account-link_name">User Data</div>
+                        <div class="account-link_name">{{ t('account.profile') }}</div>
                         <svg class="account-link_icon">
                             <use href="~/assets/svg/icons.svg#arrow-right" />
                         </svg>
@@ -35,7 +43,7 @@ definePageMeta({
                         <svg class="account-link_icon">
                             <use href="~/assets/svg/icons.svg#home" />
                         </svg>
-                        <div class="account-link_name">Address</div>
+                        <div class="account-link_name">{{ t('account.addresses') }}</div>
                         <svg class="account-link_icon">
                             <use href="~/assets/svg/icons.svg#arrow-right" />
                         </svg>
@@ -57,7 +65,7 @@ definePageMeta({
                         <svg class="account-link_icon">
                             <use href="~/assets/svg/icons.svg#password" />
                         </svg>
-                        <div class="account-link_name">Password</div>
+                        <div class="account-link_name">{{ t('account.changePassword') }}</div>
                         <svg class="account-link_icon">
                             <use href="~/assets/svg/icons.svg#arrow-right" />
                         </svg>
@@ -74,7 +82,7 @@ definePageMeta({
                         <svg class="account-link_icon">
                             <use href="~/assets/svg/icons.svg#history" />
                         </svg>
-                        <div class="account-link_name">History</div>
+                        <div class="account-link_name">{{ t('account.orderHistory') }}</div>
                         <svg class="account-link_icon">
                             <use href="~/assets/svg/icons.svg#arrow-right" />
                         </svg>
@@ -91,7 +99,7 @@ definePageMeta({
                         <svg class="account-link_icon">
                             <use href="~/assets/svg/icons.svg#heart" />
                         </svg>
-                        <div class="account-link_name">Favourites</div>
+                        <div class="account-link_name">{{ t('account.favorites') }}</div>
                         <svg class="account-link_icon">
                             <use href="~/assets/svg/icons.svg#arrow-right" />
                         </svg>

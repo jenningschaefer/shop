@@ -1,12 +1,23 @@
-<script setup>
+<script setup lang="ts">
+const { t, locale } = useI18n()
+
 definePageMeta({
     layout: 'checkout',
-});
+})
+
+const currencySymbol = computed(() => locale.value === 'de' ? '€' : '$')
+
+function formatPrice(price: number): string {
+    if (locale.value === 'de') {
+        return `${price.toFixed(2).replace('.', ',')} €`
+    }
+    return `$${price.toFixed(2)}`
+}
 </script>
 
 <template>
     <div class="overview">
-        <h1 class="checkout_title">Overview</h1>
+        <h1 class="checkout_title">{{ t('checkout.overview') }}</h1>
         <div class="overview_container">
             <div class="overview_accordion">
                 <UIAccordion>
@@ -14,27 +25,27 @@ definePageMeta({
                     <UIAccordion-item>
                         <template #accordion-trigger>
                             <div class="overview_heading">
-                                <span class="links">Address</span>
+                                <span class="links">{{ t('checkout.address') }}</span>
                             </div>
                         </template>
                         <template #accordion-content>
                             <div class="overview_accordion-address">
                                 <div class="overview_accordion-address-container">
-                                    <h3 class="overview_accordion-address-title">Shipping Address</h3>
+                                    <h3 class="overview_accordion-address-title">{{ t('checkout.shippingAddress') }}</h3>
                                     <address>
                                         Mr John Doe <br>
                                         mail@to.me <br>
-                                        Stree 45 <br>
+                                        Street 45 <br>
                                         12345 City <br>
                                         Germany
                                     </address>
                                 </div>
                                 <div class="overview_accordion-address-container">
-                                    <h3 class="overview_accordion-address-title">Billing Address</h3>
+                                    <h3 class="overview_accordion-address-title">{{ t('checkout.billingAddress') }}</h3>
                                     <address>
                                         Mr John Doe <br>
                                         mail@to.me <br>
-                                        Stree 45 <br>
+                                        Street 45 <br>
                                         12345 City <br>
                                         Germany
                                     </address>
@@ -47,7 +58,7 @@ definePageMeta({
                     <UIAccordion-item>
                         <template #accordion-trigger>
                             <div class="overview_heading">
-                                <span class="links">Products</span>
+                                <span class="links">{{ t('nav.products') }}</span>
                             </div>
                         </template>
                         <template #accordion-content>
@@ -57,7 +68,7 @@ definePageMeta({
                                 </div>
                                 <div class="overview_accordion-products-price">
                                     <span>x2</span>
-                                    <span>75.00$</span>
+                                    <span>{{ formatPrice(75.00) }}</span>
                                 </div>
                             </div>
                         </template>
@@ -67,7 +78,7 @@ definePageMeta({
                     <UIAccordion-item>
                         <template #accordion-trigger>
                             <div class="overview_heading">
-                                <span class="links">Payment</span>
+                                <span class="links">{{ t('checkout.payment') }}</span>
                             </div>
                         </template>
                         <template #accordion-content>
@@ -76,7 +87,7 @@ definePageMeta({
                                     Credit Card
                                 </div>
                                 <div class="overview_accordion-payment-price">
-                                    <span>5.00$</span>
+                                    <span>{{ formatPrice(5.00) }}</span>
                                 </div>
                             </div>
                         </template>
@@ -85,25 +96,25 @@ definePageMeta({
             </div>
             <div class="overview_address">
                 <div class="overview_heading">
-                    <span class="links">Address</span>
+                    <span class="links">{{ t('checkout.address') }}</span>
                 </div>
                 <div class="overview_accordion-address">
                     <div class="overview_accordion-address-container">
-                        <h3 class="overview_accordion-address-title">Shipping Address</h3>
+                        <h3 class="overview_accordion-address-title">{{ t('checkout.shippingAddress') }}</h3>
                         <address>
                             Mr John Doe <br>
                             mail@to.me <br>
-                            Stree 45 <br>
+                            Street 45 <br>
                             12345 City <br>
                             Germany
                         </address>
                     </div>
                     <div class="overview_accordion-address-container">
-                        <h3 class="overview_accordion-address-title">Billing Address</h3>
+                        <h3 class="overview_accordion-address-title">{{ t('checkout.billingAddress') }}</h3>
                         <address>
                             Mr John Doe <br>
                             mail@to.me <br>
-                            Stree 45 <br>
+                            Street 45 <br>
                             12345 City <br>
                             Germany
                         </address>
@@ -112,7 +123,7 @@ definePageMeta({
             </div>
             <div class="overview_product">
                 <div class="overview_heading">
-                    <span class="links">Products</span>
+                    <span class="links">{{ t('nav.products') }}</span>
                 </div>
                 <div class="overview_accordion-products">
                     <div class="overview_accordion-products-name">
@@ -120,33 +131,33 @@ definePageMeta({
                     </div>
                     <div class="overview_accordion-products-price">
                         <span>x2</span>
-                        <span>75.00$</span>
+                        <span>{{ formatPrice(75.00) }}</span>
                     </div>
                 </div>
             </div>
             <div class="overview_payment">
                 <span>Credit Card</span>
-                <span>5.00$</span>
+                <span>{{ formatPrice(5.00) }}</span>
             </div>
             <div class="overview_shipping">
-                <span>Shipping</span>
-                <span>5.00$</span>
+                <span>{{ t('cart.shipping') }}</span>
+                <span>{{ formatPrice(5.00) }}</span>
             </div>
             <div class="overview_total">
-                <span class="overview_total-desc">Total</span>
-                <span class="overview_total-amount">150.00$</span>
+                <span class="overview_total-desc">{{ t('cart.total') }}</span>
+                <span class="overview_total-amount">{{ formatPrice(150.00) }}</span>
             </div>
             <div class="overview_legal">
                 <a class="overview_legal-tt">
                     <svg class="overview_legal-tt_icon">
                         <use href="~/assets/svg/icons.svg#download" />
                     </svg>
-                    <div class="overview_legal-tt-text">Terms & conditions</div>
+                    <div class="overview_legal-tt-text">{{ t('checkout.termsConditions') }}</div>
                 </a>
                 <div class="overview_legal-accept">
                     <label>
                         <input type="checkbox">
-                        <span class="space" />I accept all Terms and Conditions
+                        <span class="space" />{{ t('checkout.acceptTerms') }}
                     </label>
                 </div>
             </div>

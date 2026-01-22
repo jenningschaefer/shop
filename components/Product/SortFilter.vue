@@ -5,7 +5,7 @@
   @license MIT
 -->
 <script setup lang="ts">
-// Sort/Filter component - uses UI Accordion for collapsible sections
+const { t } = useI18n()
 </script>
 
 <template>
@@ -14,13 +14,13 @@
       <UIAccordionItem>
         <template #accordion-trigger>
           <div class="sort-filter_heading">
-            <span class="links">Sort</span>
+            <span class="links">{{ t('productList.sort') }}</span>
           </div>
         </template>
         <template #accordion-content>
           <ul class="sort-filter_list subtitle-small">
-            <li>Price</li>
-            <li>Categories</li>
+            <li>{{ t('productList.sortByPrice') }}</li>
+            <li>{{ t('categories.all') }}</li>
           </ul>
         </template>
       </UIAccordionItem>
@@ -28,21 +28,21 @@
       <UIAccordionItem>
         <template #accordion-trigger>
           <div class="sort-filter_heading">
-            <span class="links">Filter</span>
+            <span class="links">{{ t('productList.filter') }}</span>
           </div>
         </template>
         <template #accordion-content>
           <ul class="sort-filter_list subtitle-small">
-            <li><NuxtLink to="/products/list/chairs">Chair</NuxtLink></li>
-            <li><NuxtLink to="/products/list/tables">Tables</NuxtLink></li>
-            <li><NuxtLink to="/products/list/lighting">Lighting</NuxtLink></li>
+            <li><NuxtLink to="/products/list/chairs">{{ t('categories.chairs') }}</NuxtLink></li>
+            <li><NuxtLink to="/products/list/table">{{ t('categories.table') }}</NuxtLink></li>
+            <li><NuxtLink to="/products/list/lighting">{{ t('categories.lighting') }}</NuxtLink></li>
             <li>
-              <NuxtLink to="/products/list/decoration">Decoration</NuxtLink>
+              <NuxtLink to="/products/list/accessory">{{ t('categories.accessory') }}</NuxtLink>
             </li>
           </ul>
         </template>
       </UIAccordionItem>
     </UIAccordion>
-    <button class="vesta-btn sort-filter_btn" type="button">Apply</button>
+    <button class="vesta-btn sort-filter_btn" type="button">{{ t('common.apply') }}</button>
   </div>
 </template>

@@ -7,7 +7,10 @@
 <script setup lang="ts">
 import type { CartItem } from '~/types'
 
+const { t, locale } = useI18n()
 const cart = useLocalStorage<CartItem[]>('cart', [])
+
+const currencySymbol = computed(() => locale.value === 'de' ? '€' : '$')
 
 function deleteFromCart(id: number): void {
   cart.value = cart.value.filter((el) => el.id !== id)
@@ -24,7 +27,7 @@ const total = computed(() => {
   <div class="order-cart">
     <div class="order-cart_products">
       <p v-if="cart.length === 0" class="order-cart_empty">
-        Your cart is empty
+        {{ t('cart.empty') }}
       </p>
       <ClientOnly>
         <ProductItem
@@ -40,7 +43,7 @@ const total = computed(() => {
               class="vesta-btn"
               @click="deleteFromCart(item.id)"
             >
-              Remove from Cart
+              {{ t('cart.remove') }}
             </button>
           </template>
         </ProductItem>
@@ -48,12 +51,12 @@ const total = computed(() => {
     </div>
     <div class="order-cart_checkout">
       <div class="order-cart_checkout_total">
-        <span>Total</span>
-        <span>{{ total }} $</span>
+        <span>{{ t('cart.total') }}</span>
+        <span>{{ total }} {{ currencySymbol }}</span>
       </div>
       <NuxtLink to="/checkout/address">
         <button type="button" class="order-cart_checkout_button vesta-btn">
-          Buy
+          {{ t('cart.checkout') }}
         </button>
       </NuxtLink>
     </div>

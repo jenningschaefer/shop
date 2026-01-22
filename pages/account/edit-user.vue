@@ -1,7 +1,9 @@
-<script setup>
+<script setup lang="ts">
+const { t } = useI18n()
+
 definePageMeta({
     layout: 'account',
-});
+})
 </script>
 
 <template>
@@ -12,7 +14,7 @@ definePageMeta({
                     <svg class="account-link_icon">
                         <use href="~/assets/svg/icons.svg#user" />
                     </svg>
-                    <div class="account-link_name">User Data</div>
+                    <div class="account-link_name">{{ t('account.profile') }}</div>
                     <svg class="account-link_icon">
                         <use href="~/assets/svg/icons.svg#arrow-left" />
                     </svg>
@@ -28,24 +30,21 @@ definePageMeta({
                         <option value="2">Mrs</option>
                         <option value="3">None</option>
                     </select>
-                    <input class="" type="text" placeholder="First Name">
-                    <input class="" type="text" placeholder="Name">
-                    <input class="" type="email" placeholder="E-Mail Address">
+                    <input class="" type="text" :placeholder="t('address.firstName')">
+                    <input class="" type="text" :placeholder="t('address.lastName')">
+                    <input class="" type="email" :placeholder="t('auth.email')">
                     <input class="" type="text" placeholder="Birthdate">
                     <select>
-                        <option value="" disabled selected>Language</option>
-                        <option value="1">German</option>
+                        <option value="" disabled selected>{{ t('common.language') }}</option>
+                        <option value="1">Deutsch</option>
                         <option value="2">English</option>
-                        <option value="3">Korean</option>
-                        <option value="4">Japanese</option>
                     </select>
-                    <!-- TODO Vorwahl + Phone -->
                 </div>
                 <div class="account-user_form-buttons">
                     <NuxtLink to="/account" class="">
-                        <button class="vesta-btn" type="button">Save</button>
+                        <button class="vesta-btn" type="button">{{ t('common.save') }}</button>
                     </NuxtLink>
-                    <button class="vesta-btn" type="button">Discard Changes</button>
+                    <button class="vesta-btn" type="button">{{ t('common.cancel') }}</button>
                 </div>
             </form>
         </div>

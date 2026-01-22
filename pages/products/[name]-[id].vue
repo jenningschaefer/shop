@@ -8,6 +8,7 @@
 import type { Product, CartItem } from '~/types'
 
 const route = useRoute()
+const { t } = useI18n()
 const cart = useLocalStorage<CartItem[]>('cart', [])
 
 const product = ref<Product | undefined>(undefined)
@@ -32,7 +33,7 @@ function addToCart(): void {
       id: product.value.id,
       name: product.value.name,
       img: product.value.img,
-      price: parseFloat(product.value.price_us),
+      price: parseFloat(product.value.price),
       amount: 1,
     })
   }
@@ -44,8 +45,8 @@ function addToCart(): void {
 <template>
   <div v-if="product" class="product">
     <div class="product_details-mobile">
-      <div>by {{ product.designer }}</div>
-      <div>{{ product.price_us }}$</div>
+      <div>{{ t('product.designer') }}: {{ product.designer }}</div>
+      <div>{{ product.price }} {{ product.currency }}</div>
     </div>
     <div class="product_description">
       <h1 class="product_description-title">{{ product.name }}</h1>
@@ -59,7 +60,7 @@ function addToCart(): void {
           <UIAccordionItem>
             <template #accordion-trigger>
               <div class="sort-filter_heading">
-                <span class="links">Description</span>
+                <span class="links">{{ t('product.description') }}</span>
               </div>
             </template>
             <template #accordion-content>
@@ -69,7 +70,7 @@ function addToCart(): void {
           <UIAccordionItem>
             <template #accordion-trigger>
               <div class="sort-filter_heading">
-                <span class="links">Specification</span>
+                <span class="links">{{ t('product.specifications') }}</span>
               </div>
             </template>
             <template #accordion-content>
@@ -80,16 +81,16 @@ function addToCart(): void {
         </UIAccordion>
       </div>
       <div class="product_description-add">
-        <div class="product_description-add-desc">by {{ product.designer }}</div>
-        <div class="product_description-add-desc">{{ product.price_us }}$</div>
+        <div class="product_description-add-desc">{{ t('product.designer') }}: {{ product.designer }}</div>
+        <div class="product_description-add-desc">{{ product.price }} {{ product.currency }}</div>
         <button class="vesta-btn" type="button" @click="addToCart">
-          Add to Cart
+          {{ t('product.addToCart') }}
         </button>
       </div>
     </div>
   </div>
   <UISidenav v-model="openCart">
-    <template #title>Cart</template>
+    <template #title>{{ t('nav.cart') }}</template>
     <template #content>
       <OrderCart />
     </template>

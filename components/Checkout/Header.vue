@@ -38,7 +38,7 @@ const isConfirmationPage = computed(() => route.name === 'checkout-confirmation'
     </svg>
   </div>
   <UISidenav v-model="openMenu">
-    <template #title>Menu</template>
+    <template #title>{{ $t('nav.menu') }}</template>
     <template #content>
       <MenuCheckout />
     </template>

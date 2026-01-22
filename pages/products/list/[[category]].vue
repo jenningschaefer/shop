@@ -1,9 +1,13 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { useProducts } from '~/composables/useProducts'
+import { computed } from 'vue'
+import { useProductsRaw } from '~/composables/useProducts'
+import { localizeProducts } from '~/composables/useLocale'
 import { useLocalStorage } from '@vueuse/core'
+import type { Locale } from '~/types'
 
-const products = ref(useProducts())
+const { locale } = useI18n()
+const rawProducts = useProductsRaw()
+const products = computed(() => localizeProducts(rawProducts, locale.value as Locale))
 
 definePageMeta({
     layout: 'products',
@@ -36,13 +40,13 @@ function isFavorite(id: number): boolean {
                 <svg class="list-content_settings_icon">
                     <use href="~/assets/svg/icons.svg#sort" />
                 </svg>
-                <span>Sort</span>
+                <span>{{ $t('productList.sort') }}</span>
             </div>
             <div class="list-content_settings_item">
                 <svg class="list-content_settings_icon">
                     <use href="~/assets/svg/icons.svg#filter" />
                 </svg>
-                <span>Filter</span>
+                <span>{{ $t('productList.filter') }}</span>
             </div>
         </div>
         <div class="list-content_container">

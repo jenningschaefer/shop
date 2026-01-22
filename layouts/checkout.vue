@@ -6,16 +6,17 @@
 -->
 <script setup lang="ts">
 const route = useRoute()
+const { t } = useI18n()
 
 const isConfirmationPage = computed(() => route.name === 'checkout-confirmation')
 const pageTitle = computed(() => {
   switch (route.name) {
     case 'checkout-address':
-      return 'Address'
+      return t('checkout.address')
     case 'checkout-payment':
-      return 'Payment'
+      return t('checkout.payment')
     case 'checkout-overview':
-      return 'Overview'
+      return t('checkout.overview')
     default:
       return ''
   }

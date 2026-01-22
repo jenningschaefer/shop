@@ -1,7 +1,9 @@
-<script setup>
+<script setup lang="ts">
+const { t } = useI18n()
+
 definePageMeta({
     layout: 'account',
-});
+})
 </script>
 
 <template>
@@ -12,7 +14,7 @@ definePageMeta({
                     <svg class="account-link_icon">
                         <use href="~/assets/svg/icons.svg#password" />
                     </svg>
-                    <div class="account-link_name">Password</div>
+                    <div class="account-link_name">{{ t('account.changePassword') }}</div>
                     <svg class="account-link_icon">
                         <use href="~/assets/svg/icons.svg#arrow-left" />
                     </svg>
@@ -22,18 +24,15 @@ definePageMeta({
         <div class="account-password_form">
             <form action="">
                 <div class="account-password_form-group">
-                    <input class="" type="password" placeholder="Password">
-                    <input class="" type="password" placeholder="Confirm Password">
-                    <p>
-                        Your password must have at least 8 characters with one number, one upper and one
-                        lower case letter and one special character.
-                    </p>
+                    <input class="" type="password" :placeholder="t('auth.password')">
+                    <input class="" type="password" :placeholder="t('auth.confirmPassword')">
+                    <p>{{ t('auth.passwordRequirements') }}</p>
                 </div>
                 <div class="account-password_form-buttons">
                     <NuxtLink to="/account" class="">
-                        <button class="vesta-btn" type="button">Save</button>
+                        <button class="vesta-btn" type="button">{{ t('common.save') }}</button>
                     </NuxtLink>
-                    <button class="vesta-btn" type="button">Discard Changes</button>
+                    <button class="vesta-btn" type="button">{{ t('common.cancel') }}</button>
                 </div>
             </form>
         </div>

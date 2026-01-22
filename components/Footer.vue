@@ -5,7 +5,7 @@
   @license MIT
 -->
 <script setup lang="ts">
-// Footer component - no specific logic needed
+const { t } = useI18n()
 </script>
 
 <template>
@@ -13,13 +13,13 @@
     <div class="footer_link-container">
       <div class="footer_links">
         <NuxtLink to="/" class="footer_links_link">
-          <p class="links">Service</p>
+          <p class="links">{{ t('footer.service') }}</p>
           <svg class="footer_links_link_icon">
             <use href="~/assets/svg/icons.svg#link" />
           </svg>
         </NuxtLink>
         <NuxtLink to="/" class="footer_links_link">
-          <p class="links">Legal</p>
+          <p class="links">{{ t('footer.legal') }}</p>
           <svg class="footer_links_link_icon">
             <use href="~/assets/svg/icons.svg#link" />
           </svg>
@@ -27,7 +27,7 @@
       </div>
       <div class="footer_links">
         <NuxtLink to="/" class="footer_links_link">
-          <p class="links">Payment</p>
+          <p class="links">{{ t('footer.payment') }}</p>
           <svg class="footer_links_link_icon">
             <use href="~/assets/svg/icons.svg#link" />
           </svg>
@@ -41,12 +41,12 @@
       </div>
     </div>
     <div class="footer_newsletter">
-      <div class="subtitle-big">Join Our Newsletter</div>
+      <div class="subtitle-big">{{ t('footer.newsletter') }}</div>
       <div class="footer_newsletter_input">
         <input
           class="input-dark input-newsletter"
           type="text"
-          placeholder="E-Mail Address"
+          :placeholder="t('footer.emailPlaceholder')"
         />
         <a>
           <svg class="footer_links_link_icon">
@@ -55,9 +55,7 @@
         </a>
       </div>
       <div class="footer_newsletter_disclaimer">
-        <small>
-          *Alle Preise inkl. Mwst., zzgl. anfallender Versand- und Lieferkosten.
-        </small>
+        <small>{{ t('footer.disclaimer') }}</small>
       </div>
     </div>
   </div>

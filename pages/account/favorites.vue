@@ -1,29 +1,24 @@
-<script setup>
-const favorite = useLocalStorage("favorite", []);
-const cart = useLocalStorage("cart", []);
+<script setup lang="ts">
+const { t } = useI18n()
+const favorite = useLocalStorage("favorite", [])
+const cart = useLocalStorage("cart", [])
 
 definePageMeta({
     layout: 'account',
-});
+})
 
-const addToCart = (id) => {
-    if (!(cart.value.some((obj) => obj.id === id))) {
+const addToCart = (id: number) => {
+    if (!(cart.value.some((obj: { id: number }) => obj.id === id))) {
         cart.value.push({
             "id": id,
             "amount": 1,
-        });
-        alert('Added to Cart.');
-    } else {
-        alert('Already in Cart.');
+        })
     }
-    /* TODO: Question: Should i delete in Favs after adding? */
-};
+}
 
-const delteFromFavs = (id) => {
-    favorite.value = favorite.value.filter((el) => el.id != id);
-    alert('Removed from FAvorites');
-};
-
+const deleteFromFavs = (id: number) => {
+    favorite.value = favorite.value.filter((el: { id: number }) => el.id !== id)
+}
 </script>
 
 <template>
@@ -34,7 +29,7 @@ const delteFromFavs = (id) => {
                     <svg class="account-link_icon">
                         <use href="~/assets/svg/icons.svg#heart" />
                     </svg>
-                    <div class="account-link_name">Favorites</div>
+                    <div class="account-link_name">{{ t('account.favorites') }}</div>
                     <svg class="account-link_icon">
                         <use href="~/assets/svg/icons.svg#arrow-left" />
                     </svg>
@@ -42,18 +37,21 @@ const delteFromFavs = (id) => {
             </NuxtLink>
         </div>
         <div class="account-favorites_products">
-            <!-- TODO: no products in Favorites message -->
+            <p v-if="favorite.length === 0" class="order-cart_empty">
+                {{ t('favorites.empty') }}
+            </p>
             <ClientOnly>
-                <productItem v-for="item in favorite" :key="item.id" :item="item" :isFavorite="true"
+                <ProductItem v-for="item in favorite" :key="item.id" :item="item" :is-favorite="true"
                     class="account-favorites_products_product">
-                    <!-- TODO: emit amount -->
                     <template #buttons>
-                        <button type="button" class="vesta-btn" @click="addToCart(item.id)">Add To
-                            Cart</button>
-                        <button type="button" class="vesta-btn" @click="delteFromFavs(item.id)">Remove from
-                            Favorites</button>
+                        <button type="button" class="vesta-btn" @click="addToCart(item.id)">
+                            {{ t('product.addToCart') }}
+                        </button>
+                        <button type="button" class="vesta-btn" @click="deleteFromFavs(item.id)">
+                            {{ t('product.removeFromFavorites') }}
+                        </button>
                     </template>
-                </productItem>
+                </ProductItem>
             </ClientOnly>
         </div>
     </div>

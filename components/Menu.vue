@@ -5,32 +5,32 @@
   @license MIT
 -->
 <script setup lang="ts">
-// Menu component - static navigation links
+const { t } = useI18n()
 </script>
 
 <template>
   <div class="menu">
     <div class="menu_links">
       <NuxtLink to="/products/list/chairs" class="menu_links_link">
-        <p>Chairs</p>
+        <p>{{ t('categories.chairs') }}</p>
         <svg class="menu_links_link_icon">
           <use href="~/assets/svg/icons.svg#link" />
         </svg>
       </NuxtLink>
-      <NuxtLink to="/products/list/tables" class="menu_links_link">
-        <p>Tables</p>
+      <NuxtLink to="/products/list/table" class="menu_links_link">
+        <p>{{ t('categories.table') }}</p>
         <svg class="menu_links_link_icon">
           <use href="~/assets/svg/icons.svg#link" />
         </svg>
       </NuxtLink>
       <NuxtLink to="/products/list/lighting" class="menu_links_link">
-        <p>Lighting</p>
+        <p>{{ t('categories.lighting') }}</p>
         <svg class="menu_links_link_icon">
           <use href="~/assets/svg/icons.svg#link" />
         </svg>
       </NuxtLink>
-      <NuxtLink to="/products/list/decoration" class="menu_links_link">
-        <p>Decoration</p>
+      <NuxtLink to="/products/list/accessory" class="menu_links_link">
+        <p>{{ t('categories.accessory') }}</p>
         <svg class="menu_links_link_icon">
           <use href="~/assets/svg/icons.svg#link" />
         </svg>
@@ -38,12 +38,12 @@
     </div>
     <div class="menu_bottom">
       <div class="menu_bottom_newsletter">
-        <div class="subtitle-big">Join Our Newsletter</div>
+        <div class="subtitle-big">{{ t('footer.newsletter') }}</div>
         <div class="menu_bottom_newsletter_input">
           <input
             class="input-newsletter"
             type="text"
-            placeholder="E-Mail Address"
+            :placeholder="t('footer.emailPlaceholder')"
           />
           <a>
             <svg class="menu_bottom_newsletter_icon">
@@ -52,7 +52,7 @@
           </a>
         </div>
       </div>
-      <NuxtLink to="/products/list/chairs" class="menu_links_link">
+      <NuxtLink to="/products/list" class="menu_links_link">
         <p>DESIGN</p>
         <svg class="menu_links_link_icon">
           <use href="~/assets/svg/icons.svg#link" />

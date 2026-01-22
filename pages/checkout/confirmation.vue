@@ -1,4 +1,6 @@
-<script setup>
+<script setup lang="ts">
+const { t } = useI18n()
+
 definePageMeta({
     layout: 'checkout',
 });
@@ -18,10 +20,10 @@ definePageMeta({
                 <svg class="confirmation_success_panel-icon">
                     <use href="~/assets/svg/icons.svg#check" />
                 </svg>
-                <div class="confirmation_success_panel-title">Success!!</div>
-                <div class="confirmation_success_panel-text">Your Order has<br> been confirmed</div>
+                <div class="confirmation_success_panel-title">{{ t('checkout.orderPlaced') }}</div>
+                <div class="confirmation_success_panel-text">{{ t('checkout.thankYou') }}</div>
                 <NuxtLink to="/" class="confirmation_success_panel-button">
-                    <button class="dark-btn-socondary confirmation_success_panel-button" type="button">home</button>
+                    <button class="dark-btn-socondary confirmation_success_panel-button" type="button">{{ t('nav.home') }}</button>
                 </NuxtLink>
             </div>
         </div>

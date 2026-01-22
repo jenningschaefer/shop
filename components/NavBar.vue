@@ -7,6 +7,7 @@
 <script setup lang="ts">
 const router = useRouter()
 const route = useRoute()
+const { t, locale, setLocale } = useI18n()
 
 const openMenu = ref(false)
 const openCart = ref(false)
@@ -16,6 +17,10 @@ const isProductPage = computed(() => route.name === 'products-name-id')
 const isAccountPage = computed(() =>
   String(route.name ?? '').includes('account')
 )
+
+function toggleLocale(): void {
+  setLocale(locale.value === 'de' ? 'en' : 'de')
+}
 </script>
 
 <template>
@@ -35,9 +40,12 @@ const isAccountPage = computed(() =>
           </a>
         </template>
         <template v-else>
-          <a>
-            <svg class="subNav_icon">
+          <a @click="toggleLocale" :title="locale === 'de' ? 'Switch to English' : 'Auf Deutsch wechseln'">
+            <svg v-if="locale === 'de'" class="subNav_icon subNav_icon--lang">
               <use href="~/assets/svg/icons.svg#lang-de" />
+            </svg>
+            <svg v-else class="subNav_icon subNav_icon--lang">
+              <use href="~/assets/svg/icons.svg#lang-en" />
             </svg>
           </a>
         </template>
@@ -58,7 +66,7 @@ const isAccountPage = computed(() =>
         </NuxtLink>
       </div>
       <div class="navBar_menu">
-        <a @click="openMenu = true">menu</a>
+        <a @click="openMenu = true">{{ t('nav.menu') }}</a>
       </div>
     </div>
     <div v-if="!isAccountPage" class="subNav">
@@ -70,9 +78,12 @@ const isAccountPage = computed(() =>
         </a>
       </template>
       <template v-else>
-        <a>
-          <svg class="subNav_icon">
+        <a @click="toggleLocale" :title="locale === 'de' ? 'Switch to English' : 'Auf Deutsch wechseln'">
+          <svg v-if="locale === 'de'" class="subNav_icon subNav_icon--lang">
             <use href="~/assets/svg/icons.svg#lang-de" />
+          </svg>
+          <svg v-else class="subNav_icon subNav_icon--lang">
+            <use href="~/assets/svg/icons.svg#lang-en" />
           </svg>
         </a>
       </template>
@@ -94,19 +105,19 @@ const isAccountPage = computed(() =>
     </div>
   </div>
   <UISidenav v-model="openMenu">
-    <template #title>Menu</template>
+    <template #title>{{ t('nav.menu') }}</template>
     <template #content>
       <Menu />
     </template>
   </UISidenav>
   <UISidenav v-model="openCart">
-    <template #title>Cart</template>
+    <template #title>{{ t('nav.cart') }}</template>
     <template #content>
       <OrderCart />
     </template>
   </UISidenav>
   <UISidenav v-model="openFavorites">
-    <template #title>Favorites</template>
+    <template #title>{{ t('nav.favorites') }}</template>
     <template #content>
       <OrderFavorites />
     </template>

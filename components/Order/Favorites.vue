@@ -7,6 +7,7 @@
 <script setup lang="ts">
 import type { CartItem } from '~/types'
 
+const { t } = useI18n()
 const favorites = useLocalStorage<CartItem[]>('favorite', [])
 const cart = useLocalStorage<CartItem[]>('cart', [])
 
@@ -35,7 +36,7 @@ function addToCart(id: number): void {
   <div class="order-cart">
     <div class="order-cart_products">
       <p v-if="favorites.length === 0" class="order-cart_empty">
-        No favorites yet
+        {{ t('favorites.empty') }}
       </p>
       <ClientOnly>
         <ProductItem
@@ -47,14 +48,14 @@ function addToCart(id: number): void {
         >
           <template #buttons>
             <button type="button" class="vesta-btn" @click="addToCart(item.id)">
-              Add To Cart
+              {{ t('product.addToCart') }}
             </button>
             <button
               type="button"
               class="vesta-btn"
               @click="deleteFromFavorites(item.id)"
             >
-              Remove from Favorites
+              {{ t('product.removeFromFavorites') }}
             </button>
           </template>
         </ProductItem>

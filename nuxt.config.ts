@@ -12,12 +12,29 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     '@nuxt/eslint',
     '@pinia/nuxt',
+    '@nuxtjs/i18n',
   ],
+
+  i18n: {
+    locales: [
+      { code: 'de', name: 'Deutsch', file: 'de.json' },
+      { code: 'en', name: 'English', file: 'en.json' },
+    ],
+    defaultLocale: 'de',
+    langDir: 'locales',
+    strategy: 'no_prefix',
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: 'shop-locale',
+      fallbackLocale: 'de',
+    },
+  },
 
   css: ['~/assets/SCSS/main.scss'],
 
   image: {
     provider: 'ipx',
+    dir: 'public',
   },
 
   devtools: { enabled: true },

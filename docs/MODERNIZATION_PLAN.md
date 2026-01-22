@@ -12,11 +12,12 @@
 | Phase 2: TypeScript Migration | ✅ Complete | 2026-01-22 |
 | Phase 3: Service Layer | ✅ Complete | 2026-01-22 |
 | Phase 4: Pinia State Management | ✅ Complete | 2026-01-22 |
+| Phase 5: Internationalization (i18n) | ✅ Complete | 2026-01-22 |
 | Phase 5: i18n | ⏳ Pending | - |
 | Phase 6: Testing | ⏳ Pending | - |
 | Phase 7: Polish & CI/CD | ⏳ Pending | - |
 
-**Current Phase**: 4 → 5  
+**Current Phase**: 5 → 6  
 **Started**: 2026-01-22  
 **Estimated Completion**: ~25-35 hours total
 
@@ -279,25 +280,44 @@ export default defineNuxtConfig({
 })
 ```
 
-### 5.2 Translation Files
+### 5.2 Translation Files ✅
 
 ```text
 /locales/
-  de.json
-  en.json
+  de.json    # German translations (default)
+  en.json    # English translations
 ```
 
-### 5.3 Content to Translate
+### 5.3 Content Translated ✅
 
-- [ ] Navigation & UI elements
-- [ ] Product categories
-- [ ] Form labels & validation messages
-- [ ] Error messages
-- [ ] Checkout flow
-- [ ] Account pages
-- [ ] Footer content
+- [x] Navigation & UI elements
+- [x] Product categories
+- [x] Form labels & validation messages
+- [x] Error messages
+- [x] Checkout flow
+- [x] Account pages
+- [x] Footer content
+- [x] Disclaimer
 
-### 5.4 Component Migration
+### 5.4 Product Data i18n ✅
+
+Products now have localized fields in `data/products.json`:
+
+- `name_de` / `name_en` - Product name
+- `description_de` / `description_en` - Description
+- `features_de` / `features_en` - Features array
+- `spec_title_de` / `spec_title_en` - Spec title
+- `spec_text_de` / `spec_text_en` - Spec text
+- `price_eur` / `price_usd` - Localized pricing
+
+### 5.5 Locale Composables ✅
+
+- `useCurrentLocale()` - Get current locale
+- `localizeProduct()` - Localize single product
+- `localizeProducts()` - Localize product array
+- `formatPrice()` - Format price with currency
+
+### 5.6 Component Migration ✅
 
 ```vue
 <!-- Before -->
@@ -306,6 +326,8 @@ export default defineNuxtConfig({
 <!-- After -->
 <span>{{ $t('cart.addToCart') }}</span>
 ```
+
+Language switcher in NavBar toggles between DE/EN.
 
 ---
 
@@ -442,12 +464,13 @@ Add to all source files (see STANDARDS.md):
 - [x] 4.3 Migrate state
 - [x] 4.4 Components migration
 
-### Phase 5
+### Phase 5 ✅
 
-- [ ] 5.1 i18n setup
-- [ ] 5.2 Translation files
-- [ ] 5.3 Migrate content
-- [ ] 5.4 Migrate components
+- [x] 5.1 i18n setup
+- [x] 5.2 Translation files (de.json, en.json)
+- [x] 5.3 Product data i18n
+- [x] 5.4 Migrate components
+- [x] 5.5 Language switcher
 
 ### Phase 6
 

@@ -47,6 +47,6 @@ function handleFavorite(): void {
       />
     </div>
     <div class="product-card_name">{{ product.name }}</div>
-    <div class="product-card_price">{{ product.price_us }} $</div>
+    <div class="product-card_price">{{ product.price }} {{ product.currency }}</div>
   </div>
 </template>

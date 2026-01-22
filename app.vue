@@ -8,6 +8,7 @@
 import { computed } from 'vue'
 import { useLocalStorage } from '@vueuse/core'
 
+const { t } = useI18n()
 const disclaimerAccepted = useLocalStorage('shop-disclaimer', false)
 
 const showDisclaimer = computed({
@@ -23,15 +24,10 @@ const showDisclaimer = computed({
     </NuxtLayout>
   </div>
   <UIDialog v-model="showDisclaimer">
-    <template #title>Disclaimer</template>
+    <template #title>{{ t('disclaimer.title') }}</template>
     <template #content>
-      <p>
-        This website is a portfolio project and not a real online store. All
-        products, prices, and transactions displayed are fictional and exist
-        solely to showcase my front-end development skills. No actual purchases
-        can be made through this site.
-      </p>
-      <p>If you're interested in my work, feel free to reach out!</p>
+      <p>{{ t('disclaimer.text1') }}</p>
+      <p>{{ t('disclaimer.text2') }}</p>
     </template>
   </UIDialog>
 </template>

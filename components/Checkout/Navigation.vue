@@ -6,6 +6,7 @@
 -->
 <script setup lang="ts">
 const route = useRoute()
+const { t } = useI18n()
 
 function getNextRoute(): string {
   switch (route.name) {
@@ -36,11 +37,11 @@ const isOverviewPage = computed(() => route.name === 'checkout-overview')
   <div class="checkout-navigation">
     <div class="checkout-navigation_button">
       <NuxtLink :to="getPreviousRoute()" class="checkout-navigation_button-prev">
-        <button class="vesta-btn-secondary" type="button">PREV</button>
+        <button class="vesta-btn-secondary" type="button">{{ t('common.back') }}</button>
       </NuxtLink>
       <NuxtLink :to="getNextRoute()">
         <button class="vesta-btn" type="button">
-          {{ isOverviewPage ? 'BUY' : 'NEXT' }}
+          {{ isOverviewPage ? t('checkout.placeOrder') : t('common.next') }}
         </button>
       </NuxtLink>
     </div>

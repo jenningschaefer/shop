@@ -5,6 +5,8 @@
   @license MIT
 -->
 <script setup lang="ts">
+const { t } = useI18n()
+
 useHead({
   title: 'Shop',
 })
@@ -26,25 +28,25 @@ useHead({
     <!-- categories -->
     <div class="home_categories">
       <NuxtLink to="/products/list/chairs" class="home_categories_link">
-        <p class="links">Chairs</p>
+        <p class="links">{{ t('categories.chairs') }}</p>
         <svg class="home_categories_link_icon">
           <use href="~/assets/svg/icons.svg#link" />
         </svg>
       </NuxtLink>
       <NuxtLink to="/products/list/lighting" class="home_categories_link">
-        <p class="links">Lighting</p>
+        <p class="links">{{ t('categories.lighting') }}</p>
         <svg class="home_categories_link_icon">
           <use href="~/assets/svg/icons.svg#link" />
         </svg>
       </NuxtLink>
-      <NuxtLink to="/products/list/tables" class="home_categories_link">
-        <p class="links">Tables</p>
+      <NuxtLink to="/products/list/table" class="home_categories_link">
+        <p class="links">{{ t('categories.table') }}</p>
         <svg class="home_categories_link_icon">
           <use href="~/assets/svg/icons.svg#link" />
         </svg>
       </NuxtLink>
-      <NuxtLink to="/products/list/decoration" class="home_categories_link">
-        <p class="links">Decoration</p>
+      <NuxtLink to="/products/list/accessory" class="home_categories_link">
+        <p class="links">{{ t('categories.accessory') }}</p>
         <svg class="home_categories_link_icon">
           <use href="~/assets/svg/icons.svg#link" />
         </svg>

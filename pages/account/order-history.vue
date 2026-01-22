@@ -1,9 +1,10 @@
-<script setup>
-const orders = useOrdersByUser(1);
+<script setup lang="ts">
+const { t } = useI18n()
+const orders = useOrdersByUser(1)
 
 definePageMeta({
     layout: 'account',
-});
+})
 </script>
 
 <template>
@@ -14,7 +15,7 @@ definePageMeta({
                     <svg class="account-link_icon">
                         <use href="~/assets/svg/icons.svg#history" />
                     </svg>
-                    <div class="account-link_name">History</div>
+                    <div class="account-link_name">{{ t('account.orderHistory') }}</div>
                     <svg class="account-link_icon">
                         <use href="~/assets/svg/icons.svg#arrow-left" />
                     </svg>

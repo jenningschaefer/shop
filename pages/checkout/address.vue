@@ -1,4 +1,6 @@
-<script setup>
+<script setup lang="ts">
+const { t } = useI18n()
+
 definePageMeta({
     layout: 'checkout',
 });
@@ -6,45 +8,43 @@ definePageMeta({
 
 <template>
     <div class="address">
-        <h1 class="checkout_title">Address</h1>
+        <h1 class="checkout_title">{{ t('checkout.address') }}</h1>
         <div class="address-container">
             <UIAddress-tabs>
-                <UIAddress-item active="true" title="Shipping">
-                    <template #heading>Shipping</template>
+                <UIAddress-item active="true" :title="t('checkout.shippingAddress')">
+                    <template #heading>{{ t('checkout.shippingAddress') }}</template>
                     <template #content>
                         <form action="">
                             <div class="login_forms-group">
-                                <input class="" type="text" placeholder="First Name">
-                                <input class="" type="text" placeholder="Name">
-                                <input class="" type="email" placeholder="E-Mail Address">
-                                <input class="" type="text" placeholder="Country">
-                                <input class="" type="text" placeholder="Street">
+                                <input class="" type="text" :placeholder="t('address.firstName')">
+                                <input class="" type="text" :placeholder="t('address.lastName')">
+                                <input class="" type="email" :placeholder="t('auth.email')">
+                                <input class="" type="text" :placeholder="t('address.country')">
+                                <input class="" type="text" :placeholder="t('address.street')">
                                 <input class="" type="text" placeholder="House No.">
-                                <input class="" type="text" placeholder="Zip Code">
-                                <input class="" type="text" placeholder="City">
-                                <!-- TODO Vorwahl + Phone -->
+                                <input class="" type="text" :placeholder="t('address.zip')">
+                                <input class="" type="text" :placeholder="t('address.city')">
                             </div>
                         </form>
                     </template>
                 </UIAddress-item>
-                <UIAddress-item title="Billing">
-                    <template #heading>Billing</template>
+                <UIAddress-item :title="t('checkout.billingAddress')">
+                    <template #heading>{{ t('checkout.billingAddress') }}</template>
                     <template #content>
                         <form action="">
                             <div class="login_forms-group">
                                 <label>
                                     <input type="checkbox">
-                                    Same as Billing
+                                    {{ t('checkout.sameAsShipping') }}
                                 </label>
-                                <input class="" type="text" placeholder="First Name">
-                                <input class="" type="text" placeholder="Name">
-                                <input class="" type="email" placeholder="E-Mail Address">
-                                <input class="" type="text" placeholder="Country">
-                                <input class="" type="text" placeholder="Street">
-                                <input class="" type="text" placeholder="House No.">
-                                <input class="" type="text" placeholder="Zip Code">
-                                <input class="" type="text" placeholder="City">
-                                <!-- TODO Vorwahl + Phone -->
+                                <input class="" type="text" :placeholder="t('address.firstName')">
+                                <input class="" type="text" :placeholder="t('address.lastName')">
+                                <input class="" type="email" :placeholder="t('auth.email')">
+                                <input class="" type="text" :placeholder="t('address.country')">
+                                <input class="" type="text" :placeholder="t('address.street')">
+                                <input class="" type="text" :placeholder="t('checkout.houseNo')">
+                                <input class="" type="text" :placeholder="t('address.zip')">
+                                <input class="" type="text" :placeholder="t('address.city')">
                             </div>
                         </form>
                     </template>

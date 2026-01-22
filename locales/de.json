@@ -1,0 +1,147 @@
+{
+  "common": {
+    "language": "Sprache",
+    "currency": "EUR",
+    "currencySymbol": "€",
+    "loading": "Laden...",
+    "error": "Fehler",
+    "save": "Speichern",
+    "cancel": "Abbrechen",
+    "delete": "Löschen",
+    "edit": "Bearbeiten",
+    "back": "Zurück",
+    "next": "Weiter",
+    "submit": "Absenden",
+    "close": "Schließen",
+    "search": "Suchen",
+    "apply": "Anwenden",
+    "reset": "Zurücksetzen"
+  },
+  "nav": {
+    "home": "Startseite",
+    "products": "Produkte",
+    "account": "Konto",
+    "cart": "Warenkorb",
+    "favorites": "Favoriten",
+    "login": "Anmelden",
+    "logout": "Abmelden",
+    "menu": "Menü"
+  },
+  "categories": {
+    "all": "Alle",
+    "chairs": "Stühle",
+    "table": "Tische",
+    "lighting": "Beleuchtung",
+    "accessory": "Dekoration"
+  },
+  "product": {
+    "designer": "Designer",
+    "price": "Preis",
+    "features": "Eigenschaften",
+    "description": "Beschreibung",
+    "specifications": "Spezifikationen",
+    "addToCart": "In den Warenkorb",
+    "addToFavorites": "Zu Favoriten hinzufügen",
+    "removeFromFavorites": "Aus Favoriten entfernen",
+    "inStock": "Auf Lager",
+    "outOfStock": "Nicht verfügbar"
+  },
+  "productList": {
+    "title": "Produkte",
+    "sort": "Sortieren",
+    "filter": "Filtern",
+    "sortByPrice": "Nach Preis",
+    "sortByName": "Nach Name",
+    "noProducts": "Keine Produkte gefunden"
+  },
+  "cart": {
+    "title": "Warenkorb",
+    "empty": "Ihr Warenkorb ist leer",
+    "subtotal": "Zwischensumme",
+    "shipping": "Versand",
+    "freeShipping": "Kostenloser Versand",
+    "total": "Gesamt",
+    "checkout": "Zur Kasse",
+    "continueShopping": "Weiter einkaufen",
+    "remove": "Entfernen",
+    "freeShippingMessage": "Kostenloser Versand ab {amount} €",
+    "amountUntilFreeShipping": "Noch {amount} € bis zum kostenlosen Versand"
+  },
+  "checkout": {
+    "title": "Kasse",
+    "address": "Adresse",
+    "payment": "Zahlung",
+    "overview": "Übersicht",
+    "confirmation": "Bestätigung",
+    "shippingAddress": "Lieferadresse",
+    "billingAddress": "Rechnungsadresse",
+    "sameAsShipping": "Wie Lieferadresse",
+    "placeOrder": "Bestellung aufgeben",
+    "orderPlaced": "Bestellung aufgegeben",
+    "thankYou": "Vielen Dank für Ihre Bestellung!"
+  },
+  "account": {
+    "title": "Mein Konto",
+    "overview": "Übersicht",
+    "orders": "Bestellungen",
+    "orderHistory": "Bestellverlauf",
+    "addresses": "Adressen",
+    "settings": "Einstellungen",
+    "profile": "Profil",
+    "editProfile": "Profil bearbeiten",
+    "changePassword": "Passwort ändern",
+    "favorites": "Favoriten"
+  },
+  "order": {
+    "orderNumber": "Bestellnummer",
+    "date": "Datum",
+    "status": "Status",
+    "items": "Artikel",
+    "total": "Gesamt",
+    "details": "Details",
+    "pending": "Ausstehend",
+    "processing": "In Bearbeitung",
+    "shipped": "Versendet",
+    "delivered": "Geliefert",
+    "cancelled": "Storniert"
+  },
+  "address": {
+    "firstName": "Vorname",
+    "lastName": "Nachname",
+    "street": "Straße",
+    "city": "Stadt",
+    "zip": "PLZ",
+    "country": "Land",
+    "phone": "Telefon",
+    "default": "Standard",
+    "setAsDefault": "Als Standard festlegen"
+  },
+  "auth": {
+    "login": "Anmelden",
+    "register": "Registrieren",
+    "email": "E-Mail",
+    "password": "Passwort",
+    "confirmPassword": "Passwort bestätigen",
+    "forgotPassword": "Passwort vergessen?",
+    "noAccount": "Noch kein Konto?",
+    "hasAccount": "Bereits ein Konto?"
+  },
+  "footer": {
+    "service": "Service",
+    "legal": "Rechtliches",
+    "payment": "Zahlung",
+    "newsletter": "Newsletter",
+    "emailPlaceholder": "E-Mail Adresse",
+    "subscribe": "Abonnieren"
+  },
+  "disclaimer": {
+    "title": "Hinweis",
+    "text1": "Diese Website ist ein Portfolio-Projekt und kein echter Online-Shop. Alle Produkte, Preise und Transaktionen sind fiktiv und dienen ausschließlich der Demonstration meiner Frontend-Entwicklungsfähigkeiten.",
+    "text2": "Wenn Sie an meiner Arbeit interessiert sind, kontaktieren Sie mich gerne!"
+  },
+  "errors": {
+    "notFound": "Seite nicht gefunden",
+    "serverError": "Serverfehler",
+    "goHome": "Zur Startseite"
+  }
+}

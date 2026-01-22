@@ -1,0 +1,147 @@
+{
+  "common": {
+    "language": "Language",
+    "currency": "USD",
+    "currencySymbol": "$",
+    "loading": "Loading...",
+    "error": "Error",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "back": "Back",
+    "next": "Next",
+    "submit": "Submit",
+    "close": "Close",
+    "search": "Search",
+    "apply": "Apply",
+    "reset": "Reset"
+  },
+  "nav": {
+    "home": "Home",
+    "products": "Products",
+    "account": "Account",
+    "cart": "Cart",
+    "favorites": "Favorites",
+    "login": "Login",
+    "logout": "Logout",
+    "menu": "Menu"
+  },
+  "categories": {
+    "all": "All",
+    "chairs": "Chairs",
+    "table": "Tables",
+    "lighting": "Lighting",
+    "accessory": "Decoration"
+  },
+  "product": {
+    "designer": "Designer",
+    "price": "Price",
+    "features": "Features",
+    "description": "Description",
+    "specifications": "Specifications",
+    "addToCart": "Add to Cart",
+    "addToFavorites": "Add to Favorites",
+    "removeFromFavorites": "Remove from Favorites",
+    "inStock": "In Stock",
+    "outOfStock": "Out of Stock"
+  },
+  "productList": {
+    "title": "Products",
+    "sort": "Sort",
+    "filter": "Filter",
+    "sortByPrice": "By Price",
+    "sortByName": "By Name",
+    "noProducts": "No products found"
+  },
+  "cart": {
+    "title": "Cart",
+    "empty": "Your cart is empty",
+    "subtotal": "Subtotal",
+    "shipping": "Shipping",
+    "freeShipping": "Free Shipping",
+    "total": "Total",
+    "checkout": "Checkout",
+    "continueShopping": "Continue Shopping",
+    "remove": "Remove",
+    "freeShippingMessage": "Free shipping on orders over ${amount}",
+    "amountUntilFreeShipping": "${amount} until free shipping"
+  },
+  "checkout": {
+    "title": "Checkout",
+    "address": "Address",
+    "payment": "Payment",
+    "overview": "Overview",
+    "confirmation": "Confirmation",
+    "shippingAddress": "Shipping Address",
+    "billingAddress": "Billing Address",
+    "sameAsShipping": "Same as Shipping",
+    "placeOrder": "Place Order",
+    "orderPlaced": "Order Placed",
+    "thankYou": "Thank you for your order!"
+  },
+  "account": {
+    "title": "My Account",
+    "overview": "Overview",
+    "orders": "Orders",
+    "orderHistory": "Order History",
+    "addresses": "Addresses",
+    "settings": "Settings",
+    "profile": "Profile",
+    "editProfile": "Edit Profile",
+    "changePassword": "Change Password",
+    "favorites": "Favorites"
+  },
+  "order": {
+    "orderNumber": "Order Number",
+    "date": "Date",
+    "status": "Status",
+    "items": "Items",
+    "total": "Total",
+    "details": "Details",
+    "pending": "Pending",
+    "processing": "Processing",
+    "shipped": "Shipped",
+    "delivered": "Delivered",
+    "cancelled": "Cancelled"
+  },
+  "address": {
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "street": "Street",
+    "city": "City",
+    "zip": "ZIP",
+    "country": "Country",
+    "phone": "Phone",
+    "default": "Default",
+    "setAsDefault": "Set as Default"
+  },
+  "auth": {
+    "login": "Login",
+    "register": "Register",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "forgotPassword": "Forgot Password?",
+    "noAccount": "Don't have an account?",
+    "hasAccount": "Already have an account?"
+  },
+  "footer": {
+    "service": "Service",
+    "legal": "Legal",
+    "payment": "Payment",
+    "newsletter": "Newsletter",
+    "emailPlaceholder": "Email Address",
+    "subscribe": "Subscribe"
+  },
+  "disclaimer": {
+    "title": "Disclaimer",
+    "text1": "This website is a portfolio project and not a real online store. All products, prices, and transactions displayed are fictional and exist solely to showcase my front-end development skills.",
+    "text2": "If you're interested in my work, feel free to reach out!"
+  },
+  "errors": {
+    "notFound": "Page Not Found",
+    "serverError": "Server Error",
+    "goHome": "Go Home"
+  }
+}

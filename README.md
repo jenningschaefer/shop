@@ -1,9 +1,9 @@
 # 🛋️ Shop
 
-> Modern e-commerce portfolio project built with Nuxt 3 and TypeScript
+> Modern e-commerce portfolio project built with Nuxt 4 and TypeScript
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Nuxt](https://img.shields.io/badge/Nuxt-3.14-00DC82?logo=nuxt.js)](https://nuxt.com/)
+[![Nuxt](https://img.shields.io/badge/Nuxt-4.2.2-00DC82?logo=nuxt.js)](https://nuxt.com/)
 [![Vue](https://img.shields.io/badge/Vue-3.5-4FC08D?logo=vue.js)](https://vuejs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.6-3178C6?logo=typescript)](https://www.typescriptlang.org/)
 
@@ -26,7 +26,7 @@
 
 | Category  | Technology                                    |
 | --------- | --------------------------------------------- |
-| Framework | [Nuxt 3](https://nuxt.com/)                   |
+| Framework | [Nuxt 4](https://nuxt.com/)                   |
 | Language  | [TypeScript](https://www.typescriptlang.org/) |
 | Styling   | SCSS with 7-1 Architecture                    |
 | State     | [VueUse](https://vueuse.org/) + LocalStorage  |
@@ -37,7 +37,7 @@
 
 ### Prerequisites
 
-- Node.js 18+
+- Node.js 20+ (recommended; see `.nvmrc`)
 - npm or pnpm
 
 ### Installation
@@ -48,7 +48,7 @@ git clone https://github.com/jenningschaefer/shop.git
 cd shop
 
 # Install dependencies
-npm install
+npm ci --legacy-peer-deps
 
 # Start development server
 npm run dev

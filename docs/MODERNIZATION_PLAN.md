@@ -540,6 +540,12 @@ Add to all source files (see STANDARDS.md):
 - E2E tests (on PR)
 ```
 
+Notes:
+
+- CI uses `npm ci --legacy-peer-deps` (and `.npmrc` sets `legacy-peer-deps=true`) to avoid peer dependency resolution failures on runners/Netlify.
+- Playwright E2E is optimized with **sharding** and **browser caching** for faster wall-clock time.
+- `.nvmrc` pins Node.js 20 to keep local development and CI aligned.
+
 ### 8.3 Documentation
 
 - [ ] Component documentation (Storybook or similar)

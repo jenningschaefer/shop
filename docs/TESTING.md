@@ -196,6 +196,16 @@ npx playwright test tests/e2e/checkout.spec.ts
 npx playwright test --headed
 ```
 
+### Speeding up E2E (parallel workers / sharding)
+
+- **Workers**: by default `playwright.config.ts` runs with **1 worker in CI** for stability. You can override it via:
+
+```bash
+PW_WORKERS=2 npm run test:e2e
+```
+
+- **Sharding**: CI runs Playwright in **2 shards** (parallel jobs) to reduce wall-clock time.
+
 ### Playwright Configuration
 
 ```typescript
@@ -326,13 +336,13 @@ Tests and checks are fully automated in GitHub Actions (`.github/workflows/ci.ym
 
 ### CI Pipeline Jobs
 
-| Job         | Description                   | Runs                           |
-| ----------- | ----------------------------- | ------------------------------ |
-| `lint`      | ESLint + Prettier check       | On every push/PR               |
-| `typecheck` | TypeScript validation         | On every push/PR               |
-| `test`      | Unit & component tests        | On every push/PR               |
-| `e2e`       | Playwright E2E tests          | After lint/typecheck/test pass |
-| `build`     | Production build + size check | After lint/typecheck/test pass |
+| Job         | Description                   | Runs                         |
+| ----------- | ----------------------------- | ---------------------------- |
+| `lint`      | ESLint + Prettier check       | On every push/PR             |
+| `typecheck` | TypeScript validation         | On every push/PR             |
+| `test`      | Unit & component tests        | On every push/PR             |
+| `e2e`       | Playwright E2E tests          | After lint + unit tests pass |
+| `build`     | Production build + size check | After lint + unit tests pass |
 
 ### Local Validation
 

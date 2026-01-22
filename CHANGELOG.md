@@ -70,6 +70,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Automated lint, format, typecheck, test, and build
   - Pre-commit hooks with husky + lint-staged
   - `npm run validate` for local pre-commit validation
+  - `.npmrc` with `legacy-peer-deps=true` to avoid CI/Netlify install failures due to peer-deps conflicts
+  - `.nvmrc` pinning Node.js 20 for consistent local/CI/Netlify builds
+  - Faster Playwright CI via sharding + browser cache
 
 ### Fixed
 

@@ -13,7 +13,7 @@ This folder contains all project documentation for the Shop portfolio project.
 
 ## Quick Links
 
-- **Current Status**: Phase 6 Complete - Testing ✅
-- **Next Step**: Phase 7 - Nuxt 4 Upgrade
-- **Target**: Senior-level TypeScript Vue 3 / Nuxt 3 Portfolio Project
+- **Current Status**: Phase 8 Complete - Polish & CI/CD ✅
+- **Next Step**: Maintenance / improvements (performance, accessibility audit, docs polish)
+- **Target**: Senior-level TypeScript Vue 3 / Nuxt 4 Portfolio Project
 - **Test Count**: 139 tests (95 unit/component + 44 E2E)

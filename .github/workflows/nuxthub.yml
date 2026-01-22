@@ -1,12 +1,25 @@
 name: Deploy to NuxtHub
-on: push
+
+# Only run after CI workflow completes successfully
+on:
+  workflow_run:
+    workflows: ['CI']
+    types: [completed]
+    branches: [master, main]
+
+# Ensure only one deployment runs at a time
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   deploy:
     name: 'Deploy to NuxtHub'
     runs-on: ubuntu-latest
+    # Only deploy if CI was successful
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     environment:
-      name: ${{ github.ref == 'refs/heads/master' && 'production' || 'preview' }}
+      name: ${{ github.event.workflow_run.head_branch == 'master' && 'production' || 'preview' }}
       url: ${{ steps.deploy.outputs.deployment-url }}
     permissions:
       contents: read
@@ -14,18 +27,17 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
 
-      - name: Enable Corepack
-        run: corepack enable
-
-      - name: Install Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: '20'
           cache: 'npm'
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Build application
         run: npm run build
@@ -35,3 +47,27 @@ jobs:
         id: deploy
         with:
           project-key: shop-ac3s
+
+      - name: Comment deployment URL on PR
+        if: github.event.workflow_run.event == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const url = '${{ steps.deploy.outputs.deployment-url }}';
+            github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: `🚀 Preview deployed to: ${url}`
+            });
+
+  # Notify on failed CI (don't deploy)
+  notify-failure:
+    name: 'CI Failed - Skip Deploy'
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'failure' }}
+    steps:
+      - name: Log failure
+        run: |
+          echo "❌ CI workflow failed - deployment skipped"
+          echo "Check CI workflow for details: ${{ github.event.workflow_run.html_url }}"

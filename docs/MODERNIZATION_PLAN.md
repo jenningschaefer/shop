@@ -451,7 +451,7 @@ export default defineNuxtConfig({
 
 ### 7.6 Known Issues
 
-**Auto-Imports and Type Checking**
+#### Auto-Imports and Type Checking
 
 With `compatibilityVersion: 4`, Nuxt changes how auto-imports work for type-checking:
 

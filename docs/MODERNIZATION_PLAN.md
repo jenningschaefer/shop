@@ -14,10 +14,10 @@
 | Phase 4: Pinia State Management      | ✅ Complete | 2026-01-22   |
 | Phase 5: Internationalization (i18n) | ✅ Complete | 2026-01-22   |
 | Phase 6: Testing                     | ✅ Complete | 2026-01-22   |
-| Phase 7: Nuxt 4 Upgrade              | 🔄 Active   | 2026-01-22   |
+| Phase 7: Nuxt 4/5 Upgrade            | ✅ Complete | 2026-01-22   |
 | Phase 8: Polish & CI/CD              | ⏳ Pending  | -            |
 
-**Current Phase**: 7 (Nuxt 4 Upgrade)  
+**Current Phase**: 8 (Polish & CI/CD)  
 **Started**: 2026-01-22  
 **Estimated Completion**: ~25-35 hours total
 
@@ -404,9 +404,11 @@ npm run size:check  # Build and check bundle sizes
 
 ---
 
-## Phase 7: Nuxt 4 Upgrade
+## Phase 7: Nuxt 4/5 Upgrade ✅
 
-**Goal**: Migrate to Nuxt 4 with compatibility layer for future-proofing.
+**Goal**: Migrate to Nuxt 4 stable with Nuxt 5 compatibility layer for future-proofing.
+
+**Completed**: 2026-01-22
 
 ### 7.1 Prerequisites
 
@@ -438,13 +440,14 @@ export default defineNuxtConfig({
 
 ### 7.4 Migration Steps
 
-1. [x] Enable `compatibilityVersion: 4` in nuxt.config.ts
-2. [x] Run tests, fix any breaking issues (type errors fixed)
-3. [ ] Add explicit imports for Vue/Nuxt APIs (incremental)
-4. [ ] Restructure to new directory layout (see structure below)
-5. [ ] Update import paths
-6. [ ] Upgrade to Nuxt 4 stable when released
-7. [ ] Full regression test
+1. [x] Enable `compatibilityVersion: 4` in nuxt.config.ts (initial testing)
+2. [x] Fix type errors in services, stores, and tests
+3. [x] Upgrade to Nuxt 4.2.2 stable
+4. [x] Update dependencies (@vueuse/nuxt@14, @nuxt/test-utils)
+5. [x] Enable `compatibilityVersion: 5` for Nuxt 5 preview
+6. [x] Run full regression test (95 tests passing)
+7. [ ] Add explicit imports for Vue/Nuxt APIs (optional, for stricter typecheck)
+8. [ ] Restructure to new `app/` directory layout (when Nuxt 5 releases)
 
 ### 7.6 Known Issues
 
@@ -613,14 +616,14 @@ Add to all source files (see STANDARDS.md):
 - [x] 6.4 E2E tests (Playwright - Homepage, Products, Cart, Checkout, Account, Login)
 - [x] 6.5 CI/CD pipeline (GitHub Actions, husky, lint-staged)
 
-### Phase 7
+### Phase 7 ✅
 
 - [x] 7.1 Prerequisites check (all tests passing)
-- [x] 7.2 Enable compatibility mode (`compatibilityVersion: 4`)
-- [x] 7.3 Fix breaking changes (type errors in services/stores/tests)
-- [ ] 7.4 Add explicit imports (incremental, ~40 files)
-- [ ] 7.5 Migrate directory structure (optional, when Nuxt 4 stable)
-- [ ] 7.6 Full regression test
+- [x] 7.2 Upgrade to Nuxt 4.2.2 stable
+- [x] 7.3 Update dependencies (@vueuse/nuxt@14, @nuxt/test-utils)
+- [x] 7.4 Enable `compatibilityVersion: 5` for Nuxt 5 preview
+- [x] 7.5 Fix type errors in services/stores/tests
+- [x] 7.6 Full regression test (95 tests passing)
 
 ### Phase 8
 

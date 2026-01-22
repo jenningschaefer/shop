@@ -7,9 +7,10 @@
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  // Enable Nuxt 4 compatibility mode for gradual migration
+  // Enable Nuxt 5 compatibility mode for future-proofing
+  // https://nuxt.com/docs/4.x/getting-started/upgrade#testing-nuxt-5
   future: {
-    compatibilityVersion: 4,
+    compatibilityVersion: 5,
   },
 
   modules: ['@nuxt/image', '@vueuse/nuxt', '@nuxt/eslint', '@pinia/nuxt', '@nuxtjs/i18n'],

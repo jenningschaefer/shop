@@ -2,7 +2,7 @@
   "name": "shop",
   "version": "1.0.0",
   "private": true,
-  "description": "Modern e-commerce portfolio project built with Nuxt 3 and TypeScript",
+  "description": "Modern e-commerce portfolio project built with Nuxt 4 and TypeScript",
   "author": "Jenning Schaefer",
   "license": "MIT",
   "scripts": {
@@ -32,8 +32,8 @@
     "@nuxt/image": "^1.7.0",
     "@nuxtjs/i18n": "^10.2.1",
     "@pinia/nuxt": "^0.11.3",
-    "@vueuse/nuxt": "^10.11.0",
-    "nuxt": "^3.14.0",
+    "@vueuse/nuxt": "^14.1.0",
+    "nuxt": "^4.2.2",
     "pinia": "^3.0.4",
     "vue": "^3.5.0",
     "vue-router": "^4.4.0"

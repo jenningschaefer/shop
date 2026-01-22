@@ -1,12 +1,12 @@
 @mixin button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 2rem;
-    text-transform: uppercase;
-    padding: 0 1rem;
-    font-family: 'opensans', sans-serif;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 2rem;
+  text-transform: uppercase;
+  padding: 0 1rem;
+  font-family: 'opensans', sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }

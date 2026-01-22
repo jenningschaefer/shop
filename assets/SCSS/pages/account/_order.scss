@@ -1,109 +1,108 @@
-@use "../../abstracts/" as *;
+@use '../../abstracts/' as *;
 
 .account-order {
-    padding: 1rem;
-    min-height: calc(100vh - 8rem);
-    @media (min-width: $breakpoint-xs) {
-        padding: 1.5rem 4rem;
-    }
+  padding: 1rem;
+  min-height: calc(100vh - 8rem);
+  @media (min-width: $breakpoint-xs) {
+    padding: 1.5rem 4rem;
+  }
 
-    @media (min-width: $breakpoint-sm) {
-        padding: 2rem 6rem;
-    }
+  @media (min-width: $breakpoint-sm) {
+    padding: 2rem 6rem;
+  }
 
-    @media (min-width: $breakpoint-md) {
-        padding: 2.5rem 8rem;
-        min-height: auto;
-    }
+  @media (min-width: $breakpoint-md) {
+    padding: 2.5rem 8rem;
+    min-height: auto;
+  }
+  @media (min-width: $breakpoint-lg) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  &_container {
     @media (min-width: $breakpoint-lg) {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+      width: 100%;
+      max-width: 50vw;
     }
-    &_container {
-        @media (min-width: $breakpoint-lg) {
-            width: 100%;
-            max-width: 50vw;
-        }
+  }
+  &_no {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+  &_status {
+    padding-bottom: 0.5rem;
+  }
+  &_seperator {
+    border-top: 2px solid $color-primary;
+    margin-right: -1rem;
+    margin-left: -1rem;
+    margin-top: 1rem;
+    padding-bottom: 1rem;
+    @media (min-width: $breakpoint-xs) {
+      margin-right: 0;
+      margin-left: 0;
     }
-    &_no {
-        font-size: 1.5rem;
-        font-weight: 600;
+  }
+  &_details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-bottom: 1rem;
+    &_heading {
+      opacity: 60%;
     }
-    &_status {
-        padding-bottom: .5rem;
+  }
+  &_products {
+    display: grid;
+    grid-template-columns: 1fr;
+    @media (min-width: $breakpoint-sm) {
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
     }
-    &_seperator {
-        border-top: 2px solid $color-primary;
-        margin-right: -1rem;
-        margin-left: -1rem;
-        margin-top: 1rem;
-        padding-bottom: 1rem;
-        @media (min-width: $breakpoint-xs) {
-            margin-right: 0;
-            margin-left: 0;
-        }
+    &-item {
+      border-bottom: 2px solid $color-primary;
+      &:last-child {
+        border-bottom: none;
+      }
+      @media (min-width: $breakpoint-sm) {
+        border-bottom: none;
+      }
+    }
+  }
+  &_send {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding-bottom: 1rem;
+    @media (min-width: $breakpoint-sm) {
+      flex-direction: row;
+      gap: 0;
+    }
+    &-wrapper {
+      width: 100%;
+    }
+    &_heading {
+      font-size: 1em;
+      font-weight: 700;
+    }
+  }
+  &_total {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-bottom: 1rem;
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
+  &_buttons {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    @media (min-width: $breakpoint-sm) {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
 
-    }
-    &_details {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        padding-bottom: 1rem;
-        &_heading {
-            opacity: 60%;
-        }
-    }
-    &_products {
-        display: grid;
-        grid-template-columns: 1fr;
-        @media (min-width: $breakpoint-sm) {
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-        }
-        &-item {
-            border-bottom: 2px solid $color-primary;
-            &:last-child {
-                border-bottom: none;
-            }
-            @media (min-width: $breakpoint-sm) {
-                border-bottom: none;
-            }
-        }
-    }
-    &_send {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-        padding-bottom: 1rem;
-        @media (min-width: $breakpoint-sm) {
-            flex-direction: row;
-            gap: 0;
-        }
-        &-wrapper {
-            width: 100%;
-        }
-        &_heading {
-            font-size: 1em;
-            font-weight: 700;
-        }
-    }
-    &_total {
-        display: grid;
-        grid-template-columns:1fr 1fr;
-        padding-bottom: 1rem;
-        font-size: 1.5rem;
-        font-weight: 500;
-    }
-    &_buttons {
-        display: grid;
-        grid-template-columns:1fr;
-        gap: 1rem;
-        @media (min-width: $breakpoint-sm) {
-            grid-template-columns: 1fr 1fr;
-        }
-    }
-
-    &_btn {
-        width: 100%;
-    }
+  &_btn {
+    width: 100%;
+  }
 }

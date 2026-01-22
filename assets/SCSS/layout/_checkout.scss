@@ -1,106 +1,106 @@
-@use "../abstracts" as *;
+@use '../abstracts' as *;
 
 .checkout-layout {
-    background-color: $bg-checkout;
-    color: $color-primary;
+  background-color: $bg-checkout;
+  color: $color-primary;
+  display: flex;
+  &-main {
     display: flex;
-    &-main {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  &-side {
+    display: none;
+    writing-mode: vertical-rl;
+    h1 {
+      font-size: 3rem;
+      text-transform: uppercase;
+      font-weight: 500;
+      padding: 0 0.1em;
+      letter-spacing: 4px;
     }
-    &-side {        
-        display: none;
-        writing-mode:vertical-rl;
-        h1 {
-            font-size: 3rem;
-            text-transform: uppercase;
-            font-weight: 500;
-            padding: 0 .1em;
-            letter-spacing: 4px;
-        }
-        @media (min-width: $breakpoint-md) {
-            display: flex;
-            justify-content: center;
-            height: 100%;
-            border-left: 2px solid $color-primary;
-        }
+    @media (min-width: $breakpoint-md) {
+      display: flex;
+      justify-content: center;
+      height: 100%;
+      border-left: 2px solid $color-primary;
     }
+  }
 }
 
 .checkout_title {
-    font-size: 2rem;
-    text-transform: uppercase;
-    font-weight: 600;
-    padding-bottom: 1rem;
-    @media (min-width: $breakpoint-md) {
-        display: none;
-    }
+  font-size: 2rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding-bottom: 1rem;
+  @media (min-width: $breakpoint-md) {
+    display: none;
+  }
 }
 
 .checkout-header {
-    display: flex;
-    justify-content: space-between;
-    padding: 1rem;
-    width: 100%;
-    @media (min-width: $breakpoint-xs) {
-        padding: 1rem 4rem;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  width: 100%;
+  @media (min-width: $breakpoint-xs) {
+    padding: 1rem 4rem;
+  }
+  &_back {
+    height: 1.85em;
+    width: 1.85em;
+    stroke: $color-primary;
+    cursor: pointer;
+    @media (min-width: $breakpoint-md) {
+      display: none;
     }
-    &_back {
-        height: 1.85em;
-        width: 1.85em;
-        stroke: $color-primary;
-        cursor: pointer;
-        @media (min-width: $breakpoint-md) {
-            display: none;
-        }
-    }
-    &_menu {
-        height: 1.85em;
-        width: 1.85em;
-        cursor: pointer;
-    }
+  }
+  &_menu {
+    height: 1.85em;
+    width: 1.85em;
+    cursor: pointer;
+  }
 }
 
 .checkout-navigation {
-    width: 100%;
-    padding: 1rem;
-    @media (min-width: $breakpoint-xs) {
-        padding-bottom: 3rem;
-    }
+  width: 100%;
+  padding: 1rem;
+  @media (min-width: $breakpoint-xs) {
+    padding-bottom: 3rem;
+  }
+  @media (min-width: $breakpoint-md) {
+    padding: 1rem 4rem 3rem 4rem;
+  }
+  @media (min-width: $breakpoint-lg) {
+    padding: 1rem 8rem 3rem 8rem;
+  }
+  &_button {
+    display: flex;
+    justify-content: center;
     @media (min-width: $breakpoint-md) {
-        padding: 1rem 4rem 3rem 4rem;
+      justify-content: space-between;
     }
-    @media (min-width: $breakpoint-lg) {
-        padding: 1rem 8rem 3rem 8rem;
+    &-prev {
+      display: none !important;
+      @media (min-width: $breakpoint-md) {
+        display: block !important;
+      }
     }
-    &_button {
-        display: flex;
-        justify-content: center;
-        @media (min-width: $breakpoint-md) {
-            justify-content: space-between;
-        }
-        &-prev {
-            display: none !important;
-            @media (min-width: $breakpoint-md) {
-                display: block !important;
-            }
-        }
+  }
+  a {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    @media (min-width: $breakpoint-xs) {
+      width: 15rem;
     }
-    a {        
-        display: flex;
-        justify-content: center;
-        width: 100%;
-        @media (min-width: $breakpoint-xs) {
-            width: 15rem;
-        }
+  }
+  button {
+    width: 100% !important;
+    @media (min-width: $breakpoint-xs) {
+      width: 15rem;
     }
-    button {
-        width: 100% !important;
-        @media (min-width: $breakpoint-xs) {
-            width: 15rem;
-        }
-    }
+  }
 }

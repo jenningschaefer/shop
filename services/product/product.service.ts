@@ -5,14 +5,14 @@
  * @license MIT
  */
 
-import type { Product, ProductCategory, ProductFilter } from '~/types'
+import type { ProductRaw, ProductCategory, ProductFilter } from '~/types'
 import { BaseService } from '../base.service'
 import { ProductRepository, type IProductRepository } from './product.repository'
 
 /**
  * Product service handling all product-related business logic
  */
-export class ProductService extends BaseService<Product> {
+export class ProductService extends BaseService<ProductRaw> {
   private static instance: ProductService | null = null
 
   private constructor(private readonly productRepo: IProductRepository) {
@@ -32,21 +32,21 @@ export class ProductService extends BaseService<Product> {
   /**
    * Get products by category
    */
-  async getByCategory(category: ProductCategory): Promise<Product[]> {
+  async getByCategory(category: ProductCategory): Promise<ProductRaw[]> {
     return this.productRepo.findByCategory(category)
   }
 
   /**
    * Get product by URL-friendly name
    */
-  async getByName(name: string): Promise<Product | null> {
+  async getByName(name: string): Promise<ProductRaw | null> {
     return this.productRepo.findByName(name)
   }
 
   /**
    * Search products by query string
    */
-  async search(query: string): Promise<Product[]> {
+  async search(query: string): Promise<ProductRaw[]> {
     if (!query.trim()) {
       return this.getAll()
     }
@@ -56,24 +56,20 @@ export class ProductService extends BaseService<Product> {
   /**
    * Get filtered and sorted products
    */
-  async getFiltered(filter: ProductFilter): Promise<Product[]> {
+  async getFiltered(filter: ProductFilter): Promise<ProductRaw[]> {
     let products = await this.getAll()
 
     // Filter by category
     if (filter.category) {
-      products = products.filter((p) => p.category === filter.category)
+      products = products.filter((p) => p.type === filter.category)
     }
 
-    // Filter by price range
+    // Filter by price range (using EUR as base)
     if (filter.minPrice !== undefined) {
-      products = products.filter(
-        (p) => parseFloat(p.price_us) >= filter.minPrice!
-      )
+      products = products.filter((p) => parseFloat(p.price_eur) >= filter.minPrice!)
     }
     if (filter.maxPrice !== undefined) {
-      products = products.filter(
-        (p) => parseFloat(p.price_us) <= filter.maxPrice!
-      )
+      products = products.filter((p) => parseFloat(p.price_eur) <= filter.maxPrice!)
     }
 
     // Sort products
@@ -87,7 +83,7 @@ export class ProductService extends BaseService<Product> {
   /**
    * Get featured/highlighted products
    */
-  async getFeatured(limit: number = 4): Promise<Product[]> {
+  async getFeatured(limit: number = 4): Promise<ProductRaw[]> {
     const products = await this.getAll()
     // Return first N products as "featured"
     // In real app, would have a featured flag
@@ -99,7 +95,7 @@ export class ProductService extends BaseService<Product> {
    */
   async getCategories(): Promise<ProductCategory[]> {
     const products = await this.getAll()
-    const categories = new Set(products.map((p) => p.category))
+    const categories = new Set(products.map((p) => p.type))
     return Array.from(categories) as ProductCategory[]
   }
 
@@ -107,22 +103,22 @@ export class ProductService extends BaseService<Product> {
    * Sort products by field
    */
   private sortProducts(
-    products: Product[],
+    products: ProductRaw[],
     sortBy: 'name' | 'price' | 'category',
     order: 'asc' | 'desc' = 'asc'
-  ): Product[] {
+  ): ProductRaw[] {
     const sorted = [...products].sort((a, b) => {
       let comparison = 0
 
       switch (sortBy) {
         case 'name':
-          comparison = a.name.localeCompare(b.name)
+          comparison = a.name_en.localeCompare(b.name_en)
           break
         case 'price':
-          comparison = parseFloat(a.price_us) - parseFloat(b.price_us)
+          comparison = parseFloat(a.price_eur) - parseFloat(b.price_eur)
           break
         case 'category':
-          comparison = a.category.localeCompare(b.category)
+          comparison = a.type.localeCompare(b.type)
           break
       }
 

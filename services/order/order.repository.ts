@@ -61,9 +61,7 @@ export class OrderRepository
    */
   protected generateId(): string {
     if (this.data.length === 0) return '000001'
-    const maxId = Math.max(
-      ...this.data.map((order) => parseInt(order.order_id, 10))
-    )
+    const maxId = Math.max(...this.data.map((order) => parseInt(order.order_id, 10)))
     return String(maxId + 1).padStart(6, '0')
   }
 }

@@ -7,13 +7,7 @@
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  modules: [
-    '@nuxt/image',
-    '@vueuse/nuxt',
-    '@nuxt/eslint',
-    '@pinia/nuxt',
-    '@nuxtjs/i18n',
-  ],
+  modules: ['@nuxt/image', '@vueuse/nuxt', '@nuxt/eslint', '@pinia/nuxt', '@nuxtjs/i18n'],
 
   i18n: {
     locales: [

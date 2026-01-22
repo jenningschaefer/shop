@@ -19,9 +19,7 @@ const activeTabIndex = ref(0)
 onMounted(() => {
   if (!tabContainer.value) return
 
-  tabs.value = [
-    ...tabContainer.value.querySelectorAll('.address-tab'),
-  ] as HTMLElement[]
+  tabs.value = [...tabContainer.value.querySelectorAll('.address-tab')] as HTMLElement[]
 
   for (const [index, tab] of tabs.value.entries()) {
     if (tab.classList.contains('active')) {
@@ -43,12 +41,7 @@ function changeTab(index: number): void {
 </script>
 
 <template>
-  <div
-    id="tabs-container"
-    ref="tabContainer"
-    class="address-tabs"
-    :class="customClass"
-  >
+  <div id="tabs-container" ref="tabContainer" class="address-tabs" :class="customClass">
     <div id="tab-headers" class="address-tabs_headers">
       <ul>
         <li

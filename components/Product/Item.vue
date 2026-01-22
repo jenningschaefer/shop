@@ -42,9 +42,7 @@ onMounted(() => {
       </div>
       <div class="product-item_info">
         <div class="product-item_info_name">{{ product?.name }}</div>
-        <div class="product-item_info_price">
-          {{ ordered ? item.price : product?.price_us }} $
-        </div>
+        <div class="product-item_info_price">{{ ordered ? item.price : product?.price_us }} $</div>
       </div>
     </div>
     <div class="product-item_buttons">

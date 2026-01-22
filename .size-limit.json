@@ -1,0 +1,17 @@
+[
+  {
+    "name": "Client Bundle (JS)",
+    "path": ".output/public/_nuxt/*.js",
+    "limit": "500 KB"
+  },
+  {
+    "name": "Client Bundle (CSS)",
+    "path": ".output/public/_nuxt/*.css",
+    "limit": "50 KB"
+  },
+  {
+    "name": "Total Assets",
+    "path": ".output/public/_nuxt/*",
+    "limit": "600 KB"
+  }
+]

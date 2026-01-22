@@ -41,11 +41,7 @@ function end(el: Element): void {
 
 <template>
   <li class="accordion__item">
-    <div
-      class="accordion__trigger"
-      :class="{ accordion__trigger_active: visible }"
-      @click="open"
-    >
+    <div class="accordion__trigger" :class="{ accordion__trigger_active: visible }" @click="open">
       <slot name="accordion-trigger" />
       <svg v-if="!visible" class="accordion__trigger_icon">
         <use href="~/assets/svg/icons.svg#plus" />

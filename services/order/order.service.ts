@@ -52,9 +52,7 @@ export class OrderService {
    */
   async getRecentOrders(userId: number, limit: number = 5): Promise<Order[]> {
     const orders = await this.getByUserId(userId)
-    return orders
-      .sort((a, b) => b.order_date.localeCompare(a.order_date))
-      .slice(0, limit)
+    return orders.sort((a, b) => b.order_date.localeCompare(a.order_date)).slice(0, limit)
   }
 
   /**

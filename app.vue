@@ -14,7 +14,9 @@ const disclaimerAccepted = useLocalStorage('shop-disclaimer', false)
 
 const showDisclaimer = computed({
   get: () => !disclaimerAccepted.value,
-  set: () => { disclaimerAccepted.value = true }
+  set: () => {
+    disclaimerAccepted.value = true
+  },
 })
 </script>
 

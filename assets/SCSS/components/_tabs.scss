@@ -1,48 +1,48 @@
-@use "../abstracts" as *;
+@use '../abstracts' as *;
 
 .tabs {
-    &_headers {
+  &_headers {
+    width: 100%;
+    ul {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      border-bottom: 2px solid $color-primary;
+
+      li {
+        list-style: none;
+        padding: 1rem 0;
+        position: relative;
+        cursor: pointer;
         width: 100%;
-        ul {
-            margin: 0;
-            padding: 0;
-            display: flex;
-            border-bottom: 2px solid $color-primary;
+        text-transform: uppercase;
 
-            li {
-                list-style: none;
-                padding: 1rem 0;
-                position: relative;
-                cursor: pointer;
-                width: 100%;
-                text-transform: uppercase;
-
-                /* &.active {
+        /* &.active {
                     color: #008438;
                     font-weight: bold;
                 } */
 
-                &.active:after {
-                    content: '';
-                    position: absolute;
-                    bottom: -2px;
-                    left: 0;
-                    height: 5px;
-                    width: 100%;
-                    background: $color-primary;
-                }
-            }
+        &.active:after {
+          content: '';
+          position: absolute;
+          bottom: -2px;
+          left: 0;
+          height: 5px;
+          width: 100%;
+          background: $color-primary;
         }
+      }
     }
-    &_active {
-        width: 100%;
-    }
+  }
+  &_active {
+    width: 100%;
+  }
 }
 
 .tab {
-    display: none;
+  display: none;
 
-    &.active {
-        display: block;
-    }
+  &.active {
+    display: block;
+  }
 }

@@ -41,12 +41,7 @@ function changeTab(index: number): void {
 </script>
 
 <template>
-  <div
-    id="tabs-container"
-    ref="tabContainer"
-    class="tabs"
-    :class="customClass"
-  >
+  <div id="tabs-container" ref="tabContainer" class="tabs" :class="customClass">
     <div id="tab-headers" class="tabs_headers">
       <ul>
         <li

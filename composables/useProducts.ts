@@ -77,7 +77,7 @@ export function useProductsByCategory(category: ProductCategory): Product[] {
 export function useProductsFiltered() {
   const { locale } = useI18n()
   const currentLocale = computed(() => locale.value as Locale)
-  
+
   const filteredProducts = ref<Product[]>(localizeProducts(rawProducts, currentLocale.value))
   const loading = ref(false)
   const error = ref<Error | null>(null)

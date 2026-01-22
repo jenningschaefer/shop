@@ -5,31 +5,28 @@
  * @license MIT
  */
 
-import type { Product, ProductCategory } from '~/types'
+import type { ProductRaw, ProductCategory } from '~/types'
 import { JsonRepository, type IReadOnlyRepository } from '../base.repository'
 import productsData from '~/data/products.json'
 
 /**
  * Extended repository interface for products
  */
-export interface IProductRepository extends IReadOnlyRepository<Product> {
-  findByCategory(category: ProductCategory): Promise<Product[]>
-  findByName(name: string): Promise<Product | null>
-  search(query: string): Promise<Product[]>
+export interface IProductRepository extends IReadOnlyRepository<ProductRaw> {
+  findByCategory(category: ProductCategory): Promise<ProductRaw[]>
+  findByName(name: string): Promise<ProductRaw | null>
+  search(query: string): Promise<ProductRaw[]>
 }
 
 /**
  * JSON-based product repository
  * Products are read-only in this portfolio app
  */
-export class ProductRepository
-  extends JsonRepository<Product>
-  implements IProductRepository
-{
+export class ProductRepository extends JsonRepository<ProductRaw> implements IProductRepository {
   private static instance: ProductRepository | null = null
 
   private constructor() {
-    super(productsData as Product[])
+    super(productsData as ProductRaw[])
   }
 
   /**
@@ -42,29 +39,27 @@ export class ProductRepository
     return ProductRepository.instance
   }
 
-  async findByCategory(category: ProductCategory): Promise<Product[]> {
+  async findByCategory(category: ProductCategory): Promise<ProductRaw[]> {
     await this.simulateDelay()
-    return this.data.filter((product) => product.category === category)
+    return this.data.filter((product) => product.type === category)
   }
 
-  async findByName(name: string): Promise<Product | null> {
+  async findByName(name: string): Promise<ProductRaw | null> {
     await this.simulateDelay()
     const normalizedName = name.toLowerCase().replace(/-/g, ' ')
-    return (
-      this.data.find(
-        (product) => product.name.toLowerCase() === normalizedName
-      ) ?? null
-    )
+    return this.data.find((product) => product.name_url.toLowerCase() === normalizedName) ?? null
   }
 
-  async search(query: string): Promise<Product[]> {
+  async search(query: string): Promise<ProductRaw[]> {
     await this.simulateDelay()
     const normalizedQuery = query.toLowerCase()
     return this.data.filter(
       (product) =>
-        product.name.toLowerCase().includes(normalizedQuery) ||
-        product.description?.toLowerCase().includes(normalizedQuery) ||
-        product.category.toLowerCase().includes(normalizedQuery)
+        product.name_en.toLowerCase().includes(normalizedQuery) ||
+        product.name_de.toLowerCase().includes(normalizedQuery) ||
+        product.description_en?.toLowerCase().includes(normalizedQuery) ||
+        product.description_de?.toLowerCase().includes(normalizedQuery) ||
+        product.type.toLowerCase().includes(normalizedQuery)
     )
   }
 }

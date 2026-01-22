@@ -40,10 +40,7 @@ export class UserService extends BaseService<User> {
    * Validate user credentials (mock implementation)
    * In real app, would verify password hash
    */
-  async validateCredentials(
-    email: string,
-    _password: string
-  ): Promise<User | null> {
+  async validateCredentials(email: string, _password: string): Promise<User | null> {
     const user = await this.getByEmail(email)
     // For portfolio: accept any password for existing users
     return user
@@ -60,12 +57,6 @@ export class UserService extends BaseService<User> {
    * Check if user has complete profile
    */
   hasCompleteProfile(user: User): boolean {
-    return !!(
-      user.firstname &&
-      user.name &&
-      user.email &&
-      user.street &&
-      user.city
-    )
+    return !!(user.firstname && user.name && user.email && user.street && user.city)
   }
 }

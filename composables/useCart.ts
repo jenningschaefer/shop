@@ -110,9 +110,7 @@ export function useCart() {
   // Computed properties
   const isEmpty = computed(() => cart.value.length === 0)
 
-  const itemCount = computed(() =>
-    cart.value.reduce((count, item) => count + item.amount, 0)
-  )
+  const itemCount = computed(() => cart.value.reduce((count, item) => count + item.amount, 0))
 
   const subtotal = computed(() =>
     cart.value.reduce((sum, item) => sum + item.price * item.amount, 0)
@@ -163,9 +161,7 @@ export function useCart() {
 export function useCartBadge() {
   const cart = useLocalStorage<CartItem[]>(CART_STORAGE_KEY, [])
 
-  const count = computed(() =>
-    cart.value.reduce((sum, item) => sum + item.amount, 0)
-  )
+  const count = computed(() => cart.value.reduce((sum, item) => sum + item.amount, 0))
 
   const hasItems = computed(() => count.value > 0)
 

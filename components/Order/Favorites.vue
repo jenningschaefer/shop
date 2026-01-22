@@ -50,11 +50,7 @@ function addToCart(id: number): void {
             <button type="button" class="vesta-btn" @click="addToCart(item.id)">
               {{ t('product.addToCart') }}
             </button>
-            <button
-              type="button"
-              class="vesta-btn"
-              @click="deleteFromFavorites(item.id)"
-            >
+            <button type="button" class="vesta-btn" @click="deleteFromFavorites(item.id)">
               {{ t('product.removeFromFavorites') }}
             </button>
           </template>

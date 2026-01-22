@@ -25,8 +25,6 @@ function handleError(): void {
   <div class="error-page">
     <h1>Oops!</h1>
     <p>{{ error.message }}</p>
-    <button type="button" class="vesta-btn" @click="handleError">
-      Go Back Home
-    </button>
+    <button type="button" class="vesta-btn" @click="handleError">Go Back Home</button>
   </div>
 </template>

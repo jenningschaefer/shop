@@ -1,86 +1,86 @@
-@use "../abstracts" as *;
+@use '../abstracts' as *;
 
 .navBar {
-    display: flex;
-    justify-content: space-between;
-    border-bottom: 2px solid;
-    height: 8rem;
-    @media (min-width: $breakpoint-lg) {
-        height: 6rem;
-    }
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px solid;
+  height: 8rem;
+  @media (min-width: $breakpoint-lg) {
+    height: 6rem;
+  }
 
-    &_home {
-        height: 8rem;
-        cursor: pointer;
-        @media (min-width: $breakpoint-sm) {
-            border-right: 2px solid;
-        }
-        @media (min-width: $breakpoint-lg) {
-            height: 6rem;
-        }
+  &_home {
+    height: 8rem;
+    cursor: pointer;
+    @media (min-width: $breakpoint-sm) {
+      border-right: 2px solid;
     }
-    &_logo {
-        height: 5.5rem;
-        width: 8rem;
-        fill: $color-primary;
-        margin-left: 1rem;
-        margin-right: 1rem;
+    @media (min-width: $breakpoint-lg) {
+      height: 6rem;
     }
-    &_icons {
-        display: none;
-        width: 100%;
-        align-items: center;
-        justify-content: center;
-        gap: 3rem;
-        @media (min-width: $breakpoint-sm) {
-            display: flex;
-        }
-        @media (min-width: $breakpoint-md) {
-            justify-content: space-around;
-        }
-        &_icon {
-            fill: transparent;
-            stroke: $color-primary;
-            height: 1.875em;
-            width:  1.875em;
-            cursor: pointer;
-        }
+  }
+  &_logo {
+    height: 5.5rem;
+    width: 8rem;
+    fill: $color-primary;
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+  &_icons {
+    display: none;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    @media (min-width: $breakpoint-sm) {
+      display: flex;
     }
-    &_menu {
-        font-family: 'opensans', sans-serif;
-        transform: rotate(-90deg);
-        text-transform: uppercase;
-        font-weight: 800;
-        font-size: 2rem;
-        border-top: 2px solid;
-        padding: 2rem .9rem;
-        a {
-            cursor: pointer;
-        }
-        @media (min-width: $breakpoint-lg) {
-            font-size: 1.4rem;
-        }
+    @media (min-width: $breakpoint-md) {
+      justify-content: space-around;
     }
+    &_icon {
+      fill: transparent;
+      stroke: $color-primary;
+      height: 1.875em;
+      width: 1.875em;
+      cursor: pointer;
+    }
+  }
+  &_menu {
+    font-family: 'opensans', sans-serif;
+    transform: rotate(-90deg);
+    text-transform: uppercase;
+    font-weight: 800;
+    font-size: 2rem;
+    border-top: 2px solid;
+    padding: 2rem 0.9rem;
+    a {
+      cursor: pointer;
+    }
+    @media (min-width: $breakpoint-lg) {
+      font-size: 1.4rem;
+    }
+  }
 }
 
 .subNav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-/*     padding-left: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /*     padding-left: 1rem;
     padding-right: 3.3rem;
     padding-top: 1.8rem; */
-    padding: 1.8rem 3.3rem 1rem 1rem;
-    gap: 3rem;
-    @media (min-width: $breakpoint-sm) {
-        display: none;
-    }
-    &_icon {
-        fill: transparent !important;
-        stroke: $color-primary;
-        //stroke-width: 3px;
-        height: 2em;
-        width:  2em;
-        cursor: pointer;
-    }
+  padding: 1.8rem 3.3rem 1rem 1rem;
+  gap: 3rem;
+  @media (min-width: $breakpoint-sm) {
+    display: none;
+  }
+  &_icon {
+    fill: transparent !important;
+    stroke: $color-primary;
+    //stroke-width: 3px;
+    height: 2em;
+    width: 2em;
+    cursor: pointer;
+  }
 }

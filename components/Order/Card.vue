@@ -16,7 +16,7 @@ defineProps<Props>()
 const { t, locale } = useI18n()
 const { formatDate } = useUtilities()
 
-const currencySymbol = computed(() => locale.value === 'de' ? '€' : '$')
+const currencySymbol = computed(() => (locale.value === 'de' ? '€' : '$'))
 </script>
 
 <template>
@@ -34,9 +34,7 @@ const currencySymbol = computed(() => locale.value === 'de' ? '€' : '$')
       <span />
       <span />
       <span class="order-card_info-heading">{{ t('order.shippedDate') }}</span>
-      <span class="order-card_info-value">{{
-        formatDate(order.shipping_date)
-      }}</span>
+      <span class="order-card_info-value">{{ formatDate(order.shipping_date) }}</span>
       <span class="order-card_info-heading">{{ t('cart.total') }}</span>
       <span class="order-card_info-value">{{ order.sum }} {{ currencySymbol }}</span>
     </div>

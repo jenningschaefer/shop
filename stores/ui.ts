@@ -39,9 +39,7 @@ export const useUiStore = defineStore('ui', () => {
     () => isMenuOpen.value || isCartOpen.value || isSearchOpen.value || isDisclaimerOpen.value
   )
 
-  const hasOpenSidebar = computed(
-    () => isSidenavOpen.value || isFilterSidebarOpen.value
-  )
+  const hasOpenSidebar = computed(() => isSidenavOpen.value || isFilterSidebarOpen.value)
 
   // ============================================
   // Actions

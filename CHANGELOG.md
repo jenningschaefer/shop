@@ -37,6 +37,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Localized pricing (EUR/USD)
   - `useLocale` composables for product localization
   - Language switcher in NavBar
+- **Testing Infrastructure** (139 tests total):
+  - Vitest configuration with Nuxt test environment
+  - Unit tests for ProductService (18) and OrderService (14)
+  - Unit tests for useProducts composable (7)
+  - Unit tests for Pinia stores: CartStore (20), UiStore (21)
+  - Component tests: ProductCard (6), OrderCard (4), Dialog (5)
+  - E2E tests with Playwright:
+    - Homepage (4), Products (6), Cart (5)
+    - Checkout flow (9), Account pages (10), Login/Register (10)
+  - Test coverage reporting with v8
+  - Bundle size testing with size-limit
+  - Comprehensive testing documentation (`docs/TESTING.md`)
+- **CI/CD Pipeline**:
+  - GitHub Actions workflow (`.github/workflows/ci.yml`)
+  - Automated lint, format, typecheck, test, and build
+  - Pre-commit hooks with husky + lint-staged
+  - `npm run validate` for local pre-commit validation
 
 ### Fixed
 

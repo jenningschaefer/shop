@@ -50,15 +50,14 @@ useHead({
                 <input type="email" :placeholder="t('auth.confirmPassword')" />
                 <input type="password" :placeholder="t('auth.password')" />
                 <p>
-                  Your password must have at least 8 characters with one
-                  number, one upper and one lower case letter and one special
-                  character.
+                  Your password must have at least 8 characters with one number, one upper and one
+                  lower case letter and one special character.
                 </p>
                 <input type="password" :placeholder="t('auth.confirmPassword')" />
                 <label>
                   <input type="checkbox" checked />
-                  I agree to the terms and conditions of Vesta. Information on
-                  data subject rights and data protection regulations.
+                  I agree to the terms and conditions of Vesta. Information on data subject rights
+                  and data protection regulations.
                 </label>
                 <label>
                   <input type="checkbox" checked />

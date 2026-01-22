@@ -1,4 +1,4 @@
-@use "../abstracts" as *;
+@use '../abstracts' as *;
 
 .sidenav {
   height: 100%;
@@ -52,7 +52,7 @@
     right: 1.5rem;
     //font-size: 2rem;
     margin-left: 50px;
-    transition: .1s ease-in-out;
+    transition: 0.1s ease-in-out;
 
     svg {
       height: 2rem;
@@ -61,4 +61,3 @@
     }
   }
 }
-

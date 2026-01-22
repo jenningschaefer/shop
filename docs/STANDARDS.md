@@ -12,6 +12,8 @@
 6. [SCSS/Styling](#scssstyling)
 7. [File Organization](#file-organization)
 8. [Git Conventions](#git-conventions)
+9. [Code Quality Checklist](#code-quality-checklist)
+10. [Development Workflow](#development-workflow)
 
 ---
 
@@ -26,11 +28,11 @@ All source files should include a header comment with metadata.
  * @file product.service.ts
  * @description Business logic for product-related operations including
  *              fetching, filtering, and searching products.
- * 
+ *
  * @author Jenning Schaefer
  * @license MIT
  * @copyright 2024-2026 Jenning Schaefer
- * 
+ *
  * @example
  * const productService = new ProductService(repository)
  * const chairs = await productService.getByCategory('chairs')
@@ -107,7 +109,7 @@ interface Emits {
 // 3. PROPS & EMITS
 // ============================================
 const props = withDefaults(defineProps<Props>(), {
-  favored: false
+  favored: false,
 })
 
 const emit = defineEmits<Emits>()
@@ -129,10 +131,10 @@ const quantity = ref(1)
 // ============================================
 // 6. COMPUTED PROPERTIES
 // ============================================
-const formattedPrice = computed(() => 
-  new Intl.NumberFormat('de-DE', { 
-    style: 'currency', 
-    currency: 'EUR' 
+const formattedPrice = computed(() =>
+  new Intl.NumberFormat('de-DE', {
+    style: 'currency',
+    currency: 'EUR',
   }).format(Number(props.product.price_eur))
 )
 
@@ -141,9 +143,12 @@ const isInStock = computed(() => props.product.stock > 0)
 // ============================================
 // 7. WATCHERS
 // ============================================
-watch(() => props.product.id, (newId) => {
-  quantity.value = 1
-})
+watch(
+  () => props.product.id,
+  (newId) => {
+    quantity.value = 1
+  }
+)
 
 // ============================================
 // 8. METHODS / FUNCTIONS
@@ -176,7 +181,9 @@ onUnmounted(() => {
 // 10. EXPOSE (if needed)
 // ============================================
 defineExpose({
-  resetQuantity: () => { quantity.value = 1 }
+  resetQuantity: () => {
+    quantity.value = 1
+  },
 })
 </script>
 ```
@@ -187,31 +194,21 @@ defineExpose({
 <template>
   <!-- Single root element with semantic class name -->
   <article class="product-card">
-    
     <!-- Use semantic HTML elements -->
     <figure class="product-card__image">
-      <NuxtPicture 
-        :src="product.img" 
-        :alt="product.name"
-        format="avif,webp"
-      />
+      <NuxtPicture :src="product.img" :alt="product.name" format="avif,webp" />
     </figure>
-    
+
     <!-- BEM class naming -->
     <div class="product-card__content">
       <h3 class="product-card__title">{{ product.name }}</h3>
       <p class="product-card__price">{{ formattedPrice }}</p>
     </div>
-    
+
     <!-- Event handlers: use @click not v-on:click -->
-    <button 
-      class="product-card__button"
-      :disabled="!isInStock"
-      @click="handleAddToCart"
-    >
+    <button class="product-card__button" :disabled="!isInStock" @click="handleAddToCart">
       {{ $t('cart.addToCart') }}
     </button>
-    
   </article>
 </template>
 ```
@@ -236,10 +233,12 @@ defineExpose({
 
 ```typescript
 // ✅ Use strict equality
-if (product.id === selectedId) { }
+if (product.id === selectedId) {
+}
 
 // ❌ Avoid loose equality
-if (product.id == selectedId) { }
+if (product.id == selectedId) {
+}
 
 // ✅ Use const for values that don't change
 const MAX_ITEMS = 10
@@ -256,9 +255,9 @@ const name = user.nickname ?? user.firstName
 const city = user.address?.city
 
 // ❌ Avoid any - use unknown or proper types
-function processData(data: any) { }  // Bad
-function processData(data: unknown) { }  // Better
-function processData(data: ApiResponse) { }  // Best
+function processData(data: any) {} // Bad
+function processData(data: unknown) {} // Better
+function processData(data: ApiResponse) {} // Best
 ```
 
 ### Type Definitions
@@ -306,7 +305,7 @@ async function fetchProducts(): Promise<Product[]> {
 // ✅ Use Promise.all for parallel requests
 const [products, categories] = await Promise.all([
   productService.getAll(),
-  categoryService.getAll()
+  categoryService.getAll(),
 ])
 ```
 
@@ -316,15 +315,15 @@ const [products, categories] = await Promise.all([
 
 ### Files & Directories
 
-| Type | Convention | Example |
-| ------ | ------------ | --------- |
-| Vue Components | PascalCase | `ProductCard.vue` |
-| Composables | camelCase with `use` prefix | `useProducts.ts` |
-| Services | camelCase with `.service` suffix | `product.service.ts` |
-| Types | camelCase with `.types` suffix | `product.types.ts` |
-| Stores | camelCase with `.store` suffix | `cart.store.ts` |
-| SCSS partials | _kebab-case | `_product-card.scss` |
-| Test files | Same name with `.spec` suffix | `ProductCard.spec.ts` |
+| Type           | Convention                       | Example               |
+| -------------- | -------------------------------- | --------------------- |
+| Vue Components | PascalCase                       | `ProductCard.vue`     |
+| Composables    | camelCase with `use` prefix      | `useProducts.ts`      |
+| Services       | camelCase with `.service` suffix | `product.service.ts`  |
+| Types          | camelCase with `.types` suffix   | `product.types.ts`    |
+| Stores         | camelCase with `.store` suffix   | `cart.store.ts`       |
+| SCSS partials  | \_kebab-case                     | `_product-card.scss`  |
+| Test files     | Same name with `.spec` suffix    | `ProductCard.spec.ts` |
 
 ### Variables & Functions
 
@@ -339,10 +338,10 @@ const MAX_CART_ITEMS = 99
 const API_BASE_URL = '/api/v1'
 
 // Functions: camelCase, verb prefix
-function fetchProducts() { }
-function handleClick() { }
-function validateForm() { }
-function formatPrice() { }
+function fetchProducts() {}
+function handleClick() {}
+function validateForm() {}
+function formatPrice() {}
 
 // Boolean variables: is/has/can prefix
 const isVisible = ref(false)
@@ -350,8 +349,8 @@ const hasError = ref(false)
 const canSubmit = computed(() => form.valid)
 
 // Event handlers: handle prefix
-function handleSubmit() { }
-function handleProductClick() { }
+function handleSubmit() {}
+function handleProductClick() {}
 ```
 
 ### Vue Specific
@@ -376,19 +375,28 @@ const modalEl = ref<HTMLDivElement | null>(null)
 
 ```scss
 // BEM Convention: Block__Element--Modifier
-.product-card { }                    // Block
-.product-card__title { }             // Element
-.product-card__title--highlighted { } // Modifier
-.product-card--featured { }          // Block modifier
+.product-card {
+} // Block
+.product-card__title {
+} // Element
+.product-card__title--highlighted {
+} // Modifier
+.product-card--featured {
+} // Block modifier
 
 // State classes: is- or has- prefix
-.product-card.is-loading { }
-.product-card.is-active { }
-.product-card.has-error { }
+.product-card.is-loading {
+}
+.product-card.is-active {
+}
+.product-card.has-error {
+}
 
 // Utility classes: descriptive
-.visually-hidden { }
-.text-center { }
+.visually-hidden {
+}
+.text-center {
+}
 ```
 
 ---
@@ -422,11 +430,11 @@ Each sprite file contains multiple symbols with unique IDs:
   <symbol id="arrow-left" viewBox="0 0 24 24">
     <path d="M19 12H5M12 19l-7-7 7-7"/>
   </symbol>
-  
+
   <symbol id="menu" viewBox="0 0 24 24">
     <path d="M3 12h18M3 6h18M3 18h18"/>
   </symbol>
-  
+
   <symbol id="cart" viewBox="0 0 24 24">
     <!-- cart icon paths -->
   </symbol>
@@ -441,7 +449,7 @@ Each sprite file contains multiple symbols with unique IDs:
   <svg class="icon icon--back">
     <use href="~/assets/svg/icons.svg#arrow-left" />
   </svg>
-  
+
   <!-- Logo example -->
   <svg class="logo">
     <use href="~/assets/svg/logos.svg#vesta" />
@@ -452,8 +460,8 @@ Each sprite file contains multiple symbols with unique IDs:
 .icon {
   width: 24px;
   height: 24px;
-  fill: currentColor;  // Inherits text color
-  
+  fill: currentColor; // Inherits text color
+
   &--back {
     width: 20px;
     height: 20px;
@@ -527,18 +535,18 @@ $color-error: #dc3545;
 $color-success: #28a745;
 
 // Spacing: t-shirt sizes
-$spacing-xs: 0.25rem;   // 4px
-$spacing-sm: 0.5rem;    // 8px
-$spacing-md: 1rem;      // 16px
-$spacing-lg: 1.5rem;    // 24px
-$spacing-xl: 2rem;      // 32px
-$spacing-xxl: 3rem;     // 48px
+$spacing-xs: 0.25rem; // 4px
+$spacing-sm: 0.5rem; // 8px
+$spacing-md: 1rem; // 16px
+$spacing-lg: 1.5rem; // 24px
+$spacing-xl: 2rem; // 32px
+$spacing-xxl: 3rem; // 48px
 
 // Breakpoints
-$breakpoint-sm: 36em;   // 576px
-$breakpoint-md: 48em;   // 768px
-$breakpoint-lg: 62em;   // 992px
-$breakpoint-xl: 75em;   // 1200px
+$breakpoint-sm: 36em; // 576px
+$breakpoint-md: 48em; // 768px
+$breakpoint-lg: 62em; // 992px
+$breakpoint-xl: 75em; // 1200px
 ```
 
 ### Mixins
@@ -547,13 +555,21 @@ $breakpoint-xl: 75em;   // 1200px
 // Responsive breakpoint mixin
 @mixin respond-to($breakpoint) {
   @if $breakpoint == 'sm' {
-    @media (min-width: $breakpoint-sm) { @content; }
+    @media (min-width: $breakpoint-sm) {
+      @content;
+    }
   } @else if $breakpoint == 'md' {
-    @media (min-width: $breakpoint-md) { @content; }
+    @media (min-width: $breakpoint-md) {
+      @content;
+    }
   } @else if $breakpoint == 'lg' {
-    @media (min-width: $breakpoint-lg) { @content; }
+    @media (min-width: $breakpoint-lg) {
+      @content;
+    }
   } @else if $breakpoint == 'xl' {
-    @media (min-width: $breakpoint-xl) { @content; }
+    @media (min-width: $breakpoint-xl) {
+      @content;
+    }
   }
 }
 
@@ -561,11 +577,11 @@ $breakpoint-xl: 75em;   // 1200px
 .product-grid {
   display: grid;
   grid-template-columns: 1fr;
-  
+
   @include respond-to('md') {
     grid-template-columns: repeat(2, 1fr);
   }
-  
+
   @include respond-to('lg') {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -698,3 +714,303 @@ Before committing, ensure:
 - [ ] No unused imports or variables
 - [ ] Tests pass
 - [ ] Linting passes
+
+---
+
+## Development Workflow
+
+### Overview: Plan → Document → Build → Test → Commit
+
+```text
+┌─────────────────────────────────────────────────────────────┐
+│  1. PLAN          What are we building? Why?                │
+│     └─→ Create issue/ticket with acceptance criteria        │
+├─────────────────────────────────────────────────────────────┤
+│  2. DOCUMENT      How will it work?                         │
+│     └─→ Update docs BEFORE coding (types, API, usage)       │
+├─────────────────────────────────────────────────────────────┤
+│  3. BUILD         Write the code                            │
+│     └─→ Follow standards, write tests alongside code        │
+├─────────────────────────────────────────────────────────────┤
+│  4. TEST          Verify it works                           │
+│     └─→ npm run validate (lint + format + typecheck + test) │
+├─────────────────────────────────────────────────────────────┤
+│  5. COMMIT        Save your work                            │
+│     └─→ Conventional commit, PR review                      │
+└─────────────────────────────────────────────────────────────┘
+```
+
+### Documentation-First Development
+
+**Why document first?**
+
+- Forces you to think through the API before coding
+- Catches design issues early
+- Creates documentation as a side effect
+- Makes code review easier
+
+**Before writing any code:**
+
+1. **Define Types** - Add interfaces to `/types/`
+2. **Document API** - Write JSDoc comments for public functions
+3. **Update README** - Add feature to relevant docs if user-facing
+4. **Write Test Stubs** - Create test file with `it.todo()` for expected behavior
+
+```typescript
+// Step 1: Define types FIRST
+interface NewFeatureOptions {
+  enabled: boolean
+  threshold: number
+}
+
+// Step 2: Document the API with JSDoc
+/**
+ * Calculates the discount based on cart total
+ * @param total - Cart total in cents
+ * @param options - Discount configuration
+ * @returns Discount amount in cents
+ * @example
+ * const discount = calculateDiscount(10000, { enabled: true, threshold: 5000 });
+ * // Returns 500 (5% discount)
+ */
+function calculateDiscount(total: number, options: NewFeatureOptions): number {
+  // TODO: Implement
+  throw new Error('Not implemented')
+}
+```
+
+```typescript
+// Step 3: Write test stubs BEFORE implementation
+describe('calculateDiscount', () => {
+  it.todo('should return 0 when disabled')
+  it.todo('should return 0 when below threshold')
+  it.todo('should calculate 5% discount when above threshold')
+  it.todo('should handle edge case of exactly threshold')
+})
+```
+
+### Adding New Features
+
+#### Small Feature (< 1 day)
+
+1. Create feature branch: `git checkout -b feat/feature-name`
+2. Add types to `/types/` if needed
+3. Write tests first (TDD) or alongside code
+4. Implement feature
+5. Run `npm run validate`
+6. Commit with conventional message
+7. Create PR
+
+#### Large Feature (> 1 day)
+
+1. **Planning Phase**
+   - Create issue with acceptance criteria
+   - Break down into smaller tasks
+   - Identify affected areas (types, services, components)
+
+2. **Documentation Phase**
+   - Add/update types in `/types/`
+   - Document public API with JSDoc
+   - Update ARCHITECTURE.md if architectural changes
+   - Create test file with `it.todo()` stubs
+
+3. **Implementation Phase**
+   - Implement incrementally
+   - Write tests for each increment
+   - Commit frequently with clear messages
+
+4. **Review Phase**
+   - Run full validation: `npm run validate`
+   - Self-review diff before PR
+   - Request code review
+
+### Adding New Modules/Dependencies
+
+Before adding a new npm package:
+
+#### Evaluation Checklist
+
+- [ ] Is it really needed? Can we achieve this with existing code?
+- [ ] Is it actively maintained? (check last commit, open issues)
+- [ ] What's the bundle size impact? (use [bundlephobia.com](https://bundlephobia.com))
+- [ ] Does it have TypeScript types?
+- [ ] Is it compatible with our Nuxt/Vue version?
+- [ ] What's the license? (MIT, Apache 2.0 preferred)
+
+#### Installation Process
+
+```bash
+# 1. Check bundle size first
+npx bundlephobia-cli <package-name>
+
+# 2. Install with legacy-peer-deps if needed
+npm install <package-name> --legacy-peer-deps
+
+# 3. Add types if not included
+npm install -D @types/<package-name>
+
+# 4. Run validation
+npm run validate
+```
+
+#### Documentation Requirements
+
+When adding a new module:
+
+1. **Update package.json** - Package is added automatically
+2. **Update nuxt.config.ts** - If it's a Nuxt module
+3. **Add to ARCHITECTURE.md** - Document why it's needed
+4. **Add to README.md** - If user-facing or significant
+5. **Create usage example** - In relevant docs or comments
+
+### Pre-Commit Workflow
+
+#### Automatic Checks (via husky)
+
+These run automatically on `git commit`:
+
+- ESLint with auto-fix
+- Prettier formatting
+
+#### Manual Checks (before commit)
+
+Run the full validation suite:
+
+```bash
+npm run validate
+```
+
+This runs:
+
+1. `npm run lint` - ESLint check
+2. `npm run format:check` - Prettier check
+3. `npm run typecheck` - TypeScript validation
+4. `npm run test:run` - All unit/component tests
+
+#### Pre-Commit Checklist
+
+- [ ] Code compiles without errors
+- [ ] All tests pass
+- [ ] No linting errors
+- [ ] Code is formatted
+- [ ] New code has tests
+- [ ] Documentation is updated
+- [ ] Commit message follows conventional format
+- [ ] No sensitive data (API keys, passwords)
+- [ ] No debug code (`console.log`, `debugger`)
+
+### Post-Build Verification
+
+After implementing a feature:
+
+#### 1. Local Testing
+
+```bash
+# Run all checks
+npm run validate
+
+# Build and test production
+npm run build
+npm run preview
+
+# Run E2E tests against preview
+npm run test:e2e
+```
+
+#### 2. Documentation Verification
+
+- [ ] Types are documented with JSDoc
+- [ ] Public functions have `@example` tags
+- [ ] README updated if user-facing
+- [ ] CHANGELOG updated for significant changes
+- [ ] API changes documented
+
+#### 3. Visual Verification
+
+- [ ] Feature works as expected in browser
+- [ ] No console errors
+- [ ] Responsive design works
+- [ ] i18n works (DE/EN)
+
+### Test-Driven Development (TDD)
+
+For complex logic, follow TDD:
+
+```text
+┌─────────────────┐
+│   Write Test    │  ← Define expected behavior
+│   (RED)         │
+└────────┬────────┘
+         │
+         ▼
+┌─────────────────┐
+│  Write Code     │  ← Minimal code to pass
+│   (GREEN)       │
+└────────┬────────┘
+         │
+         ▼
+┌─────────────────┐
+│   Refactor      │  ← Improve without breaking
+│   (REFACTOR)    │
+└────────┬────────┘
+         │
+         └──────────→ Repeat
+```
+
+**Example TDD Flow:**
+
+```typescript
+// 1. RED - Write failing test
+it('should calculate tax correctly', () => {
+  expect(calculateTax(100, 0.19)).toBe(19)
+})
+
+// 2. GREEN - Write minimal code to pass
+function calculateTax(amount: number, rate: number): number {
+  return amount * rate
+}
+
+// 3. REFACTOR - Improve code
+function calculateTax(amount: number, rate: number): number {
+  if (amount < 0) throw new Error('Amount cannot be negative')
+  return Math.round(amount * rate * 100) / 100
+}
+```
+
+### Commit Message Standards
+
+Follow [Conventional Commits](https://www.conventionalcommits.org/):
+
+```text
+<type>(<scope>): <description>
+
+[optional body]
+
+[optional footer]
+```
+
+**Types:**
+
+| Type       | Description                  |
+| ---------- | ---------------------------- |
+| `feat`     | New feature                  |
+| `fix`      | Bug fix                      |
+| `docs`     | Documentation only           |
+| `style`    | Formatting, no code change   |
+| `refactor` | Code change, no feature/fix  |
+| `test`     | Adding/updating tests        |
+| `chore`    | Build, tooling, dependencies |
+| `perf`     | Performance improvement      |
+| `ci`       | CI/CD changes                |
+
+**Examples:**
+
+```bash
+feat(cart): add quantity update functionality
+fix(checkout): correct tax calculation for EU
+docs(readme): add testing section
+test(services): add ProductService tests
+chore(deps): update nuxt to 3.14
+```
+
+> **Note:** See [Branch Naming](#branch-naming) in Git Conventions above for branch naming rules.

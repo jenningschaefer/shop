@@ -8,22 +8,12 @@
 /**
  * Order status types
  */
-export type OrderStatus =
-  | 'Pending'
-  | 'Processing'
-  | 'Shipped'
-  | 'Delivered'
-  | 'Cancelled'
+export type OrderStatus = 'Pending' | 'Processing' | 'Shipped' | 'Delivered' | 'Cancelled'
 
 /**
  * Payment method types
  */
-export type PaymentType =
-  | 'Credit Card'
-  | 'PayPal'
-  | 'Apple Pay'
-  | 'Google Pay'
-  | 'Bank Transfer'
+export type PaymentType = 'Credit Card' | 'PayPal' | 'Apple Pay' | 'Google Pay' | 'Bank Transfer'
 
 /**
  * Currency types

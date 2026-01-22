@@ -21,10 +21,7 @@ export interface IAddressRepository extends IRepository<Address> {
 /**
  * JSON-based address repository
  */
-export class AddressRepository
-  extends JsonRepository<Address>
-  implements IAddressRepository
-{
+export class AddressRepository extends JsonRepository<Address> implements IAddressRepository {
   private static instance: AddressRepository | null = null
 
   private constructor() {
@@ -48,19 +45,14 @@ export class AddressRepository
 
   async findByType(userId: number, type: AddressType): Promise<Address[]> {
     await this.simulateDelay()
-    return this.data.filter(
-      (address) => address.user_id === userId && address.type === type
-    )
+    return this.data.filter((address) => address.user_id === userId && address.type === type)
   }
 
   async findDefault(userId: number, type: AddressType): Promise<Address | null> {
     await this.simulateDelay()
     return (
       this.data.find(
-        (address) =>
-          address.user_id === userId &&
-          address.type === type &&
-          address.is_default
+        (address) => address.user_id === userId && address.type === type && address.is_default
       ) ?? null
     )
   }

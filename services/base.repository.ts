@@ -54,9 +54,10 @@ export interface IReadOnlyRepository<T, ID = number> {
  * Simulates async API calls with local JSON data
  * Perfect for portfolio projects without backend
  */
-export abstract class JsonRepository<T extends { id: ID }, ID = number>
-  implements IRepository<T, ID>
-{
+export abstract class JsonRepository<T extends { id: ID }, ID = number> implements IRepository<
+  T,
+  ID
+> {
   protected readonly data: T[]
 
   constructor(initialData: T[]) {

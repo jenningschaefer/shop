@@ -50,11 +50,7 @@ function addToCart(): void {
     </div>
     <div class="product_description">
       <h1 class="product_description-title">{{ product.name }}</h1>
-      <NuxtPicture
-        format="avif, webp"
-        :src="product.img"
-        class="product_description-img"
-      />
+      <NuxtPicture format="avif, webp" :src="product.img" class="product_description-img" />
       <div class="product_description-accordion">
         <UIAccordion>
           <UIAccordionItem>
@@ -81,7 +77,9 @@ function addToCart(): void {
         </UIAccordion>
       </div>
       <div class="product_description-add">
-        <div class="product_description-add-desc">{{ t('product.designer') }}: {{ product.designer }}</div>
+        <div class="product_description-add-desc">
+          {{ t('product.designer') }}: {{ product.designer }}
+        </div>
         <div class="product_description-add-desc">{{ product.price }} {{ product.currency }}</div>
         <button class="vesta-btn" type="button" @click="addToCart">
           {{ t('product.addToCart') }}

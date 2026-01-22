@@ -20,7 +20,9 @@ useHead({
         <use href="~/assets/svg/logos.svg#logo-bg" />
       </svg>
       <div class="home_slogan_text hero-font">
-        make it simple<br />but significant
+        make it simple
+        <br />
+        but significant
       </div>
     </div>
     <!-- slogan end -->

@@ -12,15 +12,15 @@ export default withNuxt({
     // Vue specific
     'vue/multi-word-component-names': 'off',
     'vue/no-multiple-template-root': 'off',
-    
+
     // TypeScript
     '@typescript-eslint/no-explicit-any': 'warn',
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
-    
+
     // General
     'no-console': ['warn', { allow: ['warn', 'error'] }],
     'prefer-const': 'error',
-    'eqeqeq': ['error', 'always'],
+    eqeqeq: ['error', 'always'],
   },
 })

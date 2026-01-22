@@ -28,10 +28,7 @@ function handleFavorite(): void {
 </script>
 
 <template>
-  <div
-    class="product-card"
-    @click="navigateTo(`/products/${product.name_url}-${product.id}`)"
-  >
+  <div class="product-card" @click="navigateTo(`/products/${product.name_url}-${product.id}`)">
     <div class="product-card_img">
       <svg
         class="product-card_img_icon"
@@ -40,11 +37,7 @@ function handleFavorite(): void {
       >
         <use href="~/assets/svg/icons.svg#heart" />
       </svg>
-      <NuxtPicture
-        format="avif, webp"
-        :src="product.img"
-        class="product-card_img_image"
-      />
+      <NuxtPicture format="avif, webp" :src="product.img" class="product-card_img_image" />
     </div>
     <div class="product-card_name">{{ product.name }}</div>
     <div class="product-card_price">{{ product.price }} {{ product.currency }}</div>

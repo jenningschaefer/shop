@@ -6,17 +6,18 @@
 
 ## 📊 Status at a Glance
 
-| Phase | Status | Last Updated |
-| ----- | ------ | ------------ |
-| Phase 1: Cleanup & Foundation | ✅ Complete | 2026-01-22 |
-| Phase 2: TypeScript Migration | ✅ Complete | 2026-01-22 |
-| Phase 3: Service Layer | ✅ Complete | 2026-01-22 |
-| Phase 4: Pinia State Management | ✅ Complete | 2026-01-22 |
-| Phase 5: Internationalization (i18n) | ✅ Complete | 2026-01-22 |
-| Phase 6: Testing | ⏳ Pending | - |
-| Phase 7: Polish & CI/CD | ⏳ Pending | - |
+| Phase                                | Status      | Last Updated |
+| ------------------------------------ | ----------- | ------------ |
+| Phase 1: Cleanup & Foundation        | ✅ Complete | 2026-01-22   |
+| Phase 2: TypeScript Migration        | ✅ Complete | 2026-01-22   |
+| Phase 3: Service Layer               | ✅ Complete | 2026-01-22   |
+| Phase 4: Pinia State Management      | ✅ Complete | 2026-01-22   |
+| Phase 5: Internationalization (i18n) | ✅ Complete | 2026-01-22   |
+| Phase 6: Testing                     | ✅ Complete | 2026-01-22   |
+| Phase 7: Nuxt 4 Upgrade              | ⏳ Pending  | -            |
+| Phase 8: Polish & CI/CD              | ⏳ Pending  | -            |
 
-**Current Phase**: 6 (Testing)  
+**Current Phase**: 7 (Nuxt 4 Upgrade)  
 **Started**: 2026-01-22  
 **Estimated Completion**: ~25-35 hours total
 
@@ -24,15 +25,15 @@
 
 ## Overview
 
-| Aspect | Before | After |
-| -------- | -------- | ------- |
-| Language | JavaScript | TypeScript (strict) |
-| State | localStorage | Pinia (typed stores) |
-| Architecture | Flat | Layered (Service/Repository) |
-| Testing | None | Vitest + Vue Test Utils + Playwright |
-| i18n | Hardcoded DE/EN | @nuxtjs/i18n |
-| Linting | None | ESLint + Prettier |
-| CI/CD | None | GitHub Actions |
+| Aspect       | Before          | After                                |
+| ------------ | --------------- | ------------------------------------ |
+| Language     | JavaScript      | TypeScript (strict)                  |
+| State        | localStorage    | Pinia (typed stores)                 |
+| Architecture | Flat            | Layered (Service/Repository)         |
+| Testing      | None            | Vitest + Vue Test Utils + Playwright |
+| i18n         | Hardcoded DE/EN | @nuxtjs/i18n                         |
+| Linting      | None            | ESLint + Prettier                    |
+| CI/CD        | None            | GitHub Actions                       |
 
 ---
 
@@ -67,15 +68,15 @@
 - [x] Install & configure ESLint (`@nuxt/eslint` with flat config)
 - [x] Install & configure Prettier
 - [x] Add `.editorconfig`
-- [ ] Add pre-commit hooks (husky + lint-staged) - *deferred*
+- [ ] Add pre-commit hooks (husky + lint-staged) - _deferred_
 - [x] TypeScript strict mode enabled
 
 ### 1.4 Project Files
 
 - [x] Add `LICENSE` (MIT)
 - [x] Rewrite `README.md` (modern, with badges)
-- [ ] Add `.env.example` - *blocked by gitignore*
-- [ ] Add `CONTRIBUTING.md` - *deferred*
+- [ ] Add `.env.example` - _blocked by gitignore_
+- [ ] Add `CONTRIBUTING.md` - _deferred_
 - [x] Add `CHANGELOG.md`
 
 ---
@@ -172,7 +173,7 @@ interface IRepository<T, ID> {
 // JSON implementation with simulated network delay
 class JsonRepository<T> implements IRepository<T, number> {
   protected simulateDelay(ms: number = 50): Promise<void>
-  getData(): T[]  // Sync access for composables
+  getData(): T[] // Sync access for composables
 }
 ```
 
@@ -227,17 +228,17 @@ Using Composition API style (Setup Stores):
 export const useCartStore = defineStore('cart', () => {
   // State
   const items = ref<CartItem[]>([])
-  
+
   // Getters
-  const total = computed(() => 
-    items.value.reduce((sum, item) => sum + item.price * item.amount, 0)
-  )
-  
+  const total = computed(() => items.value.reduce((sum, item) => sum + item.price * item.amount, 0))
+
   // Actions
-  function addItem(product: Product, quantity: number = 1) { }
-  function removeItem(productId: number) { }
-  function init() { /* load from localStorage */ }
-  
+  function addItem(product: Product, quantity: number = 1) {}
+  function removeItem(productId: number) {}
+  function init() {
+    /* load from localStorage */
+  }
+
   return { items, total, addItem, removeItem, init }
 })
 ```
@@ -269,13 +270,13 @@ export default defineNuxtConfig({
   i18n: {
     locales: [
       { code: 'de', name: 'Deutsch', file: 'de.json' },
-      { code: 'en', name: 'English', file: 'en.json' }
+      { code: 'en', name: 'English', file: 'en.json' },
     ],
     defaultLocale: 'de',
     lazy: true,
     langDir: 'locales/',
-    strategy: 'prefix_except_default'
-  }
+    strategy: 'prefix_except_default',
+  },
 })
 ```
 
@@ -330,16 +331,21 @@ Language switcher in NavBar toggles between DE/EN.
 
 ---
 
-## Phase 6: Testing
+## Phase 6: Testing ✅
 
 **Goal**: Comprehensive test coverage.
 
+**Completed**: 2026-01-22
+
 ### 6.1 Setup
 
-```bash
-npm install -D vitest @vue/test-utils @nuxt/test-utils happy-dom
-npm install -D @playwright/test
-```
+Installed testing stack:
+
+- **Vitest** - Fast unit test runner
+- **Vue Test Utils** - Vue component testing
+- **@nuxt/test-utils** - Nuxt-specific testing utilities
+- **happy-dom** - Lightweight DOM implementation
+- **@playwright/test** - E2E browser testing
 
 ### 6.2 Test Structure
 
@@ -347,39 +353,131 @@ npm install -D @playwright/test
 /tests/
   /unit/
     /services/
-      product.service.spec.ts
+      product.service.spec.ts  ✅ (18 tests)
+      order.service.spec.ts    ✅ (14 tests)
     /composables/
-      useProducts.spec.ts
-    /utils/
-      formatters.spec.ts
+      useProducts.spec.ts      ✅ (7 tests)
+    /stores/
+      cart.spec.ts             ✅ (20 tests)
+      ui.spec.ts               ✅ (21 tests)
   /component/
     /Product/
-      Card.spec.ts
-      Item.spec.ts
+      Card.spec.ts             ✅ (6 tests)
+    /Order/
+      Card.spec.ts             ✅ (4 tests)
     /UI/
-      dialog.spec.ts
+      dialog.spec.ts           ✅ (5 tests)
   /e2e/
-    checkout.spec.ts
-    product-browse.spec.ts
-    account.spec.ts
+    homepage.spec.ts           ✅ (4 tests)
+    products.spec.ts           ✅ (6 tests)
+    cart.spec.ts               ✅ (5 tests)
+    checkout.spec.ts           ✅ (9 tests)
+    account.spec.ts            ✅ (10 tests)
+    login.spec.ts              ✅ (10 tests)
 ```
 
-### 6.3 Coverage Goals
+### 6.3 Test Results
 
-| Type | Target |
-| ------ | -------- |
-| Unit (Services) | 90%+ |
-| Unit (Composables) | 80%+ |
-| Component | 70%+ |
-| E2E | Critical paths |
+| Type               | Tests | Status        |
+| ------------------ | ----- | ------------- |
+| Unit (Services)    | 32    | ✅ Passing    |
+| Unit (Composables) | 7     | ✅ Passing    |
+| Unit (Stores)      | 41    | ✅ Passing    |
+| Component          | 15    | ✅ Passing    |
+| E2E                | 44    | ✅ Configured |
+
+Total: 95 unit/component tests + 44 E2E tests = **139 tests**
+
+### 6.4 Bundle Size Testing
+
+Using `size-limit` for tracking bundle size:
+
+```bash
+npm run size:check  # Build and check bundle sizes
+```
+
+| Bundle       | Limit  |
+| ------------ | ------ |
+| Client JS    | 500 KB |
+| Client CSS   | 50 KB  |
+| Total Assets | 600 KB |
 
 ---
 
-## Phase 7: Polish & CI/CD
+## Phase 7: Nuxt 4 Upgrade
+
+**Goal**: Migrate to Nuxt 4 with compatibility layer for future-proofing.
+
+### 7.1 Prerequisites
+
+- [x] All tests passing (Phase 6 complete)
+- [ ] Dependencies compatibility verified
+- [ ] Backup/branch created
+
+### 7.2 Compatibility Mode
+
+First, test with Nuxt 3's compatibility mode:
+
+```typescript
+// nuxt.config.ts
+export default defineNuxtConfig({
+  future: {
+    compatibilityVersion: 4,
+  },
+})
+```
+
+### 7.3 Breaking Changes to Address
+
+| Change                         | Action Required                                 |
+| ------------------------------ | ----------------------------------------------- |
+| New `app/` directory structure | Move pages, components, composables into `app/` |
+| `shared/` directory            | Create for cross-app utilities                  |
+| Import path updates            | Update `~/` aliases if needed                   |
+| Deprecated APIs                | Review and update any deprecated usage          |
+
+### 7.4 Migration Steps
+
+1. [ ] Enable `compatibilityVersion: 4` in nuxt.config.ts
+2. [ ] Run tests, fix any breaking issues
+3. [ ] Restructure to new directory layout (see structure below)
+4. [ ] Update import paths
+5. [ ] Upgrade to Nuxt 4 stable when released
+6. [ ] Full regression test
+
+**Target Directory Structure:**
+
+```text
+shop/
+├── app/
+│   ├── pages/
+│   ├── components/
+│   ├── composables/
+│   ├── layouts/
+│   └── app.vue
+├── shared/
+│   └── utils/
+├── server/
+├── public/
+└── nuxt.config.ts
+```
+
+### 7.5 Dependency Compatibility
+
+| Package      | Nuxt 4 Ready? | Notes             |
+| ------------ | ------------- | ----------------- |
+| @nuxtjs/i18n | ✅            | v9+ compatible    |
+| @nuxt/image  | ✅            | v1.7+ compatible  |
+| @pinia/nuxt  | ✅            | v0.11+ compatible |
+| @vueuse/nuxt | ✅            | v10+ compatible   |
+
+---
+
+## Phase 8: Polish & CI/CD
 
 **Goal**: Production-ready with automation.
 
-### 7.1 File Headers
+### 8.1 File Headers
 
 Add to all source files (see STANDARDS.md):
 
@@ -391,7 +489,7 @@ Add to all source files (see STANDARDS.md):
  */
 ```
 
-### 7.2 GitHub Actions
+### 8.2 GitHub Actions
 
 ```yaml
 # .github/workflows/ci.yml
@@ -402,13 +500,13 @@ Add to all source files (see STANDARDS.md):
 - E2E tests (on PR)
 ```
 
-### 7.3 Documentation
+### 8.3 Documentation
 
 - [ ] Component documentation (Storybook or similar)
 - [ ] API documentation (TypeDoc)
 - [ ] Architecture diagrams
 
-### 7.4 Accessibility
+### 8.4 Accessibility
 
 - [ ] Audit with axe-core
 - [ ] Keyboard navigation
@@ -419,17 +517,18 @@ Add to all source files (see STANDARDS.md):
 
 ## Timeline Estimate
 
-| Phase | Effort | Priority |
-| ------- | -------- | ---------- |
-| Phase 1: Cleanup | 2-3h | 🔴 High |
-| Phase 2: TypeScript | 4-6h | 🔴 High |
-| Phase 3: Service Layer | 4-6h | 🟡 Medium |
-| Phase 4: Pinia | 2-3h | 🟡 Medium |
-| Phase 5: i18n | 3-4h | 🟡 Medium |
-| Phase 6: Testing | 6-8h | 🟡 Medium |
-| Phase 7: Polish | 3-4h | 🟢 Low |
+| Phase                   | Effort | Priority  |
+| ----------------------- | ------ | --------- |
+| Phase 1: Cleanup        | 2-3h   | 🔴 High   |
+| Phase 2: TypeScript     | 4-6h   | 🔴 High   |
+| Phase 3: Service Layer  | 4-6h   | 🟡 Medium |
+| Phase 4: Pinia          | 2-3h   | 🟡 Medium |
+| Phase 5: i18n           | 3-4h   | 🟡 Medium |
+| Phase 6: Testing        | 6-8h   | 🟡 Medium |
+| Phase 7: Nuxt 4 Upgrade | 2-4h   | 🟢 Low    |
+| Phase 8: Polish         | 3-4h   | 🟢 Low    |
 
-**Total**: ~25-35 hours
+**Total**: ~28-40 hours
 
 ---
 
@@ -471,16 +570,25 @@ Add to all source files (see STANDARDS.md):
 - [x] 5.4 Migrate components
 - [x] 5.5 Language switcher
 
-### Phase 6
+### Phase 6 ✅
 
-- [ ] 6.1 Test setup
-- [ ] 6.2 Unit tests
-- [ ] 6.3 Component tests
-- [ ] 6.4 E2E tests
+- [x] 6.1 Test setup (Vitest + Vue Test Utils + Nuxt Test Utils)
+- [x] 6.2 Unit tests (Services, Composables, Stores)
+- [x] 6.3 Component tests (ProductCard, OrderCard, Dialog)
+- [x] 6.4 E2E tests (Playwright - Homepage, Products, Cart, Checkout, Account, Login)
+- [x] 6.5 CI/CD pipeline (GitHub Actions, husky, lint-staged)
 
 ### Phase 7
 
-- [ ] 7.1 File headers
-- [ ] 7.2 CI/CD
-- [ ] 7.3 Documentation
-- [ ] 7.4 Accessibility
+- [ ] 7.1 Prerequisites check
+- [ ] 7.2 Enable compatibility mode
+- [ ] 7.3 Fix breaking changes
+- [ ] 7.4 Migrate directory structure
+- [ ] 7.5 Full regression test
+
+### Phase 8
+
+- [ ] 8.1 File headers
+- [ ] 8.2 CI/CD
+- [ ] 8.3 Documentation
+- [ ] 8.4 Accessibility

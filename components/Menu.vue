@@ -40,11 +40,7 @@ const { t } = useI18n()
       <div class="menu_bottom_newsletter">
         <div class="subtitle-big">{{ t('footer.newsletter') }}</div>
         <div class="menu_bottom_newsletter_input">
-          <input
-            class="input-newsletter"
-            type="text"
-            :placeholder="t('footer.emailPlaceholder')"
-          />
+          <input class="input-newsletter" type="text" :placeholder="t('footer.emailPlaceholder')" />
           <a>
             <svg class="menu_bottom_newsletter_icon">
               <use href="~/assets/svg/icons.svg#link" />

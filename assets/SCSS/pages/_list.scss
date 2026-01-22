@@ -1,104 +1,105 @@
-@use "../abstracts" as *;
+@use '../abstracts' as *;
 
 .list {
+  &_error {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
 
-    &_error {
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-
-        &_heading {
-            color: red;
-        }
+    &_heading {
+      color: red;
     }
-    &-content_container {
+  }
+  &-content_container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  &-content {
+    @media (min-width: $breakpoint-md) {
+      display: flex;
+      padding: 2rem 1rem;
+    }
+    @media (min-width: $breakpoint-lg) {
+      display: flex;
+      padding: 2rem 8rem;
+    }
+    &_settings {
+      margin: 2rem 0;
+      padding: 0 1rem;
+      display: flex;
+      height: 2rem;
+
+      // line seperator
+      background: linear-gradient(
+        to right,
+        transparent 0%,
+        transparent calc(50% - 1px),
+        black calc(50% - 1px),
+        black calc(50% + 1px),
+        transparent calc(50% + 1px),
+        transparent 100%
+      );
+
+      @media (min-width: $breakpoint-md) {
+        display: none;
+      }
+      &_item {
+        padding-left: 2rem;
+        display: flex;
+        justify-content: start;
         width: 100%;
-        display: flex;
-        justify-content: center;
-    }
-    &-content {
-        @media (min-width: $breakpoint-md) {
-            display: flex;
-            padding: 2rem 1rem;
-        }
-        @media (min-width: $breakpoint-lg) {
-            display: flex;
-            padding: 2rem 8rem;
-        }
-        &_settings {
-            margin: 2rem 0;
-            padding: 0 1rem;
-            display: flex;
-            height: 2rem;
-            
-            // line seperator
-            background: linear-gradient(to right,
-            transparent 0%,
-            transparent calc(50% - 1px),
-            black calc(50% - 1px),
-            black calc(50% + 1px),
-            transparent calc(50% + 1px),
-            transparent 100%);
-            
-            @media (min-width: $breakpoint-md) {
-                display: none;
-            }
-            &_item {
-                padding-left: 2rem;
-                display: flex;
-                justify-content: start;
-                width: 100%;
-                cursor: pointer;
-            }
+        cursor: pointer;
+      }
 
-            &_icon {
-                height: 1.75rem;
-                width: 1.75rem;
-                stroke: $color-primary;
-                fill: $color-primary;
-                margin-right: .8rem;
-            }
-        }
-
-        &_sort-filter {
-            display: none;
-            padding: 1rem;
-            @media (min-width: $breakpoint-md) {
-                display: block;
-                min-width: 15rem;
-            }
-        }
-
-        &_grid {
-            height: 100%;
-            padding: 1rem 1rem;
-            display: grid;
-            row-gap: 2rem;
-            grid-template-columns: 1fr 1fr;
-            grid-template-rows: auto;
-
-            @media (min-width: $breakpoint-sm) {
-                grid-template-columns: 1fr 1fr 1fr;
-            }
-        }
+      &_icon {
+        height: 1.75rem;
+        width: 1.75rem;
+        stroke: $color-primary;
+        fill: $color-primary;
+        margin-right: 0.8rem;
+      }
     }
 
-    .product-card {
+    &_sort-filter {
+      display: none;
+      padding: 1rem;
+      @media (min-width: $breakpoint-md) {
+        display: block;
+        min-width: 15rem;
+      }
+    }
+
+    &_grid {
+      height: 100%;
+      padding: 1rem 1rem;
+      display: grid;
+      row-gap: 2rem;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto;
+
+      @media (min-width: $breakpoint-sm) {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+    }
+  }
+
+  .product-card {
+    border-right: 2px solid black;
+    padding: 0 1rem;
+
+    &:nth-child(even) {
+      border-right: none;
+    }
+
+    @media (min-width: $breakpoint-sm) {
+      &:nth-child(even) {
         border-right: 2px solid black;
-        padding: 0 1rem;
+      }
 
-        &:nth-child(even) {
-            border-right: none;
-        }
-
-        @media (min-width: $breakpoint-sm) {
-            &:nth-child(even) {
-                border-right: 2px solid black;
-            }
-
-            &:nth-child(3n) {
-                border-right: none;
-            }
-        }
+      &:nth-child(3n) {
+        border-right: none;
+      }
     }
+  }
 }

@@ -1,45 +1,44 @@
-@use "../abstracts" as *;
+@use '../abstracts' as *;
 
 .product-item {
+  display: flex;
+  padding: 1rem;
+  width: 100%;
+  padding: 0.5rem;
+  &_img {
+    width: 40%;
+    &_image {
+      //display: block;
+      img {
+        outline: 2px solid $color-primary;
+      }
+    }
+    &_counter {
+      padding-top: 0.5rem;
+    }
+  }
+  &_info {
+    width: 60%;
     display: flex;
-    padding: 1rem;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: end;
+    &_name {
+      text-align: end;
+    }
+  }
+
+  &_buttons {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+    padding-bottom: 0.5rem;
+    button {
+      width: 100%;
+    }
+  }
+
+  &_button {
     width: 100%;
-    padding: .5rem;
-    &_img {
-        width: 40%;
-        &_image {
-            //display: block;
-            img {
-                outline: 2px solid $color-primary;
-
-            }
-        }
-        &_counter {
-            padding-top: .5rem;
-        }
-    }
-    &_info {
-        width: 60%;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: end;
-        &_name {
-            text-align: end;
-        }
-    }
-
-    &_buttons {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: .5rem;
-        padding-bottom: .5rem;
-        button {
-            width: 100%;
-        }
-    }
-
-    &_button {
-        width: 100%;
-    }
+  }
 }

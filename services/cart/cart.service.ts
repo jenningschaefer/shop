@@ -142,10 +142,7 @@ export class CartService {
   calculateTotals(items?: CartItem[]): CartTotals {
     const cartItems = items ?? this.getItems()
 
-    const subtotal = cartItems.reduce(
-      (sum, item) => sum + item.price * item.amount,
-      0
-    )
+    const subtotal = cartItems.reduce((sum, item) => sum + item.price * item.amount, 0)
     const itemCount = cartItems.reduce((count, item) => count + item.amount, 0)
 
     // Shipping calculation (free over $100)

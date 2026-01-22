@@ -90,10 +90,7 @@ export function useAddressesAsync(userId: number) {
     return newAddress
   }
 
-  async function updateAddress(
-    addressId: number,
-    updates: Partial<Address>
-  ): Promise<void> {
+  async function updateAddress(addressId: number, updates: Partial<Address>): Promise<void> {
     await addressService.update(addressId, updates)
     await fetchAddresses()
   }

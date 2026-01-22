@@ -14,9 +14,7 @@ const openCart = ref(false)
 const openFavorites = ref(false)
 
 const isProductPage = computed(() => route.name === 'products-name-id')
-const isAccountPage = computed(() =>
-  String(route.name ?? '').includes('account')
-)
+const isAccountPage = computed(() => String(route.name ?? '').includes('account'))
 
 function toggleLocale(): void {
   setLocale(locale.value === 'de' ? 'en' : 'de')
@@ -40,7 +38,10 @@ function toggleLocale(): void {
           </a>
         </template>
         <template v-else>
-          <a @click="toggleLocale" :title="locale === 'de' ? 'Switch to English' : 'Auf Deutsch wechseln'">
+          <a
+            :title="locale === 'de' ? 'Switch to English' : 'Auf Deutsch wechseln'"
+            @click="toggleLocale"
+          >
             <svg v-if="locale === 'de'" class="subNav_icon subNav_icon--lang">
               <use href="~/assets/svg/icons.svg#lang-de" />
             </svg>
@@ -78,7 +79,10 @@ function toggleLocale(): void {
         </a>
       </template>
       <template v-else>
-        <a @click="toggleLocale" :title="locale === 'de' ? 'Switch to English' : 'Auf Deutsch wechseln'">
+        <a
+          :title="locale === 'de' ? 'Switch to English' : 'Auf Deutsch wechseln'"
+          @click="toggleLocale"
+        >
           <svg v-if="locale === 'de'" class="subNav_icon subNav_icon--lang">
             <use href="~/assets/svg/icons.svg#lang-de" />
           </svg>

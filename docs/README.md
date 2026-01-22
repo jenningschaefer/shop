@@ -4,14 +4,16 @@ This folder contains all project documentation for the Shop portfolio project.
 
 ## Contents
 
-| Document | Description |
-| ---------- | ------------- |
-| [MODERNIZATION_PLAN.md](./MODERNIZATION_PLAN.md) | Step-by-step plan to modernize the codebase |
-| [STANDARDS.md](./STANDARDS.md) | Code standards, conventions, and file structure |
-| [ARCHITECTURE.md](./ARCHITECTURE.md) | System architecture and design decisions |
+| Document                                         | Description                                     |
+| ------------------------------------------------ | ----------------------------------------------- |
+| [MODERNIZATION_PLAN.md](./MODERNIZATION_PLAN.md) | Step-by-step plan to modernize the codebase     |
+| [STANDARDS.md](./STANDARDS.md)                   | Code standards, conventions, and file structure |
+| [ARCHITECTURE.md](./ARCHITECTURE.md)             | System architecture and design decisions        |
+| [TESTING.md](./TESTING.md)                       | Testing strategy, tools, and how to write tests |
 
 ## Quick Links
 
-- **Current Status**: Phase 0 - Assessment Complete
-- **Next Step**: Phase 1 - Cleanup & Foundation
+- **Current Status**: Phase 6 Complete - Testing ✅
+- **Next Step**: Phase 7 - Nuxt 4 Upgrade
 - **Target**: Senior-level TypeScript Vue 3 / Nuxt 3 Portfolio Project
+- **Test Count**: 139 tests (95 unit/component + 44 E2E)

@@ -1,33 +1,33 @@
-@use "../abstracts" as *;
+@use '../abstracts' as *;
 
 .order-card {
-    &_heading {
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        h3 {
-            font-size: 1.5rem !important;
-        }
-        svg {
-            height: 1.5rem;
-        }
+  &_heading {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    h3 {
+      font-size: 1.5rem !important;
     }
-    //&_status {}
-    &_info {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: auto;
-        padding-top: 1rem;
-        column-gap: 2rem;
-        @media (min-width: $breakpoint-sm) {
-            grid-template-columns: 1fr 1fr 1fr 1fr;
-        }
-        &-heading {
-            opacity: 60%;
-        }
-        &-value {
-            text-align: end;
-        }
+    svg {
+      height: 1.5rem;
     }
+  }
+  //&_status {}
+  &_info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    padding-top: 1rem;
+    column-gap: 2rem;
+    @media (min-width: $breakpoint-sm) {
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+    &-heading {
+      opacity: 60%;
+    }
+    &-value {
+      text-align: end;
+    }
+  }
 }

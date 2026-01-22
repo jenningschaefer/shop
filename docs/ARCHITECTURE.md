@@ -115,12 +115,12 @@ export function useProducts() {
 // stores/cart.store.ts
 export const useCartStore = defineStore('cart', () => {
   const items = ref<CartItem[]>([])
-  
+
   const total = computed(() => /* ... */)
-  
+
   function addItem(product: Product) { /* ... */ }
   function removeItem(id: number) { /* ... */ }
-  
+
   return { items, total, addItem, removeItem }
 })
 ```
@@ -140,15 +140,15 @@ export class ProductService {
 
   async getByCategory(category: ProductCategory): Promise<Product[]> {
     const products = await this.repository.findAll()
-    return products.filter(p => p.type === category)
+    return products.filter((p) => p.type === category)
   }
 
   async search(query: string): Promise<Product[]> {
     const products = await this.repository.findAll()
     const lowerQuery = query.toLowerCase()
-    return products.filter(p => 
-      p.name.toLowerCase().includes(lowerQuery) ||
-      p.designer.toLowerCase().includes(lowerQuery)
+    return products.filter(
+      (p) =>
+        p.name.toLowerCase().includes(lowerQuery) || p.designer.toLowerCase().includes(lowerQuery)
     )
   }
 }
@@ -184,11 +184,11 @@ export class JsonProductRepository implements IRepository<Product> {
 
   async findById(id: number): Promise<Product | null> {
     await this.delay(25)
-    return this.data.find(p => p.id === id) ?? null
+    return this.data.find((p) => p.id === id) ?? null
   }
 
   private delay(ms: number): Promise<void> {
-    return new Promise(resolve => setTimeout(resolve, ms))
+    return new Promise((resolve) => setTimeout(resolve, ms))
   }
 }
 ```
@@ -209,10 +209,10 @@ interface IProductRepository {
 }
 
 // JSON Implementation (current)
-class JsonProductRepository implements IProductRepository { }
+class JsonProductRepository implements IProductRepository {}
 
 // API Implementation (future)
-class ApiProductRepository implements IProductRepository { }
+class ApiProductRepository implements IProductRepository {}
 ```
 
 ### Dependency Injection
@@ -229,7 +229,7 @@ export function useProductService() {
 
 // In tests
 const mockRepository = {
-  findAll: vi.fn().mockResolvedValue([mockProduct])
+  findAll: vi.fn().mockResolvedValue([mockProduct]),
 }
 const service = new ProductService(mockRepository)
 ```
@@ -240,14 +240,14 @@ const service = new ProductService(mockRepository)
 
 ```typescript
 // ❌ Avoid deep inheritance
-class BaseComponent extends Vue { }
-class ProductComponent extends BaseComponent { }
-class ProductCard extends ProductComponent { }
+class BaseComponent extends Vue {}
+class ProductComponent extends BaseComponent {}
+class ProductCard extends ProductComponent {}
 
 // ✅ Use composition
-function useProduct(id: number) { }
-function useFavorites() { }
-function useCart() { }
+function useProduct(id: number) {}
+function useFavorites() {}
+function useCart() {}
 
 // Compose in component
 const product = useProduct(props.id)
@@ -296,7 +296,7 @@ For caching and synchronizing server data.
 // Could add @tanstack/vue-query for advanced caching
 const { data: products, isLoading } = useQuery({
   queryKey: ['products'],
-  queryFn: () => productService.getAll()
+  queryFn: () => productService.getAll(),
 })
 ```
 
@@ -430,13 +430,13 @@ describe('ProductService', () => {
     const mockRepo = {
       findAll: vi.fn().mockResolvedValue([
         { id: 1, type: 'chairs' },
-        { id: 2, type: 'tables' }
-      ])
+        { id: 2, type: 'tables' },
+      ]),
     }
     const service = new ProductService(mockRepo)
-    
+
     const chairs = await service.getByCategory('chairs')
-    
+
     expect(chairs).toHaveLength(1)
     expect(chairs[0].type).toBe('chairs')
   })
@@ -450,11 +450,11 @@ describe('ProductService', () => {
 describe('ProductCard', () => {
   it('emits favor event when heart is clicked', async () => {
     const wrapper = mount(ProductCard, {
-      props: { product: mockProduct, favored: false }
+      props: { product: mockProduct, favored: false },
     })
-    
+
     await wrapper.find('.product-card__favorite').trigger('click')
-    
+
     expect(wrapper.emitted('favor')).toBeTruthy()
     expect(wrapper.emitted('favor')[0]).toEqual([mockProduct.id])
   })
@@ -470,9 +470,9 @@ test('user can complete checkout', async ({ page }) => {
   await page.click('[data-testid="product-card"]:first-child')
   await page.click('[data-testid="add-to-cart"]')
   await page.click('[data-testid="checkout-button"]')
-  
+
   // Fill address, payment, etc.
-  
+
   await expect(page.locator('.confirmation-message')).toBeVisible()
 })
 ```
@@ -489,7 +489,7 @@ The repository pattern makes it easy to switch to a real API:
 // 1. Create new repository
 class ApiProductRepository implements IProductRepository {
   private api = useNuxtApp().$api
-  
+
   async findAll(): Promise<Product[]> {
     return this.api.get('/products')
   }
@@ -497,10 +497,8 @@ class ApiProductRepository implements IProductRepository {
 
 // 2. Swap in service factory
 export function useProductService() {
-  const repository = import.meta.env.DEV
-    ? new JsonProductRepository()
-    : new ApiProductRepository()
-  
+  const repository = import.meta.env.DEV ? new JsonProductRepository() : new ApiProductRepository()
+
   return new ProductService(repository)
 }
 ```

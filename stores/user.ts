@@ -106,10 +106,7 @@ export const useUserStore = defineStore('user', () => {
   /**
    * Login with email (mock - finds user by email)
    */
-  async function loginWithEmail(
-    email: string,
-    _password: string
-  ): Promise<boolean> {
+  async function loginWithEmail(email: string, _password: string): Promise<boolean> {
     isLoading.value = true
     error.value = null
 

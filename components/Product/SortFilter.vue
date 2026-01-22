@@ -33,9 +33,15 @@ const { t } = useI18n()
         </template>
         <template #accordion-content>
           <ul class="sort-filter_list subtitle-small">
-            <li><NuxtLink to="/products/list/chairs">{{ t('categories.chairs') }}</NuxtLink></li>
-            <li><NuxtLink to="/products/list/table">{{ t('categories.table') }}</NuxtLink></li>
-            <li><NuxtLink to="/products/list/lighting">{{ t('categories.lighting') }}</NuxtLink></li>
+            <li>
+              <NuxtLink to="/products/list/chairs">{{ t('categories.chairs') }}</NuxtLink>
+            </li>
+            <li>
+              <NuxtLink to="/products/list/table">{{ t('categories.table') }}</NuxtLink>
+            </li>
+            <li>
+              <NuxtLink to="/products/list/lighting">{{ t('categories.lighting') }}</NuxtLink>
+            </li>
             <li>
               <NuxtLink to="/products/list/accessory">{{ t('categories.accessory') }}</NuxtLink>
             </li>

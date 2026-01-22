@@ -13,7 +13,7 @@ import type { ProductRaw, Product, Locale } from '~/types'
  */
 export function localizeProduct(product: ProductRaw, locale: Locale): Product {
   const isEnglish = locale === 'en'
-  
+
   return {
     id: product.id,
     type: product.type,
@@ -43,7 +43,7 @@ export function localizeProducts(products: ProductRaw[], locale: Locale): Produc
  */
 export function formatPrice(price: string | number, locale: Locale): string {
   const numPrice = typeof price === 'string' ? parseFloat(price) : price
-  
+
   if (locale === 'en') {
     return `$${numPrice.toFixed(2)}`
   }
@@ -55,11 +55,9 @@ export function formatPrice(price: string | number, locale: Locale): string {
  */
 export function useLocalizedProducts(rawProducts: ProductRaw[]) {
   const { locale } = useI18n()
-  
-  const products = computed(() => 
-    localizeProducts(rawProducts, locale.value as Locale)
-  )
-  
+
+  const products = computed(() => localizeProducts(rawProducts, locale.value as Locale))
+
   return {
     products,
     locale,
@@ -71,11 +69,9 @@ export function useLocalizedProducts(rawProducts: ProductRaw[]) {
  */
 export function useLocalizedProduct(rawProduct: ProductRaw) {
   const { locale } = useI18n()
-  
-  const product = computed(() => 
-    localizeProduct(rawProduct, locale.value as Locale)
-  )
-  
+
+  const product = computed(() => localizeProduct(rawProduct, locale.value as Locale))
+
   return {
     product,
     locale,

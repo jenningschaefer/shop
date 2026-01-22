@@ -50,9 +50,7 @@ export function useUserAsync(id: number) {
     }
   }
 
-  const displayName = computed(() =>
-    user.value ? userService.getDisplayName(user.value) : ''
-  )
+  const displayName = computed(() => (user.value ? userService.getDisplayName(user.value) : ''))
 
   const hasCompleteProfile = computed(() =>
     user.value ? userService.hasCompleteProfile(user.value) : false

@@ -24,14 +24,14 @@
 
 ## 🛠️ Tech Stack
 
-| Category | Technology |
-| -------- | ---------- |
-| Framework | [Nuxt 3](https://nuxt.com/) |
-| Language | [TypeScript](https://www.typescriptlang.org/) |
-| Styling | SCSS with 7-1 Architecture |
-| State | [VueUse](https://vueuse.org/) + LocalStorage |
-| Images | [@nuxt/image](https://image.nuxt.com/) |
-| Linting | ESLint + Prettier |
+| Category  | Technology                                    |
+| --------- | --------------------------------------------- |
+| Framework | [Nuxt 3](https://nuxt.com/)                   |
+| Language  | [TypeScript](https://www.typescriptlang.org/) |
+| Styling   | SCSS with 7-1 Architecture                    |
+| State     | [VueUse](https://vueuse.org/) + LocalStorage  |
+| Images    | [@nuxt/image](https://image.nuxt.com/)        |
+| Linting   | ESLint + Prettier                             |
 
 ## 🚀 Quick Start
 
@@ -98,18 +98,28 @@ Detailed documentation is available in the [`docs/`](./docs/) folder:
 - [Modernization Plan](./docs/MODERNIZATION_PLAN.md) - Roadmap for improvements
 - [Code Standards](./docs/STANDARDS.md) - Coding conventions and style guide
 - [Architecture](./docs/ARCHITECTURE.md) - System design and patterns
+- [Testing Guide](./docs/TESTING.md) - Testing strategy and how to write tests
 
 ## 🧪 Scripts
 
-| Command | Description |
-| ------- | ----------- |
-| `npm run dev` | Start development server |
-| `npm run build` | Build for production |
-| `npm run preview` | Preview production build |
-| `npm run generate` | Generate static site |
-| `npm run lint` | Run ESLint |
-| `npm run lint:fix` | Fix ESLint errors |
-| `npm run typecheck` | Run TypeScript type checking |
+| Command                 | Description                                    |
+| ----------------------- | ---------------------------------------------- |
+| `npm run dev`           | Start development server                       |
+| `npm run build`         | Build for production                           |
+| `npm run preview`       | Preview production build                       |
+| `npm run generate`      | Generate static site                           |
+| `npm run lint`          | Run ESLint                                     |
+| `npm run lint:fix`      | Fix ESLint errors                              |
+| `npm run typecheck`     | Run TypeScript type checking                   |
+| `npm run test`          | Run unit tests (watch mode)                    |
+| `npm run test:run`      | Run unit tests once                            |
+| `npm run test:coverage` | Run tests with coverage                        |
+| `npm run test:e2e`      | Run E2E tests with Playwright                  |
+| `npm run size:check`    | Check bundle sizes                             |
+| `npm run format`        | Format code with Prettier                      |
+| `npm run format:check`  | Check code formatting                          |
+| `npm run validate`      | Run all checks (lint, format, typecheck, test) |
+| `npm run ci`            | Full CI pipeline (validate + build)            |
 
 ## 📄 License
 

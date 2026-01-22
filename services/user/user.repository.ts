@@ -19,10 +19,7 @@ export interface IUserRepository extends IReadOnlyRepository<User> {
 /**
  * JSON-based user repository
  */
-export class UserRepository
-  extends JsonRepository<User>
-  implements IUserRepository
-{
+export class UserRepository extends JsonRepository<User> implements IUserRepository {
   private static instance: UserRepository | null = null
 
   private constructor() {
@@ -46,11 +43,7 @@ export class UserRepository
 
   async findByEmail(email: string): Promise<User | null> {
     await this.simulateDelay()
-    return (
-      this.data.find(
-        (user) => user.mail.toLowerCase() === email.toLowerCase()
-      ) ?? null
-    )
+    return this.data.find((user) => user.mail.toLowerCase() === email.toLowerCase()) ?? null
   }
 
   /**

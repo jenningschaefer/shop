@@ -32,22 +32,8 @@ function minus(): void {
 
 <template>
   <div class="counter">
-    <button
-      class="counter_btn"
-      type="button"
-      :disabled="model <= min"
-      @click="minus"
-    >
-      -
-    </button>
+    <button class="counter_btn" type="button" :disabled="model <= min" @click="minus">-</button>
     <div>{{ model }}</div>
-    <button
-      class="counter_btn"
-      type="button"
-      :disabled="model >= max"
-      @click="plus"
-    >
-      +
-    </button>
+    <button class="counter_btn" type="button" :disabled="model >= max" @click="plus">+</button>
   </div>
 </template>

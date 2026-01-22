@@ -10,16 +10,14 @@ import type { CartItem } from '~/types'
 const { t, locale } = useI18n()
 const cart = useLocalStorage<CartItem[]>('cart', [])
 
-const currencySymbol = computed(() => locale.value === 'de' ? '€' : '$')
+const currencySymbol = computed(() => (locale.value === 'de' ? '€' : '$'))
 
 function deleteFromCart(id: number): void {
   cart.value = cart.value.filter((el) => el.id !== id)
 }
 
 const total = computed(() => {
-  return cart.value
-    .reduce((sum, item) => sum + item.price * item.amount, 0)
-    .toFixed(2)
+  return cart.value.reduce((sum, item) => sum + item.price * item.amount, 0).toFixed(2)
 })
 </script>
 
@@ -38,11 +36,7 @@ const total = computed(() => {
           class="order-cart_products_product"
         >
           <template #buttons>
-            <button
-              type="button"
-              class="vesta-btn"
-              @click="deleteFromCart(item.id)"
-            >
+            <button type="button" class="vesta-btn" @click="deleteFromCart(item.id)">
               {{ t('cart.remove') }}
             </button>
           </template>

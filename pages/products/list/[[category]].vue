@@ -1,17 +1,31 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useProducts } from '~/composables/useProducts'
-import { useFavoritesStore } from '~/stores'
+import { useLocalStorage } from '@vueuse/core'
 
 const products = ref(useProducts())
-const favoritesStore = useFavoritesStore()
 
 definePageMeta({
     layout: 'products',
 })
 
+interface FavoriteItem {
+    id: number
+}
+
+const favorites = useLocalStorage<FavoriteItem[]>("favorite", [])
+
 function handleFavorite(id: number) {
-    favoritesStore.toggle(id)
+    const index = favorites.value.findIndex((f) => f.id === id)
+    if (index !== -1) {
+        favorites.value.splice(index, 1)
+    } else {
+        favorites.value.push({ id })
+    }
+}
+
+function isFavorite(id: number): boolean {
+    return favorites.value.some((f) => f.id === id)
 }
 </script>
 
@@ -37,7 +51,7 @@ function handleFavorite(id: number) {
             </div>
             <div class="list-content_grid">
                 <ProductCard v-for="product in products" :key="product.id" :product="product"
-                    @favor="handleFavorite" :favored="favoritesStore.isFavorite(product.id)" />
+                    @favor="handleFavorite" :favored="isFavorite(product.id)" />
             </div>
         </div>
     </div>

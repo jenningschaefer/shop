@@ -5,25 +5,15 @@
   @license MIT
 -->
 <script setup lang="ts">
-import { onMounted } from 'vue'
-import { useUiStore, useCartStore, useUserStore, useFavoritesStore } from '~/stores'
+import { computed } from 'vue'
+import { useLocalStorage } from '@vueuse/core'
 
-// Initialize stores
-const uiStore = useUiStore()
-const cartStore = useCartStore()
-const userStore = useUserStore()
-const favoritesStore = useFavoritesStore()
+const disclaimerAccepted = useLocalStorage('shop-disclaimer', false)
 
-onMounted(() => {
-  uiStore.init()
-  cartStore.init()
-  userStore.init()
-  favoritesStore.init()
+const showDisclaimer = computed({
+  get: () => !disclaimerAccepted.value,
+  set: () => { disclaimerAccepted.value = true }
 })
-
-function handleDisclaimerClose() {
-  uiStore.acceptDisclaimer()
-}
 </script>
 
 <template>
@@ -32,7 +22,7 @@ function handleDisclaimerClose() {
       <NuxtPage />
     </NuxtLayout>
   </div>
-  <UIDialog v-model="uiStore.isDisclaimerOpen" @update:model-value="handleDisclaimerClose">
+  <UIDialog v-model="showDisclaimer">
     <template #title>Disclaimer</template>
     <template #content>
       <p>

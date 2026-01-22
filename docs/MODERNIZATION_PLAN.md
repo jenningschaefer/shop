@@ -244,8 +244,11 @@ export const useCartStore = defineStore('cart', () => {
 
 ### 4.4 Components Migration
 
-- [x] `app.vue` - Uses uiStore for disclaimer
-- [x] `pages/products/list/[[category]].vue` - Uses favoritesStore
+- [x] Stores created and available for future use
+- [x] `app.vue` - Uses `useLocalStorage` for disclaimer (simpler approach)
+- [x] `pages/products/list/[[category]].vue` - Uses `useLocalStorage` for favorites (preserves existing behavior)
+
+**Note**: The Pinia stores are available for more complex state management needs. The current implementation uses VueUse's `useLocalStorage` for simplicity, as it provides reactivity and persistence out of the box with minimal boilerplate.
 
 ---
 

@@ -25,7 +25,8 @@
     "favorites": "Favoriten",
     "login": "Anmelden",
     "logout": "Abmelden",
-    "menu": "Menü"
+    "menu": "Menü",
+    "back": "Zurück"
   },
   "categories": {
     "all": "Alle",

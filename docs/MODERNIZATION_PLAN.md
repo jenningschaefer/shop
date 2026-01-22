@@ -15,7 +15,7 @@
 | Phase 5: Internationalization (i18n) | ✅ Complete | 2026-01-22   |
 | Phase 6: Testing                     | ✅ Complete | 2026-01-22   |
 | Phase 7: Nuxt 4/5 Upgrade            | ✅ Complete | 2026-01-22   |
-| Phase 8: Polish & CI/CD              | ⏳ Pending  | -            |
+| Phase 8: Polish & CI/CD              | ✅ Complete | 2026-01-22   |
 
 **Current Phase**: 8 (Polish & CI/CD)  
 **Started**: 2026-01-22  
@@ -511,9 +511,11 @@ shop/
 
 ---
 
-## Phase 8: Polish & CI/CD
+## Phase 8: Polish & CI/CD ✅
 
 **Goal**: Production-ready with automation.
+
+**Completed**: 2026-01-22
 
 ### 8.1 File Headers
 
@@ -625,9 +627,9 @@ Add to all source files (see STANDARDS.md):
 - [x] 7.5 Fix type errors in services/stores/tests
 - [x] 7.6 Full regression test (95 tests passing)
 
-### Phase 8
+### Phase 8 ✅
 
-- [ ] 8.1 File headers
-- [ ] 8.2 CI/CD
-- [ ] 8.3 Documentation
-- [ ] 8.4 Accessibility
+- [x] 8.1 File headers (already present on all key files)
+- [x] 8.2 CI/CD (GitHub Actions workflow updated for Nuxt 5 compat)
+- [x] 8.3 Documentation (MODERNIZATION_PLAN, TESTING, STANDARDS complete)
+- [x] 8.4 Accessibility (ARIA labels, keyboard nav, semantic HTML)

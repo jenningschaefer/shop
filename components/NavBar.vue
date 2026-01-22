@@ -24,44 +24,46 @@ function toggleLocale(): void {
 <template>
   <div>
     <div class="navBar">
-      <NuxtLink to="/" class="navBar_home">
-        <svg class="navBar_logo">
+      <NuxtLink to="/" class="navBar_home" :aria-label="t('nav.home')">
+        <svg class="navBar_logo" aria-hidden="true">
           <use href="~/assets/svg/logos.svg#logo" />
         </svg>
       </NuxtLink>
       <div class="navBar_icons">
         <template v-if="isProductPage">
-          <a @click="router.back()">
-            <svg class="subNav_icon">
+          <button type="button" :aria-label="t('nav.back')" @click="router.back()">
+            <svg class="subNav_icon" aria-hidden="true">
               <use href="~/assets/svg/icons.svg#arrow-left" />
             </svg>
-          </a>
+          </button>
         </template>
         <template v-else>
-          <a
+          <button
+            type="button"
+            :aria-label="locale === 'de' ? 'Switch to English' : 'Auf Deutsch wechseln'"
             :title="locale === 'de' ? 'Switch to English' : 'Auf Deutsch wechseln'"
             @click="toggleLocale"
           >
-            <svg v-if="locale === 'de'" class="subNav_icon subNav_icon--lang">
+            <svg v-if="locale === 'de'" class="subNav_icon subNav_icon--lang" aria-hidden="true">
               <use href="~/assets/svg/icons.svg#lang-de" />
             </svg>
-            <svg v-else class="subNav_icon subNav_icon--lang">
+            <svg v-else class="subNav_icon subNav_icon--lang" aria-hidden="true">
               <use href="~/assets/svg/icons.svg#lang-en" />
             </svg>
-          </a>
+          </button>
         </template>
-        <a @click="openCart = true">
-          <svg class="navBar_icons_icon">
+        <button type="button" :aria-label="t('nav.cart')" @click="openCart = true">
+          <svg class="navBar_icons_icon" aria-hidden="true">
             <use href="~/assets/svg/icons.svg#cart" />
           </svg>
-        </a>
-        <a @click="openFavorites = true">
-          <svg class="navBar_icons_icon">
+        </button>
+        <button type="button" :aria-label="t('nav.favorites')" @click="openFavorites = true">
+          <svg class="navBar_icons_icon" aria-hidden="true">
             <use href="~/assets/svg/icons.svg#heart" />
           </svg>
-        </a>
-        <NuxtLink to="/login">
-          <svg class="navBar_icons_icon">
+        </button>
+        <NuxtLink to="/login" :aria-label="t('nav.login')">
+          <svg class="navBar_icons_icon" aria-hidden="true">
             <use href="~/assets/svg/icons.svg#user" />
           </svg>
         </NuxtLink>
@@ -70,43 +72,45 @@ function toggleLocale(): void {
         <a @click="openMenu = true">{{ t('nav.menu') }}</a>
       </div>
     </div>
-    <div v-if="!isAccountPage" class="subNav">
+    <nav v-if="!isAccountPage" class="subNav" aria-label="Quick actions">
       <template v-if="isProductPage">
-        <a @click="router.back()">
-          <svg class="subNav_icon">
+        <button type="button" :aria-label="t('nav.back')" @click="router.back()">
+          <svg class="subNav_icon" aria-hidden="true">
             <use href="~/assets/svg/icons.svg#arrow-left" />
           </svg>
-        </a>
+        </button>
       </template>
       <template v-else>
-        <a
+        <button
+          type="button"
+          :aria-label="locale === 'de' ? 'Switch to English' : 'Auf Deutsch wechseln'"
           :title="locale === 'de' ? 'Switch to English' : 'Auf Deutsch wechseln'"
           @click="toggleLocale"
         >
-          <svg v-if="locale === 'de'" class="subNav_icon subNav_icon--lang">
+          <svg v-if="locale === 'de'" class="subNav_icon subNav_icon--lang" aria-hidden="true">
             <use href="~/assets/svg/icons.svg#lang-de" />
           </svg>
-          <svg v-else class="subNav_icon subNav_icon--lang">
+          <svg v-else class="subNav_icon subNav_icon--lang" aria-hidden="true">
             <use href="~/assets/svg/icons.svg#lang-en" />
           </svg>
-        </a>
+        </button>
       </template>
-      <a @click="openCart = true">
-        <svg class="subNav_icon">
+      <button type="button" :aria-label="t('nav.cart')" @click="openCart = true">
+        <svg class="subNav_icon" aria-hidden="true">
           <use href="~/assets/svg/icons.svg#cart" />
         </svg>
-      </a>
-      <a @click="openFavorites = true">
-        <svg class="subNav_icon">
+      </button>
+      <button type="button" :aria-label="t('nav.favorites')" @click="openFavorites = true">
+        <svg class="subNav_icon" aria-hidden="true">
           <use href="~/assets/svg/icons.svg#heart" />
         </svg>
-      </a>
-      <NuxtLink to="/login">
-        <svg class="subNav_icon">
+      </button>
+      <NuxtLink to="/login" :aria-label="t('nav.login')">
+        <svg class="subNav_icon" aria-hidden="true">
           <use href="~/assets/svg/icons.svg#user" />
         </svg>
       </NuxtLink>
-    </div>
+    </nav>
   </div>
   <UISidenav v-model="openMenu">
     <template #title>{{ t('nav.menu') }}</template>

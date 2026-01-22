@@ -37,6 +37,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Localized pricing (EUR/USD)
   - `useLocale` composables for product localization
   - Language switcher in NavBar
+- **Phase 8: Polish & CI/CD**:
+  - Updated GitHub Actions CI workflow for Nuxt 5 compatibility
+  - Added accessibility improvements (ARIA labels, keyboard navigation)
+  - Changed icon-only buttons from `<a>` to `<button>` for semantics
+  - Added `aria-hidden` to decorative SVG icons
+  - Sidenav now closes on Escape key and prevents body scroll
+  - Added `role="dialog"` and `aria-modal` to Sidenav component
 - **Nuxt 4.2.2 + Nuxt 5 Compatibility**:
   - Upgraded from Nuxt 3.14 to Nuxt 4.2.2 stable
   - Enabled `compatibilityVersion: 5` for Nuxt 5 preview

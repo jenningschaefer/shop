@@ -21,11 +21,8 @@ const props = withDefaults(defineProps<Props>(), {
 })
 
 const product = useProduct(props.item.id)
+// Only used for interactive contexts (cart/favorites). Past orders should be read-only.
 const amount = ref(props.item.amount)
-
-onMounted(() => {
-  amount.value = props.item.amount
-})
 </script>
 
 <template>
@@ -38,7 +35,8 @@ onMounted(() => {
           :src="product.img"
           class="product-item_img_image"
         />
-        <UICounter v-model="amount" class="product-item_img_counter" />
+        <div v-if="ordered" class="product-item_img_qty">×{{ item.amount }}</div>
+        <UICounter v-else v-model="amount" class="product-item_img_counter" />
       </div>
       <div class="product-item_info">
         <div class="product-item_info_name">{{ product?.name }}</div>

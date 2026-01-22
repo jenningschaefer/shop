@@ -1,7 +1,13 @@
-<script setup>
+<!--
+  @file pages/index.vue
+  @description Home page with hero section and category links
+  @author Jenning Schaefer
+  @license MIT
+-->
+<script setup lang="ts">
 useHead({
   title: 'Shop',
-});
+})
 </script>
 
 <template>
@@ -11,7 +17,9 @@ useHead({
       <svg class="home_slogan_bg">
         <use href="~/assets/svg/logos.svg#logo-bg" />
       </svg>
-      <div class="home_slogan_text hero-font">make it simple<br>but significant</div>
+      <div class="home_slogan_text hero-font">
+        make it simple<br />but significant
+      </div>
     </div>
     <!-- slogan end -->
 
@@ -23,7 +31,7 @@ useHead({
           <use href="~/assets/svg/icons.svg#link" />
         </svg>
       </NuxtLink>
-      <NuxtLink to="/products/list/ligting" class="home_categories_link">
+      <NuxtLink to="/products/list/lighting" class="home_categories_link">
         <p class="links">Lighting</p>
         <svg class="home_categories_link_icon">
           <use href="~/assets/svg/icons.svg#link" />
@@ -46,7 +54,7 @@ useHead({
 
     <!-- hero -->
     <div class="home_hero">
-      <NuxtImg class="" @click="" src="img/pexels-heyho-6077368.jpg" />
+      <NuxtImg src="img/pexels-heyho-6077368.jpg" />
     </div>
     <!-- hero end -->
   </div>

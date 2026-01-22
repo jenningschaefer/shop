@@ -1,15 +1,32 @@
-<script setup>
-    const error = useError();
+<!--
+  @file error.vue
+  @description Error page component
+  @author Jenning Schaefer
+  @license MIT
+-->
+<script setup lang="ts">
+interface Props {
+  error: {
+    statusCode: number
+    message: string
+  }
+}
 
-    const handleError = () => {
-        clearError({
-            redirect: '/',
-        });
-    }
+defineProps<Props>()
+
+function handleError(): void {
+  clearError({
+    redirect: '/',
+  })
+}
 </script>
 
 <template>
-    <button type="button" @click="handleError">
-        Go Back
+  <div class="error-page">
+    <h1>Oops!</h1>
+    <p>{{ error.message }}</p>
+    <button type="button" class="vesta-btn" @click="handleError">
+      Go Back Home
     </button>
+  </div>
 </template>

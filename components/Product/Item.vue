@@ -1,49 +1,54 @@
-<script setup>
-import { onMounted } from 'vue';
+<!--
+  @file components/Product/Item.vue
+  @description Product item component for cart and order displays
+  @author Jenning Schaefer
+  @license MIT
+-->
+<script setup lang="ts">
+import type { CartItem } from '~/types'
 
-const props = defineProps({
-    item: Object,
-    ordered: {
-        type: Boolean,
-        default: false,
-    },
-    isFavorite: {
-        type: Boolean,
-        default: false,
-    },
-    isInCart: {
-        type: Boolean,
-        default: false,
-    },
-});
+interface Props {
+  item: CartItem
+  ordered?: boolean
+  isFavorite?: boolean
+  isInCart?: boolean
+}
 
+const props = withDefaults(defineProps<Props>(), {
+  ordered: false,
+  isFavorite: false,
+  isInCart: false,
+})
 
-const favorite = useLocalStorage("favorite", []);
-const cart = useLocalStorage("cart", []);
-
-const product = useProduct(props.item.id);
-const amount = ref(0);
+const product = useProduct(props.item.id)
+const amount = ref(props.item.amount)
 
 onMounted(() => {
-    amount.value = props.item.amount;
-});
-
+  amount.value = props.item.amount
+})
 </script>
 
 <template>
-    <div>
-        <div class="product-item">
-            <div class="product-item_img">
-                <NuxtPicture format="avif, webp" :src="product.img" class="product-item_img_image" />
-                <UICounter v-model="amount" class="product-item_img_counter"/>
-            </div>
-            <div class="product-item_info">
-                <div class="product-item_info_name">{{ product.name }}</div>
-                <div class="product-item_info_price">{{ ordered ? item.price : product.price_us }} $</div>
-            </div>
+  <div>
+    <div class="product-item">
+      <div class="product-item_img">
+        <NuxtPicture
+          v-if="product"
+          format="avif, webp"
+          :src="product.img"
+          class="product-item_img_image"
+        />
+        <UICounter v-model="amount" class="product-item_img_counter" />
+      </div>
+      <div class="product-item_info">
+        <div class="product-item_info_name">{{ product?.name }}</div>
+        <div class="product-item_info_price">
+          {{ ordered ? item.price : product?.price_us }} $
         </div>
-        <div class="product-item_buttons">
-            <slot name="buttons"></slot>    
-        </div>
+      </div>
     </div>
+    <div class="product-item_buttons">
+      <slot name="buttons" />
+    </div>
+  </div>
 </template>

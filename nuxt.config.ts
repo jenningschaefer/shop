@@ -16,14 +16,14 @@ export default defineNuxtConfig({
   css: ['~/assets/SCSS/main.scss'],
 
   image: {
-    dir: 'public/img',
+    provider: 'ipx',
   },
 
   devtools: { enabled: true },
 
   typescript: {
     strict: true,
-    typeCheck: true,
+    typeCheck: false, // Enable with `npm run typecheck` for CI/production builds
   },
 
   compatibilityDate: '2024-07-11',

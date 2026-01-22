@@ -8,9 +8,10 @@
 2. [Vue Component Structure](#vue-component-structure)
 3. [TypeScript Conventions](#typescript-conventions)
 4. [Naming Conventions](#naming-conventions)
-5. [SCSS/Styling](#scssstyling)
-6. [File Organization](#file-organization)
-7. [Git Conventions](#git-conventions)
+5. [SVG Icons & Sprites](#svg-icons--sprites)
+6. [SCSS/Styling](#scssstyling)
+7. [File Organization](#file-organization)
+8. [Git Conventions](#git-conventions)
 
 ---
 
@@ -389,6 +390,98 @@ const modalEl = ref<HTMLDivElement | null>(null)
 .visually-hidden { }
 .text-center { }
 ```
+
+---
+
+## SVG Icons & Sprites
+
+### Overview
+
+All SVG icons are managed as **SVG sprites** stored in `assets/svg/`. This approach provides:
+
+- Single HTTP request for all icons
+- Easy icon management and updates
+- Consistent styling via CSS
+- Small bundle size
+
+### Sprite Files
+
+```text
+assets/svg/
+├── icons.svg      # UI icons (arrows, menu, cart, etc.)
+└── logos.svg      # Brand logos and wordmarks
+```
+
+### Sprite Structure
+
+Each sprite file contains multiple symbols with unique IDs:
+
+```xml
+<!-- assets/svg/icons.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="arrow-left" viewBox="0 0 24 24">
+    <path d="M19 12H5M12 19l-7-7 7-7"/>
+  </symbol>
+  
+  <symbol id="menu" viewBox="0 0 24 24">
+    <path d="M3 12h18M3 6h18M3 18h18"/>
+  </symbol>
+  
+  <symbol id="cart" viewBox="0 0 24 24">
+    <!-- cart icon paths -->
+  </symbol>
+</svg>
+```
+
+### Usage in Vue Components
+
+```vue
+<template>
+  <!-- Reference icon by sprite file and symbol ID -->
+  <svg class="icon icon--back">
+    <use href="~/assets/svg/icons.svg#arrow-left" />
+  </svg>
+  
+  <!-- Logo example -->
+  <svg class="logo">
+    <use href="~/assets/svg/logos.svg#vesta" />
+  </svg>
+</template>
+
+<style lang="scss" scoped>
+.icon {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;  // Inherits text color
+  
+  &--back {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.logo {
+  width: 100px;
+  height: auto;
+}
+</style>
+```
+
+### Adding New Icons
+
+1. Open the appropriate sprite file (`icons.svg` or `logos.svg`)
+2. Add a new `<symbol>` with a unique `id`
+3. Include proper `viewBox` attribute
+4. Reference using `<use href="~/assets/svg/[file].svg#[id]" />`
+
+### Best Practices
+
+- ✅ Use `currentColor` for fill to inherit text color
+- ✅ Set `viewBox` on symbols, size via CSS
+- ✅ Use descriptive, kebab-case IDs (`arrow-left`, `shopping-cart`)
+- ✅ Keep icons optimized (use SVGO or similar)
+- ❌ Don't use inline SVGs for repeated icons
+- ❌ Don't use icon fonts
 
 ---
 

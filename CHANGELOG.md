@@ -9,18 +9,33 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Full TypeScript type definitions in `/types/` directory
+- New `useCart` composable for cart management
+- File headers with license and author info to all components
 - Documentation folder with modernization plan, code standards, and architecture docs
 - ESLint flat config with Nuxt integration
 - Prettier configuration
 - EditorConfig for consistent formatting
 - MIT License
 - Proper README with badges and documentation
+- SVG Sprites documentation in STANDARDS.md
+
+### Fixed
+
+- Fixed font loading: corrected font format from `woff2` to `truetype-variations` for TTF variable fonts
+- Fixed font paths: moved fonts to `public/fonts/` for static serving
+- Fixed image loading: corrected `@nuxt/image` directory configuration
 
 ### Changed
 
+- **BREAKING**: All composables migrated from JavaScript to TypeScript
+- All Vue components now use `<script setup lang="ts">`
+- All props use typed `defineProps<T>()` syntax
+- All emits use typed `defineEmits<T>()` syntax
 - Updated dependencies to latest versions (Nuxt 3.14, Vue 3.5, TypeScript 5.6)
 - Modernized `tsconfig.json` to extend Nuxt's generated config
 - Cleaned up `nuxt.config.ts` and removed deprecated modules
+- Removed console.log statements from production code
 
 ### Removed
 

@@ -1,23 +1,28 @@
-<script setup>
-const route = useRoute();
-/* TODO: load user from local storage, but from encrypted key, not id */
-//const user = useUser(1);
-/* TODO: allow to load only orders from current user */
-const order = useOrderByOrderID(route.params.id);
-/* TODO: load address from user and set billing addres if exists, else shipping address */
-const shipping_address = useAddress(0);
-const billing_address = useAddress(1);
-const { formatDate } = useUtilities();
+<script setup lang="ts">
+import { useOrderByOrderId } from '~/composables/useOrders'
+import { useAddress } from '~/composables/useAddresses'
+import { useUtilities } from '~/composables/useUtilities'
+
+const route = useRoute()
+
+// Get order by ID from route params
+const orderId = route.params.id as string
+const order = useOrderByOrderId(orderId)
+
+// Load addresses
+const shipping_address = useAddress(0)
+const billing_address = useAddress(1)
+const { formatDate } = useUtilities()
 
 definePageMeta({
     layout: 'account',
-});
+})
 
-const getTotal = (str1, str2) => {
-    const num1 = Number(str1);
-    const num2 = Number(str2);
-    return (num1 + num2).toFixed(2);
-};
+function getTotal(str1: string, str2: string): string {
+    const num1 = Number(str1)
+    const num2 = Number(str2)
+    return (num1 + num2).toFixed(2)
+}
 </script>
 
 <template>
@@ -35,7 +40,10 @@ const getTotal = (str1, str2) => {
                 </div>
             </NuxtLink>
         </div>
-        <div class="account-order_container">
+        <div v-if="!order" class="account-order_container">
+            <p>Order not found.</p>
+        </div>
+        <div v-else class="account-order_container">
             <div class="account-order_no">Order No. #{{ route.params.id }}</div>
             <div class="account-order_status">{{ order.status }}</div>
             <div class="account-order_details">

@@ -1,40 +1,69 @@
-<script setup>
-  const props = defineProps([ 'customClass' ]);
-  let tabContainer = ref(null);
-  let tabHeaders = ref(null);
-  let tabs = ref(null);
-  let activeTabIndex = ref(0);
+<!--
+  @file components/UI/address-tabs.vue
+  @description Address selection tabs component
+  @author Jenning Schaefer
+  @license MIT
+-->
+<script setup lang="ts">
+interface Props {
+  customClass?: string
+}
 
-  onMounted(() => {
-    console.log([ ...tabContainer.value.querySelectorAll('.address-tab') ])
-    tabs.value = [ ...tabContainer.value.querySelectorAll('.address-tab') ];
-		for(let x of tabs.value) {
-	    if(x.classList.contains('active')) {
-				activeTabIndex = tabs.value.indexOf(x);
-			}
+defineProps<Props>()
+
+const tabContainer = ref<HTMLElement | null>(null)
+const tabHeaders = ref<HTMLElement[]>([])
+const tabs = ref<HTMLElement[]>([])
+const activeTabIndex = ref(0)
+
+onMounted(() => {
+  if (!tabContainer.value) return
+
+  tabs.value = [
+    ...tabContainer.value.querySelectorAll('.address-tab'),
+  ] as HTMLElement[]
+
+  for (const [index, tab] of tabs.value.entries()) {
+    if (tab.classList.contains('active')) {
+      activeTabIndex.value = index
     }
-  })
-  const changeTab = (index) => {
-    activeTabIndex = index;
-    for(let x of [...tabs.value, ...tabHeaders.value]) {
-   		x.classList.remove('active')
-    }
-		tabs.value[activeTabIndex].classList.add('active')  
-		tabHeaders.value[activeTabIndex].classList.add('active')  
-  };
+  }
+})
+
+function changeTab(index: number): void {
+  activeTabIndex.value = index
+
+  for (const el of [...tabs.value, ...tabHeaders.value]) {
+    el.classList.remove('active')
+  }
+
+  tabs.value[activeTabIndex.value]?.classList.add('active')
+  tabHeaders.value[activeTabIndex.value]?.classList.add('active')
+}
 </script>
 
 <template>
-  <div id="tabs-container" class="address-tabs" :class="customClass" ref="tabContainer">
+  <div
+    id="tabs-container"
+    ref="tabContainer"
+    class="address-tabs"
+    :class="customClass"
+  >
     <div id="tab-headers" class="address-tabs_headers">
       <ul>
-        <!-- this shows all of the titles --> 
-        <li v-for="(tab, index) in tabs" :key="index" :class="activeTabIndex == index ? 'active' : ''" @click="changeTab(index)" ref="tabHeaders"><h5>{{ tab.title }}</h5></li>
+        <li
+          v-for="(tab, index) in tabs"
+          :key="index"
+          ref="tabHeaders"
+          :class="activeTabIndex === index ? 'active' : ''"
+          @click="changeTab(index)"
+        >
+          <h5>{{ (tab as HTMLElement).title }}</h5>
+        </li>
       </ul>
     </div>
-    <!-- this is where the tabs go, in this slot -->
     <div id="active-tab" class="address-tabs_active">
-    	<slot></slot>
+      <slot />
     </div>
   </div>
 </template>

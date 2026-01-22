@@ -47,8 +47,9 @@ describe('OrderService', () => {
   describe('getByOrderId', () => {
     it('should return order by ID', async () => {
       const orders = await service.getAll()
-      if (orders.length > 0) {
-        const orderId = orders[0].order_id
+      const firstOrder = orders[0]
+      if (firstOrder) {
+        const orderId = firstOrder.order_id
         const order = await service.getByOrderId(orderId)
         expect(order).toBeDefined()
         expect(order?.order_id).toBe(orderId)
@@ -64,8 +65,9 @@ describe('OrderService', () => {
   describe('getByUserId', () => {
     it('should return orders for a user', async () => {
       const orders = await service.getAll()
-      if (orders.length > 0) {
-        const userId = orders[0].user_id
+      const firstOrder = orders[0]
+      if (firstOrder) {
+        const userId = firstOrder.user_id
         const userOrders = await service.getByUserId(userId)
         expect(userOrders).toBeDefined()
         userOrders.forEach((order) => {
@@ -83,8 +85,9 @@ describe('OrderService', () => {
   describe('getRecentOrders', () => {
     it('should limit number of orders returned', async () => {
       const orders = await service.getAll()
-      if (orders.length > 0) {
-        const userId = orders[0].user_id
+      const firstOrder = orders[0]
+      if (firstOrder) {
+        const userId = firstOrder.user_id
         const recentOrders = await service.getRecentOrders(userId, 2)
         expect(recentOrders.length).toBeLessThanOrEqual(2)
       }
@@ -92,12 +95,17 @@ describe('OrderService', () => {
 
     it('should sort orders by date descending', async () => {
       const orders = await service.getAll()
-      if (orders.length > 0) {
-        const userId = orders[0].user_id
+      const firstOrder = orders[0]
+      if (firstOrder) {
+        const userId = firstOrder.user_id
         const recentOrders = await service.getRecentOrders(userId, 10)
 
         for (let i = 1; i < recentOrders.length; i++) {
-          expect(recentOrders[i - 1].order_date >= recentOrders[i].order_date).toBe(true)
+          const prevOrder = recentOrders[i - 1]
+          const currOrder = recentOrders[i]
+          if (prevOrder && currOrder) {
+            expect(prevOrder.order_date >= currOrder.order_date).toBe(true)
+          }
         }
       }
     })
@@ -106,9 +114,10 @@ describe('OrderService', () => {
   describe('getByStatus', () => {
     it('should filter orders by status', async () => {
       const orders = await service.getAll()
-      if (orders.length > 0) {
-        const userId = orders[0].user_id
-        const status = orders[0].status
+      const firstOrder = orders[0]
+      if (firstOrder) {
+        const userId = firstOrder.user_id
+        const status = firstOrder.status
         const filteredOrders = await service.getByStatus(userId, status)
 
         filteredOrders.forEach((order) => {

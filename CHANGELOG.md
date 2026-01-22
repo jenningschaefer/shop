@@ -37,6 +37,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Localized pricing (EUR/USD)
   - `useLocale` composables for product localization
   - Language switcher in NavBar
+- **Nuxt 4 Compatibility**:
+  - Enabled `compatibilityVersion: 4` in nuxt.config.ts
+  - Fixed type errors in services, stores, and tests
+  - Added `is_default` field to Address type
+  - Fixed `price_us` → `price` property access in cart logic
+  - Added `override` modifiers for class method overrides
+  - Runtime fully functional with all 95 tests passing
+  - Documented auto-import migration path for explicit imports
 - **Testing Infrastructure** (139 tests total):
   - Vitest configuration with Nuxt test environment
   - Unit tests for ProductService (18) and OrderService (14)

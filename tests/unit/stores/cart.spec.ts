@@ -36,7 +36,6 @@ const mockProduct: Product = {
   description: 'A test chair',
   type: 'chairs',
   price: '199.99',
-  price_us: '199.99',
   currency: '$',
   img: '/img/test.jpg',
   webp: '',
@@ -74,8 +73,8 @@ describe('useCartStore', () => {
       store.addItem(mockProduct)
 
       expect(store.items).toHaveLength(1)
-      expect(store.items[0].id).toBe(1)
-      expect(store.items[0].amount).toBe(1)
+      expect(store.items[0]?.id).toBe(1)
+      expect(store.items[0]?.amount).toBe(1)
     })
 
     it('should increment quantity if item already exists', () => {
@@ -84,14 +83,14 @@ describe('useCartStore', () => {
       store.addItem(mockProduct)
 
       expect(store.items).toHaveLength(1)
-      expect(store.items[0].amount).toBe(2)
+      expect(store.items[0]?.amount).toBe(2)
     })
 
     it('should add with custom quantity', () => {
       const store = useCartStore()
       store.addItem(mockProduct, 3)
 
-      expect(store.items[0].amount).toBe(3)
+      expect(store.items[0]?.amount).toBe(3)
     })
 
     it('should persist to localStorage', () => {
@@ -124,7 +123,7 @@ describe('useCartStore', () => {
       store.addItem(mockProduct)
       store.incrementItem(1)
 
-      expect(store.items[0].amount).toBe(2)
+      expect(store.items[0]?.amount).toBe(2)
     })
 
     it('should decrement item quantity', () => {
@@ -132,7 +131,7 @@ describe('useCartStore', () => {
       store.addItem(mockProduct, 3)
       store.decrementItem(1)
 
-      expect(store.items[0].amount).toBe(2)
+      expect(store.items[0]?.amount).toBe(2)
     })
 
     it('should remove item when decrementing to zero', () => {
@@ -150,7 +149,7 @@ describe('useCartStore', () => {
       store.addItem(mockProduct)
       store.updateQuantity(1, 5)
 
-      expect(store.items[0].amount).toBe(5)
+      expect(store.items[0]?.amount).toBe(5)
     })
 
     it('should remove item when setting quantity to zero', () => {
@@ -186,7 +185,7 @@ describe('useCartStore', () => {
       const store = useCartStore()
 
       // Under 100 = 9.99 shipping
-      store.addItem({ ...mockProduct, price_us: '50' })
+      store.addItem({ ...mockProduct, price: '50' })
       expect(store.shipping).toBe(9.99)
 
       // Over 100 = free shipping
@@ -196,14 +195,14 @@ describe('useCartStore', () => {
 
     it('should calculate total correctly', () => {
       const store = useCartStore()
-      store.addItem({ ...mockProduct, price_us: '50' })
+      store.addItem({ ...mockProduct, price: '50' })
 
       expect(store.total).toBeCloseTo(59.99, 2) // 50 + 9.99 shipping
     })
 
     it('should track free shipping status', () => {
       const store = useCartStore()
-      store.addItem({ ...mockProduct, price_us: '50' })
+      store.addItem({ ...mockProduct, price: '50' })
       expect(store.hasFreeShipping).toBe(false)
       expect(store.amountUntilFreeShipping).toBe(50)
 

@@ -34,6 +34,8 @@ export interface Address {
   city: string
   /** Country */
   country: string
+  /** Whether this is the default address */
+  is_default?: boolean
 }
 
 /**

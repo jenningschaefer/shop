@@ -50,13 +50,14 @@ export class UserService extends BaseService<User> {
    * Get user display name
    */
   getDisplayName(user: User): string {
-    return `${user.firstname} ${user.name}`
+    return `${user.firstname} ${user.lastname}`
   }
 
   /**
    * Check if user has complete profile
+   * Note: Address fields are checked separately via AddressService
    */
   hasCompleteProfile(user: User): boolean {
-    return !!(user.firstname && user.name && user.email && user.street && user.city)
+    return !!(user.firstname && user.lastname && user.mail && user.birthday)
   }
 }

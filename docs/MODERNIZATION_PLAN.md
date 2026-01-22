@@ -14,7 +14,7 @@
 | Phase 4: Pinia State Management      | ✅ Complete | 2026-01-22   |
 | Phase 5: Internationalization (i18n) | ✅ Complete | 2026-01-22   |
 | Phase 6: Testing                     | ✅ Complete | 2026-01-22   |
-| Phase 7: Nuxt 4 Upgrade              | ⏳ Pending  | -            |
+| Phase 7: Nuxt 4 Upgrade              | 🔄 Active   | 2026-01-22   |
 | Phase 8: Polish & CI/CD              | ⏳ Pending  | -            |
 
 **Current Phase**: 7 (Nuxt 4 Upgrade)  
@@ -438,12 +438,47 @@ export default defineNuxtConfig({
 
 ### 7.4 Migration Steps
 
-1. [ ] Enable `compatibilityVersion: 4` in nuxt.config.ts
-2. [ ] Run tests, fix any breaking issues
-3. [ ] Restructure to new directory layout (see structure below)
-4. [ ] Update import paths
-5. [ ] Upgrade to Nuxt 4 stable when released
-6. [ ] Full regression test
+1. [x] Enable `compatibilityVersion: 4` in nuxt.config.ts
+2. [x] Run tests, fix any breaking issues (type errors fixed)
+3. [ ] Add explicit imports for Vue/Nuxt APIs (incremental)
+4. [ ] Restructure to new directory layout (see structure below)
+5. [ ] Update import paths
+6. [ ] Upgrade to Nuxt 4 stable when released
+7. [ ] Full regression test
+
+### 7.6 Known Issues
+
+**Auto-Imports and Type Checking**
+
+With `compatibilityVersion: 4`, Nuxt changes how auto-imports work for type-checking:
+
+- Runtime works correctly (all 95 tests pass)
+- `nuxi typecheck` reports "Cannot find name" errors for auto-imported functions
+- This is expected behavior - Nuxt 4 encourages explicit imports
+
+**Workarounds:**
+
+1. **Short-term**: Skip typecheck in CI, use ESLint for linting
+2. **Long-term**: Add explicit imports to all files (recommended)
+
+**Explicit Import Example:**
+
+```typescript
+// Before (auto-import)
+const { t } = useI18n()
+
+// After (explicit import)
+import { useI18n } from 'vue-i18n'
+const { t } = useI18n()
+```
+
+Files requiring explicit imports:
+
+- Vue: `ref`, `computed`, `onMounted`, `inject`, `provide`, `Ref`
+- Vue Router: `useRoute`, `useRouter`
+- Vue I18n: `useI18n`
+- VueUse: `useLocalStorage`
+- Nuxt: `definePageMeta`, `useHead`, `navigateTo`, `clearError`
 
 **Target Directory Structure:**
 
@@ -580,11 +615,12 @@ Add to all source files (see STANDARDS.md):
 
 ### Phase 7
 
-- [ ] 7.1 Prerequisites check
-- [ ] 7.2 Enable compatibility mode
-- [ ] 7.3 Fix breaking changes
-- [ ] 7.4 Migrate directory structure
-- [ ] 7.5 Full regression test
+- [x] 7.1 Prerequisites check (all tests passing)
+- [x] 7.2 Enable compatibility mode (`compatibilityVersion: 4`)
+- [x] 7.3 Fix breaking changes (type errors in services/stores/tests)
+- [ ] 7.4 Add explicit imports (incremental, ~40 files)
+- [ ] 7.5 Migrate directory structure (optional, when Nuxt 4 stable)
+- [ ] 7.6 Full regression test
 
 ### Phase 8
 

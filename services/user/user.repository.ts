@@ -49,7 +49,7 @@ export class UserRepository extends JsonRepository<User> implements IUserReposit
   /**
    * Override findById to use user_id field
    */
-  async findById(id: number): Promise<User | null> {
+  override async findById(id: number): Promise<User | null> {
     await this.simulateDelay()
     return this.data.find((user) => user.user_id === id) ?? null
   }

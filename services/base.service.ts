@@ -45,7 +45,7 @@ export abstract class BaseService<T, ID = number> {
  * Base service for entities with full CRUD support
  */
 export abstract class BaseCrudService<T, ID = number> extends BaseService<T, ID> {
-  constructor(protected readonly repository: IRepository<T, ID>) {
+  constructor(protected override readonly repository: IRepository<T, ID>) {
     super(repository)
   }
 

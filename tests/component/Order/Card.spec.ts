@@ -21,12 +21,14 @@ const mockOrder: Order = {
   payment_type: 'Credit Card',
   delivery_type: 'Standard',
   delivery_time: '3-5 days',
+  shipping_address_id: 1,
+  billing_address_id: 1,
+  currency: 'euro',
+  invoice_pdf: '',
   products: [
     {
       id: 1,
-      name: 'Test Product',
-      img: '/img/test.jpg',
-      price: 199.99,
+      price: '199.99',
       amount: 1,
     },
   ],

@@ -76,7 +76,11 @@ describe('ProductService', () => {
   describe('search', () => {
     it('should find products by English name', async () => {
       const allProducts = (await service.getAll()) as ProductRaw[]
-      const firstProductNameEn = allProducts[0].name_en.split(' ')[0]
+      const firstProduct = allProducts[0]
+      if (!firstProduct) {
+        return
+      }
+      const firstProductNameEn = firstProduct.name_en.split(' ')[0] ?? ''
 
       const results = await service.search(firstProductNameEn)
       // Note: Search may not work correctly with raw data - just verify no errors

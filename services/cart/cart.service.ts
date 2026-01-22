@@ -62,7 +62,7 @@ export class CartService {
         id: product.id,
         name: product.name,
         img: product.img,
-        price: parseFloat(product.price_us),
+        price: parseFloat(product.price),
         amount: quantity,
       })
     }

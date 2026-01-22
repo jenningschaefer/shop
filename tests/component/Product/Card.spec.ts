@@ -15,16 +15,15 @@ const mockProduct: Product = {
   name: 'Test Chair',
   name_url: 'test-chair',
   description: 'A comfortable test chair',
-  category: 'chairs',
   type: 'chairs',
   price: '199.99',
-  price_us: '199.99',
-  price_eur: '189.99',
   currency: '€',
   img: '/img/products/chairs/test.jpg',
+  webp: '/img/products/chairs/test.webp',
   features: ['Feature 1', 'Feature 2'],
   spec_title: 'Specifications',
   spec_text: 'Material: Wood',
+  designer: 'Test Designer',
 }
 
 describe('ProductCard', () => {

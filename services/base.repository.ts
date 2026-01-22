@@ -103,8 +103,8 @@ export abstract class JsonRepository<T extends { id: ID }, ID = number> implemen
     const index = this.data.findIndex((item) => item.id === id)
     if (index === -1) return null
 
-    this.data[index] = { ...this.data[index], ...entity }
-    return this.data[index]
+    this.data[index] = { ...this.data[index], ...entity } as T
+    return this.data[index] ?? null
   }
 
   async delete(id: ID): Promise<boolean> {

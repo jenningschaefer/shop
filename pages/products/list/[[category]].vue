@@ -1,27 +1,32 @@
-<script setup>
-const route = useRoute();
-const { products } = useProducts();
+<script setup lang="ts">
+import { ref } from 'vue'
+import { useProducts } from '~/composables/useProducts'
+import { useLocalStorage } from '@vueuse/core'
+
+const route = useRoute()
+const products = ref(useProducts())
 
 definePageMeta({
     layout: 'products',
 })
 
-const favorite = useLocalStorage("favorite", []);
-//const favorite = ref([])
+interface FavoriteItem {
+    id: number
+    amount: number
+    price: number
+}
 
-/* watch(() => products, (newValue, oldValue) => {
-    if(newValue.lenght > 0) console.log('Test')
-}); */
+const favorite = useLocalStorage<FavoriteItem[]>("favorite", [])
 
-const handleFavorite = (id) => {
+const handleFavorite = (id: number) => {
     if (favorite.value.some((obj) => obj.id === id)) {
-        favorite.value = favorite.value.filter((el) => el.id != id);
+        favorite.value = favorite.value.filter((el) => el.id !== id)
     } else {
         favorite.value.push({
-            "id": id,
-            "amount": 1,
-            "price": 0,
-        });
+            id: id,
+            amount: 1,
+            price: 0,
+        })
     }
 }
 </script>
@@ -47,10 +52,8 @@ const handleFavorite = (id) => {
                 <ProductSortFilter />
             </div>
             <div class="list-content_grid">
-                <ClientOnly>
-                    <ProductCard v-for="product in products" :key="product.id" :product="product"
-                        @favor="handleFavorite" :favored="favorite.some((obj) => obj.id === product.id)" />
-                </ClientOnly>
+                <ProductCard v-for="product in products" :key="product.id" :product="product"
+                    @favor="handleFavorite" :favored="favorite.some((obj) => obj.id === product.id)" />
             </div>
         </div>
     </div>

@@ -1,15 +1,17 @@
 /**
  * @file composables/useOrders.ts
- * @description Composables for order data access
+ * @description Vue composables for order data access
  * @author Jenning Schaefer
  * @license MIT
  */
 
-import type { Order } from '../types'
-import ordersData from '../data/orders.json'
+import { ref } from 'vue'
+import type { Order, OrderStatus } from '~/types'
+import { OrderService, OrderRepository } from '~/services'
 
-// Type assertion for JSON import
-const orders = ordersData as Order[]
+// Get service instances
+const orderService = OrderService.getInstance()
+const orderRepo = OrderRepository.getInstance()
 
 /**
  * Get all orders for a specific user
@@ -17,7 +19,7 @@ const orders = ordersData as Order[]
  * @returns Array of orders belonging to the user
  */
 export function useOrdersByUser(userId: number): Order[] {
-  return orders.filter((order) => order.user_id === userId)
+  return orderRepo.getData().filter((order) => order.user_id === userId)
 }
 
 /**
@@ -26,7 +28,7 @@ export function useOrdersByUser(userId: number): Order[] {
  * @returns Order or undefined if not found
  */
 export function useOrderByOrderId(orderId: string): Order | undefined {
-  return orders.find((order) => order.order_id === orderId)
+  return orderRepo.getData().find((order) => order.order_id === orderId)
 }
 
 /**
@@ -34,7 +36,7 @@ export function useOrderByOrderId(orderId: string): Order | undefined {
  * @returns All orders
  */
 export function useOrders(): Order[] {
-  return orders
+  return orderRepo.getData()
 }
 
 /**
@@ -47,4 +49,72 @@ export function useRecentOrders(userId: number, limit: number = 5): Order[] {
   return useOrdersByUser(userId)
     .sort((a, b) => b.order_date.localeCompare(a.order_date))
     .slice(0, limit)
+}
+
+/**
+ * Reactive orders composable with async loading
+ */
+export function useOrdersAsync(userId: number) {
+  const orders = ref<Order[]>([])
+  const loading = ref(false)
+  const error = ref<Error | null>(null)
+
+  async function fetchOrders(): Promise<void> {
+    loading.value = true
+    error.value = null
+    try {
+      orders.value = await orderService.getByUserId(userId)
+    } catch (e) {
+      error.value = e as Error
+    } finally {
+      loading.value = false
+    }
+  }
+
+  async function fetchRecentOrders(limit: number = 5): Promise<void> {
+    loading.value = true
+    error.value = null
+    try {
+      orders.value = await orderService.getRecentOrders(userId, limit)
+    } catch (e) {
+      error.value = e as Error
+    } finally {
+      loading.value = false
+    }
+  }
+
+  async function fetchByStatus(status: OrderStatus): Promise<void> {
+    loading.value = true
+    error.value = null
+    try {
+      orders.value = await orderService.getByStatus(userId, status)
+    } catch (e) {
+      error.value = e as Error
+    } finally {
+      loading.value = false
+    }
+  }
+
+  return {
+    orders,
+    loading,
+    error,
+    fetchOrders,
+    fetchRecentOrders,
+    fetchByStatus,
+  }
+}
+
+/**
+ * Calculate order total
+ */
+export function useOrderTotal(order: Order): number {
+  return orderService.calculateTotal(order)
+}
+
+/**
+ * Format order date
+ */
+export function useFormatOrderDate(dateString: string): string {
+  return orderService.formatOrderDate(dateString)
 }

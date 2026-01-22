@@ -57,10 +57,12 @@ export interface CartTotals {
   subtotal: number
   /** Shipping cost */
   shipping: number
-  /** Tax amount */
-  tax: number
   /** Grand total */
   total: number
   /** Number of items */
   itemCount: number
+  /** Free shipping threshold */
+  freeShippingThreshold: number
+  /** Amount until free shipping */
+  amountUntilFreeShipping: number
 }

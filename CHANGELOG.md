@@ -19,6 +19,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - MIT License
 - Proper README with badges and documentation
 - SVG Sprites documentation in STANDARDS.md
+- **Service Layer Architecture** (`/services/` directory):
+  - Base repository interface with JsonRepository implementation
+  - ProductService, OrderService, UserService, AddressService, CartService
+  - Singleton pattern for service instances
+  - Simulated async API calls with configurable delay
+  - Clean separation of concerns (Repository → Service → Composable)
 
 ### Fixed
 

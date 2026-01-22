@@ -1,24 +1,16 @@
 /**
  * @file composables/useProducts.ts
- * @description Composables for product data access
+ * @description Vue composables for product data access
  * @author Jenning Schaefer
  * @license MIT
  */
 
-import type { Product, ProductCategory, ProductFilter } from '../types'
-import productsData from '../data/products.json'
+import { ref, computed } from 'vue'
+import type { Product, ProductCategory, ProductFilter } from '~/types'
+import productsData from '~/data/products.json'
 
-// Type assertion for JSON import
+// Direct JSON import for SSR compatibility
 const products = productsData as Product[]
-
-/**
- * Get all products
- */
-export function useProducts() {
-  return {
-    products,
-  }
-}
 
 /**
  * Get a single product by ID
@@ -30,63 +22,127 @@ export function useProduct(id: number): Product | undefined {
 }
 
 /**
- * Get products by category
+ * Get product by URL-friendly name
+ * @param name - Product name from URL
+ * @returns Product or undefined
+ */
+export function useProductByName(name: string): Product | undefined {
+  const normalizedName = name.toLowerCase().replace(/-/g, ' ')
+  return products.find((product) => product.name.toLowerCase() === normalizedName)
+}
+
+/**
+ * Get all products
+ * @returns All products
+ */
+export function useProducts(): Product[] {
+  return products
+}
+
+/**
+ * Get products filtered by category
  * @param category - Product category
- * @returns Filtered products array
+ * @returns Filtered products
  */
 export function useProductsByCategory(category: ProductCategory): Product[] {
   return products.filter((product) => product.type === category)
 }
 
 /**
- * Search products by name or designer
- * @param query - Search query
- * @returns Matching products
+ * Reactive products composable with filtering and sorting
  */
-export function useProductSearch(query: string): Product[] {
-  const lowerQuery = query.toLowerCase()
-  return products.filter(
-    (product) =>
-      product.name.toLowerCase().includes(lowerQuery) ||
-      product.designer.toLowerCase().includes(lowerQuery)
-  )
+export function useProductsFiltered() {
+  const filteredProducts = ref<Product[]>([...products])
+  const loading = ref(false)
+  const error = ref<Error | null>(null)
+  const filter = ref<ProductFilter>({})
+
+  function applyFilter(): void {
+    let result = [...products]
+
+    // Filter by category (using 'type' field from JSON)
+    if (filter.value.category) {
+      result = result.filter((p) => p.type === filter.value.category)
+    }
+
+    // Filter by price range
+    if (filter.value.minPrice !== undefined) {
+      result = result.filter((p) => parseFloat(p.price_us) >= filter.value.minPrice!)
+    }
+    if (filter.value.maxPrice !== undefined) {
+      result = result.filter((p) => parseFloat(p.price_us) <= filter.value.maxPrice!)
+    }
+
+    // Sort products
+    if (filter.value.sortBy) {
+      result = sortProducts(result, filter.value.sortBy, filter.value.sortOrder)
+    }
+
+    filteredProducts.value = result
+  }
+
+  function setFilter(newFilter: ProductFilter): void {
+    filter.value = { ...filter.value, ...newFilter }
+    applyFilter()
+  }
+
+  function resetFilter(): void {
+    filter.value = {}
+    filteredProducts.value = [...products]
+  }
+
+  const isEmpty = computed(() => filteredProducts.value.length === 0)
+  const count = computed(() => filteredProducts.value.length)
+
+  return {
+    products: filteredProducts,
+    loading,
+    error,
+    filter,
+    fetchProducts: applyFilter,
+    setFilter,
+    resetFilter,
+    isEmpty,
+    count,
+  }
 }
 
 /**
- * Get filtered and sorted products
- * @param filter - Filter options
- * @returns Filtered products
+ * Sort products by field
  */
-export function useFilteredProducts(filter: ProductFilter): Product[] {
-  let result = [...products]
+function sortProducts(
+  items: Product[],
+  sortBy: 'name' | 'price' | 'category',
+  order: 'asc' | 'desc' = 'asc'
+): Product[] {
+  return [...items].sort((a, b) => {
+    let comparison = 0
+    switch (sortBy) {
+      case 'name':
+        comparison = a.name.localeCompare(b.name)
+        break
+      case 'price':
+        comparison = parseFloat(a.price_us) - parseFloat(b.price_us)
+        break
+      case 'category':
+        comparison = a.category.localeCompare(b.category)
+        break
+    }
+    return order === 'desc' ? -comparison : comparison
+  })
+}
 
-  if (filter.category) {
-    result = result.filter((p) => p.type === filter.category)
-  }
+/**
+ * Get featured products
+ */
+export function useFeaturedProducts(limit: number = 4): Product[] {
+  return products.slice(0, limit)
+}
 
-  if (filter.minPrice !== undefined) {
-    result = result.filter((p) => parseFloat(p.price_us) >= filter.minPrice!)
-  }
-
-  if (filter.maxPrice !== undefined) {
-    result = result.filter((p) => parseFloat(p.price_us) <= filter.maxPrice!)
-  }
-
-  if (filter.designer) {
-    result = result.filter((p) =>
-      p.designer.toLowerCase().includes(filter.designer!.toLowerCase())
-    )
-  }
-
-  if (filter.searchQuery) {
-    const query = filter.searchQuery.toLowerCase()
-    result = result.filter(
-      (p) =>
-        p.name.toLowerCase().includes(query) ||
-        p.designer.toLowerCase().includes(query) ||
-        p.description.toLowerCase().includes(query)
-    )
-  }
-
-  return result
+/**
+ * Get available categories
+ */
+export function useCategories(): ProductCategory[] {
+  const categories = new Set(products.map((p) => p.type))
+  return Array.from(categories) as ProductCategory[]
 }

@@ -1,6 +1,8 @@
 /**
  * @file services/address/index.ts
  * @description Address module barrel export
+ * @author Jenning Schaefer
+ * @license MIT
  */
 
 export { AddressService } from './address.service'

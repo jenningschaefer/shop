@@ -1,3 +1,9 @@
+<!--
+  @file pages/checkout/overview.vue
+  @description Checkout order overview page
+  @author Jenning Schaefer
+  @license MIT
+-->
 <script setup lang="ts">
 const { t, locale } = useI18n()
 

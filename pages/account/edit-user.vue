@@ -1,3 +1,9 @@
+<!--
+  @file pages/account/edit-user.vue
+  @description Edit user profile page
+  @author Jenning Schaefer
+  @license MIT
+-->
 <script setup lang="ts">
 const { t } = useI18n()
 

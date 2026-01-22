@@ -1,3 +1,9 @@
+<!--
+  @file pages/account/order-history.vue
+  @description Order history page
+  @author Jenning Schaefer
+  @license MIT
+-->
 <script setup lang="ts">
 const { t } = useI18n()
 const orders = useOrdersByUser(1)

@@ -1,3 +1,9 @@
+<!--
+  @file pages/account/edit-address.vue
+  @description Edit address page
+  @author Jenning Schaefer
+  @license MIT
+-->
 <script setup lang="ts">
 const { t } = useI18n()
 

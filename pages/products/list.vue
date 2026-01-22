@@ -1,3 +1,9 @@
+<!--
+  @file pages/products/list.vue
+  @description Product list layout page
+  @author Jenning Schaefer
+  @license MIT
+-->
 <script setup>
 /* const route = useRoute();
 const {cars} = useCars(); */

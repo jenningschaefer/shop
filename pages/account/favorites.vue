@@ -1,3 +1,9 @@
+<!--
+  @file pages/account/favorites.vue
+  @description User favorites page
+  @author Jenning Schaefer
+  @license MIT
+-->
 <script setup lang="ts">
 const { t } = useI18n()
 const favorite = useLocalStorage('favorite', [])

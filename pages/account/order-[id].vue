@@ -1,3 +1,9 @@
+<!--
+  @file pages/account/order-[id].vue
+  @description Order detail page
+  @author Jenning Schaefer
+  @license MIT
+-->
 <script setup lang="ts">
 import { useOrderByOrderId } from '~/composables/useOrders'
 import { useAddress } from '~/composables/useAddresses'

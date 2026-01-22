@@ -1,3 +1,9 @@
+<!--
+  @file pages/checkout/confirmation.vue
+  @description Checkout confirmation page
+  @author Jenning Schaefer
+  @license MIT
+-->
 <script setup lang="ts">
 const { t } = useI18n()
 

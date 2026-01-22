@@ -1,3 +1,9 @@
+<!--
+  @file pages/checkout/payment.vue
+  @description Checkout payment selection page
+  @author Jenning Schaefer
+  @license MIT
+-->
 <script setup lang="ts">
 const { t, locale } = useI18n()
 

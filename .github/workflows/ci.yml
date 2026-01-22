@@ -7,6 +7,15 @@ on:
     branches: [main, master, develop]
 
 jobs:
+  license:
+    name: License Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check license headers
+        run: bash scripts/check-license.sh
+
   lint:
     name: Lint & Format
     runs-on: ubuntu-latest

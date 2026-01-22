@@ -1,3 +1,9 @@
+<!--
+  @file pages/checkout/address.vue
+  @description Checkout address selection page
+  @author Jenning Schaefer
+  @license MIT
+-->
 <script setup lang="ts">
 const { t } = useI18n()
 

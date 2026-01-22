@@ -34,7 +34,11 @@
     padding-bottom: 0.5rem;
   }
   &_seperator {
+    // Render as a single clean line (avoid default <hr> border/background)
+    border: 0;
     border-top: 2px solid $color-primary;
+    height: 0;
+    background: transparent;
     margin-right: -1rem;
     margin-left: -1rem;
     margin-top: 1rem;

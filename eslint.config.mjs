@@ -12,6 +12,19 @@ export default withNuxt({
     // Vue specific
     'vue/multi-word-component-names': 'off',
     'vue/no-multiple-template-root': 'off',
+    // Allow Prettier-style self-closing void elements in Vue templates (<br />, <hr />, <input />)
+    'vue/html-self-closing': [
+      'error',
+      {
+        html: {
+          void: 'always',
+          normal: 'always',
+          component: 'always',
+        },
+        svg: 'always',
+        math: 'always',
+      },
+    ],
 
     // TypeScript
     '@typescript-eslint/no-explicit-any': 'warn',

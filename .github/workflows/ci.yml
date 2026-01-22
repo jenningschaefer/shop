@@ -86,7 +86,7 @@ jobs:
   e2e:
     name: E2E Tests
     runs-on: ubuntu-latest
-    needs: [lint, test]  # Removed typecheck - has known Nuxt 5 compat issues
+    needs: [lint, test] # Removed typecheck - has known Nuxt 5 compat issues
     steps:
       - uses: actions/checkout@v4
 
@@ -116,7 +116,7 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
-    needs: [lint, test]  # Removed typecheck - has known Nuxt 5 compat issues
+    needs: [lint, test] # Removed typecheck - has known Nuxt 5 compat issues
     steps:
       - uses: actions/checkout@v4
 

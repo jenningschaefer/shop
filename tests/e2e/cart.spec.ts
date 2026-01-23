@@ -72,8 +72,13 @@ test.describe('Shopping Cart', () => {
     await addToCartBtn.click()
     await page.waitForTimeout(500)
 
-    // Try to go to checkout
-    await page.goto('/checkout/address')
-    await expect(page).toHaveURL(/checkout/)
+    // Open cart and click checkout button (checkout is guarded against deep links)
+    const cartBtn = page.getByRole('button', { name: /cart|warenkorb/i }).first()
+    await cartBtn.click()
+    await page.waitForTimeout(200)
+
+    const checkoutBtn = page.getByRole('button', { name: /checkout|zur kasse/i }).first()
+    await checkoutBtn.click()
+    await expect(page).toHaveURL(/checkout\/address/)
   })
 })

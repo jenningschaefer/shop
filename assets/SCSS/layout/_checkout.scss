@@ -48,6 +48,10 @@
   @media (min-width: $breakpoint-xs) {
     padding: 1rem 4rem;
   }
+  // On desktop the back icon is hidden; ensure the menu icon stays on the right.
+  @media (min-width: $breakpoint-md) {
+    justify-content: flex-end;
+  }
   &_back {
     height: 1.85em;
     width: 1.85em;
@@ -98,9 +102,14 @@
     }
   }
   button {
-    width: 100% !important;
+    width: 100%;
     @media (min-width: $breakpoint-xs) {
       width: 15rem;
     }
+  }
+
+  button[aria-disabled='true'] {
+    opacity: 0.55;
+    cursor: not-allowed;
   }
 }

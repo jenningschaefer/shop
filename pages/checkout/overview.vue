@@ -6,6 +6,7 @@
 -->
 <script setup lang="ts">
 const { t, locale } = useI18n()
+const flow = useCheckoutFlow()
 
 definePageMeta({
   layout: 'checkout',
@@ -174,7 +175,7 @@ function formatPrice(price: number): string {
         </a>
         <div class="overview_legal-accept">
           <label>
-            <input type="checkbox" />
+            <input v-model="flow.acceptTerms" type="checkbox" />
             <span class="space" />
             {{ t('checkout.acceptTerms') }}
           </label>

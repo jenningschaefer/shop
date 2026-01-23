@@ -50,7 +50,7 @@ function addToCart(): void {
     </div>
     <div class="product_description">
       <h1 class="product_description-title">{{ product.name }}</h1>
-      <NuxtPicture format="avif, webp" :src="product.img" class="product_description-img" />
+      <NuxtPicture :src="product.img" class="product_description-img" />
       <div class="product_description-accordion">
         <UIAccordion>
           <UIAccordionItem>

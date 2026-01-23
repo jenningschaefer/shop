@@ -6,6 +6,7 @@
 -->
 <script setup lang="ts">
 const { t, locale } = useI18n()
+const flow = useCheckoutFlow()
 
 definePageMeta({
   layout: 'checkout',
@@ -31,8 +32,6 @@ const paymentMethods = computed(() => [
       'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.',
   },
 ])
-
-const paymentIndex = ref(0)
 </script>
 
 <template>
@@ -42,18 +41,18 @@ const paymentIndex = ref(0)
       <template v-for="(payment, index) in paymentMethods" :key="index">
         <div
           class="payment_methods-method"
-          :class="paymentIndex === index ? 'active' : ''"
-          @click="paymentIndex = index"
+          :class="flow.paymentIndex === index ? 'active' : ''"
+          @click="flow.paymentIndex = index"
         >
           {{ payment.name }}
         </div>
       </template>
     </div>
     <div class="payment_fees">
-      {{ t('checkout.fees') }}: {{ paymentMethods[paymentIndex].fees }}
+      {{ t('checkout.fees') }}: {{ paymentMethods[flow.paymentIndex].fees }}
     </div>
     <div class="payment_description">
-      {{ paymentMethods[paymentIndex].description }}
+      {{ paymentMethods[flow.paymentIndex].description }}
     </div>
   </div>
 </template>

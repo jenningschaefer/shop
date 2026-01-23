@@ -21,6 +21,13 @@ input[type='email']::placeholder {
   color: $color-primary;
 }
 
+// Invalid input state (used by checkout forms)
+// Needs to beat the generic input[type='*']::placeholder rules above.
+input.input-invalid::placeholder {
+  color: rgba(181, 108, 122, 0.85);
+  opacity: 100%;
+}
+
 .input-dark {
   background: transparent;
   border: none;

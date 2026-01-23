@@ -29,12 +29,7 @@ const amount = ref(props.item.amount)
   <div>
     <div class="product-item">
       <div class="product-item_img">
-        <NuxtPicture
-          v-if="product"
-          format="avif, webp"
-          :src="product.img"
-          class="product-item_img_image"
-        />
+        <NuxtPicture v-if="product" :src="product.img" class="product-item_img_image" />
         <div v-if="ordered" class="product-item_img_qty">×{{ item.amount }}</div>
         <UICounter v-else v-model="amount" class="product-item_img_counter" />
       </div>

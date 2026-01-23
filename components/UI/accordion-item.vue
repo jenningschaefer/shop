@@ -10,6 +10,18 @@ interface AccordionState {
   active: number | null
 }
 
+interface Props {
+  /**
+   * If true, this item will open by default (within its accordion instance).
+   * Note: A single accordion only supports one open item at a time.
+   */
+  defaultOpen?: boolean
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  defaultOpen: false,
+})
+
 const accordion = inject<Ref<AccordionState>>('Accordion')
 
 if (!accordion) {
@@ -19,6 +31,12 @@ if (!accordion) {
 const index = accordion.value.count++
 
 const visible = computed(() => index === accordion.value.active)
+
+onMounted(() => {
+  if (props.defaultOpen && accordion.value.active === null) {
+    accordion.value.active = index
+  }
+})
 
 function open(): void {
   if (visible.value) {

@@ -19,6 +19,27 @@
       margin-left: 1rem !important;
     }
   }
+  &_option {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.25rem 0;
+    background: transparent;
+    border: 0;
+    color: inherit;
+    cursor: pointer;
+    text-align: left;
+  }
+
+  &_option--selected {
+    font-weight: 800;
+  }
+
+  &_option_check {
+    padding-left: 1rem;
+  }
+
   &_btn {
     margin-top: 3rem;
     width: 100%;

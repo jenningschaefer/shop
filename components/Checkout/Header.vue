@@ -6,9 +6,11 @@
 -->
 <script setup lang="ts">
 import { ref, computed } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 
 const route = useRoute()
+const router = useRouter()
+const flow = useCheckoutFlow()
 const openMenu = ref(false)
 
 function getPreviousRoute(): string {
@@ -23,15 +25,24 @@ function getPreviousRoute(): string {
 }
 
 const isConfirmationPage = computed(() => route.name === 'checkout-confirmation')
+
+function goBack(): void {
+  if (route.name === 'checkout-address') {
+    flow.reset()
+    router.push('/products/list')
+    return
+  }
+  router.push(getPreviousRoute())
+}
 </script>
 
 <template>
   <div class="checkout-header">
-    <NuxtLink v-if="!isConfirmationPage" :to="getPreviousRoute()">
+    <button v-if="!isConfirmationPage" type="button" class="checkout-header_back" @click="goBack">
       <svg class="checkout-header_back">
         <use href="~/assets/svg/icons.svg#arrow-left" />
       </svg>
-    </NuxtLink>
+    </button>
     <div v-else />
     <svg class="checkout-header_menu" @click="openMenu = true">
       <use href="~/assets/svg/icons.svg#menu" />

@@ -8,18 +8,65 @@
 import { test, expect } from '@playwright/test'
 
 test.describe('Checkout Flow', () => {
-  test.beforeEach(async ({ page }) => {
-    // Add item to cart before checkout tests
+  async function startCheckoutFromCart(page) {
+    // Add item to cart, open cart sidenav, then click checkout button
     await page.goto('/products/voxel-1')
     const addToCartBtn = page.getByRole('button', { name: /add to cart|in den warenkorb/i })
     if (await addToCartBtn.isVisible()) {
       await addToCartBtn.click()
-      await page.waitForTimeout(500)
+      await page.waitForTimeout(300)
     }
+
+    const cartBtn = page.getByRole('button', { name: /cart|warenkorb/i }).first()
+    await cartBtn.click()
+    await page.waitForTimeout(200)
+
+    const checkoutBtn = page.getByRole('button', { name: /checkout|zur kasse/i }).first()
+    await checkoutBtn.click()
+    await expect(page).toHaveURL(/checkout\/address/)
+  }
+
+  async function fillRequiredAddress(page) {
+    await page
+      .getByPlaceholder(/first|vorname/i)
+      .first()
+      .fill('John')
+    await page
+      .getByPlaceholder(/last|nachname/i)
+      .first()
+      .fill('Doe')
+    await page
+      .getByPlaceholder(/country|land/i)
+      .first()
+      .fill('Germany')
+    await page
+      .getByPlaceholder(/street|straße/i)
+      .first()
+      .fill('Main Street')
+    await page
+      .getByPlaceholder(/house|haus/i)
+      .first()
+      .fill('1')
+    await page
+      .getByPlaceholder(/zip|plz/i)
+      .first()
+      .fill('12345')
+    await page
+      .getByPlaceholder(/city|stadt/i)
+      .first()
+      .fill('Berlin')
+  }
+
+  test.beforeEach(async ({ page }) => {
+    await page.goto('/')
+    await page.evaluate(() => {
+      localStorage.clear()
+      sessionStorage.clear()
+    })
   })
 
   test('should load checkout address page', async ({ page }) => {
-    await page.goto('/checkout/address')
+    await startCheckoutFromCart(page)
     await expect(page).toHaveURL(/checkout\/address/)
 
     // Should have address form or tabs
@@ -28,7 +75,7 @@ test.describe('Checkout Flow', () => {
   })
 
   test('should have shipping and billing address sections', async ({ page }) => {
-    await page.goto('/checkout/address')
+    await startCheckoutFromCart(page)
 
     // Look for shipping/billing tabs or sections
     const shippingText = page.getByText(/shipping|versand|lieferadresse/i).first()
@@ -41,22 +88,22 @@ test.describe('Checkout Flow', () => {
   })
 
   test('should navigate to payment page', async ({ page }) => {
-    await page.goto('/checkout/address')
+    await startCheckoutFromCart(page)
+    await fillRequiredAddress(page)
 
     // Click next/continue button
     const nextBtn = page.getByRole('button', { name: /next|weiter|continue/i }).first()
-    if (await nextBtn.isVisible()) {
-      await nextBtn.click()
-      await expect(page).toHaveURL(/checkout\/payment/)
-    } else {
-      // Direct navigation
-      await page.goto('/checkout/payment')
-      await expect(page).toHaveURL(/checkout\/payment/)
-    }
+    await nextBtn.click()
+    await expect(page).toHaveURL(/checkout\/payment/)
   })
 
   test('should load payment page', async ({ page }) => {
-    await page.goto('/checkout/payment')
+    await startCheckoutFromCart(page)
+    await fillRequiredAddress(page)
+    await page
+      .getByRole('button', { name: /next|weiter|continue/i })
+      .first()
+      .click()
     await expect(page).toHaveURL(/checkout\/payment/)
 
     // Should have payment options
@@ -65,7 +112,16 @@ test.describe('Checkout Flow', () => {
   })
 
   test('should navigate to overview page', async ({ page }) => {
-    await page.goto('/checkout/overview')
+    await startCheckoutFromCart(page)
+    await fillRequiredAddress(page)
+    await page
+      .getByRole('button', { name: /next|weiter|continue/i })
+      .first()
+      .click()
+    await page
+      .getByRole('button', { name: /next|weiter|continue/i })
+      .first()
+      .click()
     await expect(page).toHaveURL(/checkout\/overview/)
 
     // Should show order summary
@@ -74,7 +130,16 @@ test.describe('Checkout Flow', () => {
   })
 
   test('should show order total in overview', async ({ page }) => {
-    await page.goto('/checkout/overview')
+    await startCheckoutFromCart(page)
+    await fillRequiredAddress(page)
+    await page
+      .getByRole('button', { name: /next|weiter|continue/i })
+      .first()
+      .click()
+    await page
+      .getByRole('button', { name: /next|weiter|continue/i })
+      .first()
+      .click()
 
     // Look for total/sum
     const totalText = page.getByText(/total|summe|gesamt/i).first()
@@ -82,7 +147,7 @@ test.describe('Checkout Flow', () => {
   })
 
   test('should have progress indicator', async ({ page }) => {
-    await page.goto('/checkout/address')
+    await startCheckoutFromCart(page)
 
     // Look for progress bar or steps - may or may not exist
     // Just verify page loads correctly
@@ -90,30 +155,51 @@ test.describe('Checkout Flow', () => {
   })
 
   test('should complete checkout flow', async ({ page }) => {
-    // Full checkout flow
-    await page.goto('/checkout/address')
-    await page.waitForTimeout(300)
+    await startCheckoutFromCart(page)
+    await fillRequiredAddress(page)
+    await page
+      .getByRole('button', { name: /next|weiter|continue/i })
+      .first()
+      .click()
+    await page
+      .getByRole('button', { name: /next|weiter|continue/i })
+      .first()
+      .click()
+    await expect(page).toHaveURL(/checkout\/overview/)
 
-    await page.goto('/checkout/payment')
-    await page.waitForTimeout(300)
-
-    await page.goto('/checkout/overview')
-    await page.waitForTimeout(300)
-
-    // Try to complete order
-    const buyBtn = page.getByRole('button', { name: /buy|kaufen|order|bestellen/i }).first()
-    if (await buyBtn.isVisible()) {
-      await buyBtn.click()
-      // Should navigate to confirmation
-      await expect(page).toHaveURL(/checkout\/confirmation/)
-    }
+    // Accept terms and place order
+    await page.getByRole('checkbox').first().check()
+    await page
+      .getByRole('button', { name: /place order|bestellung aufgeben/i })
+      .first()
+      .click()
+    await expect(page).toHaveURL(/checkout\/confirmation/)
   })
 
   test('should show confirmation page', async ({ page }) => {
-    await page.goto('/checkout/confirmation')
+    await startCheckoutFromCart(page)
+    await fillRequiredAddress(page)
+    await page
+      .getByRole('button', { name: /next|weiter|continue/i })
+      .first()
+      .click()
+    await page
+      .getByRole('button', { name: /next|weiter|continue/i })
+      .first()
+      .click()
+    await page.getByRole('checkbox').first().check()
+    await page
+      .getByRole('button', { name: /place order|bestellung aufgeben/i })
+      .first()
+      .click()
 
     // Should show success message
     const confirmationSection = page.locator('.checkout, [class*="confirmation"]').first()
     await expect(confirmationSection).toBeVisible()
+  })
+
+  test('should block direct deep links into checkout', async ({ page }) => {
+    await page.goto('/checkout/address')
+    await expect(page).toHaveURL(/products\/list/)
   })
 })

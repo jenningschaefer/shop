@@ -8,7 +8,9 @@
 import type { CartItem } from '~/types'
 
 const { t, locale } = useI18n()
+const router = useRouter()
 const cart = useLocalStorage<CartItem[]>('cart', [])
+const flow = useCheckoutFlow()
 
 const currencySymbol = computed(() => (locale.value === 'de' ? '€' : '$'))
 
@@ -19,6 +21,11 @@ function deleteFromCart(id: number): void {
 const total = computed(() => {
   return cart.value.reduce((sum, item) => sum + item.price * item.amount, 0).toFixed(2)
 })
+
+function startCheckout(): void {
+  flow.startFromCart()
+  router.push('/checkout/address')
+}
 </script>
 
 <template>
@@ -48,11 +55,9 @@ const total = computed(() => {
         <span>{{ t('cart.total') }}</span>
         <span>{{ total }} {{ currencySymbol }}</span>
       </div>
-      <NuxtLink to="/checkout/address">
-        <button type="button" class="order-cart_checkout_button vesta-btn">
-          {{ t('cart.checkout') }}
-        </button>
-      </NuxtLink>
+      <button type="button" class="order-cart_checkout_button vesta-btn" @click="startCheckout">
+        {{ t('cart.checkout') }}
+      </button>
     </div>
   </div>
 </template>

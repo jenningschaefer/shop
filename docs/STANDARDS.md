@@ -196,7 +196,7 @@ defineExpose({
   <article class="product-card">
     <!-- Use semantic HTML elements -->
     <figure class="product-card__image">
-      <NuxtPicture :src="product.img" :alt="product.name" format="avif,webp" />
+      <NuxtPicture :src="product.img" :alt="product.name" />
     </figure>
 
     <!-- BEM class naming -->

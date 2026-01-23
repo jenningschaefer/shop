@@ -51,7 +51,11 @@
     "sort": "Sortieren",
     "filter": "Filtern",
     "sortByPrice": "Nach Preis",
+    "sortPriceAsc": "Preis (aufsteigend)",
+    "sortPriceDesc": "Preis (absteigend)",
     "sortByName": "Nach Name",
+    "sortNameAsc": "Name (A–Z)",
+    "sortNameDesc": "Name (Z–A)",
     "noProducts": "Keine Produkte gefunden"
   },
   "cart": {
@@ -78,6 +82,7 @@
     "shippingAddress": "Lieferadresse",
     "billingAddress": "Rechnungsadresse",
     "sameAsShipping": "Wie Lieferadresse",
+    "fillDummy": "Mit Dummy-Daten ausfüllen",
     "placeOrder": "Bestellung aufgeben",
     "orderPlaced": "Bestellung aufgegeben",
     "thankYou": "Vielen Dank für Ihre Bestellung!",

@@ -5,22 +5,21 @@
   @license MIT
 -->
 <script setup lang="ts">
-const { t, locale } = useI18n()
+const { t } = useI18n()
 const flow = useCheckoutFlow()
-// `flow` is a plain object of refs; nested access (flow.acceptTerms) is NOT unwrapped
-// in the template, so destructure to a top-level ref for a working v-model.
+const { cart, subtotal, shipping: shippingCost } = useCart()
+const { selectedMethod, format } = useCheckoutPayments()
+
+// `flow` is a plain object of refs; expose top-level refs so the template unwraps them.
 const { acceptTerms } = flow
+const shippingAddress = computed(() => flow.shipping.value)
+const billingAddress = computed(() => flow.billing.value)
+
+const grandTotal = computed(() => subtotal.value + shippingCost.value + selectedMethod.value.fee)
 
 definePageMeta({
   layout: 'checkout',
 })
-
-function formatPrice(price: number): string {
-  if (locale.value === 'de') {
-    return `${price.toFixed(2).replace('.', ',')} €`
-  }
-  return `$${price.toFixed(2)}`
-}
 </script>
 
 <template>
@@ -43,15 +42,13 @@ function formatPrice(price: number): string {
                     {{ t('checkout.shippingAddress') }}
                   </h3>
                   <address>
-                    Mr John Doe
+                    {{ shippingAddress.firstName }} {{ shippingAddress.lastName }}
                     <br />
-                    mail@to.me
+                    {{ shippingAddress.street }} {{ shippingAddress.houseNo }}
                     <br />
-                    Street 45
+                    {{ shippingAddress.zip }} {{ shippingAddress.city }}
                     <br />
-                    12345 City
-                    <br />
-                    Germany
+                    {{ shippingAddress.country }}
                   </address>
                 </div>
                 <div class="overview_accordion-address-container">
@@ -59,15 +56,15 @@ function formatPrice(price: number): string {
                     {{ t('checkout.billingAddress') }}
                   </h3>
                   <address>
-                    Mr John Doe
+                    {{ billingAddress.firstName }} {{ billingAddress.lastName }}
                     <br />
-                    mail@to.me
+                    {{ billingAddress.email }}
                     <br />
-                    Street 45
+                    {{ billingAddress.street }} {{ billingAddress.houseNo }}
                     <br />
-                    12345 City
+                    {{ billingAddress.zip }} {{ billingAddress.city }}
                     <br />
-                    Germany
+                    {{ billingAddress.country }}
                   </address>
                 </div>
               </div>
@@ -82,11 +79,11 @@ function formatPrice(price: number): string {
               </div>
             </template>
             <template #accordion-content>
-              <div class="overview_accordion-products">
-                <div class="overview_accordion-products-name">Hermann D. Strauss Chair</div>
+              <div v-for="item in cart" :key="item.id" class="overview_accordion-products">
+                <div class="overview_accordion-products-name">{{ item.name }}</div>
                 <div class="overview_accordion-products-price">
-                  <span>x2</span>
-                  <span>{{ formatPrice(75.0) }}</span>
+                  <span>x{{ item.amount }}</span>
+                  <span>{{ format(item.price * item.amount) }}</span>
                 </div>
               </div>
             </template>
@@ -101,9 +98,9 @@ function formatPrice(price: number): string {
             </template>
             <template #accordion-content>
               <div class="overview_accordion-payment">
-                <div class="overview_accordion-payment-name">Credit Card</div>
+                <div class="overview_accordion-payment-name">{{ selectedMethod.name }}</div>
                 <div class="overview_accordion-payment-price">
-                  <span>{{ formatPrice(5.0) }}</span>
+                  <span>{{ format(selectedMethod.fee) }}</span>
                 </div>
               </div>
             </template>
@@ -118,29 +115,27 @@ function formatPrice(price: number): string {
           <div class="overview_accordion-address-container">
             <h3 class="overview_accordion-address-title">{{ t('checkout.shippingAddress') }}</h3>
             <address>
-              Mr John Doe
+              {{ shippingAddress.firstName }} {{ shippingAddress.lastName }}
               <br />
-              mail@to.me
+              {{ shippingAddress.street }} {{ shippingAddress.houseNo }}
               <br />
-              Street 45
+              {{ shippingAddress.zip }} {{ shippingAddress.city }}
               <br />
-              12345 City
-              <br />
-              Germany
+              {{ shippingAddress.country }}
             </address>
           </div>
           <div class="overview_accordion-address-container">
             <h3 class="overview_accordion-address-title">{{ t('checkout.billingAddress') }}</h3>
             <address>
-              Mr John Doe
+              {{ billingAddress.firstName }} {{ billingAddress.lastName }}
               <br />
-              mail@to.me
+              {{ billingAddress.email }}
               <br />
-              Street 45
+              {{ billingAddress.street }} {{ billingAddress.houseNo }}
               <br />
-              12345 City
+              {{ billingAddress.zip }} {{ billingAddress.city }}
               <br />
-              Germany
+              {{ billingAddress.country }}
             </address>
           </div>
         </div>
@@ -149,25 +144,25 @@ function formatPrice(price: number): string {
         <div class="overview_heading">
           <span class="links">{{ t('nav.products') }}</span>
         </div>
-        <div class="overview_accordion-products">
-          <div class="overview_accordion-products-name">Hermann D. Strauss Chair</div>
+        <div v-for="item in cart" :key="item.id" class="overview_accordion-products">
+          <div class="overview_accordion-products-name">{{ item.name }}</div>
           <div class="overview_accordion-products-price">
-            <span>x2</span>
-            <span>{{ formatPrice(75.0) }}</span>
+            <span>x{{ item.amount }}</span>
+            <span>{{ format(item.price * item.amount) }}</span>
           </div>
         </div>
       </div>
       <div class="overview_payment">
-        <span>Credit Card</span>
-        <span>{{ formatPrice(5.0) }}</span>
+        <span>{{ selectedMethod.name }}</span>
+        <span>{{ format(selectedMethod.fee) }}</span>
       </div>
       <div class="overview_shipping">
         <span>{{ t('cart.shipping') }}</span>
-        <span>{{ formatPrice(5.0) }}</span>
+        <span>{{ format(shippingCost) }}</span>
       </div>
       <div class="overview_total">
         <span class="overview_total-desc">{{ t('cart.total') }}</span>
-        <span class="overview_total-amount">{{ formatPrice(150.0) }}</span>
+        <span class="overview_total-amount">{{ format(grandTotal) }}</span>
       </div>
       <div class="overview_legal">
         <a class="overview_legal-tt">

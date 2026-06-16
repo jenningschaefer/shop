@@ -5,36 +5,17 @@
   @license MIT
 -->
 <script setup lang="ts">
-const { t, locale } = useI18n()
+const { t } = useI18n()
 const flow = useCheckoutFlow()
 // `flow` is a plain object of refs; nested access (flow.paymentIndex) is NOT unwrapped
 // in the template, so destructure to a top-level ref to read/write the real state.
 const { paymentIndex } = flow
+// Shared source of truth for methods + fees (also used by the overview step).
+const { methods: paymentMethods, selectedMethod, format } = useCheckoutPayments()
 
 definePageMeta({
   layout: 'checkout',
 })
-
-const paymentMethods = computed(() => [
-  {
-    name: 'Paypal',
-    fees: locale.value === 'de' ? '2,50 €' : '$2.50',
-    description:
-      'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.',
-  },
-  {
-    name: 'Credit Card',
-    fees: locale.value === 'de' ? '2,50 €' : '$2.50',
-    description:
-      'We accept all major credit cards, including Visa, MasterCard, American Express, and Discover. Your information is securely encrypted and protected.',
-  },
-  {
-    name: 'Apple/Google Pay',
-    fees: locale.value === 'de' ? '2,50 €' : '$2.50',
-    description:
-      'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.',
-  },
-])
 </script>
 
 <template>
@@ -51,11 +32,9 @@ const paymentMethods = computed(() => [
         </div>
       </template>
     </div>
-    <div class="payment_fees">
-      {{ t('checkout.fees') }}: {{ paymentMethods[paymentIndex].fees }}
-    </div>
+    <div class="payment_fees">{{ t('checkout.fees') }}: {{ format(selectedMethod.fee) }}</div>
     <div class="payment_description">
-      {{ paymentMethods[paymentIndex].description }}
+      {{ selectedMethod.description }}
     </div>
   </div>
 </template>

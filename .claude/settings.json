@@ -4,7 +4,9 @@
       "Bash(cp pages/checkout/payment.vue /tmp/payment.bak)",
       "Bash(sed -i 's/paymentMethods\\\\[paymentIndex\\\\]/paymentMethods[flow.paymentIndex]/g' pages/checkout/payment.vue)",
       "Bash(cp /tmp/payment.bak pages/checkout/payment.vue)",
-      "Bash(rm /tmp/payment.bak)"
+      "Bash(rm /tmp/payment.bak)",
+      "Bash(node -e \"const p=require\\('./package.json'\\); console.log\\(JSON.stringify\\({...p.dependencies,...p.devDependencies},null,1\\)\\)\")",
+      "Bash(node -e \"console.log\\(require\\('./package.json'\\).devDependencies['pdf-lib']\\)\")"
     ]
   }
 }

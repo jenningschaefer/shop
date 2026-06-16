@@ -6,9 +6,19 @@
 -->
 <script setup lang="ts">
 const { t } = useI18n()
+const flow = useCheckoutFlow()
+const { clearCart } = useCart()
 
 definePageMeta({
   layout: 'checkout',
+})
+
+// The order is complete: empty the cart and reset the checkout flow so a new
+// checkout starts fresh. This runs only after the route guard has already
+// allowed this page (orderPlaced === true), so resetting here is safe.
+onMounted(() => {
+  clearCart()
+  flow.reset()
 })
 </script>
 

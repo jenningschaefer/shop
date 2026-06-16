@@ -8,6 +8,11 @@
 const { t } = useI18n()
 const flow = useCheckoutFlow()
 
+// `flow` is a plain object of refs, so nested access like `flow.shipping.firstName`
+// would NOT be unwrapped in the template. Destructure to top-level refs so v-model
+// reads/writes the real checkout state instead of stray props on the ref object.
+const { shipping, billing, billingSameAsShipping } = flow
+
 const fillDummy = computed({
   get: () => flow.fillDummy.value,
   set: (v: boolean) => {
@@ -48,11 +53,15 @@ const shippingInvalid = computed(() => ({
 }))
 
 const billingInvalid = computed(() => {
+  const b = flow.billing.value
+  // Email is required regardless of "same as shipping" — billing always needs a mail.
+  const email = showInvalid('b.email') && !isEmail(b.email)
+
   if (flow.billingSameAsShipping.value) {
     return {
       firstName: false,
       lastName: false,
-      email: false,
+      email,
       country: false,
       street: false,
       houseNo: false,
@@ -61,11 +70,10 @@ const billingInvalid = computed(() => {
     }
   }
 
-  const b = flow.billing.value
   return {
     firstName: showInvalid('b.firstName') && !isNonEmpty(b.firstName),
     lastName: showInvalid('b.lastName') && !isNonEmpty(b.lastName),
-    email: showInvalid('b.email') && !isEmail(b.email),
+    email,
     country: showInvalid('b.country') && !isNonEmpty(b.country),
     street: showInvalid('b.street') && !isNonEmpty(b.street),
     houseNo: showInvalid('b.houseNo') && !isDigits(b.houseNo),
@@ -134,7 +142,7 @@ definePageMeta({
                   {{ t('checkout.fillDummy') }}
                 </label>
                 <input
-                  v-model="flow.shipping.firstName"
+                  v-model="shipping.firstName"
                   :class="{ 'input-invalid': shippingInvalid.firstName }"
                   class=""
                   type="text"
@@ -142,7 +150,7 @@ definePageMeta({
                   @blur="touch('s.firstName')"
                 />
                 <input
-                  v-model="flow.shipping.lastName"
+                  v-model="shipping.lastName"
                   :class="{ 'input-invalid': shippingInvalid.lastName }"
                   class=""
                   type="text"
@@ -150,7 +158,7 @@ definePageMeta({
                   @blur="touch('s.lastName')"
                 />
                 <input
-                  v-model="flow.shipping.country"
+                  v-model="shipping.country"
                   :class="{ 'input-invalid': shippingInvalid.country }"
                   class=""
                   type="text"
@@ -158,7 +166,7 @@ definePageMeta({
                   @blur="touch('s.country')"
                 />
                 <input
-                  v-model="flow.shipping.street"
+                  v-model="shipping.street"
                   :class="{ 'input-invalid': shippingInvalid.street }"
                   class=""
                   type="text"
@@ -166,7 +174,7 @@ definePageMeta({
                   @blur="touch('s.street')"
                 />
                 <input
-                  v-model="flow.shipping.houseNo"
+                  v-model="shipping.houseNo"
                   :class="{ 'input-invalid': shippingInvalid.houseNo }"
                   class=""
                   type="text"
@@ -175,7 +183,7 @@ definePageMeta({
                   @blur="touch('s.houseNo')"
                 />
                 <input
-                  v-model="flow.shipping.zip"
+                  v-model="shipping.zip"
                   :class="{ 'input-invalid': shippingInvalid.zip }"
                   class=""
                   type="text"
@@ -184,7 +192,7 @@ definePageMeta({
                   @blur="touch('s.zip')"
                 />
                 <input
-                  v-model="flow.shipping.city"
+                  v-model="shipping.city"
                   :class="{ 'input-invalid': shippingInvalid.city }"
                   class=""
                   type="text"
@@ -201,81 +209,80 @@ definePageMeta({
             <form action="">
               <div class="login_forms-group">
                 <label>
-                  <input v-model="flow.billingSameAsShipping" type="checkbox" />
+                  <input v-model="billingSameAsShipping" type="checkbox" />
                   {{ t('checkout.sameAsShipping') }}
                 </label>
                 <input
-                  v-model="flow.billing.firstName"
+                  v-model="billing.firstName"
                   :class="{ 'input-invalid': billingInvalid.firstName }"
                   class=""
                   type="text"
                   :placeholder="t('address.firstName')"
-                  :disabled="flow.billingSameAsShipping"
+                  :disabled="billingSameAsShipping"
                   @blur="touch('b.firstName')"
                 />
                 <input
-                  v-model="flow.billing.lastName"
+                  v-model="billing.lastName"
                   :class="{ 'input-invalid': billingInvalid.lastName }"
                   class=""
                   type="text"
                   :placeholder="t('address.lastName')"
-                  :disabled="flow.billingSameAsShipping"
+                  :disabled="billingSameAsShipping"
                   @blur="touch('b.lastName')"
                 />
                 <input
-                  v-model="flow.billing.email"
+                  v-model="billing.email"
                   :class="{ 'input-invalid': billingInvalid.email }"
                   class=""
                   type="email"
                   :placeholder="t('auth.email')"
-                  :disabled="flow.billingSameAsShipping"
                   @blur="touch('b.email')"
                 />
                 <input
-                  v-model="flow.billing.country"
+                  v-model="billing.country"
                   :class="{ 'input-invalid': billingInvalid.country }"
                   class=""
                   type="text"
                   :placeholder="t('address.country')"
-                  :disabled="flow.billingSameAsShipping"
+                  :disabled="billingSameAsShipping"
                   @blur="touch('b.country')"
                 />
                 <input
-                  v-model="flow.billing.street"
+                  v-model="billing.street"
                   :class="{ 'input-invalid': billingInvalid.street }"
                   class=""
                   type="text"
                   :placeholder="t('address.street')"
-                  :disabled="flow.billingSameAsShipping"
+                  :disabled="billingSameAsShipping"
                   @blur="touch('b.street')"
                 />
                 <input
-                  v-model="flow.billing.houseNo"
+                  v-model="billing.houseNo"
                   :class="{ 'input-invalid': billingInvalid.houseNo }"
                   class=""
                   type="text"
                   :placeholder="t('checkout.houseNo')"
-                  :disabled="flow.billingSameAsShipping"
+                  :disabled="billingSameAsShipping"
                   inputmode="numeric"
                   @blur="touch('b.houseNo')"
                 />
                 <input
-                  v-model="flow.billing.zip"
+                  v-model="billing.zip"
                   :class="{ 'input-invalid': billingInvalid.zip }"
                   class=""
                   type="text"
                   :placeholder="t('address.zip')"
-                  :disabled="flow.billingSameAsShipping"
+                  :disabled="billingSameAsShipping"
                   inputmode="numeric"
                   @blur="touch('b.zip')"
                 />
                 <input
-                  v-model="flow.billing.city"
+                  v-model="billing.city"
                   :class="{ 'input-invalid': billingInvalid.city }"
                   class=""
                   type="text"
                   :placeholder="t('address.city')"
-                  :disabled="flow.billingSameAsShipping"
+                  :disabled="billingSameAsShipping"
                   @blur="touch('b.city')"
                 />
               </div>

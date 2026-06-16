@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cp pages/checkout/payment.vue /tmp/payment.bak)",
+      "Bash(sed -i 's/paymentMethods\\\\[paymentIndex\\\\]/paymentMethods[flow.paymentIndex]/g' pages/checkout/payment.vue)",
+      "Bash(cp /tmp/payment.bak pages/checkout/payment.vue)",
+      "Bash(rm /tmp/payment.bak)"
+    ]
+  }
+}

@@ -38,8 +38,11 @@ function isEmail(value: string): boolean {
 }
 
 export function useCheckoutFlow() {
-  // NOTE: We use a session cookie (not sessionStorage) so this state is available in Nuxt route middleware
-  // without relying on a component instance (VueUse storage composables can crash in middleware).
+  // NOTE: We use Nuxt's useState (not a cookie or sessionStorage) so the flow is a SINGLE shared,
+  // synchronously-consistent reactive source. It is available in route middleware without a component
+  // instance, and—unlike multiple useCookie() refs that only reconcile asynchronously—the route guard
+  // sees page mutations immediately. A full page reload clears it, which also enforces the
+  // "no deep-linking into checkout" guard below.
   type CheckoutFlowState = {
     enteredFromCart: boolean
     shipping: CheckoutAddress
@@ -52,9 +55,9 @@ export function useCheckoutFlow() {
     fillDummy: boolean
   }
 
-  const state = useCookie<CheckoutFlowState>('shop-checkout-flow', {
-    sameSite: 'lax',
-    default: (): CheckoutFlowState => ({
+  const state = useState<CheckoutFlowState>(
+    'shop-checkout-flow',
+    (): CheckoutFlowState => ({
       enteredFromCart: false,
       shipping: emptyAddress(),
       billingSameAsShipping: true,
@@ -64,8 +67,8 @@ export function useCheckoutFlow() {
       addressAttempted: false,
       orderPlaced: false,
       fillDummy: false,
-    }),
-  })
+    })
+  )
 
   const enteredFromCart = computed({
     get: () => state.value.enteredFromCart,
@@ -144,8 +147,10 @@ export function useCheckoutFlow() {
   })
 
   const isBillingValid = computed(() => {
-    if (billingSameAsShipping.value) return true
     const a = billing.value
+    // Email is always required for the billing address, even when the rest is
+    // copied from the shipping address (shipping has no email field).
+    if (billingSameAsShipping.value) return isEmail(a.email)
     return (
       isNonEmpty(a.firstName) &&
       isNonEmpty(a.lastName) &&

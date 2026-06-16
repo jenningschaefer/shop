@@ -7,6 +7,9 @@
 <script setup lang="ts">
 const { t, locale } = useI18n()
 const flow = useCheckoutFlow()
+// `flow` is a plain object of refs; nested access (flow.paymentIndex) is NOT unwrapped
+// in the template, so destructure to a top-level ref to read/write the real state.
+const { paymentIndex } = flow
 
 definePageMeta({
   layout: 'checkout',
@@ -41,18 +44,18 @@ const paymentMethods = computed(() => [
       <template v-for="(payment, index) in paymentMethods" :key="index">
         <div
           class="payment_methods-method"
-          :class="flow.paymentIndex === index ? 'active' : ''"
-          @click="flow.paymentIndex = index"
+          :class="paymentIndex === index ? 'active' : ''"
+          @click="paymentIndex = index"
         >
           {{ payment.name }}
         </div>
       </template>
     </div>
     <div class="payment_fees">
-      {{ t('checkout.fees') }}: {{ paymentMethods[flow.paymentIndex].fees }}
+      {{ t('checkout.fees') }}: {{ paymentMethods[paymentIndex].fees }}
     </div>
     <div class="payment_description">
-      {{ paymentMethods[flow.paymentIndex].description }}
+      {{ paymentMethods[paymentIndex].description }}
     </div>
   </div>
 </template>

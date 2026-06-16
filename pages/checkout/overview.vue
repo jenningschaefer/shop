@@ -7,6 +7,9 @@
 <script setup lang="ts">
 const { t, locale } = useI18n()
 const flow = useCheckoutFlow()
+// `flow` is a plain object of refs; nested access (flow.acceptTerms) is NOT unwrapped
+// in the template, so destructure to a top-level ref for a working v-model.
+const { acceptTerms } = flow
 
 definePageMeta({
   layout: 'checkout',
@@ -175,7 +178,7 @@ function formatPrice(price: number): string {
         </a>
         <div class="overview_legal-accept">
           <label>
-            <input v-model="flow.acceptTerms" type="checkbox" />
+            <input v-model="acceptTerms" type="checkbox" />
             <span class="space" />
             {{ t('checkout.acceptTerms') }}
           </label>

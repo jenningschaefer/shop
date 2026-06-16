@@ -55,6 +55,8 @@ test.describe('Checkout Flow', () => {
       .getByPlaceholder(/city|stadt/i)
       .first()
       .fill('Berlin')
+    // Billing email is required even with "same as shipping" (shipping has no email).
+    await page.getByPlaceholder(/mail/i).first().fill('john@example.com')
   }
 
   test.beforeEach(async ({ page }) => {

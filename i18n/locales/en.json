@@ -172,7 +172,10 @@
   },
   "errors": {
     "notFound": "Page Not Found",
+    "notFoundText": "The page you're looking for doesn't exist or has moved. Let's get you back on track.",
     "serverError": "Server Error",
-    "goHome": "Go Home"
+    "serverErrorText": "Something went wrong on our end. Please try again in a moment.",
+    "goHome": "Go Home",
+    "browse": "Browse products"
   }
 }

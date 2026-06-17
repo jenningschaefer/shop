@@ -8,6 +8,13 @@
 const router = useRouter()
 const route = useRoute()
 const { t, locale, setLocale } = useI18n()
+const { loggedIn, user } = useUserSession()
+
+// User icon: logged-out → login, guest → their order history, user → account overview.
+const accountTarget = computed(() => {
+  if (!loggedIn.value) return '/login'
+  return user.value?.role === 'guest' ? '/account/order-history' : '/account/'
+})
 
 const openMenu = ref(false)
 const openCart = ref(false)
@@ -118,7 +125,7 @@ function toggleLocale(): void {
             {{ favoritesCount }}
           </span>
         </button>
-        <NuxtLink to="/login" :aria-label="t('nav.login')">
+        <NuxtLink :to="accountTarget" :aria-label="t('nav.login')">
           <svg class="navBar_icons_icon" aria-hidden="true">
             <use href="~/assets/svg/icons.svg#user" />
           </svg>
@@ -187,7 +194,7 @@ function toggleLocale(): void {
           {{ favoritesCount }}
         </span>
       </button>
-      <NuxtLink to="/login" :aria-label="t('nav.login')">
+      <NuxtLink :to="accountTarget" :aria-label="t('nav.login')">
         <svg class="subNav_icon" aria-hidden="true">
           <use href="~/assets/svg/icons.svg#user" />
         </svg>

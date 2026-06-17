@@ -13,9 +13,9 @@ export default defineNuxtRouteMiddleware((to) => {
 
   const { loggedIn, user, session } = useUserSession()
 
-  // Not authenticated at all → send to login.
+  // Not authenticated at all → send to login, remembering where they wanted to go.
   if (!loggedIn.value) {
-    return navigateTo('/login')
+    return navigateTo({ path: '/login', query: { redirect: to.fullPath } })
   }
 
   // Full account users may access everything under /account.

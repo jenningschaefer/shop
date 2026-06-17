@@ -172,7 +172,10 @@
   },
   "errors": {
     "notFound": "Seite nicht gefunden",
+    "notFoundText": "Die gewünschte Seite existiert nicht oder wurde verschoben. Wir bringen Sie zurück auf den Weg.",
     "serverError": "Serverfehler",
-    "goHome": "Zur Startseite"
+    "serverErrorText": "Auf unserer Seite ist etwas schiefgelaufen. Bitte versuchen Sie es gleich erneut.",
+    "goHome": "Zur Startseite",
+    "browse": "Produkte entdecken"
   }
 }

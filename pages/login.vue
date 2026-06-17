@@ -6,11 +6,20 @@
 -->
 <script setup lang="ts">
 const { t } = useI18n()
+const route = useRoute()
 const { fetch: refreshSession } = useUserSession()
 
 useHead({
   title: 'Login - Shop',
 })
+
+// Where to go after authenticating. Falls back to the account overview.
+// Only accept internal, single-slash paths to avoid open-redirects.
+function safeRedirect(fallback: string): string {
+  const target = route.query.redirect
+  if (typeof target === 'string' && /^\/(?!\/)/.test(target)) return target
+  return fallback
+}
 
 // --- Login (prefilled with the mock account) ---------------------------------
 const loginMail = ref('mail@mail.de')
@@ -25,7 +34,7 @@ async function onLogin() {
       body: { mail: loginMail.value, password: loginPassword.value },
     })
     await refreshSession()
-    await navigateTo('/account/')
+    await navigateTo(safeRedirect('/account/'))
   } catch {
     loginError.value = t('auth.invalidLogin')
   }
@@ -60,7 +69,7 @@ async function onRegister() {
       },
     })
     await refreshSession()
-    await navigateTo('/account/')
+    await navigateTo(safeRedirect('/account/'))
   } catch {
     registerError.value = t('auth.registerFailed')
   }
@@ -80,7 +89,7 @@ async function onGuestLookup() {
       body: { mail: guestMail.value, orderId: guestOrder.value, zip: guestZip.value },
     })
     await refreshSession()
-    await navigateTo('/account/order-history')
+    await navigateTo(safeRedirect('/account/order-history'))
   } catch {
     guestError.value = t('auth.orderNotFound')
   }

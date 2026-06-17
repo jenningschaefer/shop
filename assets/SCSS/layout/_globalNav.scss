@@ -125,3 +125,49 @@
     cursor: pointer;
   }
 }
+
+.navUser {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  &_menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    z-index: 20;
+    min-width: 9rem;
+    display: flex;
+    flex-direction: column;
+    background-color: $color-grey-dark;
+    // Hidden until the user icon (or the menu itself) is hovered/focused.
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(0.25rem);
+    transition:
+      opacity 150ms ease,
+      transform 150ms ease,
+      visibility 150ms;
+  }
+
+  &:hover &_menu,
+  &:focus-within &_menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  &_item {
+    display: block;
+    padding: 0.7rem 1rem;
+    text-align: left;
+    color: $color-primary;
+    font-size: 1rem;
+    background: transparent;
+    cursor: pointer;
+
+    &:hover {
+      background-color: rgba($color-primary, 0.08);
+    }
+  }
+}

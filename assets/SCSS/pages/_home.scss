@@ -3,12 +3,14 @@
 .home {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: auto;
+  // hero row takes the remaining space so the image fills down to the fold
+  grid-template-rows: auto auto 1fr;
   grid-template-areas:
     'slogan'
     'categories'
     'hero';
-  min-height: calc(100vh - 8rem - 15rem);
+  // fill the viewport below the header; the footer sits below the fold (scroll to reach)
+  min-height: calc(100vh - 8rem);
   @media (min-width: $breakpoint-md) {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto;
@@ -17,7 +19,7 @@
       'categories hero';
   }
   @media (min-width: $breakpoint-lg) {
-    min-height: calc(100vh - 6rem - 15rem);
+    min-height: calc(100vh - 6rem);
   }
   &_slogan {
     position: relative;
@@ -71,23 +73,12 @@
   }
   &_hero {
     grid-area: hero;
-    @media (min-width: $breakpoint-sm) {
-      img {
-        height: 35vh;
-        object-fit: cover;
-        object-position: bottom;
-        width: 100%;
-      }
-    }
-    @media (min-width: $breakpoint-md) {
-      img {
-        height: 37rem;
-      }
-    }
-    @media (min-width: $breakpoint-lg) {
-      img {
-        height: 100%;
-      }
+    // image always fills its area at full height; sides are clipped (cover), never stretched
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: bottom;
     }
   }
 }

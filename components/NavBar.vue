@@ -8,13 +8,18 @@
 const router = useRouter()
 const route = useRoute()
 const { t, locale, setLocale } = useI18n()
-const { loggedIn, user } = useUserSession()
+const { loggedIn, user, clear } = useUserSession()
 
 // User icon: logged-out → login, guest → their order history, user → account overview.
 const accountTarget = computed(() => {
   if (!loggedIn.value) return '/login'
   return user.value?.role === 'guest' ? '/account/order-history' : '/account/'
 })
+
+async function onLogout(): Promise<void> {
+  await clear()
+  await navigateTo('/login')
+}
 
 const openMenu = ref(false)
 const openCart = ref(false)
@@ -125,11 +130,19 @@ function toggleLocale(): void {
             {{ favoritesCount }}
           </span>
         </button>
-        <NuxtLink :to="accountTarget" :aria-label="t('nav.login')">
-          <svg class="navBar_icons_icon" aria-hidden="true">
-            <use href="~/assets/svg/icons.svg#user" />
-          </svg>
-        </NuxtLink>
+        <div class="navUser">
+          <NuxtLink :to="accountTarget" :aria-label="t('nav.login')">
+            <svg class="navBar_icons_icon" aria-hidden="true">
+              <use href="~/assets/svg/icons.svg#user" />
+            </svg>
+          </NuxtLink>
+          <div v-if="loggedIn" class="navUser_menu">
+            <NuxtLink :to="accountTarget" class="navUser_item">{{ t('nav.account') }}</NuxtLink>
+            <button type="button" class="navUser_item" @click="onLogout">
+              {{ t('auth.logout') }}
+            </button>
+          </div>
+        </div>
       </div>
       <div class="navBar_menu">
         <a @click="openMenu = true">{{ t('nav.menu') }}</a>
@@ -194,11 +207,19 @@ function toggleLocale(): void {
           {{ favoritesCount }}
         </span>
       </button>
-      <NuxtLink :to="accountTarget" :aria-label="t('nav.login')">
-        <svg class="subNav_icon" aria-hidden="true">
-          <use href="~/assets/svg/icons.svg#user" />
-        </svg>
-      </NuxtLink>
+      <div class="navUser">
+        <NuxtLink :to="accountTarget" :aria-label="t('nav.login')">
+          <svg class="subNav_icon" aria-hidden="true">
+            <use href="~/assets/svg/icons.svg#user" />
+          </svg>
+        </NuxtLink>
+        <div v-if="loggedIn" class="navUser_menu">
+          <NuxtLink :to="accountTarget" class="navUser_item">{{ t('nav.account') }}</NuxtLink>
+          <button type="button" class="navUser_item" @click="onLogout">
+            {{ t('auth.logout') }}
+          </button>
+        </div>
+      </div>
     </nav>
   </div>
   <UISidenav v-model="openMenu">

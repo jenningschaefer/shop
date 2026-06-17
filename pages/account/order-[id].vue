@@ -11,14 +11,31 @@ import { useUtilities } from '~/composables/useUtilities'
 
 const route = useRoute()
 const { t, locale } = useI18n()
+const { user, session } = useUserSession()
 
 // Get order by ID from route params
 const orderId = route.params.id as string
-const order = useOrderByOrderId(orderId)
+const rawOrder = useOrderByOrderId(orderId)
 
-// Load addresses
-const shipping_address = useAddress(0)
-const billing_address = useAddress(1)
+// Defense in depth (the route guard already blocks unauthorized access):
+// guests may only see orders unlocked via the lookup form, users only their own.
+const authorized = computed(() => {
+  if (!rawOrder) return false
+  if (user.value?.role === 'guest') {
+    return session.value.guest?.allowedOrderIds.includes(rawOrder.order_id) ?? false
+  }
+  return rawOrder.user_id === user.value?.user_id
+})
+
+const order = computed(() => (authorized.value ? rawOrder : undefined))
+
+// Load the addresses that actually belong to this order
+const shipping_address = computed(() =>
+  order.value ? useAddress(order.value.shipping_address_id) : undefined
+)
+const billing_address = computed(() =>
+  order.value ? useAddress(order.value.billing_address_id) : undefined
+)
 const { formatDate } = useUtilities()
 
 definePageMeta({

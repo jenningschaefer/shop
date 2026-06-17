@@ -149,7 +149,12 @@
     "forgotPassword": "Forgot Password?",
     "noAccount": "Don't have an account?",
     "hasAccount": "Already have an account?",
-    "passwordRequirements": "Your password must have at least 8 characters with one number, one upper and one lower case letter and one special character."
+    "passwordRequirements": "Your password must have at least 8 characters with one number, one upper and one lower case letter and one special character.",
+    "logout": "Logout",
+    "invalidLogin": "Invalid email or password.",
+    "registerFailed": "Registration failed. Please check your details.",
+    "passwordMismatch": "The passwords do not match.",
+    "orderNotFound": "No order found for these details."
   },
   "footer": {
     "service": "Service",

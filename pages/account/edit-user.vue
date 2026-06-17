@@ -6,6 +6,17 @@
 -->
 <script setup lang="ts">
 const { t } = useI18n()
+const { user } = useUserSession()
+
+// Prefill the form with the signed-in user's current profile.
+const form = reactive({
+  title: user.value?.title ?? 'None',
+  firstname: user.value?.firstname ?? '',
+  lastname: user.value?.lastname ?? '',
+  mail: user.value?.mail ?? '',
+  birthday: user.value?.birthday ?? '',
+  language: user.value?.language ?? 'DE',
+})
 
 definePageMeta({
   layout: 'account',
@@ -30,20 +41,30 @@ definePageMeta({
     <div class="account-user_form">
       <form action="">
         <div class="account-user_form-group">
-          <select>
-            <option value="" disabled selected>Title</option>
-            <option value="1">Mr</option>
-            <option value="2">Mrs</option>
-            <option value="3">None</option>
+          <select v-model="form.title">
+            <option value="" disabled>Title</option>
+            <option value="Mr">Mr</option>
+            <option value="Mrs">Mrs</option>
+            <option value="None">None</option>
           </select>
-          <input class="" type="text" :placeholder="t('address.firstName')" />
-          <input class="" type="text" :placeholder="t('address.lastName')" />
-          <input class="" type="email" :placeholder="t('auth.email')" />
-          <input class="" type="text" placeholder="Birthdate" />
-          <select>
-            <option value="" disabled selected>{{ t('common.language') }}</option>
-            <option value="1">Deutsch</option>
-            <option value="2">English</option>
+          <input
+            v-model="form.firstname"
+            class=""
+            type="text"
+            :placeholder="t('address.firstName')"
+          />
+          <input
+            v-model="form.lastname"
+            class=""
+            type="text"
+            :placeholder="t('address.lastName')"
+          />
+          <input v-model="form.mail" class="" type="email" :placeholder="t('auth.email')" />
+          <input v-model="form.birthday" class="" type="text" placeholder="Birthdate" />
+          <select v-model="form.language">
+            <option value="" disabled>{{ t('common.language') }}</option>
+            <option value="DE">Deutsch</option>
+            <option value="EN">English</option>
           </select>
         </div>
         <div class="account-user_form-buttons">

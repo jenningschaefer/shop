@@ -6,6 +6,33 @@
 -->
 <script setup lang="ts">
 const { t } = useI18n()
+const { user } = useUserSession()
+
+// Resolve the user's own addresses (scoped by user_id) and prefill the default one.
+const addresses = computed(() =>
+  user.value?.user_id !== undefined ? useAddressesByUser(user.value.user_id) : []
+)
+const defaultAddress = computed(
+  () => addresses.value.find((a) => a.id === user.value?.address_id_default) ?? addresses.value[0]
+)
+
+const form = reactive({
+  street: '',
+  house_no: '',
+  zip_code: '',
+  city: '',
+  country: '',
+})
+
+watchEffect(() => {
+  if (defaultAddress.value) {
+    form.street = defaultAddress.value.street
+    form.house_no = defaultAddress.value.house_no
+    form.zip_code = defaultAddress.value.zip_code
+    form.city = defaultAddress.value.city
+    form.country = defaultAddress.value.country
+  }
+})
 
 definePageMeta({
   layout: 'account',
@@ -30,17 +57,22 @@ definePageMeta({
     <div class="account-address_form">
       <form action="">
         <div class="account-address_form-group">
-          <input class="" type="text" :placeholder="t('address.street')" />
-          <input class="" type="text" :placeholder="t('checkout.houseNo')" />
-          <input class="" type="text" :placeholder="t('address.zip')" />
-          <input class="" type="text" :placeholder="t('address.city')" />
-          <select>
-            <option value="" disabled selected>{{ t('address.country') }}</option>
-            <option value="1">Germany</option>
-            <option value="2">United Kingdom</option>
-            <option value="2">US America</option>
-            <option value="3">Korea</option>
-            <option value="4">Japan</option>
+          <input v-model="form.street" class="" type="text" :placeholder="t('address.street')" />
+          <input
+            v-model="form.house_no"
+            class=""
+            type="text"
+            :placeholder="t('checkout.houseNo')"
+          />
+          <input v-model="form.zip_code" class="" type="text" :placeholder="t('address.zip')" />
+          <input v-model="form.city" class="" type="text" :placeholder="t('address.city')" />
+          <select v-model="form.country">
+            <option value="" disabled>{{ t('address.country') }}</option>
+            <option value="Germany">Germany</option>
+            <option value="United Kingdom">United Kingdom</option>
+            <option value="US America">US America</option>
+            <option value="Korea">Korea</option>
+            <option value="Japan">Japan</option>
           </select>
         </div>
         <div class="account-address_form-buttons">

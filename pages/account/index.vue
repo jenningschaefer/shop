@@ -6,6 +6,24 @@
 -->
 <script setup lang="ts">
 const { t } = useI18n()
+const { user, clear } = useUserSession()
+
+const displayName = computed(() =>
+  user.value ? `${user.value.firstname ?? ''} ${user.value.lastname ?? ''}`.trim() : ''
+)
+
+// Resolve the user's own addresses (scoped by user_id, never by a bare address id).
+const addresses = computed(() =>
+  user.value?.user_id !== undefined ? useAddressesByUser(user.value.user_id) : []
+)
+const defaultAddress = computed(
+  () => addresses.value.find((a) => a.id === user.value?.address_id_default) ?? addresses.value[0]
+)
+
+async function onLogout() {
+  await clear()
+  await navigateTo('/login')
+}
 
 definePageMeta({
   layout: 'account',
@@ -28,9 +46,9 @@ definePageMeta({
             </svg>
           </div>
           <address>
-            John Doe
+            {{ displayName }}
             <br />
-            john.doe@mail.com
+            {{ user?.mail }}
           </address>
         </div>
       </NuxtLink>
@@ -49,12 +67,12 @@ definePageMeta({
               <use href="~/assets/svg/icons.svg#arrow-right" />
             </svg>
           </div>
-          <address>
-            Street 45
+          <address v-if="defaultAddress">
+            {{ defaultAddress.street }} {{ defaultAddress.house_no }}
             <br />
-            12345 City
+            {{ defaultAddress.zip_code }} {{ defaultAddress.city }}
             <br />
-            Germany
+            {{ defaultAddress.country }}
           </address>
         </div>
       </NuxtLink>
@@ -109,6 +127,11 @@ definePageMeta({
           </div>
         </div>
       </NuxtLink>
+    </div>
+
+    <!-- Logout -->
+    <div class="account-overview_logout">
+      <button class="vesta-btn" type="button" @click="onLogout">{{ t('auth.logout') }}</button>
     </div>
   </div>
 </template>

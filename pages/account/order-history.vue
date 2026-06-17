@@ -5,8 +5,21 @@
   @license MIT
 -->
 <script setup lang="ts">
+import type { Order } from '~/types'
+
 const { t } = useI18n()
-const orders = useOrdersByUser(1)
+const { user, session } = useUserSession()
+
+// Users see their own orders; guests only the order(s) unlocked via the lookup form.
+const orders = computed<Order[]>(() => {
+  if (user.value?.role === 'guest') {
+    const ids = session.value.guest?.allowedOrderIds ?? []
+    return ids
+      .map((id) => useOrderByOrderId(id))
+      .filter((order): order is Order => order !== undefined)
+  }
+  return user.value?.user_id !== undefined ? useOrdersByUser(user.value.user_id) : []
+})
 
 definePageMeta({
   layout: 'account',

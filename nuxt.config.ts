@@ -13,7 +13,14 @@ export default defineNuxtConfig({
     compatibilityVersion: 5,
   },
 
-  modules: ['@nuxt/image', '@vueuse/nuxt', '@nuxt/eslint', '@pinia/nuxt', '@nuxtjs/i18n'],
+  modules: [
+    '@nuxt/image',
+    '@vueuse/nuxt',
+    '@nuxt/eslint',
+    '@pinia/nuxt',
+    '@nuxtjs/i18n',
+    'nuxt-auth-utils',
+  ],
 
   i18n: {
     locales: [

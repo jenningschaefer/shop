@@ -6,6 +6,15 @@
 -->
 <script setup lang="ts">
 const { t } = useI18n()
+const { loggedIn, clear } = useUserSession()
+
+const emit = defineEmits<{ close: [] }>()
+
+async function onLogout(): Promise<void> {
+  emit('close')
+  await clear()
+  await navigateTo('/login')
+}
 </script>
 
 <template>
@@ -54,6 +63,12 @@ const { t } = useI18n()
           <use href="~/assets/svg/icons.svg#link" />
         </svg>
       </NuxtLink>
+      <button v-if="loggedIn" type="button" class="menu_links_link" @click="onLogout">
+        <p>{{ t('auth.logout') }}</p>
+        <svg class="menu_links_link_icon">
+          <use href="~/assets/svg/icons.svg#link" />
+        </svg>
+      </button>
     </div>
   </div>
 </template>

@@ -225,7 +225,7 @@ function toggleLocale(): void {
   <UISidenav v-model="openMenu">
     <template #title>{{ t('nav.menu') }}</template>
     <template #content>
-      <Menu />
+      <Menu @close="openMenu = false" />
     </template>
   </UISidenav>
   <UISidenav v-model="openCart">

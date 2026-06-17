@@ -6,7 +6,7 @@
 -->
 <script setup lang="ts">
 const { t } = useI18n()
-const { user, clear } = useUserSession()
+const { user } = useUserSession()
 
 const displayName = computed(() =>
   user.value ? `${user.value.firstname ?? ''} ${user.value.lastname ?? ''}`.trim() : ''
@@ -19,11 +19,6 @@ const addresses = computed(() =>
 const defaultAddress = computed(
   () => addresses.value.find((a) => a.id === user.value?.address_id_default) ?? addresses.value[0]
 )
-
-async function onLogout() {
-  await clear()
-  await navigateTo('/login')
-}
 
 definePageMeta({
   layout: 'account',
@@ -127,11 +122,6 @@ definePageMeta({
           </div>
         </div>
       </NuxtLink>
-    </div>
-
-    <!-- Logout -->
-    <div class="account-overview_logout">
-      <button class="vesta-btn" type="button" @click="onLogout">{{ t('auth.logout') }}</button>
     </div>
   </div>
 </template>

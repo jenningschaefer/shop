@@ -24,6 +24,16 @@
         height: 1.25em;
       }
     }
+    // logout entry is a <button> reusing the link styling; reset native button chrome
+    button#{&}_link {
+      background: transparent;
+      border: none;
+      border-bottom: 2px solid $color-primary;
+      color: inherit;
+      font-family: inherit;
+      text-align: left;
+      cursor: pointer;
+    }
   }
   &_bottom {
     &_newsletter {

@@ -9,6 +9,7 @@ const route = useRoute()
 const router = useRouter()
 const { t } = useI18n()
 const flow = useCheckoutFlow()
+const toast = useToast()
 
 const isOverviewPage = computed(() => route.name === 'checkout-overview')
 
@@ -44,6 +45,10 @@ function goNext(): void {
   if (!canGoNext.value) {
     if (route.name === 'checkout-address') {
       flow.addressAttempted.value = true
+      toast.error(t('checkout.fillRequired'))
+    } else if (route.name === 'checkout-overview' && !flow.isOverviewValid.value) {
+      // Address & payment are already gated on entry, so the only blocker here is the terms checkbox.
+      toast.error(t('checkout.acceptTermsRequired'))
     }
     return
   }

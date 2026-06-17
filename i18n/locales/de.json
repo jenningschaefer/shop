@@ -89,7 +89,9 @@
     "termsConditions": "Allgemeine Geschäftsbedingungen",
     "acceptTerms": "Ich akzeptiere alle Allgemeinen Geschäftsbedingungen",
     "houseNo": "Hausnummer",
-    "fees": "Gebühren"
+    "fees": "Gebühren",
+    "fillRequired": "Bitte fülle alle Pflichtfelder korrekt aus.",
+    "acceptTermsRequired": "Bitte akzeptiere die Allgemeinen Geschäftsbedingungen."
   },
   "account": {
     "title": "Mein Konto",

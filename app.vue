@@ -26,6 +26,7 @@ const showDisclaimer = computed({
       <NuxtPage />
     </NuxtLayout>
   </div>
+  <UIToast />
   <UIDialog v-model="showDisclaimer">
     <template #title>{{ t('disclaimer.title') }}</template>
     <template #content>

@@ -8,6 +8,7 @@
 const { t } = useI18n()
 const route = useRoute()
 const { fetch: refreshSession } = useUserSession()
+const toast = useToast()
 
 useHead({
   title: 'Login - Shop',
@@ -24,10 +25,8 @@ function safeRedirect(fallback: string): string {
 // --- Login (prefilled with the mock account) ---------------------------------
 const loginMail = ref('mail@mail.de')
 const loginPassword = ref('Password1!')
-const loginError = ref('')
 
 async function onLogin() {
-  loginError.value = ''
   try {
     await $fetch('/api/auth/login', {
       method: 'POST',
@@ -36,7 +35,7 @@ async function onLogin() {
     await refreshSession()
     await navigateTo(safeRedirect('/account/'))
   } catch {
-    loginError.value = t('auth.invalidLogin')
+    toast.error(t('auth.invalidLogin'))
   }
 }
 
@@ -49,12 +48,9 @@ const register = reactive({
   password: 'Password1!',
   confirmPassword: 'Password1!',
 })
-const registerError = ref('')
-
 async function onRegister() {
-  registerError.value = ''
   if (register.password !== register.confirmPassword) {
-    registerError.value = t('auth.passwordMismatch')
+    toast.error(t('auth.passwordMismatch'))
     return
   }
   try {
@@ -71,7 +67,7 @@ async function onRegister() {
     await refreshSession()
     await navigateTo(safeRedirect('/account/'))
   } catch {
-    registerError.value = t('auth.registerFailed')
+    toast.error(t('auth.registerFailed'))
   }
 }
 
@@ -79,10 +75,8 @@ async function onRegister() {
 const guestMail = ref('mail@mail.de')
 const guestOrder = ref('000001')
 const guestZip = ref('12345')
-const guestError = ref('')
 
 async function onGuestLookup() {
-  guestError.value = ''
   try {
     await $fetch('/api/auth/guest', {
       method: 'POST',
@@ -91,7 +85,7 @@ async function onGuestLookup() {
     await refreshSession()
     await navigateTo(safeRedirect('/account/order-history'))
   } catch {
-    guestError.value = t('auth.orderNotFound')
+    toast.error(t('auth.orderNotFound'))
   }
 }
 </script>
@@ -113,7 +107,6 @@ async function onGuestLookup() {
                     <use href="~/assets/svg/icons.svg#link" />
                   </svg>
                 </a>
-                <p v-if="loginError" class="login_error">{{ loginError }}</p>
                 <button class="vesta-btn" type="submit">{{ t('auth.login') }}</button>
               </div>
             </form>
@@ -158,7 +151,6 @@ async function onGuestLookup() {
                   <input type="checkbox" checked />
                   Yes, I would like to receive the free newsletter.
                 </label>
-                <p v-if="registerError" class="login_error">{{ registerError }}</p>
                 <button class="vesta-btn" type="submit">{{ t('auth.register') }}</button>
               </div>
             </form>
@@ -172,7 +164,6 @@ async function onGuestLookup() {
             <input v-model="guestMail" type="email" :placeholder="t('auth.email')" />
             <input v-model="guestOrder" type="text" :placeholder="t('order.orderNumber')" />
             <input v-model="guestZip" type="text" :placeholder="t('address.zip')" />
-            <p v-if="guestError" class="login_error">{{ guestError }}</p>
             <button class="vesta-btn" type="submit">{{ t('order.status') }}</button>
           </div>
         </form>

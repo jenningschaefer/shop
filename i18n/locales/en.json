@@ -89,7 +89,9 @@
     "termsConditions": "Terms & Conditions",
     "acceptTerms": "I accept all Terms and Conditions",
     "houseNo": "House No.",
-    "fees": "Fees"
+    "fees": "Fees",
+    "fillRequired": "Please fill in all required fields correctly.",
+    "acceptTermsRequired": "Please accept the Terms and Conditions."
   },
   "account": {
     "title": "My Account",

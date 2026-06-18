@@ -1,4 +1,71 @@
 {
+  "servicePage": {
+    "title": "Service & Hilfe",
+    "intro": "Wir sind für Sie da. Wählen Sie links ein Thema oder springen Sie direkt über die Adresse dorthin, z. B. /service#faq.",
+    "nav": {
+      "faq": "FAQ",
+      "shipping": "Versand & Lieferung",
+      "payment": "Zahlungsarten",
+      "imprint": "Impressum",
+      "privacy": "Datenschutz"
+    },
+    "faq": {
+      "title": "Häufige Fragen",
+      "q1": "Wie kann ich meine Bestellung verfolgen?",
+      "a1": "Sobald Ihre Bestellung versandt wurde, erhalten Sie eine E-Mail mit einem Tracking-Link. Den aktuellen Status finden Sie zusätzlich in Ihrem Konto unter „Bestellungen“.",
+      "q2": "Kann ich meine Bestellung ändern oder stornieren?",
+      "a2": "Solange die Bestellung noch nicht versandt wurde, können Sie sie über unseren Kundenservice anpassen oder stornieren. Bitte kontaktieren Sie uns dazu schnellstmöglich.",
+      "q3": "Wie funktioniert die Rückgabe?",
+      "a3": "Sie haben 30 Tage Zeit, Artikel kostenlos zurückzusenden. Legen Sie das beiliegende Retourenlabel bei und geben Sie das Paket bei einem Paketshop ab.",
+      "q4": "Welche Versandkosten fallen an?",
+      "a4": "Innerhalb Deutschlands liefern wir ab einem Bestellwert von 50 € versandkostenfrei. Darunter berechnen wir eine Pauschale von 4,95 €."
+    },
+    "shipping": {
+      "title": "Versand & Lieferung",
+      "p1": "Wir versenden alle Bestellungen werktags innerhalb von 24 Stunden. Die Lieferzeit innerhalb Deutschlands beträgt in der Regel 2–4 Werktage.",
+      "p2": "Ab einem Bestellwert von 50 € ist der Versand innerhalb Deutschlands kostenlos. Für Lieferungen ins europäische Ausland gelten abweichende Laufzeiten und Kosten, die Ihnen im Bestellprozess angezeigt werden.",
+      "p3": "Sobald Ihr Paket unser Lager verlässt, informieren wir Sie per E-Mail mit einer Sendungsverfolgung."
+    },
+    "payment": {
+      "title": "Zahlungsarten",
+      "intro": "Wir bieten Ihnen verschiedene sichere Zahlungsmethoden an:",
+      "m1": "PayPal",
+      "m2": "Kreditkarte (Visa, Mastercard)",
+      "m3": "Kauf auf Rechnung",
+      "m4": "SEPA-Lastschrift",
+      "note": "Alle Zahlungen werden verschlüsselt übertragen. Bei Kauf auf Rechnung ist der Betrag innerhalb von 14 Tagen nach Erhalt der Ware fällig."
+    },
+    "imprint": {
+      "title": "Impressum",
+      "disclaimer": "Hinweis: Bitte ersetzen Sie die folgenden Musterangaben durch Ihre echten Unternehmensdaten.",
+      "providerLabel": "Angaben gemäß § 5 TMG",
+      "company": "Muster Shop GmbH",
+      "street": "Musterstraße 1",
+      "city": "12345 Musterstadt",
+      "country": "Deutschland",
+      "contactLabel": "Kontakt",
+      "phone": "Telefon: +49 (0) 123 456789",
+      "email": "E-Mail: info{'@'}muster-shop.de",
+      "repLabel": "Vertreten durch",
+      "rep": "Max Mustermann (Geschäftsführer)",
+      "registerLabel": "Registereintrag",
+      "register": "Amtsgericht Musterstadt, HRB 000000",
+      "vatLabel": "Umsatzsteuer-ID",
+      "vat": "DE000000000"
+    },
+    "privacy": {
+      "title": "Datenschutz",
+      "disclaimer": "Hinweis: Dies ist ein Muster-Datenschutztext und ersetzt keine Rechtsberatung. Bitte passen Sie ihn an Ihr Unternehmen an.",
+      "h1": "1. Verantwortlicher",
+      "p1": "Verantwortlich für die Datenverarbeitung auf dieser Website ist die Muster Shop GmbH, Musterstraße 1, 12345 Musterstadt.",
+      "h2": "2. Erhebung und Verarbeitung",
+      "p2": "Wir verarbeiten personenbezogene Daten nur, soweit dies zur Bereitstellung unseres Shops, zur Abwicklung Ihrer Bestellung und zur Erfüllung gesetzlicher Pflichten erforderlich ist.",
+      "h3": "3. Ihre Rechte",
+      "p3": "Sie haben jederzeit das Recht auf Auskunft, Berichtigung, Löschung und Einschränkung der Verarbeitung Ihrer Daten sowie das Recht auf Datenübertragbarkeit und Widerspruch.",
+      "h4": "4. Cookies",
+      "p4": "Wir verwenden Cookies, um grundlegende Funktionen wie den Warenkorb und Ihre Spracheinstellung bereitzustellen. Nicht notwendige Cookies setzen wir nur mit Ihrer Einwilligung ein."
+    }
+  },
   "common": {
     "language": "Sprache",
     "currency": "EUR",

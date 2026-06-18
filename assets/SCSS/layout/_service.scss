@@ -1,0 +1,159 @@
+@use '../abstracts' as *;
+
+// Sticky offsets. The whole nav wrapper (navBar + mobile subNav) is pinned, so
+// the side menu / dropdown must clear its height.
+$nav-height-mobile: 8rem; // .navBar on mobile
+$subnav-height-mobile: 5rem; // .subNav quick-actions row (mobile only)
+$nav-stack-mobile: $nav-height-mobile + $subnav-height-mobile;
+$nav-height-desktop: 6rem; // .navBar at large breakpoint (subNav hidden)
+
+.service-layout {
+  background-color: $bg-products;
+  color: $color-primary;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  // Pin the entire nav (logo bar + mobile quick actions) to the top.
+  // Scoped to this layout only; its containing block is the full-height layout,
+  // so it stays stuck while the page scrolls.
+  .navBar-wrapper {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background-color: $bg-products;
+  }
+}
+
+.service {
+  width: 100%;
+  max-width: 120rem;
+  margin: 0 auto;
+  padding: 2rem;
+  display: grid;
+  gap: 3rem;
+  grid-template-columns: 1fr;
+
+  @media (min-width: $breakpoint-sm) {
+    grid-template-columns: 22rem 1fr;
+    padding: 3rem;
+  }
+}
+
+/* Navigation: dropdown on mobile, sticky sidebar on desktop */
+.service_menu {
+  &_dropdown {
+    position: sticky;
+    top: $nav-stack-mobile;
+    z-index: 40;
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.4rem;
+
+    @media (min-width: $breakpoint-sm) {
+      display: none;
+    }
+  }
+
+  &_list {
+    display: none;
+
+    @media (min-width: $breakpoint-sm) {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      position: sticky;
+      // subNav is hidden at this breakpoint, so only clear the logo bar.
+      top: calc(#{$nav-height-mobile} + 2rem);
+      align-self: start;
+      max-height: calc(100vh - #{$nav-height-mobile} - 4rem);
+      overflow-y: auto;
+    }
+
+    @media (min-width: $breakpoint-lg) {
+      top: calc(#{$nav-height-desktop} + 2rem);
+      max-height: calc(100vh - #{$nav-height-desktop} - 4rem);
+    }
+  }
+
+  &_link {
+    display: block;
+    padding: 0.9rem 1.2rem;
+    font-size: 1.5rem;
+    color: $color-primary;
+    border-left: 3px solid transparent;
+    cursor: pointer;
+    transition:
+      background-color 150ms ease,
+      border-color 150ms ease;
+
+    &:hover {
+      background-color: rgba($color-primary, 0.06);
+    }
+
+    &--active {
+      font-weight: 700;
+      border-left-color: $color-primary;
+      background-color: rgba($color-primary, 0.08);
+    }
+  }
+}
+
+/* Content area - shows one section at a time */
+.service_content-area {
+  min-width: 0;
+}
+
+.service-fade-enter-active,
+.service-fade-leave-active {
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease;
+}
+
+.service-fade-enter-from,
+.service-fade-leave-to {
+  opacity: 0;
+  transform: translateY(0.5rem);
+}
+
+.service_content {
+  &_title {
+    font-size: 2.4rem;
+    margin-bottom: 1.5rem;
+  }
+
+  &_subtitle {
+    font-size: 1.7rem;
+    margin: 2rem 0 0.5rem;
+  }
+
+  &_text {
+    font-size: 1.5rem;
+    line-height: 1.6;
+    max-width: 70ch;
+    margin-bottom: 1rem;
+  }
+
+  &_note {
+    font-size: 1.3rem;
+    font-style: italic;
+    opacity: 0.75;
+    margin-bottom: 1.5rem;
+    max-width: 70ch;
+  }
+
+  &_list {
+    list-style: disc;
+    padding-left: 2rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    line-height: 1.8;
+  }
+}
+
+.service_faq-answer {
+  font-size: 1.4rem;
+  line-height: 1.6;
+  list-style: none;
+}

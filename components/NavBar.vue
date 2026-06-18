@@ -64,7 +64,7 @@ function toggleLocale(): void {
 </script>
 
 <template>
-  <div>
+  <div class="navBar-wrapper">
     <div class="navBar">
       <NuxtLink to="/" class="navBar_home" :aria-label="t('nav.home')">
         <svg class="navBar_logo" aria-hidden="true">

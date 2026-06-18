@@ -1,4 +1,71 @@
 {
+  "servicePage": {
+    "title": "Service & Help",
+    "intro": "We're here for you. Pick a topic on the left or jump straight to it via the address, e.g. /service#faq.",
+    "nav": {
+      "faq": "FAQ",
+      "shipping": "Shipping & Delivery",
+      "payment": "Payment Methods",
+      "imprint": "Imprint",
+      "privacy": "Privacy"
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "q1": "How can I track my order?",
+      "a1": "As soon as your order has shipped, you'll receive an email with a tracking link. You can also find the current status in your account under “Orders”.",
+      "q2": "Can I change or cancel my order?",
+      "a2": "As long as the order hasn't shipped yet, you can adjust or cancel it through our customer service. Please contact us as soon as possible.",
+      "q3": "How do returns work?",
+      "a3": "You have 30 days to return items free of charge. Include the enclosed return label and drop the parcel off at a parcel shop.",
+      "q4": "What are the shipping costs?",
+      "a4": "Within Germany we ship free of charge from an order value of €50. Below that we charge a flat rate of €4.95."
+    },
+    "shipping": {
+      "title": "Shipping & Delivery",
+      "p1": "We ship all orders within 24 hours on business days. Delivery within Germany usually takes 2–4 business days.",
+      "p2": "Shipping within Germany is free from an order value of €50. Deliveries to other European countries have different lead times and costs, which are shown to you during checkout.",
+      "p3": "As soon as your parcel leaves our warehouse, we'll notify you by email with a tracking link."
+    },
+    "payment": {
+      "title": "Payment Methods",
+      "intro": "We offer you several secure payment methods:",
+      "m1": "PayPal",
+      "m2": "Credit card (Visa, Mastercard)",
+      "m3": "Purchase on account",
+      "m4": "SEPA direct debit",
+      "note": "All payments are transmitted encrypted. For purchase on account, the amount is due within 14 days of receiving the goods."
+    },
+    "imprint": {
+      "title": "Imprint",
+      "disclaimer": "Note: Please replace the sample details below with your real company data.",
+      "providerLabel": "Information pursuant to § 5 TMG",
+      "company": "Muster Shop GmbH",
+      "street": "Musterstraße 1",
+      "city": "12345 Musterstadt",
+      "country": "Germany",
+      "contactLabel": "Contact",
+      "phone": "Phone: +49 (0) 123 456789",
+      "email": "Email: info{'@'}muster-shop.de",
+      "repLabel": "Represented by",
+      "rep": "Max Mustermann (Managing Director)",
+      "registerLabel": "Register entry",
+      "register": "Local court Musterstadt, HRB 000000",
+      "vatLabel": "VAT ID",
+      "vat": "DE000000000"
+    },
+    "privacy": {
+      "title": "Privacy",
+      "disclaimer": "Note: This is a sample privacy text and does not constitute legal advice. Please adapt it to your company.",
+      "h1": "1. Controller",
+      "p1": "The controller responsible for data processing on this website is Muster Shop GmbH, Musterstraße 1, 12345 Musterstadt.",
+      "h2": "2. Collection and processing",
+      "p2": "We only process personal data to the extent necessary to provide our shop, process your order and fulfil legal obligations.",
+      "h3": "3. Your rights",
+      "p3": "You have the right at any time to access, rectify, erase and restrict the processing of your data, as well as the right to data portability and objection.",
+      "h4": "4. Cookies",
+      "p4": "We use cookies to provide basic functions such as the shopping cart and your language preference. We only set non-essential cookies with your consent."
+    }
+  },
   "common": {
     "language": "Language",
     "currency": "USD",

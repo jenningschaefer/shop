@@ -12,7 +12,7 @@ const { t } = useI18n()
   <div class="footer">
     <div class="footer_link-container">
       <div class="footer_links">
-        <NuxtLink to="/" class="footer_links_link">
+        <NuxtLink to="/service" class="footer_links_link">
           <p class="links">{{ t('footer.service') }}</p>
           <svg class="footer_links_link_icon">
             <use href="~/assets/svg/icons.svg#link" />

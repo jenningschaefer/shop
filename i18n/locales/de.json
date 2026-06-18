@@ -1,4 +1,71 @@
 {
+  "designPage": {
+    "title": "Design & Technik",
+    "intro": "Ein Blick hinter die Kulissen: warum dieser Shop so aussieht und so gebaut ist, wie er ist.",
+    "nav": {
+      "overview": "Übersicht",
+      "philosophy": "Philosophie",
+      "tech": "Technik",
+      "structure": "Aufbau",
+      "colors": "Farben",
+      "components": "UI-Elemente"
+    },
+    "overview": {
+      "philosophyTitle": "Philosophie",
+      "philosophyText": "Reduziert, klar, funktional – Bauhaus für den digitalen Raum.",
+      "techTitle": "Technik",
+      "techText": "Nuxt & Sass: SEO-stark und völlig frei im Design.",
+      "structureTitle": "Aufbau",
+      "structureText": "Klare Struktur und ein bewusst minimaler Checkout.",
+      "colorsTitle": "Farben",
+      "colorsText": "Eine ruhige Palette mit drei Akzenttönen.",
+      "componentsTitle": "UI-Elemente",
+      "componentsText": "Buttons, Eingaben und Komponenten im Überblick."
+    },
+    "philosophy": {
+      "title": "Philosophie",
+      "p1": "Dieser Shop verkauft Designer-Möbel – also tritt die Gestaltung der Oberfläche bewusst zurück, damit die Produkte wirken können.",
+      "p2": "Das gestalterische Vorbild ist das Bauhaus: Form folgt Funktion, klare Raster, viel Weißraum und Typografie statt Dekoration.",
+      "p3": "Jedes Element hat eine Aufgabe. Was nicht hilft, fällt weg."
+    },
+    "tech": {
+      "title": "Technik",
+      "p1": "Die Seite basiert auf Nuxt mit serverseitigem Rendering. Für einen Shop, der von Endkunden gefunden werden soll, ist gute SEO entscheidend – SSR liefert Suchmaschinen vollständiges HTML.",
+      "p2": "Für das Styling kommt Sass zum Einsatz statt eines fertigen Komponenten-Kits wie Nuxt UI. So behalten wir die volle gestalterische Freiheit und können das Bauhaus-Konzept kompromisslos umsetzen.",
+      "p3": "Übersetzungen laufen über nuxt-i18n (Deutsch/Englisch), die Datenhaltung über typisierte Composables und Services."
+    },
+    "structure": {
+      "title": "Aufbau & Checkout",
+      "p1": "Das Projekt ist nach Verantwortlichkeiten getrennt: Layouts, Seiten, wiederverwendbare Komponenten und Composables für die Logik.",
+      "p2": "Wiederkehrende Muster werden geteilt – etwa das Seitenmenü und die Hash-Navigation, die sowohl diese Design-Seite als auch der Service-Bereich nutzen.",
+      "p3": "Der Checkout ist bewusst noch minimaler gehalten: keine Ablenkung, keine überflüssigen Schritte – nur das, was zum Abschluss der Bestellung nötig ist."
+    },
+    "colors": {
+      "title": "Farben",
+      "intro": "Eine ruhige Basis aus Dunkel und Hell, ergänzt um drei zurückhaltende Akzenttöne.",
+      "primary": "Primär",
+      "secondary": "Sekundär",
+      "blue": "Akzent Blau",
+      "red": "Akzent Rot",
+      "grey": "Grau",
+      "success": "Erfolg",
+      "error": "Fehler"
+    },
+    "components": {
+      "title": "UI-Elemente",
+      "buttonsTitle": "Buttons",
+      "inputsTitle": "Eingaben",
+      "accordionTitle": "Akkordeon",
+      "accordionTrigger": "Was ist enthalten?",
+      "accordionContent": "Aufbau, Material und Pflegehinweise – kompakt aufklappbar.",
+      "linksTitle": "Links",
+      "linksText": "Links tragen immer einen Pfeil, damit sofort klar ist, dass es weitergeht:",
+      "linkExample": "Zur Kollektion",
+      "inputPlaceholder": "Ihre E-Mail",
+      "buttonPrimary": "In den Warenkorb",
+      "buttonSecondary": "Mehr erfahren"
+    }
+  },
   "servicePage": {
     "title": "Service & Hilfe",
     "intro": "Wir sind für Sie da. Wählen Sie links ein Thema oder springen Sie direkt über die Adresse dorthin, z. B. /service#faq.",

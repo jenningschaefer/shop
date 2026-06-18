@@ -12,17 +12,17 @@ const items = ['1', '2', '3', '4'] as const
 </script>
 
 <template>
-  <div class="service_content">
-    <h2 class="service_content_title">{{ t('servicePage.faq.title') }}</h2>
+  <div class="section-content">
+    <h2 class="section-content_title">{{ t('servicePage.faq.title') }}</h2>
     <UIAccordion>
       <UIAccordionItem v-for="n in items" :key="n">
         <template #accordion-trigger>
-          <div class="service_faq-trigger">
+          <div class="section-faq-trigger">
             <span class="links">{{ t(`servicePage.faq.q${n}`) }}</span>
           </div>
         </template>
         <template #accordion-content>
-          <li class="service_faq-answer">{{ t(`servicePage.faq.a${n}`) }}</li>
+          <li class="section-faq-answer">{{ t(`servicePage.faq.a${n}`) }}</li>
         </template>
       </UIAccordionItem>
     </UIAccordion>

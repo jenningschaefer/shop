@@ -11,12 +11,12 @@ const methods = ['1', '2', '3', '4'] as const
 </script>
 
 <template>
-  <div class="service_content">
-    <h2 class="service_content_title">{{ t('servicePage.payment.title') }}</h2>
-    <p class="service_content_text">{{ t('servicePage.payment.intro') }}</p>
-    <ul class="service_content_list">
+  <div class="section-content">
+    <h2 class="section-content_title">{{ t('servicePage.payment.title') }}</h2>
+    <p class="section-content_text">{{ t('servicePage.payment.intro') }}</p>
+    <ul class="section-content_list">
       <li v-for="n in methods" :key="n">{{ t(`servicePage.payment.m${n}`) }}</li>
     </ul>
-    <p class="service_content_text">{{ t('servicePage.payment.note') }}</p>
+    <p class="section-content_text">{{ t('servicePage.payment.note') }}</p>
   </div>
 </template>

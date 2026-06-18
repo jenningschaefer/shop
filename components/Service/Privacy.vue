@@ -11,13 +11,13 @@ const sections = ['1', '2', '3', '4'] as const
 </script>
 
 <template>
-  <div class="service_content">
-    <h2 class="service_content_title">{{ t('servicePage.privacy.title') }}</h2>
-    <p class="service_content_note">{{ t('servicePage.privacy.disclaimer') }}</p>
+  <div class="section-content">
+    <h2 class="section-content_title">{{ t('servicePage.privacy.title') }}</h2>
+    <p class="section-content_note">{{ t('servicePage.privacy.disclaimer') }}</p>
 
     <template v-for="n in sections" :key="n">
-      <h3 class="service_content_subtitle">{{ t(`servicePage.privacy.h${n}`) }}</h3>
-      <p class="service_content_text">{{ t(`servicePage.privacy.p${n}`) }}</p>
+      <h3 class="section-content_subtitle">{{ t(`servicePage.privacy.h${n}`) }}</h3>
+      <p class="section-content_text">{{ t(`servicePage.privacy.p${n}`) }}</p>
     </template>
   </div>
 </template>

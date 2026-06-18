@@ -32,12 +32,12 @@ const { t } = useI18n()
             <use href="~/assets/svg/icons.svg#link" />
           </svg>
         </NuxtLink>
-        <a href="" class="footer_links_link">
+        <NuxtLink to="/design" class="footer_links_link">
           <p class="links">Design</p>
           <svg class="footer_links_link_icon">
             <use href="~/assets/svg/icons.svg#link" />
           </svg>
-        </a>
+        </NuxtLink>
       </div>
     </div>
     <div class="footer_newsletter">

@@ -1,4 +1,71 @@
 {
+  "designPage": {
+    "title": "Design & Tech",
+    "intro": "A look behind the scenes: why this shop looks and is built the way it is.",
+    "nav": {
+      "overview": "Overview",
+      "philosophy": "Philosophy",
+      "tech": "Tech",
+      "structure": "Structure",
+      "colors": "Colors",
+      "components": "UI Elements"
+    },
+    "overview": {
+      "philosophyTitle": "Philosophy",
+      "philosophyText": "Reduced, clear, functional – Bauhaus for the digital space.",
+      "techTitle": "Tech",
+      "techText": "Nuxt & Sass: strong SEO and full design freedom.",
+      "structureTitle": "Structure",
+      "structureText": "A clear structure and a deliberately minimal checkout.",
+      "colorsTitle": "Colors",
+      "colorsText": "A calm palette with three accent tones.",
+      "componentsTitle": "UI Elements",
+      "componentsText": "Buttons, inputs and components at a glance."
+    },
+    "philosophy": {
+      "title": "Philosophy",
+      "p1": "This shop sells designer furniture – so the interface deliberately steps back to let the products speak.",
+      "p2": "The design reference is the Bauhaus: form follows function, clear grids, plenty of white space and typography instead of decoration.",
+      "p3": "Every element has a job. Whatever doesn't help is removed."
+    },
+    "tech": {
+      "title": "Tech",
+      "p1": "The site is built on Nuxt with server-side rendering. For a shop that needs to be found by end customers, good SEO is essential – SSR delivers complete HTML to search engines.",
+      "p2": "Styling uses Sass instead of a ready-made component kit like Nuxt UI. That keeps full design freedom and lets us realise the Bauhaus concept without compromise.",
+      "p3": "Translations run through nuxt-i18n (German/English); data is handled by typed composables and services."
+    },
+    "structure": {
+      "title": "Structure & Checkout",
+      "p1": "The project is separated by responsibility: layouts, pages, reusable components and composables for the logic.",
+      "p2": "Recurring patterns are shared – such as the side menu and hash navigation used by both this design page and the service area.",
+      "p3": "The checkout is kept deliberately even more minimal: no distraction, no superfluous steps – only what is needed to complete the order."
+    },
+    "colors": {
+      "title": "Colors",
+      "intro": "A calm base of dark and light, complemented by three restrained accent tones.",
+      "primary": "Primary",
+      "secondary": "Secondary",
+      "blue": "Accent Blue",
+      "red": "Accent Red",
+      "grey": "Grey",
+      "success": "Success",
+      "error": "Error"
+    },
+    "components": {
+      "title": "UI Elements",
+      "buttonsTitle": "Buttons",
+      "inputsTitle": "Inputs",
+      "accordionTitle": "Accordion",
+      "accordionTrigger": "What's included?",
+      "accordionContent": "Build, material and care notes – compact and collapsible.",
+      "linksTitle": "Links",
+      "linksText": "Links always carry an arrow, so it's instantly clear there's more to come:",
+      "linkExample": "To the collection",
+      "inputPlaceholder": "Your email",
+      "buttonPrimary": "Add to cart",
+      "buttonSecondary": "Learn more"
+    }
+  },
   "servicePage": {
     "title": "Service & Help",
     "intro": "We're here for you. Pick a topic on the left or jump straight to it via the address, e.g. /service#faq.",

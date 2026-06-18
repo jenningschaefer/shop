@@ -57,7 +57,7 @@ async function onLogout(): Promise<void> {
           </a>
         </div>
       </div>
-      <NuxtLink to="/products/list" class="menu_links_link">
+      <NuxtLink to="/design" class="menu_links_link">
         <p>DESIGN</p>
         <svg class="menu_links_link_icon">
           <use href="~/assets/svg/icons.svg#link" />

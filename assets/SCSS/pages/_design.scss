@@ -1,0 +1,188 @@
+@use '../abstracts' as *;
+
+/* ---- Overview: designed grid of boxes ---- */
+.design-overview {
+  width: 100%;
+  max-width: 120rem;
+  margin: 0 auto;
+  padding: 2rem;
+
+  @media (min-width: $breakpoint-sm) {
+    padding: 3rem;
+  }
+
+  &_intro {
+    margin-bottom: 3rem;
+  }
+
+  &_title {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  &_text {
+    font-size: 1.5rem;
+    max-width: 60ch;
+  }
+
+  &_grid {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: 1fr;
+
+    @media (min-width: $breakpoint-xs) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (min-width: $breakpoint-md) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}
+
+// Bauhaus-flavoured cards: bold borders, a numeral, a coloured accent edge.
+.design-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+  text-align: left;
+  padding: 2rem;
+  min-height: 16rem;
+  background-color: transparent;
+  border: 2px solid $color-primary;
+  border-top-width: 0.8rem;
+  cursor: pointer;
+  transition:
+    background-color 160ms ease,
+    transform 160ms ease;
+
+  &:hover {
+    background-color: rgba($color-primary, 0.05);
+    transform: translateY(-2px);
+  }
+
+  // Accent edge per card (cycled by index in the template).
+  &--0 {
+    border-top-color: $color-primary;
+  }
+  &--1 {
+    border-top-color: $color-blue;
+  }
+  &--2 {
+    border-top-color: $color-red;
+  }
+  &--3 {
+    border-top-color: $color-grey-dark;
+  }
+
+  &_num {
+    font-size: 1.25rem;
+    font-weight: 700;
+    opacity: 0.5;
+    letter-spacing: 0.1em;
+  }
+
+  &_title {
+    font-size: 2rem;
+    font-weight: 800;
+    text-transform: uppercase;
+  }
+
+  &_text {
+    font-size: 1.3rem;
+    line-height: 1.5;
+  }
+
+  &_arrow {
+    margin-top: auto;
+    width: 1.8rem;
+    height: 1.8rem;
+    fill: none;
+    stroke: $color-primary;
+  }
+}
+
+/* ---- Colours showcase ---- */
+.design-swatches {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+  list-style: none;
+  padding: 0;
+  margin-top: 1rem;
+}
+
+.design-swatch {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+
+  &_chip {
+    height: 6rem;
+    border: 1px solid rgba($color-primary, 0.2);
+
+    &--primary {
+      background-color: $color-primary;
+    }
+    &--secondary {
+      background-color: $color-secondary;
+    }
+    &--blue {
+      background-color: $color-blue;
+    }
+    &--red {
+      background-color: $color-red;
+    }
+    &--grey {
+      background-color: $color-grey-dark;
+    }
+    &--success {
+      background-color: $color-success;
+    }
+    &--error {
+      background-color: $color-error;
+    }
+  }
+
+  &_label {
+    font-size: 1.4rem;
+    font-weight: 600;
+  }
+
+  &_hex {
+    font-size: 1.2rem;
+    opacity: 0.6;
+  }
+}
+
+/* ---- UI element showcase ---- */
+.design-showcase_row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Links always carry a trailing arrow */
+.link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: $color-primary;
+
+  &_icon {
+    width: 1.4rem;
+    height: 1.4rem;
+    fill: none;
+    stroke: $color-primary;
+    transition: transform 160ms ease;
+  }
+
+  &:hover &_icon {
+    transform: translateX(0.3rem);
+  }
+}

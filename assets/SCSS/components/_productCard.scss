@@ -3,8 +3,23 @@
 .product-card {
   width: 100%;
   cursor: pointer;
+  transition: transform $dur-fast $ease-out-soft;
+
+  &:hover {
+    transform: translateY(-4px);
+
+    .product-card_img_image img {
+      transform: scale(1.04);
+    }
+
+    .product-card_img_icon {
+      transform: scale(1.1);
+    }
+  }
+
   &_img {
     position: relative;
+    overflow: hidden;
     &_icon {
       position: absolute;
       height: 2rem;
@@ -14,14 +29,22 @@
       top: 0.3rem;
       right: 0.3rem;
       fill: transparent;
+      // Above the zoomable image so it stays interactive and crisp.
+      z-index: 1;
+      transform-origin: center;
+      transition: transform $dur-fast $ease-out-soft;
       &.active {
         fill: $color-grey-dark;
+      }
+      &--pop {
+        animation: heartPop 300ms ease-out;
       }
     }
     &_image {
       img {
         object-fit: 100%;
         width: 100%;
+        transition: transform $dur-base $ease-out-soft;
       }
     }
   }
@@ -30,5 +53,38 @@
   }
   &_price {
     font-weight: 700;
+  }
+}
+
+@keyframes heartPop {
+  0% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.3);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@include reduced-motion {
+  .product-card,
+  .product-card_img_image img,
+  .product-card_img_icon {
+    transition: none;
+  }
+
+  .product-card:hover {
+    transform: none;
+
+    .product-card_img_image img,
+    .product-card_img_icon {
+      transform: none;
+    }
+  }
+
+  .product-card_img_icon--pop {
+    animation: none;
   }
 }

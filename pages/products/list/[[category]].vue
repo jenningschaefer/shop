@@ -133,8 +133,9 @@ function isFavorite(id: number): boolean {
       </div>
       <div class="list-content_grid">
         <ProductCard
-          v-for="product in visibleProducts"
+          v-for="(product, index) in visibleProducts"
           :key="product.id"
+          v-reveal="index % 8"
           :product="product"
           :favored="isFavorite(product.id)"
           @favor="handleFavorite"

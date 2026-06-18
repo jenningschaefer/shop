@@ -10,3 +10,11 @@
   cursor: pointer;
   transition: all 0.2s ease;
 }
+
+// Wraps content in a prefers-reduced-motion guard so motion can be disabled
+// consistently for users who request it.
+@mixin reduced-motion {
+  @media (prefers-reduced-motion: reduce) {
+    @content;
+  }
+}

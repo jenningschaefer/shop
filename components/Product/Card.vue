@@ -5,6 +5,7 @@
   @license MIT
 -->
 <script setup lang="ts">
+import { nextTick, ref } from 'vue'
 import type { Product } from '~/types'
 
 interface Props {
@@ -22,8 +23,18 @@ const props = withDefaults(defineProps<Props>(), {
 
 const emit = defineEmits<Emits>()
 
+// Restart the pop animation on every click by toggling the class off→on.
+const heartPop = ref(false)
+
 function handleFavorite(): void {
   emit('favor', props.product.id)
+  heartPop.value = false
+  void nextTick(() => {
+    heartPop.value = true
+    window.setTimeout(() => {
+      heartPop.value = false
+    }, 300)
+  })
 }
 </script>
 
@@ -32,7 +43,7 @@ function handleFavorite(): void {
     <div class="product-card_img">
       <svg
         class="product-card_img_icon"
-        :class="favored ? 'active' : ''"
+        :class="{ active: favored, 'product-card_img_icon--pop': heartPop }"
         @click.stop="handleFavorite"
       >
         <use href="~/assets/svg/icons.svg#heart" />

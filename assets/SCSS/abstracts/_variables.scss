@@ -14,6 +14,11 @@ $bg-checkout: $color-blue;
 $bg-account: $color-red;
 $bg-footer: $color-primary;
 
+/** Motion — shared timing/easing tokens for transitions & animations */
+$dur-fast: 160ms;
+$dur-base: 220ms;
+$ease-out-soft: cubic-bezier(0.22, 0.61, 0.36, 1);
+
 /** Breakpoints */
 
 /** 1200px or bigger */

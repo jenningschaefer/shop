@@ -39,6 +39,16 @@ export default defineNuxtConfig({
 
   css: ['~/assets/SCSS/main.scss'],
 
+  runtimeConfig: {
+    // nuxt-auth-utils seals the session cookie with session.password. Declaring
+    // it here makes the NUXT_SESSION_PASSWORD env override explicit and bakes
+    // the value at build time — belt-and-suspenders for serverless hosts
+    // (Netlify) where the runtime env override can otherwise be missed.
+    session: {
+      password: process.env.NUXT_SESSION_PASSWORD || '',
+    },
+  },
+
   image: {
     // Netlify sets NETLIFY=true during its build. There, use the Netlify Image
     // CDN (edge optimization, no sharp/serverless function needed). Locally and

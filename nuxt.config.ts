@@ -40,7 +40,10 @@ export default defineNuxtConfig({
   css: ['~/assets/SCSS/main.scss'],
 
   image: {
-    provider: 'ipx',
+    // Netlify sets NETLIFY=true during its build. There, use the Netlify Image
+    // CDN (edge optimization, no sharp/serverless function needed). Locally and
+    // on other Node hosts, keep IPX so `nuxt dev`/`node` builds work unchanged.
+    provider: process.env.NETLIFY ? 'netlify' : 'ipx',
     dir: 'public',
   },
 

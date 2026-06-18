@@ -3,7 +3,8 @@
 /* Modal Content */
 .dialog {
   position: fixed;
-  z-index: 3;
+  // Above the shared .overlay (z-index 60) so the modal sits over the backdrop.
+  z-index: 70;
   top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);

@@ -67,7 +67,9 @@ input[type='number'] {
 .overlay {
   //display: none;
   position: fixed;
-  z-index: 2;
+  // Above sticky page chrome (e.g. the service layout's pinned nav at z-index 50);
+  // the modal panels (sidenav/dialog) sit just above this.
+  z-index: 60;
   top: 0;
   right: 0;
   left: 0;

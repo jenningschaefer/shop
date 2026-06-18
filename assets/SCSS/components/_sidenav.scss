@@ -4,7 +4,8 @@
   height: 100%;
   width: 0;
   position: fixed;
-  z-index: 3;
+  // Above the shared .overlay (z-index 60) so the drawer sits over the backdrop.
+  z-index: 70;
   top: 0;
   right: 0;
   background-color: $color-grey-dark;

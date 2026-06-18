@@ -18,7 +18,7 @@ const { t } = useI18n()
             <use href="~/assets/svg/icons.svg#link" />
           </svg>
         </NuxtLink>
-        <NuxtLink to="/" class="footer_links_link">
+        <NuxtLink to="/service#privacy" class="footer_links_link">
           <p class="links">{{ t('footer.legal') }}</p>
           <svg class="footer_links_link_icon">
             <use href="~/assets/svg/icons.svg#link" />
@@ -26,7 +26,7 @@ const { t } = useI18n()
         </NuxtLink>
       </div>
       <div class="footer_links">
-        <NuxtLink to="/" class="footer_links_link">
+        <NuxtLink to="/service#payment" class="footer_links_link">
           <p class="links">{{ t('footer.payment') }}</p>
           <svg class="footer_links_link_icon">
             <use href="~/assets/svg/icons.svg#link" />

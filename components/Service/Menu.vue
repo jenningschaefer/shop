@@ -30,7 +30,7 @@ function onDropdownChange(event: Event): void {
   <div class="service_menu">
     <!-- Mobile: dropdown sticky under the navbar -->
     <select
-      class="service_menu_dropdown input-dark"
+      class="service_menu_dropdown"
       :value="active"
       :aria-label="t('servicePage.title')"
       @change="onDropdownChange"
